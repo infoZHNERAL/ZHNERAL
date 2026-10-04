@@ -1,198 +1,684 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>ژنرال | ZHNERAL</title>
+  <title>ژنرال | ZHNERAL</title>
 
-    <meta name="description"
-          content="ژنرال | ZHNERAL - معرفی و خدمات ژنرال در روبیکا و تلگرام">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        body {
-            font-family: Tahoma, Arial, sans-serif;
-            background: #050505;
-            color: white;
-            min-height: 100vh;
-        }
+    body {
+      margin: 0;
+      background: #050505;
+      color: #fff;
+      font-family: Tahoma, Arial, sans-serif;
+      line-height: 2;
+    }
 
-        .container {
-            width: 90%;
-            max-width: 900px;
-            margin: auto;
-        }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
-        header {
-            text-align: center;
-            padding: 70px 20px 40px;
-        }
+    .container {
+      width: 92%;
+      max-width: 940px;
+      margin: auto;
+    }
 
-        .logo {
-            font-size: 52px;
-            font-weight: 900;
-            color: #d4af37;
-            text-shadow:
-                0 0 10px #d4af37,
-                0 0 25px #8a6d1d;
-            margin-bottom: 15px;
-        }
+    /* صفحه اصلی */
 
-        .subtitle {
-            color: #cfcfcf;
-            font-size: 17px;
-            line-height: 2;
-        }
+    header {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 0;
+      text-align: center;
+    }
 
-        .card {
-            background: linear-gradient(145deg, #111111, #080808);
-            border: 1px solid #8d7325;
-            border-radius: 20px;
-            padding: 30px 22px;
-            margin: 20px 0;
-            box-shadow: 0 0 25px rgba(212,175,55,0.12);
-        }
+    .hero {
+      width: 100%;
+      padding: 60px 25px;
+      border: 1px solid #d8b437;
+      border-radius: 40px;
+      background: #0b0b0b;
+      box-shadow: 0 0 40px rgba(225,185,54,.08);
+    }
 
-        .card h2 {
-            color: #d4af37;
-            margin-bottom: 15px;
-            font-size: 24px;
-        }
+    .brand {
+      color: #e6bd3d;
+      font-size: 65px;
+      font-weight: 900;
+      text-shadow: 0 0 20px rgba(225,185,54,.4);
+    }
 
-        .card p {
-            color: #ddd;
-            line-height: 2.1;
-            font-size: 16px;
-        }
+    .brand-en {
+      color: #ddd;
+      font-size: 25px;
+      letter-spacing: 4px;
+      direction: ltr;
+      margin-bottom: 20px;
+    }
 
-        .buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-            margin-top: 25px;
-        }
+    .hero p {
+      color: #eee;
+      font-size: 22px;
+      max-width: 750px;
+      margin: auto;
+    }
 
-        .btn {
-            display: block;
-            text-decoration: none;
-            text-align: center;
-            padding: 15px;
-            border-radius: 12px;
-            border: 1px solid #d4af37;
-            color: #d4af37;
-            font-size: 17px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
+    /* بخش ها */
 
-        .btn:hover {
-            background: #d4af37;
-            color: #000;
-            transform: scale(1.02);
-        }
+    .section {
+      padding: 30px 0 60px;
+    }
 
-        .main-btn {
-            background: #d4af37;
-            color: #000;
-        }
+    .card {
+      background: #0c0c0c;
+      border: 1px solid #d8b437;
+      border-radius: 35px;
+      padding: 40px;
+      margin-bottom: 30px;
+      box-shadow: 0 0 35px rgba(225,185,54,.05);
+    }
 
-        .id {
-            direction: ltr;
-            display: inline-block;
-            color: #d4af37;
-            font-weight: bold;
-        }
+    .title {
+      color: #e6bd3d;
+      font-size: 40px;
+      margin-top: 0;
+      margin-bottom: 30px;
+      font-weight: 800;
+    }
 
-        footer {
-            text-align: center;
-            color: #777;
-            padding: 40px 15px 25px;
-            font-size: 13px;
-        }
+    .text {
+      color: #eee;
+      font-size: 19px;
+      margin: 15px 0;
+    }
 
-        @media (max-width: 500px) {
-            .logo {
-                font-size: 42px;
-            }
+    .highlight {
+      color: #e6bd3d;
+      font-weight: bold;
+    }
 
-            .subtitle {
-                font-size: 15px;
-            }
-        }
-    </style>
+    /* لینک ها */
+
+    .links {
+      display: grid;
+      gap: 12px;
+      margin: 20px 0;
+    }
+
+    .link-line {
+      padding: 10px 15px;
+      background: #090909;
+      border: 1px solid rgba(225,185,54,.2);
+      border-radius: 12px;
+      word-break: break-word;
+    }
+
+    /* لیست */
+
+    .bullets {
+      list-style: none;
+      padding: 0;
+    }
+
+    .bullets li {
+      margin: 10px 0;
+      padding: 10px 15px;
+      border-right: 3px solid #e6bd3d;
+      background: rgba(255,255,255,.025);
+      border-radius: 10px 0 0 10px;
+    }
+
+    /* هشدار */
+
+    .warning {
+      border-right: 4px solid #e6bd3d;
+      background: rgba(225,185,54,.05);
+      padding: 18px;
+      border-radius: 14px;
+      margin-top: 25px;
+    }
+
+    /* دکمه ها */
+
+    .buttons {
+      display: grid;
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      min-height: 60px;
+
+      padding: 12px 20px;
+
+      border-radius: 18px;
+
+      border: 1px solid #e1b936;
+
+      background: transparent;
+
+      color: #e6bd3d;
+
+      font-size: 18px;
+
+      font-weight: bold;
+
+      transition: .2s;
+    }
+
+    .btn:hover {
+      background: #e1b936;
+      color: #050505;
+      transform: translateY(-2px);
+    }
+
+    .btn.primary {
+      background: #e1b936;
+      color: #050505;
+    }
+
+    /* سوالات */
+
+    .faq {
+      display: grid;
+      gap: 12px;
+    }
+
+    details {
+      border: 1px solid rgba(225,185,54,.35);
+      border-radius: 15px;
+      padding: 0 18px;
+      background: #090909;
+    }
+
+    summary {
+      cursor: pointer;
+      padding: 14px 0;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    .small {
+      color: #aaa;
+      font-size: 14px;
+    }
+
+    /* فوتر */
+
+    footer {
+      text-align: center;
+      color: #777;
+      padding: 20px 15px 50px;
+      font-size: 14px;
+    }
+
+    /* موبایل */
+
+    @media(max-width:600px) {
+
+      .hero,
+      .card {
+        border-radius: 25px;
+      }
+
+      .hero {
+        padding: 40px 18px;
+      }
+
+      .card {
+        padding: 30px 18px;
+      }
+
+      .brand {
+        font-size: 50px;
+      }
+
+      .hero p {
+        font-size: 17px;
+      }
+
+      .title {
+        font-size: 29px;
+      }
+
+      .text {
+        font-size: 16px;
+      }
+
+      .btn {
+        font-size: 16px;
+      }
+    }
+
+  </style>
 </head>
+
 
 <body>
 
-    <div class="container">
 
-        <header>
-            <div class="logo">ژنرال</div>
+<!-- =========================
+     صفحه اصلی
+========================= -->
 
-            <div class="subtitle">
-                ZHNERAL
-                <br>
-                دنیای ژنرال؛ ساده، مطمئن و حرفه‌ای
-            </div>
-        </header>
+<header>
 
-        <div class="card">
-            <h2>درباره ژنرال</h2>
+  <div class="container">
 
-            <p>
-                به سایت رسمی ژنرال خوش آمدید.
-                <br><br>
-                <b>3،2 سال سابقه واسطه‌گری در روبیکا و تلگرام</b>
-                <br><br>
-                هدف ما ارائه خدمات حرفه‌ای و ایجاد یک تجربه
-                مطمئن برای کاربران است.
-            </p>
-        </div>
+    <div class="hero">
 
-        <div class="card">
-            <h2>ارتباط با ژنرال</h2>
+      <div class="brand">
+        ژنرال
+      </div>
 
-            <p>
-                برای ارتباط و دریافت اطلاعات بیشتر از طریق
-                راه‌های ارتباطی زیر اقدام کنید.
-            </p>
+      <div class="brand-en">
+        ZHNERAL
+      </div>
 
-            <div class="buttons">
-
-                <a class="btn main-btn"
-                   href="https://t.me/bazar_ZHNERAL"
-                   target="_blank">
-                    ارتباط با ژنرال
-                </a>
-
-                <a class="btn"
-                   href="https://rubika.ir/bazar_ZHNERAL"
-                   target="_blank">
-                    روبیکا
-                </a>
-
-            </div>
-        </div>
-
-        <div class="card">
-            <h2>آیدی ژنرال</h2>
-
-            <p>
-                <span class="id">@bazar_ZHNERAL</span>
-            </p>
-        </div>
-
-        <footer>
-            © 2026 ZHNERAL — تمامی حقوق محفوظ است.
-        </footer>
+      <p>
+        تجربه ای؛ امن، پر سرعت، بهترین قیمت را با تیم ژنرال انجام دهید.
+      </p>
 
     </div>
+
+  </div>
+
+</header>
+
+
+
+<main class="container">
+
+
+<!-- =========================
+     بخش اول
+========================= -->
+
+<section class="section">
+
+  <div class="card">
+
+    <h2 class="title">
+      مزایای معامله با تیم ژنرال
+    </h2>
+
+    <p class="text">
+      تیم ژنرال با هدف ارائه خدمات حرفه‌ای، ایجاد تجربه‌ای مطمئن و تسهیل معاملات فعالیت می‌کند.
+    </p>
+
+    <p class="text highlight">
+      تیم ژنرال = معامله ای امن و پر سود
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     بخش دوم
+========================= -->
+
+<section class="section">
+
+  <div class="card">
+
+    <h2 class="title">
+      درباره ژنرال
+    </h2>
+
+    <p class="text">
+      به سایت رسمی ژنرال خوش آمدید.
+    </p>
+
+
+    <div class="links">
+
+      <div class="link-line">
+        قفلی • @Information_ZHNERAL
+      </div>
+
+      <div class="link-line">
+        شاپ • @SHOP_ZHNERAL
+      </div>
+
+      <div class="link-line">
+        بازار • @bazar_ZHNERAL
+      </div>
+
+      <div class="link-line">
+        ارتباط • @PV_ZHNERAL_Asli | @PV_ZHNERAL
+      </div>
+
+    </div>
+
+
+    <p class="text">
+
+      با تیم ژنرال بهترین تجربه خرید فروش را می‌توانید تجربه کنید.
+
+      تیم ژنرال آماده خدمات خرید فروش و...
+
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     بخش سوم
+========================= -->
+
+<section class="section">
+
+  <div class="card">
+
+    <h2 class="title">
+      بازار ژنرال
+    </h2>
+
+
+    <p class="text">
+
+      بهترین خرید و فروش رو با تیم واسطه گری و معتبر ژنرال انجام دهید 💨
+
+    </p>
+
+
+    <ul class="bullets">
+
+      <li>
+        ■ تحویل دهی در سریع ترین زمان ممکن
+      </li>
+
+      <li>
+        ■ فروش به بالاترین خریدار
+      </li>
+
+      <li>
+        ■ خرید و فروش به قیمت منصفانه
+      </li>
+
+      <li>
+        ■ واسطه های معتبر
+      </li>
+
+    </ul>
+
+
+    <p class="text">
+
+      خرید و فروش با معتبر ترین واسطه های روبیکا ●
+
+      <br>
+
+      معامله ای امن را به
+      <span class="highlight">
+        #تیم.ژنرال
+      </span>
+      انجام دهید
+
+    </p>
+
+
+    <p class="text highlight">
+      @bazar_ZHNERAL
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     بخش چهارم
+========================= -->
+
+<section class="section">
+
+  <div class="card">
+
+    <h2 class="title">
+      لیست واسطه ها
+    </h2>
+
+
+    <p class="text">
+
+      😎 » ما به شما تضمین امنیت و اعتماد در تمامی معاملات می‌دهیم.
+
+      <br>
+
+      به جمع ما بپیوندید و تجربه‌ای مطمئن از معامله کردن را با ما داشته باشید 👮‍♂️
+
+      <br>
+
+      ➦ @PV_ZHNERAL » 💸
+
+    </p>
+
+
+    <p class="text">
+
+      • واسطه‌های ژنرال در چارچوب مقررات و با رویکردی حرفه‌ای، 🔖
+
+    </p>
+
+
+    <ul class="bullets">
+
+      <li>
+        خدمات مرتبط با هماهنگی و تسهیل معاملات را ارائه می‌دهند. 🔗
+      </li>
+
+      <li>
+        رعایت اصول شفافیت، امانت‌داری و پاسخگویی، مبنای فعالیت این مجموعه است. 🗓
+      </li>
+
+    </ul>
+
+
+    <div class="buttons">
+
+      <a
+        class="btn primary"
+        href="https://rubika.ir/joinc/FBGADIHB0YAITZJSWJYCNJZZYXQMMTGG"
+        target="_blank"
+      >
+        ورود به کانال
+      </a>
+
+    </div>
+
+
+    <div class="warning">
+
+      تــبـر خــوردید فقط 25 درصــدخــسارت مــیدیم فقط اگر احــراز هــم داشــتــه باشــیــم میدیم.
+
+      <br>
+
+      جا خســارت لـطفــا طــبق اعــتماد خـــودتون پــیش بــرید.
+
+      <br>
+
+      تــبر خـــوردید فــقط پـــیوی مـالـک اعــلام کـــنید.
+
+      <br>
+
+      احــراز واســطه رو اگــر داشتیــم تــقــدیم کـــنیم! 🔥✋
+
+      <br><br>
+
+      @PV_ZHNERAL
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     بخش پنجم
+========================= -->
+
+<section class="section">
+
+  <div class="card">
+
+    <h2 class="title">
+      لیست سوال ها
+    </h2>
+
+
+    <div class="faq">
+
+
+      <details>
+
+        <summary>
+          ■ چطوری اعتماد کنیم؟
+        </summary>
+
+        <p class="small">
+          برای بررسی واسطه‌ها و اطلاعات مجموعه، از کانال‌های رسمی ژنرال استفاده کنید.
+        </p>
+
+      </details>
+
+
+      <details>
+
+        <summary>
+          ■ نگران تبر خوردن نباشیم؟
+        </summary>
+
+        <p class="small">
+          قبل از معامله، قوانین و شرایط اعلام‌شده توسط مجموعه و واسطه را با دقت بررسی کنید.
+        </p>
+
+      </details>
+
+
+      <details>
+
+        <summary>
+          ■ واسطه های معتبر کیا هستن؟
+        </summary>
+
+        <p class="small">
+          لیست واسطه‌ها را از کانال رسمی واسطه‌های ژنرال بررسی کنید.
+        </p>
+
+      </details>
+
+
+      <details>
+
+        <summary>
+          ■ تبر خوردیم چی میشه؟
+        </summary>
+
+        <p class="small">
+          طبق شرایط و قوانین اعلام‌شده توسط مجموعه، موضوع را از طریق ارتباط رسمی پیگیری کنید.
+        </p>
+
+      </details>
+
+
+    </div>
+
+
+
+    <!-- دکمه ها -->
+
+    <div class="buttons">
+
+
+      <!-- لیست واسطه ها -->
+
+      <a
+        class="btn primary"
+        href="https://rubika.ir/madiator_ZHNERAL"
+        target="_blank"
+      >
+        لیست واسطه ها
+      </a>
+
+
+      <!-- قفلی تیم ژنرال -->
+
+      <a
+        class="btn"
+        href="https://rubika.ir/Information_ZHNERAL"
+        target="_blank"
+      >
+        قفلی تیم ژنرال
+      </a>
+
+
+      <!-- بازار ژنرال -->
+
+      <a
+        class="btn"
+        href="https://rubika.ir/bazar_ZHNERAL"
+        target="_blank"
+      >
+        بازار ژنرال
+      </a>
+
+
+      <!-- ارتباط با ژنرال -->
+
+      <a
+        class="btn"
+        href="https://rubika.ir/madiator_ZHNERAL"
+        target="_blank"
+      >
+        ارتباط با ژنرال
+      </a>
+
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+</main>
+
+
+
+<footer>
+
+  © ZHNERAL 2026 — تمامی حقوق محفوظ است.
+
+</footer>
+
 
 </body>
 </html>
