@@ -10,106 +10,47 @@
   <title>InfoZHNERAL | ژنرال | سایت رسمی ژنرال</title>
 
   <meta name="description"
-        content="InfoZHNERAL؛ سایت معرفی ژنرال و ZHNERAL. اطلاعات ژنرال، بازار ژنرال، واسطه‌های روبیکا و تلگرام و راه‌های ارتباطی رسمی.">
+        content="InfoZHNERAL؛ سایت معرفی ژنرال و ZHNERAL. اطلاعات ژنرال، بازار ژنرال، لیست واسطه‌ها و راه‌های ارتباطی.">
 
-  <meta name="robots"
-        content="index, follow, max-image-preview:large">
-
-  <meta name="author"
-        content="ZHNERAL">
-
-  <meta name="theme-color"
-        content="#050505">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="InfoZHNERAL">
+  <meta name="theme-color" content="#050505">
 
   <link rel="canonical"
         href="https://infozhneral.github.io/ZHNERAL/">
-
-  <meta property="og:type"
-        content="website">
 
   <meta property="og:title"
         content="InfoZHNERAL | ژنرال | سایت رسمی ژنرال">
 
   <meta property="og:description"
-        content="سایت معرفی ژنرال و ZHNERAL؛ اطلاعات، بازار، واسطه‌ها و راه‌های ارتباطی.">
+        content="سایت رسمی InfoZHNERAL و ZHNERAL">
+
+  <meta property="og:type" content="website">
 
   <meta property="og:url"
         content="https://infozhneral.github.io/ZHNERAL/">
 
-  <meta property="og:site_name"
-        content="InfoZHNERAL">
-
-  <meta property="og:locale"
-        content="fa_IR">
-
-  <meta name="twitter:card"
-        content="summary">
-
-  <meta name="twitter:title"
-        content="InfoZHNERAL | ژنرال">
-
-  <meta name="twitter:description"
-        content="سایت معرفی ژنرال و ZHNERAL؛ اطلاعات، بازار، واسطه‌ها و راه‌های ارتباطی.">
-
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "InfoZHNERAL",
-    "alternateName": [
-      "Info ZHNERAL",
-      "ZHNERAL",
-      "ژنرال"
-    ],
-    "url": "https://infozhneral.github.io/ZHNERAL/",
-    "inLanguage": "fa",
-    "description": "سایت معرفی ژنرال و ZHNERAL؛ اطلاعات، بازار، واسطه‌ها و راه‌های ارتباطی."
-  }
-  </script>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "ZHNERAL",
-    "alternateName": "ژنرال",
-    "url": "https://infozhneral.github.io/ZHNERAL/"
-  }
-  </script>
-
+  <meta name="twitter:card" content="summary">
 
   <style>
-
     * {
       box-sizing: border-box;
     }
 
     html {
-      scroll-behavior: smooth;
       overflow-x: hidden;
+      scroll-behavior: smooth;
     }
 
     body {
       margin: 0;
-
       background:
-        radial-gradient(
-          circle at 50% 0%,
-          rgba(0, 170, 255, .12),
-          transparent 32%
-        ),
-        radial-gradient(
-          circle at 10% 50%,
-          rgba(0, 140, 255, .06),
-          transparent 30%
-        ),
+        radial-gradient(circle at 15% 20%, rgba(0, 120, 255, 0.16), transparent 30%),
+        radial-gradient(circle at 85% 70%, rgba(0, 80, 255, 0.12), transparent 32%),
         #050505;
-
-      color: #ffffff;
+      color: #fff;
       font-family: Tahoma, Arial, sans-serif;
       line-height: 2;
-
       overflow-x: hidden;
     }
 
@@ -124,113 +65,66 @@
       margin: auto;
     }
 
-
-    /* =====================================================
-       منوی بالا
-       این بار بدون position: fixed
-       موقعیت آن با JavaScript نسبت به scroll قفل می‌شود
-    ===================================================== */
-
-    .diamond-menu-layer {
-      position: absolute !important;
-
-      top: 0 !important;
-      right: 0 !important;
-
-      width: 100% !important;
-      height: 0 !important;
-
-      z-index: 2147483647 !important;
-
-      pointer-events: none !important;
-
-      margin: 0 !important;
-      padding: 0 !important;
-
-      transform: none !important;
-      -webkit-transform: none !important;
-
-      will-change: top !important;
-    }
-
+    /* =========================
+       منوی ثابت
+       بدون لایه واسط
+       ========================= */
 
     .diamond-menu {
-      position: absolute !important;
-
+      position: fixed !important;
       top: 10px !important;
       right: 15px !important;
-
       left: auto !important;
       bottom: auto !important;
 
-      width: 155px !important;
-      height: auto !important;
+      width: 155px;
 
-      z-index: 2147483647 !important;
-
-      display: flex !important;
-
-      flex-direction: column !important;
-
-      gap: 8px !important;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
 
       margin: 0 !important;
       padding: 0 !important;
 
-      pointer-events: auto !important;
+      z-index: 2147483647 !important;
 
       transform: none !important;
       -webkit-transform: none !important;
 
-      will-change: top !important;
+      transition: none !important;
+      will-change: auto !important;
 
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
+      pointer-events: auto;
     }
 
-
     .diamond-btn {
-      position: relative !important;
+      width: 100%;
+      min-height: 45px;
 
-      display: block !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-      width: 100% !important;
+      padding: 7px 10px;
 
-      min-height: 45px !important;
-
-      padding: 7px 10px !important;
-
-      margin: 0 !important;
-
-      border: 1px solid #00bfff !important;
-
-      border-radius: 14px !important;
+      border: 1px solid rgba(0, 150, 255, 0.85);
+      border-radius: 12px;
 
       background:
         linear-gradient(
           135deg,
-          rgba(0, 191, 255, .22),
-          rgba(255, 255, 255, .035),
-          rgba(0, 120, 255, .13)
-        ) !important;
+          rgba(0, 100, 255, 0.30),
+          rgba(0, 35, 90, 0.82)
+        );
 
-      color: #66d9ff !important;
+      color: #fff;
 
-      font-family: Tahoma, Arial, sans-serif !important;
-
-      font-size: 14px !important;
-
-      font-weight: bold !important;
-
-      text-align: center !important;
+      font-size: 14px;
+      font-weight: bold;
 
       box-shadow:
-        0 0 12px rgba(0, 191, 255, .25),
-        inset 0 0 12px rgba(0, 191, 255, .07) !important;
-
-      backdrop-filter: blur(10px);
-
-      cursor: pointer;
+        0 0 12px rgba(0, 120, 255, 0.22),
+        inset 0 0 10px rgba(0, 120, 255, 0.08);
 
       appearance: none !important;
       -webkit-appearance: none !important;
@@ -245,1588 +139,565 @@
       -webkit-tap-highlight-color: transparent !important;
 
       touch-action: manipulation;
+
+      cursor: pointer;
     }
-
-
-    .diamond-btn::before {
-      content: "◆";
-
-      margin-left: 6px;
-
-      color: #b9f0ff;
-
-      text-shadow:
-        0 0 6px #00bfff,
-        0 0 12px #00bfff;
-    }
-
 
     .diamond-btn:hover,
     .diamond-btn:active,
     .diamond-btn:focus,
     .diamond-btn:focus-visible,
     .diamond-btn:visited {
-
-      position: relative !important;
-
-      top: auto !important;
-      right: auto !important;
-      bottom: auto !important;
-      left: auto !important;
-
       transform: none !important;
       -webkit-transform: none !important;
 
-      margin: 0 !important;
+      transition: none !important;
 
       outline: none !important;
 
-      transition: none !important;
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(0, 191, 255, .22),
-          rgba(255, 255, 255, .035),
-          rgba(0, 120, 255, .13)
-        ) !important;
-
-      color: #66d9ff !important;
-
-      box-shadow:
-        0 0 12px rgba(0, 191, 255, .25),
-        inset 0 0 12px rgba(0, 191, 255, .07) !important;
+      position: relative;
+      top: 0 !important;
+      right: 0 !important;
+      bottom: auto !important;
+      left: auto !important;
     }
 
-
-    /* =====================================================
-       HERO
-    ===================================================== */
+    /* =========================
+       محتوای اصلی
+       ========================= */
 
     header {
-      min-height: 90vh;
-
-      display: flex;
-
-      align-items: center;
-      justify-content: center;
-
-      padding: 100px 0 40px;
-
+      padding-top: 130px;
       text-align: center;
     }
-
 
     .hero {
-      width: 100%;
-
-      padding: 60px 25px;
-
-      border: 1px solid #00bfff;
-
-      border-radius: 40px;
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(0, 191, 255, .12),
-          rgba(255, 255, 255, .025),
-          rgba(0, 120, 255, .08)
-        );
-
+      padding: 35px 20px;
+      border: 1px solid rgba(0, 150, 255, 0.35);
+      border-radius: 22px;
+      background: rgba(0, 15, 35, 0.55);
       box-shadow:
-        0 0 35px rgba(0, 191, 255, .18),
-        inset 0 0 35px rgba(0, 191, 255, .04);
-
-      backdrop-filter: blur(10px);
+        0 0 25px rgba(0, 100, 255, 0.12),
+        inset 0 0 20px rgba(0, 100, 255, 0.04);
     }
-
-
-    .brand {
-      color: #38cfff;
-
-      font-size: 65px;
-
-      font-weight: 900;
-
-      text-shadow:
-        0 0 10px rgba(0, 191, 255, .55),
-        0 0 25px rgba(0, 140, 255, .35);
-    }
-
-
-    .brand-en {
-      color: #ddd;
-
-      font-size: 25px;
-
-      letter-spacing: 3px;
-
-      direction: ltr;
-
-      margin-bottom: 20px;
-
-      text-shadow:
-        0 0 10px rgba(0, 191, 255, .12);
-    }
-
 
     .hero h1 {
-      color: #38cfff;
-
-      font-size: 32px;
-
-      margin: 10px 0 20px;
-
-      text-shadow:
-        0 0 12px rgba(0, 191, 255, .3);
+      margin: 0;
+      font-size: 52px;
+      color: #fff;
+      text-shadow: 0 0 18px rgba(0, 140, 255, 0.55);
     }
 
+    .hero .brand {
+      margin-top: 5px;
+      color: #168cff;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .hero h2 {
+      margin: 10px 0;
+      font-size: 23px;
+    }
 
     .hero p {
-      color: #eee;
-
-      font-size: 21px;
-
-      max-width: 750px;
-
-      margin: auto;
+      margin: 0;
+      color: #d7e9ff;
     }
 
-
-    /* =====================================================
-       SECTIONS
-    ===================================================== */
-
-    .section {
-      padding: 30px 0 60px;
+    main {
+      padding: 35px 0;
     }
 
+    section {
+      margin-bottom: 25px;
+      padding: 25px 22px;
+
+      border: 1px solid rgba(0, 150, 255, 0.30);
+      border-radius: 20px;
+
+      background: rgba(0, 15, 35, 0.48);
+
+      box-shadow:
+        0 0 22px rgba(0, 100, 255, 0.09);
+    }
+
+    section h2 {
+      margin-top: 0;
+      color: #168cff;
+      font-size: 22px;
+    }
+
+    section h3 {
+      color: #5db3ff;
+    }
+
+    section p {
+      color: #e6f2ff;
+    }
+
+    ul {
+      padding-right: 22px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
 
     .card {
-      background:
-        linear-gradient(
-          135deg,
-          rgba(0, 191, 255, .08),
-          rgba(255, 255, 255, .025),
-          rgba(0, 120, 255, .05)
-        );
+      margin-top: 15px;
+      padding: 16px;
 
-      border: 1px solid rgba(0, 191, 255, .65);
-
-      border-radius: 35px;
-
-      padding: 40px;
-
-      margin-bottom: 30px;
-
-      box-shadow:
-        0 0 25px rgba(0, 191, 255, .10),
-        inset 0 0 25px rgba(0, 191, 255, .025);
-
-      backdrop-filter: blur(8px);
-    }
-
-
-    .card:hover {
-      box-shadow:
-        0 0 35px rgba(0, 191, 255, .18),
-        inset 0 0 30px rgba(0, 191, 255, .04);
-    }
-
-
-    .title {
-      color: #38cfff;
-
-      font-size: 40px;
-
-      margin-top: 0;
-
-      margin-bottom: 30px;
-
-      font-weight: 800;
-
-      text-shadow:
-        0 0 12px rgba(0, 191, 255, .3);
-    }
-
-
-    .text {
-      color: #eee;
-
-      font-size: 19px;
-
-      margin: 15px 0;
-    }
-
-
-    .highlight {
-      color: #38cfff;
-
-      font-weight: bold;
-    }
-
-
-    /* =====================================================
-       LINKS
-    ===================================================== */
-
-    .links {
-      display: grid;
-
-      gap: 12px;
-
-      margin: 20px 0;
-    }
-
-
-    .link-line {
-      padding: 10px 15px;
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(0, 191, 255, .08),
-          rgba(255, 255, 255, .02)
-        );
-
-      border: 1px solid rgba(0, 191, 255, .25);
-
-      border-radius: 12px;
-
-      word-break: break-word;
-    }
-
-
-    /* =====================================================
-       LIST
-    ===================================================== */
-
-    .bullets {
-      list-style: none;
-
-      padding: 0;
-    }
-
-
-    .bullets li {
-      margin: 10px 0;
-
-      padding: 10px 15px;
-
-      border-right: 3px solid #00bfff;
-
-      background:
-        linear-gradient(
-          90deg,
-          rgba(0, 191, 255, .07),
-          rgba(255, 255, 255, .02)
-        );
-
-      border-radius: 10px 0 0 10px;
-    }
-
-
-    /* =====================================================
-       WARNING
-    ===================================================== */
-
-    .warning {
-      border-right: 4px solid #00bfff;
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(0, 191, 255, .10),
-          rgba(255, 255, 255, .02)
-        );
-
-      padding: 18px;
-
-      border-radius: 14px;
-
-      margin-top: 25px;
-
-      box-shadow:
-        inset 0 0 15px rgba(0, 191, 255, .03);
-    }
-
-
-    /* =====================================================
-       BUTTONS
-    ===================================================== */
-
-    .buttons {
-      display: grid;
-
-      gap: 15px;
-
-      margin-top: 25px;
-    }
-
-
-    .btn {
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      min-height: 60px;
-
-      padding: 12px 20px;
-
-      border-radius: 18px;
-
-      border: 1px solid #00bfff;
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(0, 191, 255, .14),
-          rgba(255, 255, 255, .025),
-          rgba(0, 120, 255, .08)
-        );
-
-      color: #38cfff;
-
-      font-size: 18px;
-
-      font-weight: bold;
-
-      box-shadow:
-        0 0 12px rgba(0, 191, 255, .12),
-        inset 0 0 12px rgba(0, 191, 255, .025);
-
-      transition: .2s;
-    }
-
-
-    .btn:hover {
-      background:
-        linear-gradient(
-          135deg,
-          #00bfff,
-          #008cff
-        );
-
-      color: #ffffff;
-
-      transform: translateY(-2px);
-
-      box-shadow:
-        0 0 20px rgba(0, 191, 255, .45);
-    }
-
-
-    .btn.primary {
-      background:
-        linear-gradient(
-          135deg,
-          #00bfff,
-          #008cff
-        );
-
-      color: #ffffff;
-    }
-
-
-    /* =====================================================
-       FAQ
-    ===================================================== */
-
-    .faq {
-      display: grid;
-
-      gap: 12px;
-    }
-
-
-    details {
-      border: 1px solid rgba(0, 191, 255, .35);
-
+      border: 1px solid rgba(0, 150, 255, 0.25);
       border-radius: 15px;
 
-      padding: 0 18px;
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(0, 191, 255, .06),
-          rgba(255, 255, 255, .02)
-        );
+      background: rgba(0, 25, 55, 0.45);
     }
 
-
-    summary {
-      cursor: pointer;
-
-      padding: 14px 0;
-
-      color: #fff;
-
+    .blue {
+      color: #168cff;
       font-weight: bold;
     }
 
+    .back-btn {
+      display: inline-block;
 
-    .small {
-      color: #aaa;
+      margin-top: 20px;
+      padding: 8px 20px;
 
-      font-size: 14px;
+      border: 1px solid rgba(0, 150, 255, 0.75);
+      border-radius: 12px;
+
+      background: rgba(0, 100, 255, 0.20);
+
+      color: #fff;
+      font-weight: bold;
+
+      transition: none !important;
+      transform: none !important;
     }
 
-
-    /* =====================================================
-       FOOTER
-    ===================================================== */
-
-    footer {
-      text-align: center;
-
-      color: #777;
-
-      padding: 20px 15px 50px;
-
-      font-size: 14px;
+    .back-btn:hover,
+    .back-btn:active,
+    .back-btn:focus {
+      transform: none !important;
     }
-
-
-    /* =====================================================
-       صفحات منو
-    ===================================================== */
 
     .menu-page {
       display: none;
-
-      position: fixed;
-
-      inset: 0;
-
-      z-index: 99998;
-
-      overflow-y: auto;
-
-      background:
-        radial-gradient(
-          circle at top right,
-          rgba(0, 191, 255, .13),
-          transparent 35%
-        ),
-        #050505;
-
-      padding: 100px 15px 40px;
+      padding-top: 120px;
     }
-
 
     .menu-page.active {
       display: block;
     }
 
-
-    .menu-page-box {
-      width: 92%;
-
-      max-width: 940px;
-
-      margin: auto;
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(0, 191, 255, .09),
-          rgba(255, 255, 255, .025),
-          rgba(0, 120, 255, .06)
-        );
-
-      border: 1px solid #00bfff;
-
-      border-radius: 30px;
-
-      padding: 35px;
-
-      box-shadow:
-        0 0 40px rgba(0, 191, 255, .15),
-        inset 0 0 20px rgba(0, 191, 255, .025);
-
-      backdrop-filter: blur(10px);
-    }
-
-
-    .menu-page-title {
-      color: #38cfff;
-
-      font-size: 30px;
-
-      font-weight: 900;
-
+    footer {
+      padding: 30px 15px 40px;
       text-align: center;
-
-      margin: 0 0 25px;
-
-      text-shadow:
-        0 0 15px rgba(0, 191, 255, .4);
+      color: #9ecbff;
+      font-size: 13px;
     }
 
+    /* =========================
+       موبایل
+       ========================= */
 
-    .menu-page-text {
-      color: #eee;
-
-      font-size: 17px;
-
-      line-height: 2.3;
-
-      white-space: pre-line;
-
-      word-break: break-word;
-    }
-
-
-    .menu-link {
-      color: #38cfff;
-
-      word-break: break-all;
-    }
-
-
-    .back-btn {
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      width: 100%;
-
-      min-height: 55px;
-
-      margin-top: 30px;
-
-      border: 1px solid #00bfff;
-
-      border-radius: 16px;
-
-      background:
-        linear-gradient(
-          135deg,
-          #00bfff,
-          #008cff
-        );
-
-      color: #ffffff;
-
-      font-size: 17px;
-
-      font-weight: bold;
-
-      cursor: pointer;
-
-      transition: .2s;
-    }
-
-
-    .back-btn:hover {
-      transform: translateY(-2px);
-
-      box-shadow:
-        0 0 18px rgba(0, 191, 255, .45);
-    }
-
-
-    /* =====================================================
-       MOBILE
-    ===================================================== */
-
-    @media(max-width:600px) {
-
-      .diamond-menu-layer {
-        position: absolute !important;
-
-        top: 0 !important;
-        right: 0 !important;
-
-        width: 100vw !important;
-        height: 0 !important;
-
-        z-index: 2147483647 !important;
-
-        pointer-events: none !important;
-
-        transform: none !important;
-        -webkit-transform: none !important;
-      }
-
+    @media (max-width: 600px) {
 
       .diamond-menu {
-        position: absolute !important;
-
         top: 8px !important;
         right: 8px !important;
 
-        left: auto !important;
-        bottom: auto !important;
+        width: 140px;
 
-        width: 140px !important;
-
-        gap: 6px !important;
-
-        margin: 0 !important;
-        padding: 0 !important;
-
-        z-index: 2147483647 !important;
-
-        transform: none !important;
-        -webkit-transform: none !important;
-
-        pointer-events: auto !important;
+        gap: 6px;
       }
-
 
       .diamond-btn {
-        width: 140px !important;
+        min-height: 40px;
 
-        min-height: 40px !important;
+        padding: 5px 8px;
 
-        padding: 5px 8px !important;
+        font-size: 12px;
 
-        margin: 0 !important;
-
-        border-radius: 12px !important;
-
-        font-size: 12px !important;
-
-        transform: none !important;
-        -webkit-transform: none !important;
-
-        transition: none !important;
-
-        outline: none !important;
-
-        -webkit-tap-highlight-color: transparent !important;
+        border-radius: 10px;
       }
-
-
-      .diamond-btn:hover,
-      .diamond-btn:active,
-      .diamond-btn:focus,
-      .diamond-btn:focus-visible {
-
-        transform: none !important;
-
-        -webkit-transform: none !important;
-
-        margin: 0 !important;
-
-        top: auto !important;
-
-        right: auto !important;
-
-        bottom: auto !important;
-
-        left: auto !important;
-
-        outline: none !important;
-
-        transition: none !important;
-      }
-
 
       header {
-        padding-top: 190px;
+        padding-top: 120px;
       }
-
-
-      .hero,
-      .card {
-        border-radius: 25px;
-      }
-
 
       .hero {
-        padding: 40px 18px;
+        padding: 28px 16px;
       }
-
-
-      .card {
-        padding: 30px 18px;
-      }
-
-
-      .brand {
-        font-size: 50px;
-      }
-
-
-      .brand-en {
-        font-size: 20px;
-      }
-
 
       .hero h1 {
-        font-size: 25px;
+        font-size: 42px;
       }
 
-
-      .hero p {
+      .hero .brand {
         font-size: 17px;
       }
 
-
-      .title {
-        font-size: 29px;
+      .hero h2 {
+        font-size: 19px;
       }
 
-
-      .text {
-        font-size: 16px;
+      section {
+        padding: 20px 16px;
       }
 
-
-      .btn {
-        font-size: 16px;
+      section h2 {
+        font-size: 19px;
       }
-
 
       .menu-page {
-        padding-top: 175px;
+        padding-top: 115px;
       }
-
-
-      .menu-page-box {
-        padding: 22px 16px;
-
-        border-radius: 24px;
-      }
-
-
-      .menu-page-title {
-        font-size: 24px;
-      }
-
-
-      .menu-page-text {
-        font-size: 15px;
-      }
-
     }
-
   </style>
-
 </head>
-
 
 <body>
 
-
-  <!-- =====================================================
-       منوی بالا
-  ===================================================== -->
-
-  <div class="diamond-menu-layer">
-
-    <nav class="diamond-menu">
-
-      <button class="diamond-btn"
-              onclick="openPage('homePage')">
-        خانه 🏠
-      </button>
-
-
-      <button class="diamond-btn"
-              onclick="openPage('vasetePage')">
-        واسطه گری 🧾
-      </button>
-
-
-      <button class="diamond-btn"
-              onclick="openPage('majmuePage')">
-        مجموعه واسطه گری 🗒
-      </button>
-
-
-      <button class="diamond-btn"
-              onclick="openPage('etehadiPage')">
-        اتحادیه 🗒
-      </button>
-
-    </nav>
-
-  </div>
-
-
-
-  <!-- =====================================================
-       صفحه خانه
-  ===================================================== -->
-
-  <div id="homePage"
-       class="menu-page">
-
-    <div class="menu-page-box">
-
-      <h1 class="menu-page-title">
-        ⚜️ اطلاعات رسمی ژنرال ⚜️
-      </h1>
-
-
-      <div class="menu-page-text">
-
-╔═══════ ✦ ═══════╗
-⚜️ اطلاعات رسمی ژنرال  ⚜️
-「 𝐆𝐞𝐧𝐞𝐫𝐚𝐥┊ژنرال 」
-╚═══════ ✦ ═══════╝
-
-➊┇بـازار جـامـع خـریـد و فـروش ژنرال
-
-✦↬ 𝗜𝗗 : درحال اماده سازی
-
-➋┇مـارکـت تـخـصـصی خـریـد و فـروش روبـیـکـا
-✦↬ 𝗜𝗗 : https://rubika.ir/joinc/FBGADIHB0YAITZJSWJYCNJZZYXQMMTGG
-
-✦↬ 𝗜𝗗 : @SHOP_ZHNERAL
-
-➌┇مـرکـز اعـتـبـار و اطمـیـنـان کاربـران
-
-✦↬ 𝗜𝗗 : https://rubika.ir/joinc/ECHGEAHF0YNFZIFZCHUUKVFDZIVFLAPJ
-
-✦↬ 𝗜𝗗 : @Reliability_ZHNERAL
-
-➍┇کـانـال رسـمـی اطـلـاع‌رسانی ژنرال
-
-✦↬ 𝗜𝗗 : https://rubika.ir/joinc/FFIFDIEB0RFBNQSRFIRJJFYUDYRQKHKB
-
-✦↬ 𝗜𝗗 : @Information_ZHNERAL
-
-➎┇مجمـوعـه تـخـصـصی واسـطـه‌گـری ژنرال
-
-✦↬ 𝗜𝗗 : https://rubika.ir/joinc/EFHDCHAH0GTPLYBRZJCVDBVOJRAWXZYJ
-
-✦↬ 𝗜𝗗 : @madiator_ZHNERAL
-
-➏┇کـمـپـانی خـدمـات واسـطـه‌گـری
-
-✦↬ 𝗜𝗗 : درحال اماده سازی
-
-➐┇آکـادمی نـکـات و آمـوزش مـعـاملات
-
-✦↬ 𝗜𝗗 : درحال اماده سازی
-
-━━━━━━━━━━━━━━━━━━━━━━━
-👑 ارتباط مستقیم با 𝐆𝐞𝐧𝐞𝐫𝐚𝐥┊ژنرال
-
-💠 𝗜𝗗 : @PV_ZHNERAL
-
-╭────────────────────╮
-               ⚡ امنیت • اعتماد • سرعت • پشتیبانی
-╰────────────────────╯
-
-      </div>
-
-
-      <button class="back-btn"
-              onclick="closePages()">
-        🔙 بازگشت
-      </button>
-
-    </div>
-
-  </div>
-
-
-
-  <!-- =====================================================
-       صفحه واسطه گری
-  ===================================================== -->
-
-  <div id="vasetePage"
-       class="menu-page">
-
-    <div class="menu-page-box">
-
-      <h1 class="menu-page-title">
-        🧾 واسطه‌گری ژنرال
-      </h1>
-
-
-      <div class="menu-page-text">
-
-❓⌯ واسطه چه کسی است و چرا واسطه گری میکنید !؟
-واسطه کسی است که خرید و فروش بین دو شخص را انجام میدهد و جلوگیری از دزدی و کلاه برداری میکند.
-
-📑 ⌯ توضیحات واسطه گری :
-ابتدا واسطه کانال،گروه را از #فروشنده دریافت میکند سپس مبلغ توافق شده را برای #خریدار ارسال میکنند ، بعد ارسال پول #خریدار استعلام را انجام دهد تا مطمعن شود پول به کارت ارسال شده است یا خیر!
-بعد از تایید #فروشنده واسطه کانال،گروه پیج را به خریدار انتقال میدهد و معامله انجام میشود.
-
-👨🏻‍💻 ⌯ نکات واسطه گری :
-فقط در حوزه خریدوفروش کانال،گروه، پیج و سکه واسطه میشویم - حق واسطه‌گری دریافت نمیشود و تمامی معاملات به صورت #رایگان انجام میشود
-
-💰| حق واسطه :
-
-🔴 هم به عهده خریدار و هم به عهده فروشنده است .
-
-💵 مبلغ حق واسطه 3% خریدار و 3% فروشنده است ؛ مجموع 6% .
-
-👤 خریدار هنگام معامله 3% از مبلغ را به عنوان حق واسطه کم کرده و به علاوه 3% حق واسطه که به گردن خودش هست به حساب واسطه واریز می‌کند.
-
-⁉️ معامله های مبالغ زیر 100 هزار تومن فقط 5 هزار تومن حق واسطه داره * کلا 5 هزار تومن !!
-
-👨🏻‍💻 معامله های طاق آمار پایین زیر 10k حق واسطه 5 تومن کلا و زیر 30k کلا 10 تومن حق واسطه !
-
-- https://rubika.ir/joinc/FFIFDIEB0RFBNQSRFIRJJFYUDYRQKHKB
-
-•- واسطه‌های ژنرال در چارچوب مقررات و با رویکردی حرفه‌ای، 🔖
-
-- خدمات مرتبط با هماهنگی و تسهیل معاملات را ارائه می‌دهند. 🔗
-
-- رعایت اصول شفافیت، امانت‌داری و پاسخگویی، مبنای فعالیت این مجموعه است.🗓
-
-- https://rubika.ir/joinc/FBGADIHB0YAITZJSWJYCNJZZYXQMMTGG
-
-تــبر خــوردید فقط 25 درصــدخــسارت مــیدیم فقط اگر احــراز هــم داشــته باشــیــم میدیم جا خســارت لـطفــا طــبقــاعــتماد خـــودتون پــیش بــرید تــبر خـــوردید فــقط پـــیوی مـالـک اعــلام کـــنید احــراز واســطه رو اگــر داشــتیــم  تــقــدیم کـــنیم!🔥✋
-
-- @PV_ZHNERAL
-
-●-شروع واسطه گری برا تیم ژنرال جهت واسطه شدن به ایدی زیر مراجعه کرده 👇💨
-
-ID• @PV_ZHNERAL
-
-▫️حتما قبل از معامله توافق کنید📬👤'
-و #معاملات رو به پیوی ارسال کنید :
-𝐢𝐃 👨🏻‍⚖ ⇥ @PV_ZHNERAL
-
-      </div>
-
-
-      <button class="back-btn"
-              onclick="closePages()">
-        🔙 بازگشت
-      </button>
-
-    </div>
-
-  </div>
-
-
-
-  <!-- =====================================================
-       صفحه مجموعه واسطه گری
-  ===================================================== -->
-
-  <div id="majmuePage"
-       class="menu-page">
-
-    <div class="menu-page-box">
-
-      <h1 class="menu-page-title">
-        🗒 مجموعه واسطه گری
-      </h1>
-
-
-      <div class="menu-page-text">
-
-😎 » ما به شما تضمین امنیت و اعتماد در تمامی معاملات می‌دهیم.
-به جمع ما بپیوندید و تجربه‌ای مطمئن از معامله کردن را با ما داشته باشید👮‍♂️
-
-➦ @PV_ZHNERAL» 💸
-
-لینک مجموعه • @majmue_vasetehgari
-
-      </div>
-
-
-      <button class="back-btn"
-              onclick="closePages()">
-        🔙 بازگشت
-      </button>
-
-    </div>
-
-  </div>
-
-
-
-  <!-- =====================================================
-       صفحه اتحادیه
-  ===================================================== -->
-
-  <div id="etehadiPage"
-       class="menu-page">
-
-    <div class="menu-page-box">
-
-      <h1 class="menu-page-title">
-        🗒 اتحادیه
-      </h1>
-
-
-      <div class="menu-page-text">
-
-😎 » ما به شما تضمین امنیت و اعتماد در تمامی معاملات می‌دهیم.
-به جمع ما بپیوندید و تجربه‌ای مطمئن از معامله کردن را با ما داشته باشید👮‍♂️
-
-➦ @PV_ZHNERAL» 💸
-
-لینک اتحادیه • @etehadi_vasetehgari
-
-با ما باش تا معروف شی😏
-
-      </div>
-
-
-      <button class="back-btn"
-              onclick="closePages()">
-        🔙 بازگشت
-      </button>
-
-    </div>
-
-  </div>
-
-
-
-  <!-- =====================================================
+  <!-- منوی مستقیم؛ هیچ diamond-menu-layer و هیچ transform روی والد وجود ندارد -->
+  <nav class="diamond-menu" aria-label="منوی اصلی">
+
+    <button class="diamond-btn"
+            type="button"
+            onclick="openPage('homePage')">
+      خانه 🏠
+    </button>
+
+    <button class="diamond-btn"
+            type="button"
+            onclick="openPage('vasetePage')">
+      واسطه گری 🧾
+    </button>
+
+    <button class="diamond-btn"
+            type="button"
+            onclick="openPage('majmuePage')">
+      مجموعه واسطه گری 🗒
+    </button>
+
+    <button class="diamond-btn"
+            type="button"
+            onclick="openPage('etehadiPage')">
+      اتحادیه 🗒
+    </button>
+
+  </nav>
+
+
+  <!-- =========================
        صفحه اصلی
-  ===================================================== -->
+       ========================= -->
 
-  <header>
+  <div id="homePage">
 
-    <div class="container">
+    <header>
+      <div class="container">
 
-      <div class="hero">
+        <div class="hero">
 
-        <div class="brand">
-          ژنرال
+          <h1>ژنرال</h1>
+
+          <div class="brand">
+            InfoZHNERAL
+          </div>
+
+          <h2>
+            InfoZHNERAL | سایت رسمی ژنرال
+          </h2>
+
+          <p>
+            InfoZHNERAL؛ سایت معرفی ژنرال و ZHNERAL.
+            اطلاعات ژنرال، بازار ژنرال، لیست واسطه‌ها و راه‌های ارتباطی.
+          </p>
+
         </div>
-
-        <div class="brand-en">
-          InfoZHNERAL
-        </div>
-
-        <h1>
-          InfoZHNERAL | سایت رسمی ژنرال
-        </h1>
-
-        <p>
-          سایت معرفی ژنرال و ZHNERAL؛
-          اطلاعات، بازار، واسطه‌ها و راه‌های ارتباطی.
-        </p>
 
       </div>
-
-    </div>
-
-  </header>
+    </header>
 
 
+    <main class="container">
 
-  <main class="container">
+      <section>
 
-
-    <section class="section">
-
-      <div class="card">
-
-        <h2 class="title">
+        <h2>
           مزایای معامله با تیم ژنرال
         </h2>
 
-        <p class="text">
-          تیم ژنرال با هدف ارائه خدمات حرفه‌ای،
-          ایجاد تجربه‌ای مطمئن و تسهیل معاملات فعالیت می‌کند.
-        </p>
+        <ul>
+          <li>
+            امنیت بیشتر در معاملات
+          </li>
 
-        <p class="text highlight">
-          تیم ژنرال = معامله‌ای امن و پر سود
-        </p>
+          <li>
+            حضور واسطه برای کاهش ریسک معامله
+          </li>
 
-      </div>
+          <li>
+            ارتباط با مجموعه ژنرال
+          </li>
 
-    </section>
+          <li>
+            سابقه فعالیت در زمینه واسطه‌گری
+          </li>
+        </ul>
+
+      </section>
 
 
+      <section>
 
-    <section class="section">
-
-      <div class="card">
-
-        <h2 class="title">
+        <h2>
           درباره InfoZHNERAL
         </h2>
 
-        <p class="text">
-          به سایت رسمی InfoZHNERAL و ژنرال خوش آمدید.
+        <p>
+          InfoZHNERAL سایت معرفی مجموعه ژنرال و اطلاعات مرتبط با
+          فعالیت‌های ژنرال است.
         </p>
 
-        <p class="text">
-          در این سایت می‌توانید اطلاعات مربوط به ژنرال،
-          بازار ژنرال، لیست واسطه‌ها و راه‌های ارتباطی را مشاهده کنید.
+        <p>
+          هدف این مجموعه ایجاد محیطی منظم‌تر برای معرفی خدمات،
+          بازار و واسطه‌های مجموعه است.
         </p>
 
-        <div class="links">
-
-          <div class="link-line">
-            قفلی • @Information_ZHNERAL
-          </div>
-
-          <div class="link-line">
-            شاپ • @SHOP_ZHNERAL
-          </div>
-
-          <div class="link-line">
-            بازار • @bazar_ZHNERAL
-          </div>
-
-          <div class="link-line">
-            ارتباط • @PV_ZHNERAL_Asli | @PV_ZHNERAL
-          </div>
-
-        </div>
-
-        <p class="text">
-          InfoZHNERAL مرجع اطلاعات و معرفی بخش‌های مختلف
-          تیم ژنرال است.
-        </p>
-
-      </div>
-
-    </section>
+      </section>
 
 
+      <section>
 
-    <section class="section">
-
-      <div class="card">
-
-        <h2 class="title">
+        <h2>
           بازار ژنرال
         </h2>
 
-        <p class="text">
-          بهترین خرید و فروش را با تیم واسطه‌گری ژنرال انجام دهید.
-        </p>
+        <div class="card">
 
-        <ul class="bullets">
+          <h3>
+            بازار ژنرال
+          </h3>
 
-          <li>
-            ■ تحویل‌دهی در سریع‌ترین زمان ممکن
-          </li>
+          <p>
+            برای مشاهده اطلاعات و ارتباط با بازار ژنرال می‌توانید
+            از راه‌های ارتباطی مجموعه استفاده کنید.
+          </p>
 
-          <li>
-            ■ فروش به بالاترین خریدار
-          </li>
+          <p class="blue">
+            @bazar_ZHNERAL
+          </p>
 
-          <li>
-            ■ خرید و فروش با قیمت منصفانه
-          </li>
+        </div>
 
-          <li>
-            ■ واسطه‌های معتبر
-          </li>
-
-        </ul>
-
-        <p class="text">
-          خرید و فروش با واسطه‌های ژنرال
-        </p>
-
-        <p class="text highlight">
-          #تیم.ژنرال
-        </p>
-
-        <p class="text highlight">
-          @bazar_ZHNERAL
-        </p>
-
-      </div>
-
-    </section>
+      </section>
 
 
+      <section>
 
-    <section class="section">
-
-      <div class="card">
-
-        <h2 class="title">
+        <h2>
           لیست واسطه‌ها
         </h2>
 
-        <p class="text">
+        <div class="card">
 
-          😎 » ما به شما تضمین امنیت و اعتماد در تمامی معاملات می‌دهیم.
+          <p>
+            برای دریافت اطلاعات واسطه‌ها و انجام معاملات
+            از راه‌های ارتباطی معرفی‌شده استفاده کنید.
+          </p>
 
-          <br>
-
-          به جمع ما بپیوندید و تجربه‌ای مطمئن از معامله کردن
-          با ما داشته باشید 👮‍♂️
-
-          <br>
-
-          ➦ @PV_ZHNERAL » 💸
-
-        </p>
-
-        <p class="text">
-
-          • واسطه‌های ژنرال در چارچوب مقررات و با رویکردی حرفه‌ای فعالیت می‌کنند.
-
-        </p>
-
-        <ul class="bullets">
-
-          <li>
-            خدمات مرتبط با هماهنگی و تسهیل معاملات را ارائه می‌دهند.
-          </li>
-
-          <li>
-            رعایت اصول شفافیت، امانت‌داری و پاسخگویی،
-            مبنای فعالیت این مجموعه است.
-          </li>
-
-        </ul>
-
-        <div class="buttons">
-
-          <a
-            class="btn primary"
-            href="https://rubika.ir/joinc/FBGADIHB0YAITZJSWJYCNJZZYXQMMTGG"
-            target="_blank"
-            rel="noopener noreferrer">
-
-            ورود به کانال
-
-          </a>
+          <p class="blue">
+            @PV_ZHNERAL
+          </p>
 
         </div>
 
-        <div class="warning">
-
-          تــبر خــوردید فقط 25 درصــدخــسارت مــیدیم فقط اگر احــراز هــم داشــته باشــیــم میدیم.
-
-          <br>
-
-          جا خســارت لـطفــا طــبق اعــتماد خـــودتون پــیش بــرید.
-
-          <br>
-
-          تــبر خـــوردید فــقط پـــیوی مـالـک اعــلام کـــنید.
-
-          <br>
-
-          احــراز واســطه رو اگــر داشتیــم تــقــدیم کـــنیم! 🔥✋
-
-          <br><br>
-
-          @PV_ZHNERAL
-
-        </div>
-
-      </div>
-
-    </section>
+      </section>
 
 
+      <section>
 
-    <section class="section">
-
-      <div class="card">
-
-        <h2 class="title">
+        <h2>
           سوالات متداول
         </h2>
 
-        <div class="faq">
+        <div class="card">
 
-          <details>
+          <h3>
+            واسطه‌گری چیست؟
+          </h3>
 
-            <summary>
-              ■ چطوری اعتماد کنیم؟
-            </summary>
-
-            <p class="small">
-              برای بررسی واسطه‌ها و اطلاعات مجموعه،
-              از کانال‌های رسمی ژنرال استفاده کنید.
-            </p>
-
-          </details>
-
-
-          <details>
-
-            <summary>
-              ■ نگران تبر خوردن نباشیم؟
-            </summary>
-
-            <p class="small">
-              قبل از معامله، قوانین و شرایط اعلام‌شده
-              توسط مجموعه و واسطه را با دقت بررسی کنید.
-            </p>
-
-          </details>
-
-
-          <details>
-
-            <summary>
-              ■ واسطه‌های معتبر کیا هستن؟
-            </summary>
-
-            <p class="small">
-              لیست واسطه‌ها را از کانال رسمی واسطه‌های
-              ژنرال بررسی کنید.
-            </p>
-
-          </details>
-
-
-          <details>
-
-            <summary>
-              ■ تبر خوردیم چی میشه؟
-            </summary>
-
-            <p class="small">
-              طبق شرایط و قوانین اعلام‌شده توسط مجموعه،
-              موضوع را از طریق ارتباط رسمی پیگیری کنید.
-            </p>
-
-          </details>
+          <p>
+            واسطه در معامله بین طرفین حضور دارد تا روند معامله
+            منظم‌تر و مطمئن‌تر انجام شود.
+          </p>
 
         </div>
 
+        <div class="card">
 
-        <div class="buttons">
+          <h3>
+            چطور با ژنرال ارتباط بگیریم؟
+          </h3>
 
-          <a
-            class="btn primary"
-            href="https://rubika.ir/madiator_ZHNERAL"
-            target="_blank"
-            rel="noopener noreferrer">
-
-            لیست واسطه‌ها
-
-          </a>
-
-
-          <a
-            class="btn"
-            href="https://rubika.ir/Information_ZHNERAL"
-            target="_blank"
-            rel="noopener noreferrer">
-
-            قفلی تیم ژنرال
-
-          </a>
-
-
-          <a
-            class="btn"
-            href="https://rubika.ir/bazar_ZHNERAL"
-            target="_blank"
-            rel="noopener noreferrer">
-
-            بازار ژنرال
-
-          </a>
-
-
-          <a
-            class="btn"
-            href="https://rubika.ir/madiator_ZHNERAL"
-            target="_blank"
-            rel="noopener noreferrer">
-
-            ارتباط با ژنرال
-
-          </a>
+          <p>
+            می‌توانید از آیدی‌ها و راه‌های ارتباطی معرفی‌شده
+            در سایت استفاده کنید.
+          </p>
 
         </div>
 
-      </div>
+      </section>
 
-    </section>
-
-  </main>
+    </main>
 
 
+    <footer>
+      © InfoZHNERAL | ZHNERAL
+    </footer>
 
-  <footer>
+  </div>
 
-    <div>
-      InfoZHNERAL | ZHNERAL | ژنرال
+
+  <!-- =========================
+       صفحه واسطه گری
+       ========================= -->
+
+  <div id="vasetePage" class="menu-page">
+
+    <div class="container">
+
+      <section>
+
+        <h2>
+          واسطه گری
+        </h2>
+
+        <p>
+          برای انجام معاملات با واسطه و دریافت اطلاعات بیشتر
+          می‌توانید با مجموعه ژنرال ارتباط بگیرید.
+        </p>
+
+        <p class="blue">
+          @PV_ZHNERAL
+        </p>
+
+        <button class="back-btn"
+                type="button"
+                onclick="closePages()">
+          بازگشت
+        </button>
+
+      </section>
+
     </div>
 
-    <div>
-      © ZHNERAL 2026 — تمامی حقوق محفوظ است.
+  </div>
+
+
+  <!-- =========================
+       صفحه مجموعه واسطه گری
+       ========================= -->
+
+  <div id="majmuePage" class="menu-page">
+
+    <div class="container">
+
+      <section>
+
+        <h2>
+          مجموعه واسطه گری
+        </h2>
+
+        <p>
+          مجموعه واسطه گری ژنرال برای معرفی و هماهنگی واسطه‌ها
+          فعالیت می‌کند.
+        </p>
+
+        <p class="blue">
+          @majmue_vasetehgari
+        </p>
+
+        <button class="back-btn"
+                type="button"
+                onclick="closePages()">
+          بازگشت
+        </button>
+
+      </section>
+
     </div>
 
-  </footer>
+  </div>
 
+
+  <!-- =========================
+       صفحه اتحادیه
+       ========================= -->
+
+  <div id="etehadiPage" class="menu-page">
+
+    <div class="container">
+
+      <section>
+
+        <h2>
+          اتحادیه
+        </h2>
+
+        <p>
+          صفحه اتحادیه واسطه‌گری ژنرال.
+        </p>
+
+        <p class="blue">
+          @etehadi_vasetehgari
+        </p>
+
+        <button class="back-btn"
+                type="button"
+                onclick="closePages()">
+          بازگشت
+        </button>
+
+      </section>
+
+    </div>
+
+  </div>
 
 
   <script>
 
-    function openPage(pageId) {
-
-      document
-        .querySelectorAll(".menu-page")
-        .forEach(function(page) {
-          page.classList.remove("active");
-        });
-
-
-      const selectedPage =
-        document.getElementById(pageId);
-
-
-      if (selectedPage) {
-
-        selectedPage.classList.add("active");
-
-        document.body.style.overflow = "hidden";
-
-        selectedPage.scrollTop = 0;
-
-      }
-
-    }
-
-
     function closePages() {
 
-      document
-        .querySelectorAll(".menu-page")
-        .forEach(function(page) {
-          page.classList.remove("active");
-        });
+      document.getElementById("vasetePage").classList.remove("active");
+      document.getElementById("majmuePage").classList.remove("active");
+      document.getElementById("etehadiPage").classList.remove("active");
 
+      document.getElementById("homePage").style.display = "block";
 
-      document.body.style.overflow = "";
-
-
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-
+      window.scrollTo(0, 0);
     }
 
 
-    /* =====================================================
-       قفل واقعی منو نسبت به اسکرول صفحه
-       بدون position: fixed
-    ===================================================== */
+    function openPage(pageId) {
 
-    (function() {
+      document.getElementById("homePage").style.display = "none";
 
-      const layer =
-        document.querySelector(".diamond-menu-layer");
+      document.getElementById("vasetePage").classList.remove("active");
+      document.getElementById("majmuePage").classList.remove("active");
+      document.getElementById("etehadiPage").classList.remove("active");
 
-      const menu =
-        document.querySelector(".diamond-menu");
+      document.getElementById(pageId).classList.add("active");
 
-      if (!layer || !menu) return;
-
-
-      let ticking = false;
-
-
-      function updateMenuPosition() {
-
-        const scrollY =
-          window.pageYOffset ||
-          document.documentElement.scrollTop ||
-          0;
-
-
-        const isMobile =
-          window.innerWidth <= 600;
-
-
-        const topPosition =
-          scrollY + (isMobile ? 8 : 10);
-
-
-        layer.style.top =
-          scrollY + "px";
-
-
-        menu.style.top =
-          (isMobile ? 8 : 10) + "px";
-
-
-        menu.style.right =
-          (isMobile ? 8 : 15) + "px";
-
-
-        menu.style.left =
-          "auto";
-
-
-        menu.style.bottom =
-          "auto";
-
-
-        menu.style.transform =
-          "none";
-
-
-        menu.style.webkitTransform =
-          "none";
-
-
-        ticking = false;
-
-      }
-
-
-      function requestUpdate() {
-
-        if (!ticking) {
-
-          window.requestAnimationFrame(
-            updateMenuPosition
-          );
-
-          ticking = true;
-
-        }
-
-      }
-
-
-      window.addEventListener(
-        "scroll",
-        requestUpdate,
-        {
-          passive: true
-        }
-      );
-
-
-      window.addEventListener(
-        "resize",
-        requestUpdate,
-        {
-          passive: true
-        }
-      );
-
-
-      window.addEventListener(
-        "orientationchange",
-        requestUpdate,
-        {
-          passive: true
-        }
-      );
-
-
-      updateMenuPosition();
-
-    })();
+      window.scrollTo(0, 0);
+    }
 
   </script>
 
 </body>
-
-            </html>
+</html>
