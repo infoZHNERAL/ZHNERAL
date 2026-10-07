@@ -124,7 +124,7 @@
 
     /* =====================================================
        منوی آبی الماسی
-       ثابت و بدون جابه‌جایی
+       ثابت
     ===================================================== */
 
     .diamond-menu {
@@ -136,35 +136,39 @@
       left: auto !important;
       bottom: auto !important;
 
-      z-index: 99999 !important;
+      z-index: 2147483647 !important;
 
-      display: flex;
-      flex-direction: column;
+      display: flex !important;
+      flex-direction: column !important;
 
-      gap: 8px;
+      gap: 8px !important;
 
-      width: 155px;
+      width: 155px !important;
 
       margin: 0 !important;
       padding: 0 !important;
 
-      transform: none !important;
+      transform: translate3d(0, 0, 0) !important;
+      -webkit-transform: translate3d(0, 0, 0) !important;
 
-      pointer-events: auto;
+      pointer-events: auto !important;
 
       isolation: isolate;
+
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
     }
 
 
     .diamond-btn {
-      position: relative;
+      position: relative !important;
 
-      width: 100%;
-      min-height: 45px;
+      width: 100% !important;
+      min-height: 45px !important;
 
       margin: 0 !important;
 
-      padding: 7px 10px;
+      padding: 7px 10px !important;
 
       border: 1px solid #00bfff;
       border-radius: 14px;
@@ -192,14 +196,18 @@
 
       cursor: pointer;
 
-      transform: none !important;
+      transform: translate3d(0, 0, 0) !important;
+      -webkit-transform: translate3d(0, 0, 0) !important;
 
-      touch-action: manipulation;
+      touch-action: manipulation !important;
 
       transition:
         background .2s,
         color .2s,
-        box-shadow .2s;
+        box-shadow .2s !important;
+
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
     }
 
 
@@ -216,9 +224,15 @@
     }
 
 
-    /* روی موبایل دکمه‌ها هیچ حرکت بالا/پایینی ندارند */
-    .diamond-btn:hover {
-      transform: none !important;
+    /* مهم:
+       هیچ حرکت بالا/پایینی برای دکمه‌ها وجود ندارد */
+
+    .diamond-btn:hover,
+    .diamond-btn:active,
+    .diamond-btn:focus,
+    .diamond-btn:focus-visible {
+      transform: translate3d(0, 0, 0) !important;
+      -webkit-transform: translate3d(0, 0, 0) !important;
     }
 
 
@@ -769,21 +783,26 @@
         left: auto !important;
         bottom: auto !important;
 
-        width: 140px;
+        width: 140px !important;
 
-        gap: 6px;
+        gap: 6px !important;
 
         margin: 0 !important;
         padding: 0 !important;
 
-        transform: none !important;
+        z-index: 2147483647 !important;
 
-        z-index: 99999 !important;
+        transform: translate3d(0, 0, 0) !important;
+        -webkit-transform: translate3d(0, 0, 0) !important;
+
+        pointer-events: auto !important;
       }
 
 
       .diamond-btn {
-        min-height: 40px;
+        width: 100% !important;
+
+        min-height: 40px !important;
 
         font-size: 12px;
 
@@ -791,14 +810,17 @@
 
         border-radius: 12px;
 
-        transform: none !important;
+        transform: translate3d(0, 0, 0) !important;
+        -webkit-transform: translate3d(0, 0, 0) !important;
       }
 
 
       .diamond-btn:hover,
       .diamond-btn:active,
-      .diamond-btn:focus {
-        transform: none !important;
+      .diamond-btn:focus,
+      .diamond-btn:focus-visible {
+        transform: translate3d(0, 0, 0) !important;
+        -webkit-transform: translate3d(0, 0, 0) !important;
       }
 
 
