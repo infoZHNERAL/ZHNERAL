@@ -25,7 +25,6 @@
   <meta name="theme-color"
         content="#050505">
 
-  <!-- آدرس اصلی سایت -->
   <link rel="canonical"
         href="https://infozhneral.github.io/ZHNERAL/">
 
@@ -106,7 +105,19 @@
 
     body {
       margin: 0;
-      background: #050505;
+      background:
+        radial-gradient(
+          circle at 85% 10%,
+          rgba(230,189,61,.10),
+          transparent 28%
+        ),
+        radial-gradient(
+          circle at 15% 50%,
+          rgba(230,189,61,.06),
+          transparent 30%
+        ),
+        #050505;
+
       color: #ffffff;
       font-family: Tahoma, Arial, sans-serif;
       line-height: 2;
@@ -132,24 +143,40 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 40px 0;
+      padding: 90px 0 40px;
       text-align: center;
     }
 
     .hero {
       width: 100%;
       padding: 60px 25px;
-      border: 1px solid #d8b437;
+
+      border: 1px solid #e6bd3d;
       border-radius: 40px;
-      background: #0b0b0b;
-      box-shadow: 0 0 40px rgba(225,185,54,.08);
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(230,189,61,.12),
+          rgba(255,255,255,.025),
+          rgba(230,189,61,.08)
+        );
+
+      box-shadow:
+        0 0 35px rgba(230,189,61,.12),
+        inset 0 0 35px rgba(230,189,61,.035);
+
+      backdrop-filter: blur(10px);
     }
 
     .brand {
       color: #e6bd3d;
       font-size: 65px;
       font-weight: 900;
-      text-shadow: 0 0 20px rgba(225,185,54,.4);
+
+      text-shadow:
+        0 0 10px rgba(230,189,61,.45),
+        0 0 25px rgba(230,189,61,.25);
     }
 
     .brand-en {
@@ -158,12 +185,18 @@
       letter-spacing: 3px;
       direction: ltr;
       margin-bottom: 20px;
+
+      text-shadow:
+        0 0 10px rgba(255,255,255,.12);
     }
 
     .hero h1 {
       color: #e6bd3d;
       font-size: 32px;
       margin: 10px 0 20px;
+
+      text-shadow:
+        0 0 12px rgba(230,189,61,.25);
     }
 
     .hero p {
@@ -182,12 +215,31 @@
     }
 
     .card {
-      background: #0c0c0c;
-      border: 1px solid #d8b437;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(230,189,61,.08),
+          rgba(255,255,255,.025),
+          rgba(230,189,61,.05)
+        );
+
+      border: 1px solid rgba(230,189,61,.75);
       border-radius: 35px;
+
       padding: 40px;
       margin-bottom: 30px;
-      box-shadow: 0 0 35px rgba(225,185,54,.05);
+
+      box-shadow:
+        0 0 25px rgba(230,189,61,.08),
+        inset 0 0 25px rgba(230,189,61,.025);
+
+      backdrop-filter: blur(8px);
+    }
+
+    .card:hover {
+      box-shadow:
+        0 0 35px rgba(230,189,61,.15),
+        inset 0 0 30px rgba(230,189,61,.04);
     }
 
     .title {
@@ -196,6 +248,9 @@
       margin-top: 0;
       margin-bottom: 30px;
       font-weight: 800;
+
+      text-shadow:
+        0 0 12px rgba(230,189,61,.25);
     }
 
     .text {
@@ -221,8 +276,15 @@
 
     .link-line {
       padding: 10px 15px;
-      background: #090909;
-      border: 1px solid rgba(225,185,54,.2);
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(230,189,61,.08),
+          rgba(255,255,255,.02)
+        );
+
+      border: 1px solid rgba(230,189,61,.25);
       border-radius: 12px;
       word-break: break-word;
     }
@@ -239,8 +301,16 @@
     .bullets li {
       margin: 10px 0;
       padding: 10px 15px;
+
       border-right: 3px solid #e6bd3d;
-      background: rgba(255,255,255,.025);
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(230,189,61,.07),
+          rgba(255,255,255,.02)
+        );
+
       border-radius: 10px 0 0 10px;
     }
 
@@ -250,10 +320,20 @@
 
     .warning {
       border-right: 4px solid #e6bd3d;
-      background: rgba(225,185,54,.05);
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(230,189,61,.10),
+          rgba(255,255,255,.02)
+        );
+
       padding: 18px;
       border-radius: 14px;
       margin-top: 25px;
+
+      box-shadow:
+        inset 0 0 15px rgba(230,189,61,.03);
     }
 
     /* =========================
@@ -270,14 +350,29 @@
       display: flex;
       align-items: center;
       justify-content: center;
+
       min-height: 60px;
       padding: 12px 20px;
+
       border-radius: 18px;
       border: 1px solid #e1b936;
-      background: transparent;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(230,189,61,.14),
+          rgba(255,255,255,.025),
+          rgba(230,189,61,.08)
+        );
+
       color: #e6bd3d;
       font-size: 18px;
       font-weight: bold;
+
+      box-shadow:
+        0 0 12px rgba(230,189,61,.08),
+        inset 0 0 12px rgba(230,189,61,.025);
+
       transition: .2s;
     }
 
@@ -285,6 +380,9 @@
       background: #e1b936;
       color: #050505;
       transform: translateY(-2px);
+
+      box-shadow:
+        0 0 20px rgba(230,189,61,.35);
     }
 
     .btn.primary {
@@ -305,7 +403,13 @@
       border: 1px solid rgba(225,185,54,.35);
       border-radius: 15px;
       padding: 0 18px;
-      background: #090909;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(230,189,61,.06),
+          rgba(255,255,255,.02)
+        );
     }
 
     summary {
@@ -329,6 +433,181 @@
       color: #777;
       padding: 20px 15px 50px;
       font-size: 14px;
+    }
+
+    /* =====================================================
+       منوی الماسی
+    ===================================================== */
+
+    .diamond-menu {
+      position: fixed;
+      top: 20px;
+      right: 18px;
+      z-index: 9999;
+
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .diamond-btn {
+      position: relative;
+
+      min-width: 145px;
+      min-height: 48px;
+
+      padding: 8px 15px;
+
+      border: 1px solid #e6bd3d;
+      border-radius: 14px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(230,189,61,.18),
+          rgba(255,255,255,.03),
+          rgba(230,189,61,.12)
+        );
+
+      color: #e6bd3d;
+      font-size: 15px;
+      font-weight: bold;
+      text-align: center;
+
+      box-shadow:
+        0 0 10px rgba(230,189,61,.12),
+        inset 0 0 12px rgba(230,189,61,.05);
+
+      backdrop-filter: blur(8px);
+
+      cursor: pointer;
+      transition: .25s;
+    }
+
+    .diamond-btn::before {
+      content: "◆";
+      margin-left: 7px;
+      color: #fff0a8;
+      text-shadow: 0 0 8px #e6bd3d;
+    }
+
+    .diamond-btn:hover {
+      transform: translateX(-5px);
+      background: #e1b936;
+      color: #050505;
+
+      box-shadow:
+        0 0 18px rgba(230,189,61,.45),
+        inset 0 0 10px rgba(255,255,255,.25);
+    }
+
+    /* =====================================================
+       صفحات منو
+    ===================================================== */
+
+    .menu-page {
+      display: none;
+
+      position: fixed;
+      inset: 0;
+
+      z-index: 9998;
+      overflow-y: auto;
+
+      background:
+        radial-gradient(
+          circle at top right,
+          rgba(230,189,61,.12),
+          transparent 35%
+        ),
+        #050505;
+
+      padding: 90px 15px 40px;
+    }
+
+    .menu-page.active {
+      display: block;
+    }
+
+    .menu-page-box {
+      width: 92%;
+      max-width: 940px;
+
+      margin: auto;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(230,189,61,.09),
+          rgba(255,255,255,.025),
+          rgba(230,189,61,.06)
+        );
+
+      border: 1px solid #d8b437;
+      border-radius: 30px;
+
+      padding: 35px;
+
+      box-shadow:
+        0 0 40px rgba(225,185,54,.10),
+        inset 0 0 20px rgba(225,185,54,.02);
+
+      backdrop-filter: blur(10px);
+    }
+
+    .menu-page-title {
+      color: #e6bd3d;
+      font-size: 30px;
+      font-weight: 900;
+      text-align: center;
+      margin: 0 0 25px;
+
+      text-shadow:
+        0 0 15px rgba(230,189,61,.3);
+    }
+
+    .menu-page-text {
+      color: #eee;
+      font-size: 17px;
+      line-height: 2.3;
+
+      white-space: pre-line;
+      word-break: break-word;
+    }
+
+    .menu-link {
+      color: #e6bd3d;
+      word-break: break-all;
+    }
+
+    .back-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 100%;
+      min-height: 55px;
+
+      margin-top: 30px;
+
+      border: 1px solid #e6bd3d;
+      border-radius: 16px;
+
+      background: #e1b936;
+      color: #050505;
+
+      font-size: 17px;
+      font-weight: bold;
+
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .back-btn:hover {
+      transform: translateY(-2px);
+
+      box-shadow:
+        0 0 18px rgba(230,189,61,.35);
     }
 
     /* =========================
@@ -377,6 +656,36 @@
       .btn {
         font-size: 16px;
       }
+
+      .diamond-menu {
+        top: 10px;
+        right: 10px;
+        gap: 7px;
+      }
+
+      .diamond-btn {
+        min-width: 125px;
+        min-height: 42px;
+        font-size: 13px;
+        padding: 6px 10px;
+      }
+
+      .menu-page {
+        padding-top: 180px;
+      }
+
+      .menu-page-box {
+        padding: 22px 16px;
+        border-radius: 24px;
+      }
+
+      .menu-page-title {
+        font-size: 24px;
+      }
+
+      .menu-page-text {
+        font-size: 15px;
+      }
     }
 
   </style>
@@ -384,8 +693,250 @@
 
 <body>
 
+  <!-- =====================================================
+       منوی چهار گزینه‌ای
+  ===================================================== -->
+
+  <nav class="diamond-menu">
+
+    <button class="diamond-btn"
+            onclick="openPage('homePage')">
+      خانه 🏠
+    </button>
+
+    <button class="diamond-btn"
+            onclick="openPage('vasetePage')">
+      واسطه‌گری 🧾
+    </button>
+
+    <button class="diamond-btn"
+            onclick="openPage('majmuePage')">
+      مجموعه واسطه‌گری 🗒
+    </button>
+
+    <button class="diamond-btn"
+            onclick="openPage('etehadiPage')">
+      اتحادیه 🗒
+    </button>
+
+  </nav>
+
+
+  <!-- =====================================================
+       صفحه خانه
+  ===================================================== -->
+
+  <div id="homePage" class="menu-page">
+
+    <div class="menu-page-box">
+
+      <h1 class="menu-page-title">
+        ⚜️ اطلاعات رسمی ژنرال ⚜️
+      </h1>
+
+      <div class="menu-page-text">
+
+╔═══════ ✦ ═══════╗
+⚜️ اطلاعات رسمی ژنرال  ⚜️
+「 𝐆𝐞𝐧𝐞𝐫𝐚𝐥┊ژنرال 」
+╚═══════ ✦ ═══════╝
+
+➊┇بـازار جـامـع خـریـد و فـروش ژنرال
+
+✦↬ 𝗜𝗗 : درحال اماده سازی
+
+➋┇مـارکـت تـخـصـصی خـریـد و فـروش روبـیـکـا
+✦↬ 𝗜𝗗 : https://rubika.ir/joinc/FBGADIHB0YAITZJSWJYCNJZZYXQMMTGG
+
+✦↬ 𝗜𝗗 : @SHOP_ZHNERAL
+
+➌┇مـرکـز اعـتـبـار و اطمـیـنـان کاربـران
+
+✦↬ 𝗜𝗗 : https://rubika.ir/joinc/ECHGEAHF0YNFZIFZCHUUKVFDZIVFLAPJ
+
+✦↬ 𝗜𝗗 : @Reliability_ZHNERAL
+
+➍┇کـانـال رسـمـی اطـلـاع‌رسانی ژنرال
+
+✦↬ 𝗜𝗗 : https://rubika.ir/joinc/FFIFDIEB0RFBNQSRFIRJJFYUDYRQKHKB
+
+✦↬ 𝗜𝗗 : @Information_ZHNERAL
+
+➎┇مجمـوعه تـخـصـصی واسـطـه‌گـری ژنرال
+
+✦↬ 𝗜𝗗 : https://rubika.ir/joinc/EFHDCHAH0GTPLYBRZJCVDBVOJRAWXZYJ
+
+✦↬ 𝗜𝗗 : @madiator_ZHNERAL
+
+➏┇کـمـپـانی خـدمـات واسـطـه‌گـری
+
+✦↬ 𝗜𝗗 : درحال اماده سازی
+
+➐┇آکـادمی نـکـات و آمـوزش مـعـاملات
+
+✦↬ 𝗜𝗗 : درحال اماده سازی
+
+━━━━━━━━━━━━━━━━━━━━━━━
+👑 ارتباط مستقیم با 𝐆𝐞𝐧𝐞𝐫𝐚𝐥┊ژنرال
+
+💠 𝗜𝗗 : @PV_ZHNERAL
+
+╭────────────────────╮
+               ⚡ امنیت • اعتماد • سرعت • پشتیبانی
+╰────────────────────╯
+
+      </div>
+
+      <button class="back-btn"
+              onclick="closePages()">
+        🔙 بازگشت
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       صفحه واسطه گری
+  ===================================================== -->
+
+  <div id="vasetePage" class="menu-page">
+
+    <div class="menu-page-box">
+
+      <h1 class="menu-page-title">
+        🧾 واسطه‌گری ژنرال
+      </h1>
+
+      <div class="menu-page-text">
+
+❓⌯ واسطه چه کسی است و چرا واسطه گری میکنید !؟
+واسطه کسی است که خرید و فروش بین دو شخص را انجام میدهد و جلوگیری از دزدی و کلاه برداری میکند.
+
+📑 ⌯ توضیحات واسطه گری :
+ابتدا واسطه کانال،گروه را از #فروشنده دریافت میکند سپس مبلغ توافق شده را برای #خریدار ارسال میکنند ، بعد ارسال پول #خریدار استعلام را انجام دهد تا مطمعن شود پول به کارت ارسال شده است یا خیر!
+بعد از تایید #فروشنده واسطه کانال،گروه پیج را به خریدار انتقال میدهد و معامله انجام میشود.
+
+👨🏻‍💻 ⌯ نکات واسطه گری :
+فقط در حوزه خریدوفروش کانال،گروه، پیج و سکه واسطه میشویم - حق واسطه‌گری دریافت نمیشود و تمامی معاملات به صورت #رایگان انجام میشود
+
+💰| حق واسطه :
+
+🔴 هم به عهده خریدار و هم به عهده فروشنده است .
+
+💵 مبلغ حق واسطه 3% خریدار و 3% فروشنده است ؛ مجموع 6% .
+
+👤 خریدار هنگام معامله 3% از مبلغ را به عنوان حق واسطه کم کرده و به علاوه 3% حق واسطه که به گردن خودش هست به حساب واسطه واریز می‌کند.
+
+⁉️ معامله های مبالغ زیر 100 هزار تومن فقط 5 هزار تومن حق واسطه داره * کلا 5 هزار تومن !!
+
+👨🏻‍💻 معامله های طاق آمار پایین زیر 10k حق واسطه 5 تومن کلا و زیر 30k کلا 10 تومن حق واسطه !
+
+- https://rubika.ir/joinc/FFIFDIEB0RFBNQSRFIRJJFYUDYRQKHKB
+
+•- واسطه‌های ژنرال در چارچوب مقررات و با رویکردی حرفه‌ای، 🔖
+
+- خدمات مرتبط با هماهنگی و تسهیل معاملات را ارائه می‌دهند. 🔗
+
+- رعایت اصول شفافیت، امانت‌داری و پاسخگویی، مبنای فعالیت این مجموعه است.🗓
+
+- https://rubika.ir/joinc/FBGADIHB0YAITZJSWJYCNJZZYXQMMTGG
+
+تــبر خــوردید فقط 25 درصــدخــسارت مــیدیم فقط اگر احــراز هــم داشــتــه باشــیــم میدیم جا خســارت لـطفــا طــبق اعــتماد خـــودتون پــیش بــرید تــبر خـــوردید فــقط پـــیوی مـالـک اعــلام کـــنید احــراز واســطه رو اگــر داشــتیــم  تــقــدیم کـــنیم!🔥✋
+
+- @PV_ZHNERAL
+
+●-شروع واسطه گری برا تیم ژنرال جهت واسطه شدن به ایدی زیر مراجعه کرده 👇💨
+
+ID• @PV_ZHNERAL
+
+▫️حتما قبل از معامله توافق کنید📬👤'
+و #معاملات رو به پیوی ارسال کنید :
+𝐢𝐃 👨🏻‍⚖ ⇥ @PV_ZHNERAL
+
+      </div>
+
+      <button class="back-btn"
+              onclick="closePages()">
+        🔙 بازگشت
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       صفحه مجموعه واسطه گری
+  ===================================================== -->
+
+  <div id="majmuePage" class="menu-page">
+
+    <div class="menu-page-box">
+
+      <h1 class="menu-page-title">
+        🗒 مجموعه واسطه گری
+      </h1>
+
+      <div class="menu-page-text">
+
+😎 » ما به شما تضمین امنیت و اعتماد در تمامی معاملات می‌دهیم.
+به جمع ما بپیوندید و تجربه‌ای مطمئن از معامله کردن را با ما داشته باشید👮‍♂️
+
+➦ @PV_ZHNERAL» 💸
+
+لینک مجموعه • @majmue_vasetehgari
+
+      </div>
+
+      <button class="back-btn"
+              onclick="closePages()">
+        🔙 بازگشت
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       صفحه اتحادیه
+  ===================================================== -->
+
+  <div id="etehadiPage" class="menu-page">
+
+    <div class="menu-page-box">
+
+      <h1 class="menu-page-title">
+        🗒 اتحادیه
+      </h1>
+
+      <div class="menu-page-text">
+
+😎 » ما به شما تضمین امنیت و اعتماد در تمامی معاملات می‌دهیم.
+به جمع ما بپیوندید و تجربه‌ای مطمئن از معامله کردن را با ما داشته باشید👮‍♂️
+
+➦ @PV_ZHNERAL» 💸
+
+لینک اتحادیه • @etehadi_vasetehgari
+
+با ما باش تا معروف شی😏
+
+      </div>
+
+      <button class="back-btn"
+              onclick="closePages()">
+        🔙 بازگشت
+      </button>
+
+    </div>
+
+  </div>
+
+
   <!-- =========================
-       صفحه اصلی
+       صفحه اصلی قبلی سایت
   ========================== -->
 
   <header>
@@ -612,7 +1163,7 @@
 
         <div class="warning">
 
-          تــبر خــوردید فقط 25 درصــدخــسارت مــیدیم فقط اگر احــراز هــم داشــتــه باشــیــم میدیم.
+          تــبر خــوردید فقط 25 درصــدخــسارت مــیدیم فقط اگر احــراز هــم داشــته باشــیــم میدیم.
 
           <br>
 
@@ -779,5 +1330,50 @@
 
   </footer>
 
+
+  <!-- =====================================================
+       JavaScript
+  ===================================================== -->
+
+  <script>
+
+    function openPage(pageId) {
+
+      document
+        .querySelectorAll(".menu-page")
+        .forEach(function(page) {
+          page.classList.remove("active");
+        });
+
+      const selectedPage = document.getElementById(pageId);
+
+      if (selectedPage) {
+        selectedPage.classList.add("active");
+        document.body.style.overflow = "hidden";
+        selectedPage.scrollTop = 0;
+      }
+
+    }
+
+
+    function closePages() {
+
+      document
+        .querySelectorAll(".menu-page")
+        .forEach(function(page) {
+          page.classList.remove("active");
+        });
+
+      document.body.style.overflow = "";
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+    }
+
+  </script>
+
 </body>
-</html>
+    </html>
