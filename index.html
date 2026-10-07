@@ -124,7 +124,7 @@
 
     /* =====================================================
        منوی آبی الماسی
-       ثابت و جدا از متن
+       ثابت هنگام اسکرول
     ===================================================== */
 
     .diamond-menu {
@@ -180,9 +180,17 @@
 
       cursor: pointer;
 
-      transition: .2s;
-
       transform: none !important;
+      -webkit-transform: none !important;
+
+      transition: none !important;
+
+      appearance: none;
+      -webkit-appearance: none;
+
+      -webkit-tap-highlight-color: transparent;
+
+      outline: none !important;
     }
 
 
@@ -199,27 +207,28 @@
     }
 
 
-    /* دکمه‌های منوی آبی هیچ‌وقت جابه‌جا نشوند */
-
     .diamond-btn:hover,
     .diamond-btn:active,
     .diamond-btn:focus,
     .diamond-btn:focus-visible {
       transform: none !important;
+      -webkit-transform: none !important;
+
+      outline: none !important;
 
       background:
         linear-gradient(
           135deg,
-          #00bfff,
-          #008cff
+          rgba(0, 191, 255, .22),
+          rgba(255, 255, 255, .035),
+          rgba(0, 120, 255, .13)
         );
 
-      color: #ffffff;
+      color: #66d9ff;
 
       box-shadow:
-        0 0 22px rgba(0, 191, 255, .65);
-
-      outline: none;
+        0 0 12px rgba(0, 191, 255, .25),
+        inset 0 0 12px rgba(0, 191, 255, .07);
     }
 
 
@@ -762,12 +771,16 @@
     @media(max-width:600px) {
 
       .diamond-menu {
+        position: fixed;
+
         top: 8px;
         right: 8px;
 
         width: 140px;
 
         gap: 6px;
+
+        z-index: 99999;
       }
 
 
@@ -779,6 +792,24 @@
         padding: 5px 8px;
 
         border-radius: 12px;
+
+        transform: none !important;
+        -webkit-transform: none !important;
+
+        transition: none !important;
+
+        -webkit-tap-highlight-color: transparent;
+
+        outline: none !important;
+      }
+
+
+      .diamond-btn:hover,
+      .diamond-btn:active,
+      .diamond-btn:focus,
+      .diamond-btn:focus-visible {
+        transform: none !important;
+        -webkit-transform: none !important;
       }
 
 
