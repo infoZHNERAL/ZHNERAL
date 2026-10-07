@@ -51,7 +51,6 @@
   <meta name="twitter:description"
         content="سایت معرفی ژنرال و ZHNERAL؛ اطلاعات، بازار، واسطه‌ها و راه‌های ارتباطی.">
 
-
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -77,7 +76,6 @@
     "url": "https://infozhneral.github.io/ZHNERAL/"
   }
   </script>
-
 
   <style>
 
@@ -121,10 +119,9 @@
       margin: auto;
     }
 
-
     /* =====================================================
        منوی آبی الماسی
-       ثابت هنگام اسکرول
+       فقط ثابت شده؛ اندازه اصلی حفظ شده
     ===================================================== */
 
     .diamond-menu {
@@ -144,7 +141,6 @@
 
       pointer-events: auto;
     }
-
 
     .diamond-btn {
       position: relative;
@@ -180,19 +176,8 @@
 
       cursor: pointer;
 
-      transform: none !important;
-      -webkit-transform: none !important;
-
-      transition: none !important;
-
-      appearance: none;
-      -webkit-appearance: none;
-
-      -webkit-tap-highlight-color: transparent;
-
-      outline: none !important;
+      transition: .2s;
     }
-
 
     .diamond-btn::before {
       content: "◆";
@@ -206,31 +191,21 @@
         0 0 12px #00bfff;
     }
 
-
-    .diamond-btn:hover,
-    .diamond-btn:active,
-    .diamond-btn:focus,
-    .diamond-btn:focus-visible {
-      transform: none !important;
-      -webkit-transform: none !important;
-
-      outline: none !important;
+    .diamond-btn:hover {
+      transform: translateY(-2px);
 
       background:
         linear-gradient(
           135deg,
-          rgba(0, 191, 255, .22),
-          rgba(255, 255, 255, .035),
-          rgba(0, 120, 255, .13)
+          #00bfff,
+          #008cff
         );
 
-      color: #66d9ff;
+      color: #ffffff;
 
       box-shadow:
-        0 0 12px rgba(0, 191, 255, .25),
-        inset 0 0 12px rgba(0, 191, 255, .07);
+        0 0 22px rgba(0, 191, 255, .65);
     }
-
 
     /* =====================================================
        HERO
@@ -247,7 +222,6 @@
 
       text-align: center;
     }
-
 
     .hero {
       width: 100%;
@@ -273,7 +247,6 @@
       backdrop-filter: blur(10px);
     }
 
-
     .brand {
       color: #38cfff;
 
@@ -285,7 +258,6 @@
         0 0 10px rgba(0, 191, 255, .55),
         0 0 25px rgba(0, 140, 255, .35);
     }
-
 
     .brand-en {
       color: #ddd;
@@ -302,7 +274,6 @@
         0 0 10px rgba(0, 191, 255, .12);
     }
 
-
     .hero h1 {
       color: #38cfff;
 
@@ -314,7 +285,6 @@
         0 0 12px rgba(0, 191, 255, .3);
     }
 
-
     .hero p {
       color: #eee;
 
@@ -325,7 +295,6 @@
       margin: auto;
     }
 
-
     /* =====================================================
        SECTIONS
     ===================================================== */
@@ -333,7 +302,6 @@
     .section {
       padding: 30px 0 60px;
     }
-
 
     .card {
       background:
@@ -359,13 +327,11 @@
       backdrop-filter: blur(8px);
     }
 
-
     .card:hover {
       box-shadow:
         0 0 35px rgba(0, 191, 255, .18),
         inset 0 0 30px rgba(0, 191, 255, .04);
     }
-
 
     .title {
       color: #38cfff;
@@ -382,7 +348,6 @@
         0 0 12px rgba(0, 191, 255, .3);
     }
 
-
     .text {
       color: #eee;
 
@@ -391,13 +356,11 @@
       margin: 15px 0;
     }
 
-
     .highlight {
       color: #38cfff;
 
       font-weight: bold;
     }
-
 
     /* =====================================================
        LINKS
@@ -410,7 +373,6 @@
 
       margin: 20px 0;
     }
-
 
     .link-line {
       padding: 10px 15px;
@@ -429,7 +391,6 @@
       word-break: break-word;
     }
 
-
     /* =====================================================
        LIST
     ===================================================== */
@@ -439,7 +400,6 @@
 
       padding: 0;
     }
-
 
     .bullets li {
       margin: 10px 0;
@@ -457,7 +417,6 @@
 
       border-radius: 10px 0 0 10px;
     }
-
 
     /* =====================================================
        WARNING
@@ -483,7 +442,6 @@
         inset 0 0 15px rgba(0, 191, 255, .03);
     }
 
-
     /* =====================================================
        BUTTONS
     ===================================================== */
@@ -495,7 +453,6 @@
 
       margin-top: 25px;
     }
-
 
     .btn {
       display: flex;
@@ -533,7 +490,6 @@
       transition: .2s;
     }
 
-
     .btn:hover {
       background:
         linear-gradient(
@@ -550,7 +506,6 @@
         0 0 20px rgba(0, 191, 255, .45);
     }
 
-
     .btn.primary {
       background:
         linear-gradient(
@@ -562,7 +517,6 @@
       color: #ffffff;
     }
 
-
     /* =====================================================
        FAQ
     ===================================================== */
@@ -572,7 +526,6 @@
 
       gap: 12px;
     }
-
 
     details {
       border: 1px solid rgba(0, 191, 255, .35);
@@ -589,7 +542,6 @@
         );
     }
 
-
     summary {
       cursor: pointer;
 
@@ -600,13 +552,11 @@
       font-weight: bold;
     }
 
-
     .small {
       color: #aaa;
 
       font-size: 14px;
     }
-
 
     /* =====================================================
        FOOTER
@@ -621,7 +571,6 @@
 
       font-size: 14px;
     }
-
 
     /* =====================================================
        صفحات منو
@@ -649,11 +598,9 @@
       padding: 100px 15px 40px;
     }
 
-
     .menu-page.active {
       display: block;
     }
-
 
     .menu-page-box {
       width: 92%;
@@ -683,7 +630,6 @@
       backdrop-filter: blur(10px);
     }
 
-
     .menu-page-title {
       color: #38cfff;
 
@@ -699,7 +645,6 @@
         0 0 15px rgba(0, 191, 255, .4);
     }
 
-
     .menu-page-text {
       color: #eee;
 
@@ -712,13 +657,11 @@
       word-break: break-word;
     }
 
-
     .menu-link {
       color: #38cfff;
 
       word-break: break-all;
     }
-
 
     .back-btn {
       display: flex;
@@ -755,7 +698,6 @@
       transition: .2s;
     }
 
-
     .back-btn:hover {
       transform: translateY(-2px);
 
@@ -763,9 +705,9 @@
         0 0 18px rgba(0, 191, 255, .45);
     }
 
-
     /* =====================================================
        MOBILE
+       اندازه اصلی دکمه‌ها حفظ شده
     ===================================================== */
 
     @media(max-width:600px) {
@@ -776,130 +718,71 @@
         top: 8px;
         right: 8px;
 
-        width: 140px;
+        width: 155px;
 
-        gap: 6px;
+        gap: 8px;
 
         z-index: 99999;
       }
 
-
       .diamond-btn {
-        min-height: 40px;
+        min-height: 45px;
 
-        font-size: 12px;
+        font-size: 14px;
 
-        padding: 5px 8px;
+        padding: 7px 10px;
 
-        border-radius: 12px;
-
-        transform: none !important;
-        -webkit-transform: none !important;
-
-        transition: none !important;
-
-        -webkit-tap-highlight-color: transparent;
-
-        outline: none !important;
+        border-radius: 14px;
       }
-
-
-      .diamond-btn:hover,
-      .diamond-btn:active,
-      .diamond-btn:focus,
-      .diamond-btn:focus-visible {
-        transform: none !important;
-        -webkit-transform: none !important;
-
-        background:
-          linear-gradient(
-            135deg,
-            rgba(0, 191, 255, .22),
-            rgba(255, 255, 255, .035),
-            rgba(0, 120, 255, .13)
-          );
-
-        color: #66d9ff;
-
-        box-shadow:
-          0 0 12px rgba(0, 191, 255, .25),
-          inset 0 0 12px rgba(0, 191, 255, .07);
-      }
-
-
-      /*
-         فضای سمت راست برای منوی ثابت
-         تا متن و کادرها زیر دکمه‌ها نروند
-      */
-
-      header,
-      main,
-      footer {
-        padding-right: 150px;
-      }
-
 
       header {
         padding-top: 190px;
-        padding-bottom: 40px;
       }
-
 
       .hero,
       .card {
         border-radius: 25px;
       }
 
-
       .hero {
         padding: 40px 18px;
       }
-
 
       .card {
         padding: 30px 18px;
       }
 
-
       .brand {
         font-size: 50px;
       }
-
 
       .brand-en {
         font-size: 20px;
       }
 
-
       .hero h1 {
         font-size: 25px;
       }
-
 
       .hero p {
         font-size: 17px;
       }
 
-
       .title {
         font-size: 29px;
       }
-
 
       .text {
         font-size: 16px;
       }
 
-
       .btn {
         font-size: 16px;
       }
 
-
       .menu-page {
         padding-top: 175px;
       }
-
 
       .menu-page-box {
         padding: 22px 16px;
@@ -907,11 +790,9 @@
         border-radius: 24px;
       }
 
-
       .menu-page-title {
         font-size: 24px;
       }
-
 
       .menu-page-text {
         font-size: 15px;
@@ -923,13 +804,9 @@
 
 </head>
 
-
 <body>
 
-
-  <!-- =====================================================
-       منوی ثابت
-  ===================================================== -->
+  <!-- منوی ثابت -->
 
   <nav class="diamond-menu">
 
@@ -938,18 +815,15 @@
       خانه 🏠
     </button>
 
-
     <button class="diamond-btn"
             onclick="openPage('vasetePage')">
       واسطه گری 🧾
     </button>
 
-
     <button class="diamond-btn"
             onclick="openPage('majmuePage')">
       مجموعه واسطه گری 🗒
     </button>
-
 
     <button class="diamond-btn"
             onclick="openPage('etehadiPage')">
@@ -958,11 +832,7 @@
 
   </nav>
 
-
-
-  <!-- =====================================================
-       صفحه خانه
-  ===================================================== -->
+  <!-- صفحه خانه -->
 
   <div id="homePage"
        class="menu-page">
@@ -972,7 +842,6 @@
       <h1 class="menu-page-title">
         ⚜️ اطلاعات رسمی ژنرال ⚜️
       </h1>
-
 
       <div class="menu-page-text">
 
@@ -1002,7 +871,7 @@
 
 ✦↬ 𝗜𝗗 : @Information_ZHNERAL
 
-➎┇مجمـوعـه تـخـصـصی واسـطـه‌گـری ژنرال
+➎┇مجمـوعه تـخـصـصی واسـطـه‌گـری ژنرال
 
 ✦↬ 𝗜𝗗 : https://rubika.ir/joinc/EFHDCHAH0GTPLYBRZJCVDBVOJRAWXZYJ
 
@@ -1012,7 +881,7 @@
 
 ✦↬ 𝗜𝗗 : درحال اماده سازی
 
-➐┇آکـادمی نـکـات و آمـوزش مـعـاملات
+➐┇آکـادمی نـکات و آمـوزش مـعـاملات
 
 ✦↬ 𝗜𝗗 : درحال اماده سازی
 
@@ -1027,7 +896,6 @@
 
       </div>
 
-
       <button class="back-btn"
               onclick="closePages()">
         🔙 بازگشت
@@ -1037,11 +905,7 @@
 
   </div>
 
-
-
-  <!-- =====================================================
-       صفحه واسطه گری
-  ===================================================== -->
+  <!-- صفحه واسطه گری -->
 
   <div id="vasetePage"
        class="menu-page">
@@ -1051,7 +915,6 @@
       <h1 class="menu-page-title">
         🧾 واسطه‌گری ژنرال
       </h1>
-
 
       <div class="menu-page-text">
 
@@ -1087,7 +950,7 @@
 
 - https://rubika.ir/joinc/FBGADIHB0YAITZJSWJYCNJZZYXQMMTGG
 
-تــبر خــوردید فقط 25 درصــدخــسارت مــیدیم فقط اگر احــراز هــم داشــته باشــیــم میدیم جا خســارت لـطفــا طــبقــاعــتماد خـــودتون پــیش بــرید تــبر خـــوردید فــقط پـــیوی مـالـک اعــلام کـــنید احــراز واســطه رو اگــر داشــتیــم  تــقــدیم کـــنیم!🔥✋
+تــبر خــوردید فقط 25 درصــدخــسارت مــیدیم فقط اگر احــراز هــم داشــتــه باشــیــم میدیم جا خســارت لـطفــا طــبق اعــتماد خـــودتون پــیش بــرید تــبر خـــوردید فــقط پـــیوی مـالـک اعــلام کـــنید احــراز واســطه رو اگــر داشــتیــم  تــقــدیم کـــنیم!🔥✋
 
 - @PV_ZHNERAL
 
@@ -1101,7 +964,6 @@ ID• @PV_ZHNERAL
 
       </div>
 
-
       <button class="back-btn"
               onclick="closePages()">
         🔙 بازگشت
@@ -1111,11 +973,7 @@ ID• @PV_ZHNERAL
 
   </div>
 
-
-
-  <!-- =====================================================
-       صفحه مجموعه واسطه گری
-  ===================================================== -->
+  <!-- صفحه مجموعه واسطه گری -->
 
   <div id="majmuePage"
        class="menu-page">
@@ -1125,7 +983,6 @@ ID• @PV_ZHNERAL
       <h1 class="menu-page-title">
         🗒 مجموعه واسطه گری
       </h1>
-
 
       <div class="menu-page-text">
 
@@ -1138,7 +995,6 @@ ID• @PV_ZHNERAL
 
       </div>
 
-
       <button class="back-btn"
               onclick="closePages()">
         🔙 بازگشت
@@ -1148,11 +1004,7 @@ ID• @PV_ZHNERAL
 
   </div>
 
-
-
-  <!-- =====================================================
-       صفحه اتحادیه
-  ===================================================== -->
+  <!-- صفحه اتحادیه -->
 
   <div id="etehadiPage"
        class="menu-page">
@@ -1162,7 +1014,6 @@ ID• @PV_ZHNERAL
       <h1 class="menu-page-title">
         🗒 اتحادیه
       </h1>
-
 
       <div class="menu-page-text">
 
@@ -1177,7 +1028,6 @@ ID• @PV_ZHNERAL
 
       </div>
 
-
       <button class="back-btn"
               onclick="closePages()">
         🔙 بازگشت
@@ -1187,11 +1037,7 @@ ID• @PV_ZHNERAL
 
   </div>
 
-
-
-  <!-- =====================================================
-       صفحه اصلی
-  ===================================================== -->
+  <!-- صفحه اصلی -->
 
   <header>
 
@@ -1222,10 +1068,7 @@ ID• @PV_ZHNERAL
 
   </header>
 
-
-
   <main class="container">
-
 
     <section class="section">
 
@@ -1247,8 +1090,6 @@ ID• @PV_ZHNERAL
       </div>
 
     </section>
-
-
 
     <section class="section">
 
@@ -1295,8 +1136,6 @@ ID• @PV_ZHNERAL
       </div>
 
     </section>
-
-
 
     <section class="section">
 
@@ -1345,8 +1184,6 @@ ID• @PV_ZHNERAL
       </div>
 
     </section>
-
-
 
     <section class="section">
 
@@ -1406,7 +1243,7 @@ ID• @PV_ZHNERAL
 
         <div class="warning">
 
-          تــبر خــوردید فقط 25 درصــدخــسارت مــیدیم فقط اگر احــراز هــم داشــته باشــیــم میدیم.
+          تــبر خــوردید فقط 25 درصــدخــسارت مــیدیم فقط اگر احــراز هــم داشــتــه باشــیــم میدیم.
 
           <br>
 
@@ -1429,8 +1266,6 @@ ID• @PV_ZHNERAL
       </div>
 
     </section>
-
-
 
     <section class="section">
 
@@ -1455,7 +1290,6 @@ ID• @PV_ZHNERAL
 
           </details>
 
-
           <details>
 
             <summary>
@@ -1469,7 +1303,6 @@ ID• @PV_ZHNERAL
 
           </details>
 
-
           <details>
 
             <summary>
@@ -1482,7 +1315,6 @@ ID• @PV_ZHNERAL
             </p>
 
           </details>
-
 
           <details>
 
@@ -1499,7 +1331,6 @@ ID• @PV_ZHNERAL
 
         </div>
 
-
         <div class="buttons">
 
           <a
@@ -1512,7 +1343,6 @@ ID• @PV_ZHNERAL
 
           </a>
 
-
           <a
             class="btn"
             href="https://rubika.ir/Information_ZHNERAL"
@@ -1523,7 +1353,6 @@ ID• @PV_ZHNERAL
 
           </a>
 
-
           <a
             class="btn"
             href="https://rubika.ir/bazar_ZHNERAL"
@@ -1533,7 +1362,6 @@ ID• @PV_ZHNERAL
             بازار ژنرال
 
           </a>
-
 
           <a
             class="btn"
@@ -1553,8 +1381,6 @@ ID• @PV_ZHNERAL
 
   </main>
 
-
-
   <footer>
 
     <div>
@@ -1567,8 +1393,6 @@ ID• @PV_ZHNERAL
 
   </footer>
 
-
-
   <script>
 
     function openPage(pageId) {
@@ -1579,10 +1403,8 @@ ID• @PV_ZHNERAL
           page.classList.remove("active");
         });
 
-
       const selectedPage =
         document.getElementById(pageId);
-
 
       if (selectedPage) {
 
@@ -1596,7 +1418,6 @@ ID• @PV_ZHNERAL
 
     }
 
-
     function closePages() {
 
       document
@@ -1605,9 +1426,7 @@ ID• @PV_ZHNERAL
           page.classList.remove("active");
         });
 
-
       document.body.style.overflow = "";
-
 
       window.scrollTo({
         top: 0,
@@ -1620,4 +1439,4 @@ ID• @PV_ZHNERAL
 
 </body>
 
-  </html>
+</html>
