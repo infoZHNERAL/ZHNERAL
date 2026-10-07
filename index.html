@@ -126,28 +126,36 @@
 
 
     /* =====================================================
-       منوی ثابت
-       بدون transform روی والد
+       منوی بالا
+       این بار بدون position: fixed
+       موقعیت آن با JavaScript نسبت به scroll قفل می‌شود
     ===================================================== */
 
     .diamond-menu-layer {
-      position: static !important;
+      position: absolute !important;
 
-      width: 0 !important;
+      top: 0 !important;
+      right: 0 !important;
+
+      width: 100% !important;
       height: 0 !important;
+
+      z-index: 2147483647 !important;
+
+      pointer-events: none !important;
 
       margin: 0 !important;
       padding: 0 !important;
 
-      pointer-events: none !important;
-
       transform: none !important;
       -webkit-transform: none !important;
+
+      will-change: top !important;
     }
 
 
     .diamond-menu {
-      position: fixed !important;
+      position: absolute !important;
 
       top: 10px !important;
       right: 15px !important;
@@ -161,6 +169,7 @@
       z-index: 2147483647 !important;
 
       display: flex !important;
+
       flex-direction: column !important;
 
       gap: 8px !important;
@@ -173,7 +182,7 @@
       transform: none !important;
       -webkit-transform: none !important;
 
-      will-change: auto !important;
+      will-change: top !important;
 
       backface-visibility: hidden;
       -webkit-backface-visibility: hidden;
@@ -830,20 +839,25 @@
     @media(max-width:600px) {
 
       .diamond-menu-layer {
-        position: static !important;
+        position: absolute !important;
 
-        width: 0 !important;
+        top: 0 !important;
+        right: 0 !important;
+
+        width: 100vw !important;
         height: 0 !important;
+
+        z-index: 2147483647 !important;
+
+        pointer-events: none !important;
 
         transform: none !important;
         -webkit-transform: none !important;
-
-        pointer-events: none !important;
       }
 
 
       .diamond-menu {
-        position: fixed !important;
+        position: absolute !important;
 
         top: 8px !important;
         right: 8px !important;
@@ -864,11 +878,6 @@
         -webkit-transform: none !important;
 
         pointer-events: auto !important;
-
-        will-change: auto !important;
-
-        backface-visibility: hidden;
-        -webkit-backface-visibility: hidden;
       }
 
 
@@ -1009,8 +1018,7 @@
 
 
   <!-- =====================================================
-       منوی ثابت
-       مهم: والد دیگر transform ندارد
+       منوی بالا
   ===================================================== -->
 
   <div class="diamond-menu-layer">
@@ -1022,15 +1030,18 @@
         خانه 🏠
       </button>
 
+
       <button class="diamond-btn"
               onclick="openPage('vasetePage')">
         واسطه گری 🧾
       </button>
 
+
       <button class="diamond-btn"
               onclick="openPage('majmuePage')">
         مجموعه واسطه گری 🗒
       </button>
+
 
       <button class="diamond-btn"
               onclick="openPage('etehadiPage')">
@@ -1055,6 +1066,7 @@
       <h1 class="menu-page-title">
         ⚜️ اطلاعات رسمی ژنرال ⚜️
       </h1>
+
 
       <div class="menu-page-text">
 
@@ -1094,7 +1106,7 @@
 
 ✦↬ 𝗜𝗗 : درحال اماده سازی
 
-➐┇آکـادمی نـکات و آمـوزش مـعـاملات
+➐┇آکـادمی نـکـات و آمـوزش مـعـاملات
 
 ✦↬ 𝗜𝗗 : درحال اماده سازی
 
@@ -1108,6 +1120,7 @@
 ╰────────────────────╯
 
       </div>
+
 
       <button class="back-btn"
               onclick="closePages()">
@@ -1132,6 +1145,7 @@
       <h1 class="menu-page-title">
         🧾 واسطه‌گری ژنرال
       </h1>
+
 
       <div class="menu-page-text">
 
@@ -1167,7 +1181,7 @@
 
 - https://rubika.ir/joinc/FBGADIHB0YAITZJSWJYCNJZZYXQMMTGG
 
-تــبر خــوردید فقط 25 درصــدخــسارت مــیدیم فقط اگر احــراز هــم داشــته باشــیــم میدیم جا خســارت لـطفــا طــبق اعــتماد خـــودتون پــیش بــرید تــبر خـــوردید فــقط پـــیوی مـالـک اعــلام کـــنید احــراز واســطه رو اگــر داشــتیــم  تــقــدیم کـــنیم!🔥✋
+تــبر خــوردید فقط 25 درصــدخــسارت مــیدیم فقط اگر احــراز هــم داشــته باشــیــم میدیم جا خســارت لـطفــا طــبقــاعــتماد خـــودتون پــیش بــرید تــبر خـــوردید فــقط پـــیوی مـالـک اعــلام کـــنید احــراز واســطه رو اگــر داشــتیــم  تــقــدیم کـــنیم!🔥✋
 
 - @PV_ZHNERAL
 
@@ -1180,6 +1194,7 @@ ID• @PV_ZHNERAL
 𝐢𝐃 👨🏻‍⚖ ⇥ @PV_ZHNERAL
 
       </div>
+
 
       <button class="back-btn"
               onclick="closePages()">
@@ -1205,6 +1220,7 @@ ID• @PV_ZHNERAL
         🗒 مجموعه واسطه گری
       </h1>
 
+
       <div class="menu-page-text">
 
 😎 » ما به شما تضمین امنیت و اعتماد در تمامی معاملات می‌دهیم.
@@ -1215,6 +1231,7 @@ ID• @PV_ZHNERAL
 لینک مجموعه • @majmue_vasetehgari
 
       </div>
+
 
       <button class="back-btn"
               onclick="closePages()">
@@ -1240,6 +1257,7 @@ ID• @PV_ZHNERAL
         🗒 اتحادیه
       </h1>
 
+
       <div class="menu-page-text">
 
 😎 » ما به شما تضمین امنیت و اعتماد در تمامی معاملات می‌دهیم.
@@ -1252,6 +1270,7 @@ ID• @PV_ZHNERAL
 با ما باش تا معروف شی😏
 
       </div>
+
 
       <button class="back-btn"
               onclick="closePages()">
@@ -1691,8 +1710,123 @@ ID• @PV_ZHNERAL
 
     }
 
+
+    /* =====================================================
+       قفل واقعی منو نسبت به اسکرول صفحه
+       بدون position: fixed
+    ===================================================== */
+
+    (function() {
+
+      const layer =
+        document.querySelector(".diamond-menu-layer");
+
+      const menu =
+        document.querySelector(".diamond-menu");
+
+      if (!layer || !menu) return;
+
+
+      let ticking = false;
+
+
+      function updateMenuPosition() {
+
+        const scrollY =
+          window.pageYOffset ||
+          document.documentElement.scrollTop ||
+          0;
+
+
+        const isMobile =
+          window.innerWidth <= 600;
+
+
+        const topPosition =
+          scrollY + (isMobile ? 8 : 10);
+
+
+        layer.style.top =
+          scrollY + "px";
+
+
+        menu.style.top =
+          (isMobile ? 8 : 10) + "px";
+
+
+        menu.style.right =
+          (isMobile ? 8 : 15) + "px";
+
+
+        menu.style.left =
+          "auto";
+
+
+        menu.style.bottom =
+          "auto";
+
+
+        menu.style.transform =
+          "none";
+
+
+        menu.style.webkitTransform =
+          "none";
+
+
+        ticking = false;
+
+      }
+
+
+      function requestUpdate() {
+
+        if (!ticking) {
+
+          window.requestAnimationFrame(
+            updateMenuPosition
+          );
+
+          ticking = true;
+
+        }
+
+      }
+
+
+      window.addEventListener(
+        "scroll",
+        requestUpdate,
+        {
+          passive: true
+        }
+      );
+
+
+      window.addEventListener(
+        "resize",
+        requestUpdate,
+        {
+          passive: true
+        }
+      );
+
+
+      window.addEventListener(
+        "orientationchange",
+        requestUpdate,
+        {
+          passive: true
+        }
+      );
+
+
+      updateMenuPosition();
+
+    })();
+
   </script>
 
 </body>
 
-</html>
+            </html>
