@@ -24,16 +24,33 @@
   <link rel="canonical"
         href="https://infozhneral.github.io/ZHNERAL/">
 
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="InfoZHNERAL | ژنرال | سایت رسمی ژنرال">
-  <meta property="og:description" content="سایت معرفی ژنرال و ZHNERAL؛ اطلاعات، بازار، واسطه‌ها و راه‌های ارتباطی.">
-  <meta property="og:url" content="https://infozhneral.github.io/ZHNERAL/">
-  <meta property="og:site_name" content="InfoZHNERAL">
-  <meta property="og:locale" content="fa_IR">
+  <meta property="og:type"
+        content="website">
 
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="InfoZHNERAL | ژنرال">
-  <meta name="twitter:description" content="سایت معرفی ژنرال و ZHNERAL؛ اطلاعات، بازار، واسطه‌ها و راه‌های ارتباطی.">
+  <meta property="og:title"
+        content="InfoZHNERAL | ژنرال | سایت رسمی ژنرال">
+
+  <meta property="og:description"
+        content="سایت معرفی ژنرال و ZHNERAL؛ اطلاعات، بازار، واسطه‌ها و راه‌های ارتباطی.">
+
+  <meta property="og:url"
+        content="https://infozhneral.github.io/ZHNERAL/">
+
+  <meta property="og:site_name"
+        content="InfoZHNERAL">
+
+  <meta property="og:locale"
+        content="fa_IR">
+
+  <meta name="twitter:card"
+        content="summary">
+
+  <meta name="twitter:title"
+        content="InfoZHNERAL | ژنرال">
+
+  <meta name="twitter:description"
+        content="سایت معرفی ژنرال و ZHNERAL؛ اطلاعات، بازار، واسطه‌ها و راه‌های ارتباطی.">
+
 
   <script type="application/ld+json">
   {
@@ -60,6 +77,7 @@
     "url": "https://infozhneral.github.io/ZHNERAL/"
   }
   </script>
+
 
   <style>
 
@@ -106,7 +124,7 @@
 
     /* =====================================================
        منوی آبی الماسی
-       کاملاً ثابت
+       ثابت و بدون جابه‌جایی
     ===================================================== */
 
     .diamond-menu {
@@ -118,16 +136,17 @@
       left: auto !important;
       bottom: auto !important;
 
-      width: 155px;
-
-      margin: 0 !important;
-      padding: 0 !important;
-
       z-index: 99999 !important;
 
       display: flex;
       flex-direction: column;
+
       gap: 8px;
+
+      width: 155px;
+
+      margin: 0 !important;
+      padding: 0 !important;
 
       transform: none !important;
 
@@ -197,25 +216,9 @@
     }
 
 
-    /* فقط دستگاه‌هایی که واقعاً hover دارند */
-    @media (hover: hover) and (pointer: fine) {
-
-      .diamond-btn:hover {
-        transform: none !important;
-
-        background:
-          linear-gradient(
-            135deg,
-            #00bfff,
-            #008cff
-          );
-
-        color: #ffffff;
-
-        box-shadow:
-          0 0 22px rgba(0, 191, 255, .65);
-      }
-
+    /* روی موبایل دکمه‌ها هیچ حرکت بالا/پایینی ندارند */
+    .diamond-btn:hover {
+      transform: none !important;
     }
 
 
@@ -624,3 +627,934 @@
       z-index: 99998;
 
       overflow-y: auto;
+
+      background:
+        radial-gradient(
+          circle at top right,
+          rgba(0, 191, 255, .13),
+          transparent 35%
+        ),
+        #050505;
+
+      padding: 100px 15px 40px;
+    }
+
+
+    .menu-page.active {
+      display: block;
+    }
+
+
+    .menu-page-box {
+      width: 92%;
+
+      max-width: 940px;
+
+      margin: auto;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(0, 191, 255, .09),
+          rgba(255, 255, 255, .025),
+          rgba(0, 120, 255, .06)
+        );
+
+      border: 1px solid #00bfff;
+
+      border-radius: 30px;
+
+      padding: 35px;
+
+      box-shadow:
+        0 0 40px rgba(0, 191, 255, .15),
+        inset 0 0 20px rgba(0, 191, 255, .025);
+
+      backdrop-filter: blur(10px);
+    }
+
+
+    .menu-page-title {
+      color: #38cfff;
+
+      font-size: 30px;
+
+      font-weight: 900;
+
+      text-align: center;
+
+      margin: 0 0 25px;
+
+      text-shadow:
+        0 0 15px rgba(0, 191, 255, .4);
+    }
+
+
+    .menu-page-text {
+      color: #eee;
+
+      font-size: 17px;
+
+      line-height: 2.3;
+
+      white-space: pre-line;
+
+      word-break: break-word;
+    }
+
+
+    .menu-link {
+      color: #38cfff;
+
+      word-break: break-all;
+    }
+
+
+    .back-btn {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      width: 100%;
+
+      min-height: 55px;
+
+      margin-top: 30px;
+
+      border: 1px solid #00bfff;
+
+      border-radius: 16px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #00bfff,
+          #008cff
+        );
+
+      color: #ffffff;
+
+      font-size: 17px;
+
+      font-weight: bold;
+
+      cursor: pointer;
+
+      transition: .2s;
+    }
+
+
+    .back-btn:hover {
+      transform: translateY(-2px);
+
+      box-shadow:
+        0 0 18px rgba(0, 191, 255, .45);
+    }
+
+
+    /* =====================================================
+       MOBILE
+    ===================================================== */
+
+    @media(max-width:600px) {
+
+      .diamond-menu {
+        position: fixed !important;
+
+        top: 8px !important;
+        right: 8px !important;
+
+        left: auto !important;
+        bottom: auto !important;
+
+        width: 140px;
+
+        gap: 6px;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        transform: none !important;
+
+        z-index: 99999 !important;
+      }
+
+
+      .diamond-btn {
+        min-height: 40px;
+
+        font-size: 12px;
+
+        padding: 5px 8px;
+
+        border-radius: 12px;
+
+        transform: none !important;
+      }
+
+
+      .diamond-btn:hover,
+      .diamond-btn:active,
+      .diamond-btn:focus {
+        transform: none !important;
+      }
+
+
+      header {
+        padding-top: 190px;
+      }
+
+
+      .hero,
+      .card {
+        border-radius: 25px;
+      }
+
+
+      .hero {
+        padding: 40px 18px;
+      }
+
+
+      .card {
+        padding: 30px 18px;
+      }
+
+
+      .brand {
+        font-size: 50px;
+      }
+
+
+      .brand-en {
+        font-size: 20px;
+      }
+
+
+      .hero h1 {
+        font-size: 25px;
+      }
+
+
+      .hero p {
+        font-size: 17px;
+      }
+
+
+      .title {
+        font-size: 29px;
+      }
+
+
+      .text {
+        font-size: 16px;
+      }
+
+
+      .btn {
+        font-size: 16px;
+      }
+
+
+      .menu-page {
+        padding-top: 175px;
+      }
+
+
+      .menu-page-box {
+        padding: 22px 16px;
+
+        border-radius: 24px;
+      }
+
+
+      .menu-page-title {
+        font-size: 24px;
+      }
+
+
+      .menu-page-text {
+        font-size: 15px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- =====================================================
+       منوی ثابت
+  ===================================================== -->
+
+  <nav class="diamond-menu">
+
+    <button class="diamond-btn"
+            onclick="openPage('homePage')">
+      خانه 🏠
+    </button>
+
+
+    <button class="diamond-btn"
+            onclick="openPage('vasetePage')">
+      واسطه گری 🧾
+    </button>
+
+
+    <button class="diamond-btn"
+            onclick="openPage('majmuePage')">
+      مجموعه واسطه گری 🗒
+    </button>
+
+
+    <button class="diamond-btn"
+            onclick="openPage('etehadiPage')">
+      اتحادیه 🗒
+    </button>
+
+  </nav>
+
+
+
+  <!-- =====================================================
+       صفحه خانه
+  ===================================================== -->
+
+  <div id="homePage"
+       class="menu-page">
+
+    <div class="menu-page-box">
+
+      <h1 class="menu-page-title">
+        ⚜️ اطلاعات رسمی ژنرال ⚜️
+      </h1>
+
+
+      <div class="menu-page-text">
+
+╔═══════ ✦ ═══════╗
+⚜️ اطلاعات رسمی ژنرال  ⚜️
+「 𝐆𝐞𝐧𝐞𝐫𝐚𝐥┊ژنرال 」
+╚═══════ ✦ ═══════╝
+
+➊┇بـازار جـامـع خـریـد و فـروش ژنرال
+
+✦↬ 𝗜𝗗 : درحال اماده سازی
+
+➋┇مـارکـت تـخـصـصی خـریـد و فـروش روبـیـکـا
+✦↬ 𝗜𝗗 : https://rubika.ir/joinc/FBGADIHB0YAITZJSWJYCNJZZYXQMMTGG
+
+✦↬ 𝗜𝗗 : @SHOP_ZHNERAL
+
+➌┇مـرکـز اعـتـبـار و اطمـیـنـان کاربـران
+
+✦↬ 𝗜𝗗 : https://rubika.ir/joinc/ECHGEAHF0YNFZIFZCHUUKVFDZIVFLAPJ
+
+✦↬ 𝗜𝗗 : @Reliability_ZHNERAL
+
+➍┇کـانـال رسـمـی اطـلـاع‌رسانی ژنرال
+
+✦↬ 𝗜𝗗 : https://rubika.ir/joinc/FFIFDIEB0RFBNQSRFIRJJFYUDYRQKHKB
+
+✦↬ 𝗜𝗗 : @Information_ZHNERAL
+
+➎┇مجمـوعه تـخـصـصی واسـطـه‌گـری ژنرال
+
+✦↬ 𝗜𝗗 : https://rubika.ir/joinc/EFHDCHAH0GTPLYBRZJCVDBVOJRAWXZYJ
+
+✦↬ 𝗜𝗗 : @madiator_ZHNERAL
+
+➏┇کـمـپـانی خـدمـات واسـطـه‌گـری
+
+✦↬ 𝗜𝗗 : درحال اماده سازی
+
+➐┇آکـادمی نـکـات و آمـوزش مـعـاملات
+
+✦↬ 𝗜𝗗 : درحال اماده سازی
+
+━━━━━━━━━━━━━━━━━━━━━━━
+👑 ارتباط مستقیم با 𝐆𝐞𝐧𝐞𝐫𝐚𝐥┊ژنرال
+
+💠 𝗜𝗗 : @PV_ZHNERAL
+
+╭────────────────────╮
+               ⚡ امنیت • اعتماد • سرعت • پشتیبانی
+╰────────────────────╯
+
+      </div>
+
+
+      <button class="back-btn"
+              onclick="closePages()">
+        🔙 بازگشت
+      </button>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- صفحه واسطه گری -->
+
+  <div id="vasetePage"
+       class="menu-page">
+
+    <div class="menu-page-box">
+
+      <h1 class="menu-page-title">
+        🧾 واسطه‌گری ژنرال
+      </h1>
+
+      <div class="menu-page-text">
+
+❓⌯ واسطه چه کسی است و چرا واسطه گری میکنید !؟
+واسطه کسی است که خرید و فروش بین دو شخص را انجام میدهد و جلوگیری از دزدی و کلاه برداری میکند.
+
+📑 ⌯ توضیحات واسطه گری :
+ابتدا واسطه کانال،گروه را از #فروشنده دریافت میکند سپس مبلغ توافق شده را برای #خریدار ارسال میکنند ، بعد ارسال پول #خریدار استعلام را انجام دهد تا مطمعن شود پول به کارت ارسال شده است یا خیر!
+بعد از تایید #فروشنده واسطه کانال،گروه پیج را به خریدار انتقال میدهد و معامله انجام میشود.
+
+👨🏻‍💻 ⌯ نکات واسطه گری :
+فقط در حوزه خریدوفروش کانال،گروه، پیج و سکه واسطه میشویم - حق واسطه‌گری دریافت نمیشود و تمامی معاملات به صورت #رایگان انجام میشود
+
+💰| حق واسطه :
+
+🔴 هم به عهده خریدار و هم به عهده فروشنده است .
+
+💵 مبلغ حق واسطه 3% خریدار و 3% فروشنده است ؛ مجموع 6% .
+
+👤 خریدار هنگام معامله 3% از مبلغ را به عنوان حق واسطه کم کرده و به علاوه 3% حق واسطه که به گردن خودش هست به حساب واسطه واریز می‌کند.
+
+⁉️ معامله های مبالغ زیر 100 هزار تومن فقط 5 هزار تومن حق واسطه داره * کلا 5 هزار تومن !!
+
+👨🏻‍💻 معامله های طاق آمار پایین زیر 10k حق واسطه 5 تومن کلا و زیر 30k کلا 10 تومن حق واسطه !
+
+- https://rubika.ir/joinc/FFIFDIEB0RFBNQSRFIRJJFYUDYRQKHKB
+
+•- واسطه‌های ژنرال در چارچوب مقررات و با رویکردی حرفه‌ای، 🔖
+
+- خدمات مرتبط با هماهنگی و تسهیل معاملات را ارائه می‌دهند. 🔗
+
+- رعایت اصول شفافیت، امانت‌داری و پاسخگویی، مبنای فعالیت این مجموعه است.🗓
+
+- https://rubika.ir/joinc/FBGADIHB0YAITZJSWJYCNJZZYXQMMTGG
+
+تــبر خــوردید فقط 25 درصــدخــسارت مــیدیم فقط اگر احــراز هــم داشــتــه باشــیــم میدیم جا خســارت لـطفــا طــبق اعــتماد خـــودتون پــیش بــرید تــبر خـــوردید فــقط پـــیوی مـالـک اعــلام کـــنید احــراز واســطه رو اگــر داشــتیــم  تــقــدیم کـــنیم!🔥✋
+
+- @PV_ZHNERAL
+
+●-شروع واسطه گری برا تیم ژنرال جهت واسطه شدن به ایدی زیر مراجعه کرده 👇💨
+
+ID• @PV_ZHNERAL
+
+▫️حتما قبل از معامله توافق کنید📬👤'
+و #معاملات رو به پیوی ارسال کنید :
+𝐢𝐃 👨🏻‍⚖ ⇥ @PV_ZHNERAL
+
+      </div>
+
+      <button class="back-btn"
+              onclick="closePages()">
+        🔙 بازگشت
+      </button>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- صفحه مجموعه واسطه گری -->
+
+  <div id="majmuePage"
+       class="menu-page">
+
+    <div class="menu-page-box">
+
+      <h1 class="menu-page-title">
+        🗒 مجموعه واسطه گری
+      </h1>
+
+      <div class="menu-page-text">
+
+😎 » ما به شما تضمین امنیت و اعتماد در تمامی معاملات می‌دهیم.
+به جمع ما بپیوندید و تجربه‌ای مطمئن از معامله کردن را با ما داشته باشید👮‍♂️
+
+➦ @PV_ZHNERAL» 💸
+
+لینک مجموعه • @majmue_vasetehgari
+
+      </div>
+
+      <button class="back-btn"
+              onclick="closePages()">
+        🔙 بازگشت
+      </button>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- صفحه اتحادیه -->
+
+  <div id="etehadiPage"
+       class="menu-page">
+
+    <div class="menu-page-box">
+
+      <h1 class="menu-page-title">
+        🗒 اتحادیه
+      </h1>
+
+      <div class="menu-page-text">
+
+😎 » ما به شما تضمین امنیت و اعتماد در تمامی معاملات می‌دهیم.
+به جمع ما بپیوندید و تجربه‌ای مطمئن از معامله کردن را با ما داشته باشید👮‍♂️
+
+➦ @PV_ZHNERAL» 💸
+
+لینک اتحادیه • @etehadi_vasetehgari
+
+با ما باش تا معروف شی😏
+
+      </div>
+
+      <button class="back-btn"
+              onclick="closePages()">
+        🔙 بازگشت
+      </button>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- صفحه اصلی -->
+
+  <header>
+
+    <div class="container">
+
+      <div class="hero">
+
+        <div class="brand">
+          ژنرال
+        </div>
+
+        <div class="brand-en">
+          InfoZHNERAL
+        </div>
+
+        <h1>
+          InfoZHNERAL | سایت رسمی ژنرال
+        </h1>
+
+        <p>
+          سایت معرفی ژنرال و ZHNERAL؛
+          اطلاعات، بازار، واسطه‌ها و راه‌های ارتباطی.
+        </p>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+
+  <main class="container">
+
+    <section class="section">
+
+      <div class="card">
+
+        <h2 class="title">
+          مزایای معامله با تیم ژنرال
+        </h2>
+
+        <p class="text">
+          تیم ژنرال با هدف ارائه خدمات حرفه‌ای،
+          ایجاد تجربه‌ای مطمئن و تسهیل معاملات فعالیت می‌کند.
+        </p>
+
+        <p class="text highlight">
+          تیم ژنرال = معامله‌ای امن و پر سود
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <section class="section">
+
+      <div class="card">
+
+        <h2 class="title">
+          درباره InfoZHNERAL
+        </h2>
+
+        <p class="text">
+          به سایت رسمی InfoZHNERAL و ژنرال خوش آمدید.
+        </p>
+
+        <p class="text">
+          در این سایت می‌توانید اطلاعات مربوط به ژنرال،
+          بازار ژنرال، لیست واسطه‌ها و راه‌های ارتباطی را مشاهده کنید.
+        </p>
+
+        <div class="links">
+
+          <div class="link-line">
+            قفلی • @Information_ZHNERAL
+          </div>
+
+          <div class="link-line">
+            شاپ • @SHOP_ZHNERAL
+          </div>
+
+          <div class="link-line">
+            بازار • @bazar_ZHNERAL
+          </div>
+
+          <div class="link-line">
+            ارتباط • @PV_ZHNERAL_Asli | @PV_ZHNERAL
+          </div>
+
+        </div>
+
+        <p class="text">
+          InfoZHNERAL مرجع اطلاعات و معرفی بخش‌های مختلف
+          تیم ژنرال است.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <section class="section">
+
+      <div class="card">
+
+        <h2 class="title">
+          بازار ژنرال
+        </h2>
+
+        <p class="text">
+          بهترین خرید و فروش را با تیم واسطه‌گری ژنرال انجام دهید.
+        </p>
+
+        <ul class="bullets">
+
+          <li>
+            ■ تحویل‌دهی در سریع‌ترین زمان ممکن
+          </li>
+
+          <li>
+            ■ فروش به بالاترین خریدار
+          </li>
+
+          <li>
+            ■ خرید و فروش با قیمت منصفانه
+          </li>
+
+          <li>
+            ■ واسطه‌های معتبر
+          </li>
+
+        </ul>
+
+        <p class="text">
+          خرید و فروش با واسطه‌های ژنرال
+        </p>
+
+        <p class="text highlight">
+          #تیم.ژنرال
+        </p>
+
+        <p class="text highlight">
+          @bazar_ZHNERAL
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <section class="section">
+
+      <div class="card">
+
+        <h2 class="title">
+          لیست واسطه‌ها
+        </h2>
+
+        <p class="text">
+
+          😎 » ما به شما تضمین امنیت و اعتماد در تمامی معاملات می‌دهیم.
+
+          <br>
+
+          به جمع ما بپیوندید و تجربه‌ای مطمئن از معامله کردن
+          با ما داشته باشید 👮‍♂️
+
+          <br>
+
+          ➦ @PV_ZHNERAL » 💸
+
+        </p>
+
+        <p class="text">
+
+          • واسطه‌های ژنرال در چارچوب مقررات و با رویکردی حرفه‌ای فعالیت می‌کنند.
+
+        </p>
+
+        <ul class="bullets">
+
+          <li>
+            خدمات مرتبط با هماهنگی و تسهیل معاملات را ارائه می‌دهند.
+          </li>
+
+          <li>
+            رعایت اصول شفافیت، امانت‌داری و پاسخگویی،
+            مبنای فعالیت این مجموعه است.
+          </li>
+
+        </ul>
+
+        <div class="buttons">
+
+          <a
+            class="btn primary"
+            href="https://rubika.ir/joinc/FBGADIHB0YAITZJSWJYCNJZZYXQMMTGG"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            ورود به کانال
+
+          </a>
+
+        </div>
+
+        <div class="warning">
+
+          تــبر خــوردید فقط 25 درصــدخــسارت مــیدیم فقط اگر احــراز هــم داشــتــه باشــیــم میدیم.
+
+          <br>
+
+          جا خســارت لـطفــا طــبق اعــتماد خـــودتون پــیش بــرید.
+
+          <br>
+
+          تــبر خـــوردید فــقط پـــیوی مـالـک اعــلام کـــنید.
+
+          <br>
+
+          احــراز واســطه رو اگــر داشتیــم تــقــدیم کـــنیم! 🔥✋
+
+          <br><br>
+
+          @PV_ZHNERAL
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section class="section">
+
+      <div class="card">
+
+        <h2 class="title">
+          سوالات متداول
+        </h2>
+
+        <div class="faq">
+
+          <details>
+
+            <summary>
+              ■ چطوری اعتماد کنیم؟
+            </summary>
+
+            <p class="small">
+              برای بررسی واسطه‌ها و اطلاعات مجموعه،
+              از کانال‌های رسمی ژنرال استفاده کنید.
+            </p>
+
+          </details>
+
+
+          <details>
+
+            <summary>
+              ■ نگران تبر خوردن نباشیم؟
+            </summary>
+
+            <p class="small">
+              قبل از معامله، قوانین و شرایط اعلام‌شده
+              توسط مجموعه و واسطه را با دقت بررسی کنید.
+            </p>
+
+          </details>
+
+
+          <details>
+
+            <summary>
+              ■ واسطه‌های معتبر کیا هستن؟
+            </summary>
+
+            <p class="small">
+              لیست واسطه‌ها را از کانال رسمی واسطه‌های
+              ژنرال بررسی کنید.
+            </p>
+
+          </details>
+
+
+          <details>
+
+            <summary>
+              ■ تبر خوردیم چی میشه؟
+            </summary>
+
+            <p class="small">
+              طبق شرایط و قوانین اعلام‌شده توسط مجموعه،
+              موضوع را از طریق ارتباط رسمی پیگیری کنید.
+            </p>
+
+          </details>
+
+        </div>
+
+
+        <div class="buttons">
+
+          <a
+            class="btn primary"
+            href="https://rubika.ir/madiator_ZHNERAL"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            لیست واسطه‌ها
+
+          </a>
+
+
+          <a
+            class="btn"
+            href="https://rubika.ir/Information_ZHNERAL"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            قفلی تیم ژنرال
+
+          </a>
+
+
+          <a
+            class="btn"
+            href="https://rubika.ir/bazar_ZHNERAL"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            بازار ژنرال
+
+          </a>
+
+
+          <a
+            class="btn"
+            href="https://rubika.ir/madiator_ZHNERAL"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            ارتباط با ژنرال
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <footer>
+
+    <div>
+      InfoZHNERAL | ZHNERAL | ژنرال
+    </div>
+
+    <div>
+      © ZHNERAL 2026 — تمامی حقوق محفوظ است.
+    </div>
+
+  </footer>
+
+
+  <script>
+
+    function openPage(pageId) {
+
+      document
+        .querySelectorAll(".menu-page")
+        .forEach(function(page) {
+          page.classList.remove("active");
+        });
+
+      const selectedPage =
+        document.getElementById(pageId);
+
+      if (selectedPage) {
+
+        selectedPage.classList.add("active");
+
+        document.body.style.overflow = "hidden";
+
+        selectedPage.scrollTop = 0;
+
+      }
+
+    }
+
+
+    function closePages() {
+
+      document
+        .querySelectorAll(".menu-page")
+        .forEach(function(page) {
+          page.classList.remove("active");
+        });
+
+      document.body.style.overflow = "";
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+    }
+
+  </script>
+
+</body>
+
+</html>
