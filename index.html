@@ -19,32 +19,70 @@ button,a{font:inherit}
 a{color:inherit;text-decoration:none}
 button{cursor:pointer}
 
+
 /* رعدوبرق‌های قرمز شاخه‌ای در پس‌زمینه */
 #lightning{
-  position:fixed;inset:0;overflow:hidden;
-  pointer-events:none;z-index:0;
+  position:fixed;
+  inset:0;
+  overflow:hidden;
+  pointer-events:none;
+  z-index:0;
 }
+
 .lightning{
-  position:absolute;width:150px;height:300px;
-  opacity:0;filter:drop-shadow(0 0 10px #ff001e)
-    drop-shadow(0 0 20px #ff001e)
-    drop-shadow(0 0 16px #ff001e);
+  position:absolute;
+  width:150px;
+  height:300px;
+  opacity:0;
+  filter:
+    drop-shadow(0 0 8px #ff001e)
+    drop-shadow(0 0 18px #ff001e)
+    drop-shadow(0 0 30px #ff001e);
   animation:flash 2.5s infinite;
-.lightning path{
-  fill:none;stroke:#ff001e;stroke-width:2.4;
-  stroke-linecap:round;stroke-linejoin:round;
 }
-.lightning .branch{stroke-width:1.5}
-.lightning:nth-child(1){left:1%;top:5%;animation-delay:.4s}
-.lightning:nth-child(2){right:1%;top:22%;animation-delay:2s}
-.lightning:nth-child(3){left:12%;bottom:0;animation-delay:3.3s}
-.lightning:nth-child(4){right:13%;bottom:0;animation-delay:4.5s}
+
+.lightning path{
+  fill:none;
+  stroke:#ff001e;
+  stroke-width:3;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+.lightning .branch{
+  stroke-width:2;
+}
+
+.lightning:nth-child(1){
+  left:1%;
+  top:5%;
+  animation-delay:.2s;
+}
+
+.lightning:nth-child(2){
+  right:1%;
+  top:22%;
+  animation-delay:.7s;
+}
+
+.lightning:nth-child(3){
+  left:12%;
+  bottom:0;
+  animation-delay:1.1s;
+}
+
+.lightning:nth-child(4){
+  right:13%;
+  bottom:0;
+  animation-delay:1.6s;
+}
+
 @keyframes flash{
-  0%,45%,100%{opacity:0}
-  46%{opacity:1}
-  48%{opacity:.4}
-  50%{opacity:1}
-  55%{opacity:0}
+  0%,35%,100%{opacity:0}
+  36%{opacity:1}
+  38%{opacity:.7}
+  40%{opacity:1}
+  45%{opacity:0}
 }
 .layout,.mobile-bar,footer{position:relative;z-index:1}
 
