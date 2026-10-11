@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -7,29 +8,6 @@
 <meta name="description" content="سایت معرفی ژنرال، بازار ژنرال و واسطه‌های روبیکا">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#030303">
-
-/* حالت شیشه‌ای ژنرال */
-.hero,
-.card,
-.sidebar,
-.mobile-bar {
-  background: rgba(12, 5, 8, 0.58) !important;
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
-}
-
-/* نمایش رعدوبرق روی پس‌زمینه و زیر نوشته‌ها */
-#lightning {
-  z-index: 2;
-  pointer-events: none;
-}
-
-.layout,
-.mobile-bar,
-footer {
-  position: relative;
-  z-index: 3;
-}
 
 <style>
 *{box-sizing:border-box}
@@ -42,6 +20,15 @@ button,a{font:inherit}
 a{color:inherit;text-decoration:none}
 button{cursor:pointer}
 
+/* حالت شیشه‌ای ژنرال */
+.hero,
+.card,
+.sidebar,
+.mobile-bar {
+  background: rgba(12, 5, 8, 0.58) !important;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
 
 /* رعدوبرق‌های قرمز شاخه‌ای در پس‌زمینه */
 #lightning{
@@ -49,7 +36,7 @@ button{cursor:pointer}
   inset:0;
   overflow:hidden;
   pointer-events:none;
-  z-index:0;
+  z-index:2;
 }
 
 .lightning{
