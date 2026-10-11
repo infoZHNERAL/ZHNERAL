@@ -6,230 +6,208 @@
 <title>InfoZHNERAL | ژنرال</title>
 <meta name="description" content="سایت معرفی ژنرال، بازار ژنرال و واسطه‌های روبیکا">
 <meta name="robots" content="index, follow">
-<meta name="theme-color" content="#050000">
+<meta name="theme-color" content="#030303">
 
 <style>
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
   margin:0;background:#030303;color:#fff;
-  font-family:Tahoma,Arial,sans-serif;line-height:1.8;
-  overflow-x:hidden
+  font-family:Tahoma,Arial,sans-serif;line-height:2;
 }
 button,a{font:inherit}
 a{color:inherit;text-decoration:none}
 button{cursor:pointer}
-:root{--red:#ff001e;--red2:#ff263f}
+
+/* رعدوبرق‌های قرمز شاخه‌ای در پس‌زمینه */
 #lightning{
-  position:fixed;inset:0;pointer-events:none;overflow:hidden;
-  z-index:0
+  position:fixed;inset:0;overflow:hidden;
+  pointer-events:none;z-index:0;
 }
-.bolt{
-  position:absolute;width:100px;height:250px;opacity:0;
-  background:linear-gradient(160deg,transparent 5%,#ff001e 40%,#fff 48%,#ff001e 54%,transparent 80%);
-  filter:drop-shadow(0 0 5px #ff001e) drop-shadow(0 0 15px #ff001e);
-  clip-path:polygon(48% 0,75% 0,58% 35%,85% 35%,27% 100%,42% 51%,15% 51%);
-  animation:boltFlash 5s infinite
+.lightning{
+  position:absolute;width:150px;height:300px;
+  opacity:0;filter:drop-shadow(0 0 3px #ff001e)
+    drop-shadow(0 0 8px #ff001e)
+    drop-shadow(0 0 16px #ff001e);
+  animation:flash 6s infinite;
 }
-.bolt:nth-child(1){left:5%;top:8%;animation-delay:.4s}
-.bolt:nth-child(2){left:88%;top:18%;animation-delay:2s}
-.bolt:nth-child(3){left:62%;top:64%;animation-delay:3.2s}
-.bolt:nth-child(4){left:24%;top:75%;animation-delay:1.4s}
-@keyframes boltFlash{
-  0%,78%,100%{opacity:0;transform:scaleY(.6)}
-  80%{opacity:.9;transform:scaleY(1)}
-  82%{opacity:.15}
-  84%{opacity:.8}
-  87%{opacity:0}
+.lightning path{
+  fill:none;stroke:#ff001e;stroke-width:2.4;
+  stroke-linecap:round;stroke-linejoin:round;
 }
-.glow{
-  position:fixed;width:260px;height:260px;border-radius:50%;
-  background:#ff001e;opacity:.1;filter:blur(100px);
-  pointer-events:none;z-index:0
+.lightning .branch{stroke-width:1.5}
+.lightning:nth-child(1){left:1%;top:5%;animation-delay:.4s}
+.lightning:nth-child(2){right:1%;top:22%;animation-delay:2s}
+.lightning:nth-child(3){left:12%;bottom:0;animation-delay:3.3s}
+.lightning:nth-child(4){right:13%;bottom:0;animation-delay:4.5s}
+@keyframes flash{
+  0%,72%,100%{opacity:0}
+  73%{opacity:.95}
+  74%{opacity:.15}
+  75%{opacity:1}
+  77%{opacity:0}
 }
-.glow.one{top:10%;right:-100px}
-.glow.two{bottom:5%;left:-100px}
 .layout,.mobile-bar,footer{position:relative;z-index:1}
+
 .layout{display:flex;min-height:100vh;direction:ltr}
 .sidebar{
-  width:250px;flex-shrink:0;min-height:100vh;
+  width:400px;flex-shrink:0;min-height:100vh;
   background:rgba(0,0,0,.96);
-  border:1px solid var(--red);
-  box-shadow:0 0 18px #ff002544;
-  padding:12px;direction:ltr
+  border-right:1px solid #ff1738;
+  box-shadow:2px 0 18px #ff002522;
+  padding:20px 21px;direction:ltr;
 }
 .sidebar-head{
   display:flex;align-items:center;justify-content:space-between;
-  margin-bottom:12px;padding:0 4px
+  margin-bottom:25px;padding:0 4px
 }
 .logo{
-  width:54px;height:54px;border-radius:50%;
-  display:grid;place-items:center;color:var(--red);
-  font-size:32px;font-weight:bold;border:1px solid var(--red);
-  box-shadow:0 0 22px #ff002588;text-shadow:0 0 15px var(--red)
+  width:64px;height:64px;border-radius:50%;
+  display:grid;place-items:center;color:#ff1838;
+  font-size:34px;font-weight:bold;border:1px solid #ff1738;
+  box-shadow:0 0 22px #ff002544
 }
-.close-menu{border:0;background:transparent;color:var(--red);font-size:30px;display:none}
-.menu{display:flex;flex-direction:column;gap:3px}
+.close-menu{
+  border:0;background:transparent;color:#ff1738;
+  font-size:32px;display:none
+}
+.menu{display:flex;flex-direction:column;gap:0}
 .menu-item{
-  position:relative;width:100%;min-height:42px;
-  display:flex;align-items:center;gap:9px;padding:7px 8px;
-  border:1px solid transparent;border-bottom:1px solid #ffffff12;
-  border-radius:9px;background:transparent;color:#eee;
-  text-align:left;direction:ltr;font-size:13px;
+  position:relative;width:100%;min-height:68px;
+  display:flex;align-items:center;gap:18px;
+  padding:12px 16px;margin:0;border:1px solid transparent;
+  border-bottom:1px solid #ffffff12;border-radius:0;
+  background:transparent;color:#eee;text-align:left;
+  direction:ltr;font-size:17px;
   transition:background .2s,border .2s,box-shadow .2s
 }
 .menu-item .ico{
-  width:27px;min-width:27px;text-align:center;
-  font-size:20px;color:var(--red);text-shadow:0 0 10px var(--red)
+  width:35px;min-width:35px;text-align:center;
+  font-size:26px;color:#ff1738;text-shadow:0 0 10px #ff1738
 }
 .menu-item .label{flex:1}
-.menu-item .arrow{font-size:20px;color:var(--red)}
+.menu-item .arrow{font-size:23px;color:#ff1738}
 .menu-item:hover,.menu-item.active{
-  background:linear-gradient(100deg,#ff00252b,#ff002508);
-  border:1px solid var(--red);color:#ff8090;
-  box-shadow:0 0 13px #ff002544,inset 0 0 10px #ff002511
+  background:linear-gradient(100deg,#ff00251b,#ff002505);
+  border:1px solid #ff1738;border-radius:13px;color:#ff7588;
+  box-shadow:0 0 13px #ff00252a,inset 0 0 10px #ff00250a
+}
+.menu-item.active:before{
+  content:"";position:absolute;left:-18px;top:8px;bottom:8px;
+  width:5px;border-radius:6px;background:#ff1738;
+  box-shadow:0 0 14px #ff1738
 }
 .side-footer{
-  border-top:1px solid var(--red);margin-top:25px;
-  padding:12px 6px;color:var(--red);direction:ltr;text-align:left
+  border-top:1px solid #ff1738;margin-top:28px;
+  padding:18px 12px;color:#ff304d;direction:ltr;text-align:left
 }
-.side-footer small{display:block;color:#e8a2ad;font-size:12px}
-.main{direction:rtl;flex:1;min-width:0;padding:12px}
+.side-footer small{display:block;color:#e8a2ad;font-size:13px}
+
+.main{direction:rtl;flex:1;min-width:0;padding:32px}
 .mobile-bar{
   display:none;align-items:center;justify-content:space-between;
-  padding:10px 14px;border-bottom:1px solid var(--red);
-  background:#050505
+  padding:12px 16px;border-bottom:1px solid #ff1738;background:#050505
 }
 .mobile-bar button{
-  color:#ff304d;background:#100205;border:1px solid var(--red);
-  border-radius:9px;padding:5px 10px
+  color:#ff304d;background:#100205;border:1px solid #ff1738;
+  border-radius:10px;padding:7px 13px
 }
-.page{display:none;max-width:1150px;margin:0 auto}
+.page{display:none;max-width:950px;margin:0 auto}
 .page.active{display:block}
 .hero,.card{
-  border:1px solid var(--red);border-radius:16px;
-  background:linear-gradient(145deg,#160307,#050505 60%,#100205);
-  box-shadow:0 0 16px #ff002544,inset 0 0 22px #ff00250c;
-  padding:18px;margin-bottom:13px;position:relative
+  border:1px solid #ff1738;border-radius:28px;
+  background:linear-gradient(145deg,rgba(22,3,7,.97),rgba(5,5,5,.97) 60%,rgba(16,2,5,.97));
+  box-shadow:0 0 24px #ff002522,inset 0 0 22px #ff00250a;
+  padding:35px;margin-bottom:25px
 }
 .hero{
-  min-height:280px;display:flex;flex-direction:column;
+  min-height:75vh;display:flex;flex-direction:column;
   justify-content:center;align-items:center;text-align:center;
-  overflow:hidden
+  position:relative;overflow:hidden
 }
 .hero:before{
   content:"";position:absolute;inset:0;pointer-events:none;
-  background:
-    radial-gradient(ellipse at 50% 10%,#ff002555,transparent 60%),
-    linear-gradient(125deg,transparent 20%,#ff001e12 48%,transparent 72%)
+  background:radial-gradient(ellipse at 50% 10%,#ff00251c,transparent 55%)
 }
-.hero>*{position:relative}
 .brand{
-  color:var(--red);font-size:clamp(44px,5vw,72px);font-weight:900;
-  text-shadow:0 0 12px var(--red),0 0 32px #ff0025aa
+  color:#ff1738;font-size:64px;font-weight:900;
+  text-shadow:0 0 12px #ff0025,0 0 32px #ff002577
 }
-.brand-en{font-size:clamp(17px,2vw,25px);letter-spacing:4px;color:#eee;direction:ltr}
-h1,h2,h3{color:#ff304d;line-height:1.6}
-h1{font-size:22px;margin:10px 0 0}
-h2{font-size:20px;margin-top:0}
-h3{font-size:17px;margin-top:0}
-p,li{color:#eee;font-size:13px}
+.brand-en{font-size:25px;letter-spacing:4px;color:#eee;direction:ltr}
+h1,h2{color:#ff304d}
+h1{font-size:27px;margin:25px 0 8px}
+h2{font-size:27px;margin-top:0}
+p,li{color:#eee}
 .text{white-space:pre-line;overflow-wrap:anywhere}
 .highlight{color:#ff405a;font-weight:bold}
-.link-list{display:grid;gap:7px}
-.link-line{padding:7px 10px;border:1px solid #ff173855;border-radius:8px;font-size:12px}
+.link-list{display:grid;gap:10px}
+.link-line{padding:10px 14px;border:1px solid #ff173833;border-radius:10px}
 .rubika{color:#ff405a;text-decoration:underline;overflow-wrap:anywhere}
-ul{padding-right:20px}
-li{margin:6px 0}
+ul{padding-right:25px}
+li{margin:8px 0}
 .warning{
-  border-right:3px solid var(--red);background:#ff002512;
-  padding:12px;border-radius:9px;font-size:12px;color:#ff9aaa
+  border-right:3px solid #ff1738;background:#ff00250c;
+  padding:17px;border-radius:10px
 }
 .back{
-  color:#ff405a;background:#100205;border:1px solid var(--red);
-  padding:6px 13px;border-radius:9px;margin-bottom:12px
+  color:#ff405a;background:#100205;border:1px solid #ff1738;
+  padding:9px 20px;border-radius:11px;margin-bottom:20px
 }
-.back:hover{background:var(--red);color:white}
-.lang-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+.back:hover{background:#ff1738;color:white}
+.lang-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 .lang{
-  padding:8px 4px;border:1px solid #ff173877;border-radius:9px;
-  color:#eee;background:#080808;font-size:12px
+  padding:11px;border:1px solid #ff173855;border-radius:10px;
+  color:#eee;background:#100205
 }
-.lang.selected,.lang:hover{background:#d00025;border-color:#ff405a;box-shadow:0 0 12px #ff001e55}
-.content-grid{
-  display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,.9fr);
-  gap:12px;align-items:start
-}
-.small-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-details{
-  border:1px solid #ff173877;border-radius:9px;padding:10px;
-  margin:8px 0;background:#080808
-}
-summary{cursor:pointer;color:#fff;font-size:13px}
-summary::marker{color:var(--red)}
-.language-preview{
-  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:9px;margin-top:20px
-}
-.preview-card{
-  border:1px solid var(--red);border-radius:12px;padding:7px;
-  background:#070707;text-align:center;
-  box-shadow:0 0 10px #ff001e44;font-size:12px
-}
-.preview-card .preview-logo{
-  height:58px;border:1px solid #ff173855;border-radius:8px;
-  display:grid;place-items:center;color:var(--red);
-  text-shadow:0 0 12px var(--red);font-size:19px;margin-bottom:6px
-}
-.preview-card span{display:block;color:#eee}
-footer{text-align:center;color:#777;padding:18px;font-size:12px}
-#google_translate_element{
-  position:fixed;left:-10000px;top:0;width:1px;height:1px;overflow:hidden
-}
-.goog-te-banner-frame,.goog-te-balloon-frame{display:none!important}
-body{top:0!important}
-.skiptranslate{display:none!important}
-@media(max-width:1000px){
-  .sidebar{width:215px;padding:9px}
-  .main{padding:9px}
-  .content-grid{grid-template-columns:1fr}
-  .language-preview{grid-template-columns:repeat(3,minmax(0,1fr))}
-}
+.lang.selected,.lang:hover{background:#b90020;border-color:#ff405a}
+footer{text-align:center;color:#aaa;padding:25px}
+details{border-bottom:1px solid #ff173833;padding:10px}
+summary{cursor:pointer;color:#ff405a}
 @media(max-width:800px){
   .layout{display:block}
   .mobile-bar{display:flex;direction:ltr}
   .sidebar{
     position:fixed;z-index:1000;top:0;bottom:0;left:0;
-    width:min(300px,88vw);overflow-y:auto;
+    width:min(400px,88vw);overflow-y:auto;
     transform:translateX(-105%);transition:transform .25s;
-    border-right:1px solid var(--red)
+    border-right:1px solid #ff1738
   }
   .sidebar.open{transform:translateX(0)}
   .close-menu{display:block}
-  .main{padding:10px}
-  .hero,.card{padding:17px 13px;border-radius:13px}
-  .hero{min-height:280px}
-  .brand{font-size:47px}
-  .brand-en{font-size:17px}
-  h1{font-size:19px}
-  h2{font-size:20px}
-  .small-grid{grid-template-columns:1fr}
-  .language-preview{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .lang-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .main{padding:17px}
+  .hero,.card{padding:25px 18px;border-radius:22px}
+  .hero{min-height:72vh}
+  .brand{font-size:49px}
+  .brand-en{font-size:19px}
+  h1{font-size:23px}
+  h2{font-size:24px}
+  .lang-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
 
 <body>
 <div id="lightning" aria-hidden="true">
-  <div class="bolt"></div><div class="bolt"></div>
-  <div class="bolt"></div><div class="bolt"></div>
+  <svg class="lightning" viewBox="0 0 150 300">
+    <path d="M83 3 L55 65 L75 62 L35 133 L56 126 L12 205 L46 163 L39 161 L67 111 L52 115 L88 53 L68 57 Z"/>
+    <path class="branch" d="M58 123 L24 143 L10 174 M72 64 L111 79 L125 105"/>
+  </svg>
+  <svg class="lightning" viewBox="0 0 150 300">
+    <path d="M75 2 L51 59 L70 56 L32 124 L50 119 L17 191 L47 153 L39 152 L65 106 L49 109 L82 48 L63 51 Z"/>
+    <path class="branch" d="M50 119 L19 106 L8 82 M69 57 L102 69 L119 95"/>
+  </svg>
+  <svg class="lightning" viewBox="0 0 150 300">
+    <path d="M87 1 L59 62 L78 59 L38 130 L57 125 L13 207 L47 164 L40 161 L68 112 L52 116 L91 51 L70 54 Z"/>
+    <path class="branch" d="M57 125 L29 144 L17 170 M78 59 L110 76 L127 104"/>
+  </svg>
+  <svg class="lightning" viewBox="0 0 150 300">
+    <path d="M80 1 L54 60 L72 58 L34 127 L53 122 L12 199 L46 160 L39 158 L65 108 L49 112 L84 50 L65 53 Z"/>
+    <path class="branch" d="M53 122 L23 108 L13 85 M72 58 L108 76 L126 102"/>
+  </svg>
 </div>
-<div class="glow one"></div><div class="glow two"></div>
-<div id="google_translate_element"></div>
 
 <div class="mobile-bar">
-  <button onclick="toggleMenu()">☰ Menu</button>
+  <button onclick="toggleMenu()" data-t="menu">☰ Menu</button>
   <span style="color:#ff304d">InfoZHNERAL</span>
 </div>
 
@@ -237,215 +215,156 @@ body{top:0!important}
 <aside class="sidebar" id="sidebar">
   <div class="sidebar-head">
     <div class="logo">✦</div>
-    <button class="close-menu" onclick="toggleMenu()" aria-label="بستن منو">×</button>
+    <button class="close-menu" onclick="toggleMenu()" aria-label="Close menu">×</button>
   </div>
 
   <nav class="menu">
     <button class="menu-item active" data-page="home" onclick="showPage('home',this)">
-      <span class="ico">⌂</span><span class="label" data-t="home">خانه</span>
+      <span class="ico">⌂</span><span class="label" data-t="home">Home</span>
     </button>
     <button class="menu-item" data-page="language" onclick="showPage('language',this)">
-      <span class="ico">◎</span><span class="label" data-t="language">زبان</span><span class="arrow">›</span>
+      <span class="ico">◎</span><span class="label" data-t="language">Language</span><span class="arrow">›</span>
     </button>
     <button class="menu-item" data-page="intermediation" onclick="showPage('intermediation',this)">
-      <span class="ico">🔗</span><span class="label" data-t="intermediation">واسطه‌گری</span><span class="arrow">›</span>
+      <span class="ico">🔗</span><span class="label" data-t="intermediation">Intermediation</span><span class="arrow">›</span>
     </button>
     <button class="menu-item" data-page="union" onclick="showPage('union',this)">
-      <span class="ico">♧</span><span class="label" data-t="union">اتحادیه واسطه‌ها</span><span class="arrow">›</span>
+      <span class="ico">♧</span><span class="label" data-t="union">Intermediary Union</span><span class="arrow">›</span>
     </button>
     <button class="menu-item" data-page="axe" onclick="showPage('axe',this)">
-      <span class="ico">♢</span><span class="label" data-t="axe">تبر واسطه‌ها</span><span class="arrow">›</span>
+      <span class="ico">♢</span><span class="label" data-t="axe">The Axe of Intermediaries</span><span class="arrow">›</span>
     </button>
     <button class="menu-item" data-page="rules" onclick="showPage('rules',this)">
-      <span class="ico">▤</span><span class="label" data-t="rules">قوانین عمومی واسطه‌گری</span><span class="arrow">›</span>
+      <span class="ico">▤</span><span class="label" data-t="rules">General Brokerage Rules</span><span class="arrow">›</span>
     </button>
     <button class="menu-item" data-page="store" onclick="showPage('store',this)">
-      <span class="ico">▣</span><span class="label" data-t="store">فروشگاه عمومی</span><span class="arrow">›</span>
+      <span class="ico">▣</span><span class="label" data-t="store">General Store</span><span class="arrow">›</span>
     </button>
     <button class="menu-item" data-page="preparing1" onclick="showPage('preparing1',this)">
-      <span class="ico">◷</span><span class="label" data-t="preparing">در حال آماده‌سازی...</span><span class="arrow">›</span>
+      <span class="ico">◷</span><span class="label" data-t="preparing">Preparing...</span><span class="arrow">›</span>
     </button>
     <button class="menu-item" data-page="preparing2" onclick="showPage('preparing2',this)">
-      <span class="ico">⚙</span><span class="label" data-t="preparing">در حال آماده‌سازی...</span><span class="arrow">›</span>
+      <span class="ico">⚙</span><span class="label" data-t="preparing">Preparing...</span><span class="arrow">›</span>
     </button>
     <button class="menu-item" data-page="preparing3" onclick="showPage('preparing3',this)">
-      <span class="ico">‹ ›</span><span class="label" data-t="preparing">در حال آماده‌سازی...</span><span class="arrow">›</span>
+      <span class="ico">‹ ›</span><span class="label" data-t="preparing">Preparing...</span><span class="arrow">›</span>
     </button>
     <button class="menu-item" data-page="preparing4" onclick="showPage('preparing4',this)">
-      <span class="ico">🔗</span><span class="label" data-t="preparing">در حال آماده‌سازی...</span><span class="arrow">›</span>
+      <span class="ico">🔗</span><span class="label" data-t="preparing">Preparing...</span><span class="arrow">›</span>
     </button>
   </nav>
 
   <div class="side-footer">
     <div>InfoZHNERAL</div>
-    <small>ⓘ &nbsp; ژنرال | سایت رسمی</small>
+    <small data-t="official">ⓘ ژنرال | سایت رسمی</small>
   </div>
 </aside>
 
 <main class="main">
 
 <section id="home" class="page active">
-  <div class="content-grid">
-    <div>
-      <div class="hero">
-        <div class="brand">ژنرال</div>
-        <div class="brand-en">InfoZHNERAL</div>
-        <h1>InfoZHNERAL | سایت رسمی ژنرال</h1>
-        <h2>ژنرال</h2>
-        <p data-t="siteDescription">سایت معرفی ژنرال و ZHNERAL؛ اطلاعات، بازار، واسطه‌ها و راه‌های ارتباطی.</p>
-      </div>
+  <div class="hero">
+    <div class="brand">ژنرال</div>
+    <div class="brand-en">InfoZHNERAL</div>
+    <h1 data-t="heroTitle">InfoZHNERAL | سایت رسمی ژنرال</h1>
+    <h2 data-t="general">ژنرال</h2>
+    <p data-t="heroDesc">سایت معرفی ژنرال و ZHNERAL؛ اطلاعات، بازار، واسطه‌ها و راه‌های ارتباطی.</p>
+  </div>
 
-      <div class="card">
-        <h2 data-t="benefitsTitle">مزایای معامله با تیم ژنرال</h2>
-        <p data-t="benefitsText">تیم ژنرال با هدف ارائه خدمات حرفه‌ای، ایجاد تجربه‌ای مطمئن و تسهیل معاملات فعالیت می‌کند.</p>
-        <p class="highlight" data-t="benefitsSlogan">تیم ژنرال = معامله‌ای امن و پر سود</p>
-      </div>
+  <div class="card">
+    <h2 data-t="benefits">مزایای معامله با تیم ژنرال</h2>
+    <p data-t="benefitsDesc">تیم ژنرال با هدف ارائه خدمات حرفه‌ای، ایجاد تجربه‌ای مطمئن و تسهیل معاملات فعالیت می‌کند.</p>
+    <p class="highlight" data-t="benefitsLine">تیم ژنرال = معامله‌ای امن و پرسود</p>
+  </div>
 
-      <div class="card">
-        <h2 data-t="aboutTitle">درباره InfoZHNERAL</h2>
-        <p data-t="welcome">به سایت رسمی InfoZHNERAL و ژنرال خوش آمدید.</p>
-        <p data-t="aboutText">در این سایت می‌توانید اطلاعات مربوط به ژنرال، بازار ژنرال، لیست واسطه‌ها و راه‌های ارتباطی را مشاهده کنید.</p>
-        <div class="link-list">
-          <div class="link-line">قفلی • <a class="rubika" href="https://rubika.ir/Information_ZHNERAL">@Information_ZHNERAL</a></div>
-          <div class="link-line">شاپ • <a class="rubika" href="https://rubika.ir/SHOP_ZHNERAL">@SHOP_ZHNERAL</a></div>
-          <div class="link-line">بازار • <a class="rubika" href="https://rubika.ir/bazar_ZHNERAL">@bazar_ZHNERAL</a></div>
-          <div class="link-line">ارتباط • @PV_ZHNERAL_Asli | @PV_ZHNERAL</div>
-        </div>
-      </div>
-
-      <div class="small-grid">
-        <div class="card">
-          <h2 data-t="marketTitle">بازار ژنرال</h2>
-          <p data-t="marketText">بهترین خرید و فروش را با تیم واسطه‌گری ژنرال انجام دهید.</p>
-          <ul>
-            <li data-t="marketPoint1">تحویل‌دهی در سریع‌ترین زمان ممکن</li>
-            <li data-t="marketPoint2">فروش به بالاترین خریدار</li>
-            <li data-t="marketPoint3">خرید و فروش با قیمت منصفانه</li>
-            <li data-t="marketPoint4">واسطه‌های معتبر</li>
-          </ul>
-          <p class="highlight">#تیم.ژنرال</p>
-          <p><a class="rubika" href="https://rubika.ir/bazar_ZHNERAL">@bazar_ZHNERAL</a></p>
-        </div>
-
-        <div class="card">
-          <h2 data-t="mediatorsTitle">لیست واسطه‌ها</h2>
-          <p>😎 » ما به شما تضمین امنیت و اعتماد در تمامی معاملات می‌دهیم.<br>
-          به جمع ما بپیوندید و تجربه‌ای مطمئن از معامله کردن با ما داشته باشید 👮‍♂️<br>
-          ➦ @PV_ZHNERAL » 💸</p>
-          <p data-t="mediatorsText">واسطه‌های ژنرال در چارچوب مقررات و با رویکردی حرفه‌ای فعالیت می‌کنند.</p>
-          <p data-t="mediatorsText2">خدمات مرتبط با هماهنگی و تسهیل معاملات را ارائه می‌دهند.</p>
-          <p data-t="mediatorsText3">رعایت اصول شفافیت، امانت‌داری و پاسخگویی، مبنای فعالیت این مجموعه است.</p>
-          <a class="rubika" href="https://rubika.ir/joinc/FBGADIHB0YAITZJSWJYCNJZZYXQMMTGG" data-t="joinChannel">ورود به کانال واسطه‌ها</a>
-          <div class="warning">
-            تــبر خــوردید فقط 25 درصــدخــسارت مــیدیم فقط اگر احــراز هــم داشــته باشــیم میدیم.
-            جا خســارت لـطفــا طــبق اعــتماد خـــودتون پــیش بــرید.
-            تــبر خـــوردید فــقط پـــیوی مـالـک اعــلام کـــنید.
-            احــراز واســطه رو اگــر داشتیــم تــقــدیم کـــنیم! 🔥✋
-            <br>@PV_ZHNERAL
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div>
-      <div class="card">
-        <button class="back" onclick="showPage('home')" data-t="back">‹ برگشت</button>
-        <h2>Language</h2>
-        <p data-t="chooseLanguage">زبان موردنظر خود را انتخاب کنید.</p>
-        <div class="lang-grid" id="languages">
-          <button class="lang" data-lang="fa">فارسی</button>
-          <button class="lang" data-lang="en">English</button>
-          <button class="lang" data-lang="ar">العربية</button>
-          <button class="lang" data-lang="zh-CN">中文</button>
-          <button class="lang" data-lang="es">Español</button>
-          <button class="lang" data-lang="fr">Français</button>
-          <button class="lang" data-lang="de">Deutsch</button>
-          <button class="lang" data-lang="ru">Русский</button>
-          <button class="lang" data-lang="pt">Português</button>
-          <button class="lang" data-lang="it">Italiano</button>
-          <button class="lang" data-lang="tr">Türkçe</button>
-          <button class="lang" data-lang="ja">日本語</button>
-          <button class="lang" data-lang="ko">한국어</button>
-          <button class="lang" data-lang="hi">हिन्दी</button>
-          <button class="lang" data-lang="bn">বাংলা</button>
-          <button class="lang" data-lang="ur">اردو</button>
-          <button class="lang" data-lang="id">Bahasa Indonesia</button>
-          <button class="lang" data-lang="vi">Tiếng Việt</button>
-          <button class="lang" data-lang="th">ไทย</button>
-          <button class="lang" data-lang="nl">Nederlands</button>
-        </div>
-        <p id="lang-status" class="highlight" data-t="languageSaved">زبان انتخاب‌شده ذخیره می‌شود.</p>
-      </div>
-
-      <div class="card">
-        <h2 data-t="faqTitle">سوالات متداول</h2>
-        <details>
-          <summary data-t="faq1">چطوری اعتماد کنیم؟</summary>
-          <p data-t="faq1a">برای بررسی واسطه‌ها و اطلاعات مجموعه، از کانال‌های رسمی ژنرال استفاده کنید.</p>
-        </details>
-        <details>
-          <summary data-t="faq2">نگران تبر خوردن نباشیم؟</summary>
-          <p data-t="faq2a">قبل از معامله، قوانین و شرایط را با دقت بررسی کنید.</p>
-        </details>
-        <details>
-          <summary data-t="faq3">واسطه‌های معتبر کیا هستن؟</summary>
-          <p data-t="faq3a">لیست واسطه‌ها را از کانال رسمی واسطه‌های ژنرال بررسی کنید.</p>
-        </details>
-        <details>
-          <summary data-t="faq4">تبر خوردیم چی میشه؟</summary>
-          <p data-t="faq4a">موضوع را از طریق ارتباط رسمی پیگیری کنید.</p>
-        </details>
-      </div>
+  <div class="card">
+    <h2 data-t="about">درباره InfoZHNERAL</h2>
+    <p data-t="welcome">به سایت رسمی InfoZHNERAL و ژنرال خوش آمدید.</p>
+    <p data-t="aboutDesc">در این سایت می‌توانید اطلاعات مربوط به ژنرال، بازار ژنرال، لیست واسطه‌ها و راه‌های ارتباطی را مشاهده کنید.</p>
+    <div class="link-list">
+      <div class="link-line"><span data-t="channel">قفلی</span> • <a class="rubika" href="https://rubika.ir/Information_ZHNERAL">@Information_ZHNERAL</a></div>
+      <div class="link-line"><span data-t="shop">شاپ</span> • <a class="rubika" href="https://rubika.ir/SHOP_ZHNERAL">@SHOP_ZHNERAL</a></div>
+      <div class="link-line"><span data-t="market">بازار</span> • <a class="rubika" href="https://rubika.ir/bazar_ZHNERAL">@bazar_ZHNERAL</a></div>
+      <div class="link-line"><span data-t="contact">ارتباط</span> • @PV_ZHNERAL_Asli | @PV_ZHNERAL</div>
     </div>
   </div>
 
-  <div class="language-preview">
-    <div class="preview-card"><div class="preview-logo">ژنرال</div><span>🇬🇧 English</span></div>
-    <div class="preview-card"><div class="preview-logo">ژنرال</div><span>🇸🇦 العربية</span></div>
-    <div class="preview-card"><div class="preview-logo">ژنرال</div><span>🇨🇳 中文</span></div>
-    <div class="preview-card"><div class="preview-logo">ژنرال</div><span>🇪🇸 Español</span></div>
-    <div class="preview-card"><div class="preview-logo">ژنرال</div><span>🇫🇷 Français</span></div>
-    <div class="preview-card"><div class="preview-logo">ژنرال</div><span>🇩🇪 Deutsch</span></div>
-    <div class="preview-card"><div class="preview-logo">ژنرال</div><span>🇷🇺 Русский</span></div>
-    <div class="preview-card"><div class="preview-logo">ژنرال</div><span>🇵🇹 Português</span></div>
-    <div class="preview-card"><div class="preview-logo">ژنرال</div><span>🇮🇹 Italiano</span></div>
-    <div class="preview-card"><div class="preview-logo">ژنرال</div><span>🇹🇷 Türkçe</span></div>
-    <div class="preview-card"><div class="preview-logo">ژنرال</div><span>🇯🇵 日本語</span></div>
-    <div class="preview-card"><div class="preview-logo">ژنرال</div><span>🇰🇷 한국어</span></div>
-    <div class="preview-card"><div class="preview-logo">ژنرال</div><span>🇻🇳 Tiếng Việt</span></div>
-    <div class="preview-card"><div class="preview-logo">ژنرال</div><span>🇹🇭 ไทย</span></div>
-    <div class="preview-card"><div class="preview-logo">ژنرال</div><span>🇳🇱 Nederlands</span></div>
-    <div class="preview-card"><div class="preview-logo">⚡ 20</div><span data-t="languagesCaption">زبان، یک سایت</span></div>
+  <div class="card">
+    <h2 data-t="marketTitle">بازار ژنرال</h2>
+    <p data-t="marketDesc">بهترین خرید و فروش را با تیم واسطه‌گری ژنرال انجام دهید.</p>
+    <ul>
+      <li data-t="fastDelivery">تحویل‌دهی در سریع‌ترین زمان ممکن</li>
+      <li data-t="bestBuyer">فروش به بالاترین خریدار</li>
+      <li data-t="fairPrice">خرید و فروش با قیمت منصفانه</li>
+      <li data-t="trusted">واسطه‌های معتبر</li>
+    </ul>
+    <p class="highlight">#تیم.ژنرال</p>
+    <p><a class="rubika" href="https://rubika.ir/bazar_ZHNERAL">@bazar_ZHNERAL</a></p>
+  </div>
+
+  <div class="card">
+    <h2 data-t="intermediaries">لیست واسطه‌ها</h2>
+    <p data-t="trustText">😎 » ما به شما تضمین امنیت و اعتماد در تمامی معاملات می‌دهیم.
+    به جمع ما بپیوندید و تجربه‌ای مطمئن از معامله کردن با ما داشته باشید 👮‍♂️
+    ➦ @PV_ZHNERAL » 💸</p>
+    <p data-t="professional">• واسطه‌های ژنرال در چارچوب مقررات و با رویکردی حرفه‌ای فعالیت می‌کنند.</p>
+    <p data-t="services">خدمات مرتبط با هماهنگی و تسهیل معاملات را ارائه می‌دهند.</p>
+    <p data-t="transparency">رعایت اصول شفافیت، امانت‌داری و پاسخگویی، مبنای فعالیت این مجموعه است.</p>
+    <a class="rubika" href="https://rubika.ir/joinc/FBGADIHB0YAITZJSWJYCNJZZYXQMMTGG" data-t="joinIntermediaries">ورود به کانال واسطه‌ها</a>
+    <div class="warning" data-t="warning">
+      تــبر خــوردید فقط 25 درصــدخــسارت مــیدیم فقط اگر احــراز هــم داشــته باشــیم میدیم.
+      جا خســارت لـطفــا طــبق اعــتماد خـــودتون پــیش بــرید.
+      تــبر خـــوردید فــقط پـــیوی مـالـک اعــلام کـــنید.
+      احــراز واســطه رو اگــر داشتیــم تــقــدیم کـــنیم! 🔥✋
+      @PV_ZHNERAL
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 data-t="faq">سوالات متداول</h2>
+    <details><summary data-t="q1">چطوری اعتماد کنیم؟</summary><p data-t="a1">برای بررسی واسطه‌ها و اطلاعات مجموعه، از کانال‌های رسمی ژنرال استفاده کنید.</p></details>
+    <details><summary data-t="q2">نگران تبر خوردن نباشیم؟</summary><p data-t="a2">قبل از معامله، قوانین و شرایط را با دقت بررسی کنید.</p></details>
+    <details><summary data-t="q3">واسطه‌های معتبر کیا هستن؟</summary><p data-t="a3">لیست واسطه‌ها را از کانال رسمی واسطه‌های ژنرال بررسی کنید.</p></details>
+    <details><summary data-t="q4">تبر خوردیم چی میشه؟</summary><p data-t="a4">موضوع را از طریق ارتباط رسمی پیگیری کنید.</p></details>
   </div>
 </section>
 
 <section id="language" class="page">
   <div class="card">
-    <button class="back" onclick="goBack()">← برگشت</button>
-    <h2>Language</h2>
+    <button class="back" onclick="goBack()" data-t="back">← برگشت</button>
+    <h2 data-t="language">Language</h2>
     <p data-t="chooseLanguage">زبان موردنظر خود را انتخاب کنید.</p>
-    <div class="lang-grid">
-      <button class="lang" data-lang="fa">فارسی</button><button class="lang" data-lang="en">English</button>
-      <button class="lang" data-lang="ar">العربية</button><button class="lang" data-lang="zh-CN">中文</button>
-      <button class="lang" data-lang="es">Español</button><button class="lang" data-lang="fr">Français</button>
-      <button class="lang" data-lang="de">Deutsch</button><button class="lang" data-lang="ru">Русский</button>
-      <button class="lang" data-lang="pt">Português</button><button class="lang" data-lang="it">Italiano</button>
-      <button class="lang" data-lang="tr">Türkçe</button><button class="lang" data-lang="ja">日本語</button>
-      <button class="lang" data-lang="ko">한국어</button><button class="lang" data-lang="hi">हिन्दी</button>
-      <button class="lang" data-lang="bn">বাংলা</button><button class="lang" data-lang="ur">اردو</button>
-      <button class="lang" data-lang="id">Bahasa Indonesia</button><button class="lang" data-lang="vi">Tiếng Việt</button>
-      <button class="lang" data-lang="th">ไทย</button><button class="lang" data-lang="nl">Nederlands</button>
+    <div class="lang-grid" id="languages">
+      <button class="lang" data-lang="fa">فارسی</button>
+      <button class="lang" data-lang="en">English</button>
+      <button class="lang" data-lang="ar">العربية</button>
+      <button class="lang" data-lang="zh">中文</button>
+      <button class="lang" data-lang="es">Español</button>
+      <button class="lang" data-lang="fr">Français</button>
+      <button class="lang" data-lang="de">Deutsch</button>
+      <button class="lang" data-lang="ru">Русский</button>
+      <button class="lang" data-lang="pt">Português</button>
+      <button class="lang" data-lang="it">Italiano</button>
+      <button class="lang" data-lang="tr">Türkçe</button>
+      <button class="lang" data-lang="ja">日本語</button>
+      <button class="lang" data-lang="ko">한국어</button>
+      <button class="lang" data-lang="hi">हिन्दी</button>
+      <button class="lang" data-lang="bn">বাংলা</button>
+      <button class="lang" data-lang="ur">اردو</button>
+      <button class="lang" data-lang="id">Bahasa Indonesia</button>
+      <button class="lang" data-lang="vi">Tiếng Việt</button>
+      <button class="lang" data-lang="th">ไทย</button>
+      <button class="lang" data-lang="nl">Nederlands</button>
     </div>
-    <p id="lang-status-2" class="highlight">زبان انتخاب‌شده ذخیره می‌شود.</p>
+    <p id="lang-status" class="highlight" data-t="saved">زبان انتخاب‌شده ذخیره می‌شود.</p>
   </div>
 </section>
 
 <section id="intermediation" class="page">
   <div class="card">
-    <button class="back" onclick="goBack()">← برگشت</button>
-    <h2 data-t="interTitle">واسطه‌گری ژنرال</h2>
-    <div class="text">
-« واسـطـہ هـای  « ژنرال  » ˹ 🔖 »
+    <button class="back" onclick="goBack()" data-t="back">← برگشت</button>
+    <h2 data-t="intermediation">Intermediation</h2>
+    <div class="text" data-t="teamRoster">« واسـطـہ هـای  « ژنرال  » ˹ 🔖 »
 𝐕𝐚𝐒𝐞𝐓𝐞𝐇 𝐓𝐡𝐞 '𝐆𝐞𝐧𝐞𝐫𝐚𝐥┊ژنرال↯
 ━━━━━━━━━━━━━━━━━━━━
 تیم مآلـکـیـن ژنرال :
@@ -469,71 +388,70 @@ body{top:0!important}
 ◟𝗶𝗗◝‌ :
 ⚖ - واسـطـہ ‹  ›
 ◟𝗶𝗗◝‌ :
-• اَبـَـر تـیـم معتبر واسـطه‌گـری #ژنرل 🪽
-    </div>
-    <p data-t="mediatorsText">واسطه‌های ژنرال در چارچوب مقررات و با رویکردی حرفه‌ای فعالیت می‌کنند.</p>
-    <p data-t="mediatorsText2">خدمات مرتبط با هماهنگی و تسهیل معاملات را ارائه می‌دهند.</p>
-    <p data-t="mediatorsText3">رعایت اصول شفافیت، امانت‌داری و پاسخگویی، مبنای فعالیت این مجموعه است.</p>
+• اَبـَـر تـیـم معتبر واسـطه‌گـری #ژنرل 🪽</div>
+    <p data-t="professional">• واسطه‌های ژنرال در چارچوب مقررات و با رویکردی حرفه‌ای، 🔖</p>
+    <p data-t="services">- خدمات مرتبط با هماهنگی و تسهیل معاملات را ارائه می‌دهند. 🔗</p>
+    <p data-t="transparency">- رعایت اصول شفافیت، امانت‌داری و پاسخگویی، مبنای فعالیت این مجموعه است. 🗓</p>
     <a class="rubika" href="https://rubika.ir/joinc/FBGADIHB0YAITZJSWJYCNJZZYXQMMTGG" data-t="joinChannel">ورود به کانال</a>
-    <p class="warning">تــبر خــوردید فقط 25 درصــدخــسارت مــیدیم فقط اگر احــراز هــم داشــته باشــیم میدیم. لطفا طبق اعتماد خودتون پیش برید. برای پیگیری به مالک پیام دهید: @PV_ZHNERAL</p>
+    <p class="warning" data-t="warningShort">تــبر خــوردید فقط 25 درصــدخــسارت مــیدیم فقط اگر احــراز هــم داشــته باشــیم میدیم. لطفا طبق اعتماد خودتون پیش برید. برای پیگیری به مالک پیام دهید: @PV_ZHNERAL</p>
   </div>
 </section>
 
 <section id="union" class="page">
   <div class="card">
-    <button class="back" onclick="goBack()">← برگشت</button>
-    <h2 data-t="unionTitle">اتحادیه واسطه‌گری</h2>
-    <p>😎 » ما به شما تضمین امنیت و اعتماد در تمامی معاملات می‌دهیم.</p>
-    <p>به جمع ما بپیوندید و تجربه‌ای مطمئن از معامله کردن را با ما داشته باشید 👮‍♂️</p>
+    <button class="back" onclick="goBack()" data-t="back">← برگشت</button>
+    <h2 data-t="union">Intermediary Union</h2>
+    <p data-t="trustShort">😎 » ما به شما تضمین امنیت و اعتماد در تمامی معاملات می‌دهیم.</p>
+    <p data-t="joinUs">به جمع ما بپیوندید و تجربه‌ای مطمئن از معامله کردن را با ما داشته باشید 👮‍♂️</p>
     <p>➦ @PV_ZHNERAL » 💸</p>
-    <div class="warning">تــبر خــوردید فقط 25 درصــدخــسارت مــیدیم فقط اگر احــراز هــم داشــته باشــیم میدیم. لطفا پیش از معامله شرایط را بررسی کنید. 🔥✋<br>@PV_ZHNERAL</div>
-    <p><a class="rubika" href="https://rubika.ir/etehadi_vasetehgari">ورود به اتحادیه در روبیکا</a></p>
+    <div class="warning" data-t="unionWarning">تــبر خــوردید فقط 25 درصــدخــسارت مــیدیم فقط اگر احــراز هــم داشــته باشــیم میدیم. لطفا پیش از معامله شرایط را بررسی کنید. 🔥✋ @PV_ZHNERAL</div>
+    <p><a class="rubika" href="https://rubika.ir/etehadi_vasetehgari" data-t="rubikaUnion">ورود به اتحادیه در روبیکا</a></p>
   </div>
 </section>
 
 <section id="axe" class="page">
   <div class="card">
-    <button class="back" onclick="goBack()">← برگشت</button>
-    <h2 data-t="axeTitle">تبر واسطه‌ها</h2>
-    <p>•- واسطه‌های ژنرال در چارچوب مقررات و با رویکردی حرفه‌ای، 🔖</p>
-    <p>- خدمات مرتبط با هماهنگی و تسهیل معاملات را ارائه می‌دهند. 🔗</p>
-    <p>- رعایت اصول شفافیت، امانت‌داری و پاسخگویی، مبنای فعالیت این مجموعه است. 🗓</p>
+    <button class="back" onclick="goBack()" data-t="back">← برگشت</button>
+    <h2 data-t="axe">The Axe of Intermediaries</h2>
+    <p data-t="professional">•- واسطه‌های ژنرال در چارچوب مقررات و با رویکردی حرفه‌ای، 🔖</p>
+    <p data-t="services">- خدمات مرتبط با هماهنگی و تسهیل معاملات را ارائه می‌دهند. 🔗</p>
+    <p data-t="transparency">- رعایت اصول شفافیت، امانت‌داری و پاسخگویی، مبنای فعالیت این مجموعه است. 🗓</p>
     <a class="rubika" href="https://rubika.ir/joinc/FBGADIHB0YAITZJSWJYCNJZZYXQMMTGG">https://rubika.ir/joinc/FBGADIHB0YAITZJSWJYCNJZZYXQMMTGG</a>
-    <p>اگر از واسطه‌ای شکایت دارید، مدرک، اطلاعات معامله و قیمت را برای بررسی به @PV_ZHNERAL ارسال کنید. ⭕️</p>
+    <p data-t="complaint">اگر از واسطه‌ای شکایت دارید، مدرک، اطلاعات معامله و قیمت را برای بررسی به @PV_ZHNERAL ارسال کنید. ⭕️</p>
   </div>
 </section>
 
 <section id="rules" class="page">
   <div class="card">
-    <button class="back" onclick="goBack()">← برگشت</button>
-    <h2 data-t="rulesTitle">قوانین عمومی واسطه‌گری</h2>
-    <div class="warning">تــبر خــوردید فقط 25 درصــدخــسارت مــیدیم فقط اگر احــراز هــم داشــته باشــیم میدیم. لطفا طبق اعتماد خودتون پیش برید. تبر خوردید فقط پیوی مالک اعلام کنید. احراز واسطه رو اگر داشتیم تقدیم کنیم! 🔥✋<br>@PV_ZHNERAL</div>
-    <p>•- واسطه‌های ژنرال در چارچوب مقررات و با رویکردی حرفه‌ای، 🔖</p>
-    <p>- خدمات مرتبط با هماهنگی و تسهیل معاملات را ارائه می‌دهند. 🔗</p>
-    <p>- رعایت اصول شفافیت، امانت‌داری و پاسخگویی، مبنای فعالیت این مجموعه است. 🗓</p>
-    <a class="rubika" href="https://rubika.ir/joinc/FBGADIHB0YAITZJSWJYCNJZZYXQMMTGG">ورود به کانال</a>
-    <p>جهت اطلاعات بیشتر به پیوی مراجعه کنید: <a class="rubika" href="https://rubika.ir/Pv_ZHNERAL">@Pv_ZHNERAL</a></p>
+    <button class="back" onclick="goBack()" data-t="back">← برگشت</button>
+    <h2 data-t="rules">General Brokerage Rules</h2>
+    <div class="warning" data-t="warningRules">تــبر خــوردید فقط 25 درصــدخــسارت مــیدیم فقط اگر احــراز هــم داشــته باشــیم میدیم. لطفا طبق اعتماد خودتون پیش برید. تبر خوردید فقط پیوی مالک اعلام کنید. احراز واسطه رو اگر داشتیم تقدیم کنیم! 🔥✋ @PV_ZHNERAL</div>
+    <p data-t="professional">•- واسطه‌های ژنرال در چارچوب مقررات و با رویکردی حرفه‌ای، 🔖</p>
+    <p data-t="services">- خدمات مرتبط با هماهنگی و تسهیل معاملات را ارائه می‌دهند. 🔗</p>
+    <p data-t="transparency">- رعایت اصول شفافیت، امانت‌داری و پاسخگویی، مبنای فعالیت این مجموعه است. 🗓</p>
+    <a class="rubika" href="https://rubika.ir/joinc/FBGADIHB0YAITZJSWJYCNJZZYXQMMTGG" data-t="joinChannel">ورود به کانال</a>
+    <p><span data-t="moreInfo">جهت اطلاعات بیشتر به پیوی مراجعه کنید:</span> <a class="rubika" href="https://rubika.ir/Pv_ZHNERAL">@Pv_ZHNERAL</a></p>
   </div>
 </section>
 
 <section id="store" class="page">
   <div class="card">
-    <button class="back" onclick="goBack()">← برگشت</button>
-    <h2 data-t="storeTitle">فروشگاه ژنرال</h2>
-    <p>به مارکت اصلی ژنرال خوش آمدید ❣</p>
-    <p>بیشتر محصول‌ها در روبیکا آگهی می‌شوند. اگر قصد خرید یا فروش دارید، به مارکت سر بزنید.</p>
+    <button class="back" onclick="goBack()" data-t="back">← برگشت</button>
+    <h2 data-t="store">General Store</h2>
+    <p data-t="storeWelcome">به مارکت اصلی ژنرال خوش آمدید ❣</p>
+    <p data-t="storeDesc">بیشتر محصول‌ها در روبیکا آگهی می‌شوند. اگر قصد خرید یا فروش دارید، به مارکت سر بزنید.</p>
     <a class="rubika" href="https://rubika.ir/market_ZHNERAL">@market_ZHNERAL</a>
   </div>
 </section>
 
-<section id="preparing1" class="page"><div class="card"><button class="back" onclick="goBack()">← برگشت</button><h2 data-t="preparing">در حال آماده‌سازی...</h2><p data-t="preparingText">فعلا درحال آماده‌سازی است لطفا صبوری کنید .... 🗒</p></div></section>
-<section id="preparing2" class="page"><div class="card"><button class="back" onclick="goBack()">← برگشت</button><h2 data-t="preparing">در حال آماده‌سازی...</h2><p data-t="preparingText">فعلا درحال آماده‌سازی است لطفا صبوری کنید .... 🗒</p></div></section>
-<section id="preparing3" class="page"><div class="card"><button class="back" onclick="goBack()">← برگشت</button><h2 data-t="preparing">در حال آماده‌سازی...</h2><p data-t="preparingText">فعلا درحال آماده‌سازی است لطفا صبوری کنید .... 🗒</p></div></section>
-<section id="preparing4" class="page"><div class="card"><button class="back" onclick="goBack()">← برگشت</button><h2 data-t="preparing">در حال آماده‌سازی...</h2><p data-t="preparingText">فعلا درحال آماده‌سازی است لطفا صبوری کنید .... 🗒</p></div></section>
+<section id="preparing1" class="page"><div class="card"><button class="back" onclick="goBack()" data-t="back">← برگشت</button><h2 data-t="preparing">Preparing...</h2><p data-t="preparingDesc">فعلا درحال آماده‌سازی است لطفا صبوری کنید .... 🗒</p></div></section>
+<section id="preparing2" class="page"><div class="card"><button class="back" onclick="goBack()" data-t="back">← برگشت</button><h2 data-t="preparing">Preparing...</h2><p data-t="preparingDesc">فعلا درحال آماده‌سازی است لطفا صبوری کنید .... 🗒</p></div></section>
+<section id="preparing3" class="page"><div class="card"><button class="back" onclick="goBack()" data-t="back">← برگشت</button><h2 data-t="preparing">Preparing...</h2><p data-t="preparingDesc">فعلا درحال آماده‌سازی است لطفا صبوری کنید .... 🗒</p></div></section>
+<section id="preparing4" class="page"><div class="card"><button class="back" onclick="goBack()" data-t="back">← برگشت</button><h2 data-t="preparing">Preparing...</h2><p data-t="preparingDesc">فعلا درحال آماده‌سازی است لطفا صبوری کنید .... 🗒</p></div></section>
 
 <footer>
   InfoZHNERAL | ZHNERAL | ژنرال<br>
-  © ZHNERAL 2026 — تمامی حقوق محفوظ است.
+  © ZHNERAL 2026 — <span data-t="rights">تمامی حقوق محفوظ است.</span>
 </footer>
 </main>
 </div>
@@ -556,67 +474,395 @@ function showPage(id,button){
 function goBack(){showPage(previousPage||'home')}
 function toggleMenu(){document.getElementById('sidebar').classList.toggle('open')}
 
-const languageNames={
-  fa:'فارسی',en:'English',ar:'العربية','zh-CN':'中文',es:'Español',
-  fr:'Français',de:'Deutsch',ru:'Русский',pt:'Português',it:'Italiano',
-  tr:'Türkçe',ja:'日本語',ko:'한국어',hi:'हिन्दी',bn:'বাংলা',
-  ur:'اردو',id:'Bahasa Indonesia',vi:'Tiếng Việt',th:'ไทย',nl:'Nederlands'
+/* ترجمه‌های ۲۰ زبان */
+const translations={
+fa:{
+home:"Home",language:"زبان",intermediation:"واسطه‌گری",union:"اتحادیه واسطه‌گری",axe:"تبر واسطه‌ها",rules:"قوانین واسطه‌گری ژنرال",store:"شاپ ژنرال",preparing:"در حال آماده‌سازی...",
+menu:"☰ منو",official:"ⓘ ژنرال | سایت رسمی",heroTitle:"InfoZHNERAL | سایت رسمی ژنرال",general:"ژنرال",
+heroDesc:"سایت معرفی ژنرال و ZHNERAL؛ اطلاعات، بازار، واسطه‌ها و راه‌های ارتباطی.",
+benefits:"مزایای معامله با تیم ژنرال",benefitsDesc:"تیم ژنرال با هدف ارائه خدمات حرفه‌ای، ایجاد تجربه‌ای مطمئن و تسهیل معاملات فعالیت می‌کند.",benefitsLine:"تیم ژنرال = معامله‌ای امن و پرسود",
+about:"درباره InfoZHNERAL",welcome:"به سایت رسمی InfoZHNERAL و ژنرال خوش آمدید.",aboutDesc:"در این سایت می‌توانید اطلاعات مربوط به ژنرال، بازار ژنرال، لیست واسطه‌ها و راه‌های ارتباطی را مشاهده کنید.",
+channel:"قفلی",shop:"شاپ",market:"بازار",contact:"ارتباط",marketTitle:"بازار ژنرال",marketDesc:"بهترین خرید و فروش را با تیم واسطه‌گری ژنرال انجام دهید.",
+fastDelivery:"تحویل‌دهی در سریع‌ترین زمان ممکن",bestBuyer:"فروش به بالاترین خریدار",fairPrice:"خرید و فروش با قیمت منصفانه",trusted:"واسطه‌های معتبر",
+intermediaries:"لیست واسطه‌ها",trustText:"😎 » ما به شما تضمین امنیت و اعتماد در تمامی معاملات می‌دهیم. به جمع ما بپیوندید و تجربه‌ای مطمئن از معامله کردن با ما داشته باشید 👮‍♂️ ➦ @PV_ZHNERAL » 💸",
+professional:"• واسطه‌های ژنرال در چارچوب مقررات و با رویکردی حرفه‌ای فعالیت می‌کنند. 🔖",services:"خدمات مرتبط با هماهنگی و تسهیل معاملات را ارائه می‌دهند. 🔗",transparency:"رعایت اصول شفافیت، امانت‌داری و پاسخگویی، مبنای فعالیت این مجموعه است. 🗓",
+joinIntermediaries:"ورود به کانال واسطه‌ها",warning:"تــبر خــوردید فقط 25 درصــدخــسارت مــیدیم فقط اگر احــراز هــم داشــته باشــیم میدیم. جا خســارت لـطفــا طــبق اعــتماد خـــودتون پــیش بــرید. تــبر خـــوردید فــقط پـــیوی مـالـک اعــلام کـــنید. احــراز واســطه رو اگــر داشتیــم تــقــدیم کـــنیم! 🔥✋ @PV_ZHNERAL",
+faq:"سوالات متداول",q1:"چطوری اعتماد کنیم؟",a1:"برای بررسی واسطه‌ها و اطلاعات مجموعه، از کانال‌های رسمی ژنرال استفاده کنید.",q2:"نگران تبر خوردن نباشیم؟",a2:"قبل از معامله، قوانین و شرایط را با دقت بررسی کنید.",q3:"واسطه‌های معتبر کیا هستن؟",a3:"لیست واسطه‌ها را از کانال رسمی واسطه‌های ژنرال بررسی کنید.",q4:"تبر خوردیم چی میشه؟",a4:"موضوع را از طریق ارتباط رسمی پیگیری کنید.",
+back:"← برگشت",chooseLanguage:"زبان موردنظر خود را انتخاب کنید.",saved:"زبان انتخاب‌شده ذخیره می‌شود.",teamRoster:"فهرست واسطه‌های ژنرال و شناسه‌های رسمی آن‌ها در این بخش قرار دارد.",
+joinChannel:"ورود به کانال",warningShort:"در صورت بروز مشکل، شرایط معامله را بررسی کنید و برای پیگیری به مالک پیام دهید: @PV_ZHNERAL",
+trustShort:"😎 » ما به شما تضمین امنیت و اعتماد در تمامی معاملات می‌دهیم.",joinUs:"به جمع ما بپیوندید و تجربه‌ای مطمئن از معامله کردن را با ما داشته باشید 👮‍♂️",
+unionWarning:"پیش از معامله شرایط را بررسی کنید. 🔥✋ @PV_ZHNERAL",rubikaUnion:"ورود به اتحادیه در روبیکا",
+complaint:"اگر از واسطه‌ای شکایت دارید، مدرک، اطلاعات معامله و قیمت را برای بررسی به @PV_ZHNERAL ارسال کنید. ⭕️",
+warningRules:"پیش از معامله شرایط را بررسی کنید. در صورت بروز مشکل فقط به مالک پیام دهید: @PV_ZHNERAL",
+moreInfo:"جهت اطلاعات بیشتر به پیوی مراجعه کنید:",storeWelcome:"به مارکت اصلی ژنرال خوش آمدید ❣",storeDesc:"بیشتر محصول‌ها در روبیکا آگهی می‌شوند. اگر قصد خرید یا فروش دارید، به مارکت سر بزنید.",
+preparingDesc:"فعلا درحال آماده‌سازی است لطفا صبوری کنید .... 🗒",rights:"تمامی حقوق محفوظ است."
+},
+en:{
+home:"Home",language:"Language",intermediation:"Intermediation",union:"Intermediary Union",axe:"Intermediary Reports",rules:"General Brokerage Rules",store:"General Store",preparing:"Preparing...",
+menu:"☰ Menu",official:"ⓘ ZHNERAL | Official Website",heroTitle:"InfoZHNERAL | Official ZHNERAL Website",general:"ZHNERAL",
+heroDesc:"The InfoZHNERAL website: information, marketplace, intermediaries and contact links.",
+benefits:"Benefits of Trading with the ZHNERAL Team",benefitsDesc:"The ZHNERAL team aims to provide professional services and help make transactions more reliable.",benefitsLine:"ZHNERAL Team = Safer, smoother trading",
+about:"About InfoZHNERAL",welcome:"Welcome to the official InfoZHNERAL and ZHNERAL website.",aboutDesc:"Find information about ZHNERAL, its marketplace, intermediary list and contact links here.",
+channel:"Channel",shop:"Shop",market:"Market",contact:"Contact",marketTitle:"ZHNERAL Marketplace",marketDesc:"Buy and sell with the ZHNERAL intermediary team.",
+fastDelivery:"Fast delivery",bestBuyer:"Sell to the highest bidder",fairPrice:"Fair-price trading",trusted:"Trusted intermediaries",
+intermediaries:"Intermediary List",trustText:"😎 » We aim to support safer, more reliable transactions. Join us and trade with care. 👮‍♂️ ➦ @PV_ZHNERAL » 💸",
+professional:"• ZHNERAL intermediaries work professionally and within stated rules. 🔖",services:"They help coordinate and facilitate transactions. 🔗",transparency:"Transparency, integrity and accountability guide this team. 🗓",
+joinIntermediaries:"Join the intermediary channel",warning:"Please check the terms before trading. Compensation is limited and may require verification. Contact the owner for follow-up: @PV_ZHNERAL 🔥✋",
+faq:"Frequently Asked Questions",q1:"How can I build trust?",a1:"Use ZHNERAL's official channels to review intermediaries and information.",q2:"How can I reduce transaction risks?",a2:"Carefully review the rules and terms before trading.",q3:"Who are the trusted intermediaries?",a3:"Check the official ZHNERAL intermediary channel.",q4:"What if a problem occurs?",a4:"Follow up through the official contact channel.",
+back:"← Back",chooseLanguage:"Choose your preferred language.",saved:"Your selected language is saved.",teamRoster:"The ZHNERAL intermediary roster and official account IDs are listed in this section.",
+joinChannel:"Join the channel",warningShort:"Review the transaction terms and contact the owner for assistance: @PV_ZHNERAL",
+trustShort:"😎 » We aim to support safer and more reliable transactions.",joinUs:"Join us for a more reliable trading experience. 👮‍♂️",
+unionWarning:"Review the terms before making a transaction. 🔥✋ @PV_ZHNERAL",rubikaUnion:"Open the union on Rubika",
+complaint:"To report an intermediary, send evidence, transaction details and price information to @PV_ZHNERAL. ⭕️",
+warningRules:"Review all terms before trading. If a problem occurs, contact the owner: @PV_ZHNERAL",
+moreInfo:"For more information, message:",storeWelcome:"Welcome to the main ZHNERAL marketplace ❣",storeDesc:"Most products are listed on Rubika. Visit the marketplace to buy or sell.",
+preparingDesc:"This section is being prepared. Please wait. 🗒",rights:"All rights reserved."
+},
+ar:{
+home:"الرئيسية",language:"اللغة",intermediation:"الوساطة",union:"اتحاد الوسطاء",axe:"بلاغات الوسطاء",rules:"قواعد وساطة ژنرال",store:"متجر ژنرال",preparing:"قيد الإعداد...",
+menu:"☰ القائمة",official:"ⓘ ژنرال | الموقع الرسمي",heroTitle:"InfoZHNERAL | الموقع الرسمي لژنرال",general:"ژنرال",
+heroDesc:"موقع ژنرال للمعلومات والسوق والوسطاء وطرق التواصل.",benefits:"مزايا التداول مع فريق ژنرال",benefitsDesc:"يهدف فريق ژنرال إلى تقديم خدمات احترافية وتسهيل المعاملات.",benefitsLine:"فريق ژنرال = تداول أكثر أمانًا",
+about:"حول InfoZHNERAL",welcome:"مرحبًا بكم في موقع ژنرال الرسمي.",aboutDesc:"يمكنك العثور هنا على معلومات ژنرال والسوق والوسطاء وطرق التواصل.",
+channel:"القناة",shop:"المتجر",market:"السوق",contact:"التواصل",marketTitle:"سوق ژنرال",marketDesc:"اشترِ وبع مع فريق وساطة ژنرال.",
+fastDelivery:"تسليم سريع",bestBuyer:"البيع لأعلى سعر",fairPrice:"أسعار عادلة",trusted:"وسطاء موثوقون",
+intermediaries:"قائمة الوسطاء",trustText:"😎 » نسعى إلى دعم معاملات أكثر أمانًا وموثوقية. انضم إلينا وتداول بحذر. ➦ @PV_ZHNERAL",
+professional:"• يعمل الوسطاء وفق القواعد وبأسلوب احترافي.",services:"يساعدون في تنسيق المعاملات وتسهيلها.",transparency:"الشفافية والأمانة والمسؤولية أساس عمل الفريق.",
+joinIntermediaries:"الدخول إلى قناة الوسطاء",warning:"يرجى مراجعة الشروط قبل التداول. للتواصل والمتابعة: @PV_ZHNERAL",
+faq:"الأسئلة الشائعة",q1:"كيف يمكنني الوثوق؟",a1:"راجع القنوات الرسمية لژنرال.",q2:"كيف أقلل مخاطر التداول؟",a2:"اقرأ الشروط بعناية قبل المعاملة.",q3:"من هم الوسطاء الموثوقون؟",a3:"راجع قناة الوسطاء الرسمية.",q4:"ماذا أفعل عند حدوث مشكلة؟",a4:"تواصل عبر القنوات الرسمية.",
+back:"رجوع ←",chooseLanguage:"اختر اللغة التي تفضلها.",saved:"تم حفظ اللغة المختارة.",teamRoster:"تجد هنا قائمة الوسطاء ومعرّفات حساباتهم الرسمية.",
+joinChannel:"الدخول إلى القناة",warningShort:"راجع شروط المعاملة وتواصل مع المالك: @PV_ZHNERAL",
+trustShort:"نسعى إلى دعم معاملات أكثر أمانًا.",joinUs:"انضم إلينا لتجربة تداول أكثر موثوقية.",
+unionWarning:"راجع الشروط قبل المعاملة. @PV_ZHNERAL",rubikaUnion:"فتح الاتحاد على روبيكا",
+complaint:"للشكوى، أرسل الأدلة وتفاصيل المعاملة إلى @PV_ZHNERAL.",
+warningRules:"راجع الشروط قبل التداول، وتواصل مع المالك عند حدوث مشكلة: @PV_ZHNERAL",
+moreInfo:"لمزيد من المعلومات راسل:",storeWelcome:"مرحبًا بك في سوق ژنرال ❣",storeDesc:"تُنشر معظم المنتجات على روبيكا. تفضل إلى السوق للشراء أو البيع.",
+preparingDesc:"هذا القسم قيد الإعداد. يرجى الانتظار.",rights:"جميع الحقوق محفوظة."
+},
+zh:{
+home:"首页",language:"语言",intermediation:"中介服务",union:"中介联盟",axe:"中介举报",rules:"中介规则",store:"General 商店",preparing:"准备中…",
+menu:"☰ 菜单",official:"ⓘ ژنرال | 官方网站",heroTitle:"InfoZHNERAL | ژنرال官方网站",general:"ژنرال",
+heroDesc:"提供 ژنرال 信息、市场、中介名单和联系方式。",benefits:"与 ژنرال 团队交易的优势",benefitsDesc:"团队致力于提供专业服务并协助交易。",benefitsLine:"ژنرال 团队：让交易更安心",
+about:"关于 InfoZHNERAL",welcome:"欢迎访问 InfoZHNERAL 官方网站。",aboutDesc:"在这里查看 ژنرال 信息、市场、中介名单和联系方式。",
+channel:"频道",shop:"商店",market:"市场",contact:"联系",marketTitle:"ژنرال 市场",marketDesc:"通过 ژنرال 中介团队买卖。",
+fastDelivery:"快速交付",bestBuyer:"卖给出价最高者",fairPrice:"公平价格",trusted:"可信中介",
+intermediaries:"中介名单",trustText:"😎 » 我们致力于让交易更安全可靠。欢迎加入，请谨慎交易。 ➦ @PV_ZHNERAL",
+professional:"• 中介团队依照规则开展专业服务。",services:"协助协调并简化交易。",transparency:"透明、诚信和负责是团队的工作原则。",
+joinIntermediaries:"进入中介频道",warning:"交易前请仔细查看条件。需要协助请联系负责人：@PV_ZHNERAL",
+faq:"常见问题",q1:"如何建立信任？",a1:"请查看 ژنرال 官方频道。",q2:"如何降低交易风险？",a2:"交易前仔细阅读规则。",q3:"哪些中介可信？",a3:"请查看官方中介频道。",q4:"遇到问题怎么办？",a4:"请通过官方渠道联系。",
+back:"← 返回",chooseLanguage:"请选择语言。",saved:"已保存所选语言。",teamRoster:"此处列出中介名单和官方账号。",joinChannel:"进入频道",warningShort:"请查看交易条件并联系负责人：@PV_ZHNERAL",
+trustShort:"我们致力于让交易更安全可靠。",joinUs:"欢迎加入我们，体验更可靠的交易。",unionWarning:"交易前请查看条件。@PV_ZHNERAL",rubikaUnion:"在 Rubika 打开联盟",
+complaint:"投诉中介时，请将证据和交易详情发送给 @PV_ZHNERAL。",warningRules:"交易前请查看规则。如有问题请联系负责人：@PV_ZHNERAL",
+moreInfo:"更多信息请私信：",storeWelcome:"欢迎来到 ژنرال 主市场 ❣",storeDesc:"大多数商品发布在 Rubika。请前往市场购买或出售。",
+preparingDesc:"此页面正在准备中，请稍候。",rights:"版权所有。"
+},
+es:{
+home:"Inicio",language:"Idioma",intermediation:"Intermediación",union:"Unión de intermediarios",axe:"Denuncias de intermediarios",rules:"Reglas de intermediación",store:"Tienda General",preparing:"En preparación...",
+menu:"☰ Menú",official:"ⓘ ZHNERAL | Sitio oficial",heroTitle:"InfoZHNERAL | Sitio oficial de ZHNERAL",general:"ZHNERAL",
+heroDesc:"Información de ZHNERAL, mercado, intermediarios y contacto.",benefits:"Ventajas de operar con el equipo ZHNERAL",benefitsDesc:"El equipo busca ofrecer servicios profesionales y facilitar las transacciones.",benefitsLine:"Equipo ZHNERAL = operaciones más seguras",
+about:"Acerca de InfoZHNERAL",welcome:"Bienvenido al sitio oficial de InfoZHNERAL.",aboutDesc:"Consulta información, mercado, intermediarios y contactos de ZHNERAL.",
+channel:"Canal",shop:"Tienda",market:"Mercado",contact:"Contacto",marketTitle:"Mercado ZHNERAL",marketDesc:"Compra y vende con el equipo intermediario ZHNERAL.",
+fastDelivery:"Entrega rápida",bestBuyer:"Venta al mejor postor",fairPrice:"Precios justos",trusted:"Intermediarios fiables",
+intermediaries:"Lista de intermediarios",trustText:"😎 » Buscamos facilitar transacciones más seguras. Únete y opera con precaución. ➦ @PV_ZHNERAL",
+professional:"• Los intermediarios trabajan profesionalmente y según las normas.",services:"Ayudan a coordinar y facilitar las transacciones.",transparency:"La transparencia, integridad y responsabilidad guían al equipo.",
+joinIntermediaries:"Entrar al canal de intermediarios",warning:"Revisa las condiciones antes de operar. Para asistencia, contacta al responsable: @PV_ZHNERAL",
+faq:"Preguntas frecuentes",q1:"¿Cómo puedo confiar?",a1:"Consulta los canales oficiales de ZHNERAL.",q2:"¿Cómo reduzco los riesgos?",a2:"Lee las condiciones antes de operar.",q3:"¿Quiénes son los intermediarios fiables?",a3:"Consulta el canal oficial.",q4:"¿Qué hago si surge un problema?",a4:"Contacta por los canales oficiales.",
+back:"← Volver",chooseLanguage:"Elige tu idioma.",saved:"Idioma guardado.",teamRoster:"Aquí aparece la lista de intermediarios y sus cuentas oficiales.",joinChannel:"Entrar al canal",warningShort:"Revisa las condiciones y contacta al responsable: @PV_ZHNERAL",
+trustShort:"Buscamos facilitar transacciones más seguras.",joinUs:"Únete para una experiencia de compraventa más fiable.",unionWarning:"Revisa las condiciones antes de operar. @PV_ZHNERAL",rubikaUnion:"Abrir la unión en Rubika",
+complaint:"Para presentar una queja, envía pruebas y detalles a @PV_ZHNERAL.",warningRules:"Revisa las normas antes de operar. Si hay problemas, contacta al responsable: @PV_ZHNERAL",
+moreInfo:"Para más información, escribe a:",storeWelcome:"¡Bienvenido al mercado principal de ZHNERAL! ❣",storeDesc:"La mayoría de los productos se anuncian en Rubika. Visita el mercado para comprar o vender.",
+preparingDesc:"Esta sección está en preparación. Espera, por favor.",rights:"Todos los derechos reservados."
+},
+fr:{
+home:"Accueil",language:"Langue",intermediation:"Intermédiation",union:"Union des intermédiaires",axe:"Signalement",rules:"Règles de courtage",store:"Boutique General",preparing:"En préparation...",
+menu:"☰ Menu",official:"ⓘ ZHNERAL | Site officiel",heroTitle:"InfoZHNERAL | Site officiel de ZHNERAL",general:"ZHNERAL",
+heroDesc:"Informations sur ZHNERAL, son marché, ses intermédiaires et ses contacts.",benefits:"Avantages des transactions avec ZHNERAL",benefitsDesc:"L’équipe vise à fournir des services professionnels et à faciliter les transactions.",benefitsLine:"Équipe ZHNERAL = transactions plus sûres",
+about:"À propos d’InfoZHNERAL",welcome:"Bienvenue sur le site officiel d’InfoZHNERAL.",aboutDesc:"Retrouvez les informations, le marché, la liste des intermédiaires et les contacts.",
+channel:"Canal",shop:"Boutique",market:"Marché",contact:"Contact",marketTitle:"Marché ZHNERAL",marketDesc:"Achetez et vendez avec l’équipe d’intermédiaires ZHNERAL.",
+fastDelivery:"Livraison rapide",bestBuyer:"Vente au plus offrant",fairPrice:"Prix équitables",trusted:"Intermédiaires fiables",
+intermediaries:"Liste des intermédiaires",trustText:"😎 » Nous cherchons à rendre les transactions plus fiables. Rejoignez-nous et restez prudent. ➦ @PV_ZHNERAL",
+professional:"• Les intermédiaires travaillent professionnellement selon les règles.",services:"Ils aident à coordonner et faciliter les transactions.",transparency:"La transparence, l’intégrité et la responsabilité guident l’équipe.",
+joinIntermediaries:"Accéder au canal des intermédiaires",warning:"Vérifiez les conditions avant toute transaction. Pour toute aide, contactez le responsable : @PV_ZHNERAL",
+faq:"Questions fréquentes",q1:"Comment faire confiance ?",a1:"Consultez les canaux officiels de ZHNERAL.",q2:"Comment réduire les risques ?",a2:"Lisez attentivement les règles avant de traiter.",q3:"Qui sont les intermédiaires fiables ?",a3:"Consultez le canal officiel.",q4:"Que faire en cas de problème ?",a4:"Contactez les canaux officiels.",
+back:"← Retour",chooseLanguage:"Choisissez votre langue.",saved:"Langue enregistrée.",teamRoster:"La liste des intermédiaires et leurs comptes officiels figurent ici.",joinChannel:"Accéder au canal",warningShort:"Vérifiez les conditions et contactez le responsable : @PV_ZHNERAL",
+trustShort:"Nous cherchons à rendre les transactions plus fiables.",joinUs:"Rejoignez-nous pour une expérience plus sûre.",unionWarning:"Vérifiez les conditions avant la transaction. @PV_ZHNERAL",rubikaUnion:"Ouvrir l’union sur Rubika",
+complaint:"Pour signaler un intermédiaire, envoyez les preuves et détails à @PV_ZHNERAL.",warningRules:"Vérifiez les règles avant de traiter. En cas de problème, contactez le responsable : @PV_ZHNERAL",
+moreInfo:"Pour plus d’informations, écrivez à :",storeWelcome:"Bienvenue sur le marché principal de ZHNERAL ❣",storeDesc:"La plupart des produits sont publiés sur Rubika. Consultez le marché pour acheter ou vendre.",
+preparingDesc:"Cette section est en préparation. Merci de patienter.",rights:"Tous droits réservés."
+},
+de:{
+home:"Startseite",language:"Sprache",intermediation:"Vermittlung",union:"Vermittlerverband",axe:"Meldungen",rules:"Vermittlungsregeln",store:"General-Shop",preparing:"In Vorbereitung...",
+menu:"☰ Menü",official:"ⓘ ZHNERAL | Offizielle Website",heroTitle:"InfoZHNERAL | Offizielle ZHNERAL-Website",general:"ZHNERAL",
+heroDesc:"Informationen zu ZHNERAL, Marktplatz, Vermittlern und Kontaktmöglichkeiten.",benefits:"Vorteile beim Handel mit ZHNERAL",benefitsDesc:"Das Team möchte professionelle Dienste anbieten und Transaktionen erleichtern.",benefitsLine:"ZHNERAL-Team = sicherer handeln",
+about:"Über InfoZHNERAL",welcome:"Willkommen auf der offiziellen InfoZHNERAL-Website.",aboutDesc:"Hier findest du Informationen, Marktplatz, Vermittlerliste und Kontakte.",
+channel:"Kanal",shop:"Shop",market:"Markt",contact:"Kontakt",marketTitle:"ZHNERAL-Marktplatz",marketDesc:"Kaufe und verkaufe mit dem ZHNERAL-Vermittlerteam.",
+fastDelivery:"Schnelle Lieferung",bestBuyer:"Verkauf an Höchstbietende",fairPrice:"Faire Preise",trusted:"Vertrauenswürdige Vermittler",
+intermediaries:"Vermittlerliste",trustText:"😎 » Wir möchten zuverlässigere Transaktionen unterstützen. Sei dabei und handle vorsichtig. ➦ @PV_ZHNERAL",
+professional:"• Vermittler arbeiten professionell und nach den geltenden Regeln.",services:"Sie helfen bei der Koordination und Abwicklung von Geschäften.",transparency:"Transparenz, Integrität und Verantwortung sind zentrale Grundsätze.",
+joinIntermediaries:"Zum Vermittlerkanal",warning:"Prüfe die Bedingungen vor dem Handel. Bei Fragen kontaktiere den Verantwortlichen: @PV_ZHNERAL",
+faq:"Häufige Fragen",q1:"Wie kann ich vertrauen?",a1:"Nutze die offiziellen ZHNERAL-Kanäle.",q2:"Wie reduziere ich Risiken?",a2:"Lies die Bedingungen vor dem Handel sorgfältig.",q3:"Wer sind zuverlässige Vermittler?",a3:"Sieh im offiziellen Vermittlerkanal nach.",q4:"Was tun bei Problemen?",a4:"Kontaktiere die offiziellen Kanäle.",
+back:"← Zurück",chooseLanguage:"Wähle deine Sprache.",saved:"Sprache gespeichert.",teamRoster:"Hier stehen die Vermittlerliste und ihre offiziellen Konten.",joinChannel:"Zum Kanal",warningShort:"Prüfe die Bedingungen und kontaktiere den Verantwortlichen: @PV_ZHNERAL",
+trustShort:"Wir möchten zuverlässigere Transaktionen unterstützen.",joinUs:"Mach mit und handle zuverlässiger.",unionWarning:"Prüfe die Bedingungen vor dem Handel. @PV_ZHNERAL",rubikaUnion:"Verband auf Rubika öffnen",
+complaint:"Sende Belege und Transaktionsdetails für eine Beschwerde an @PV_ZHNERAL.",warningRules:"Prüfe die Regeln vor dem Handel. Bei Problemen kontaktiere den Verantwortlichen: @PV_ZHNERAL",
+moreInfo:"Für weitere Informationen schreibe an:",storeWelcome:"Willkommen auf dem ZHNERAL-Marktplatz ❣",storeDesc:"Die meisten Produkte werden auf Rubika angeboten. Besuche den Markt zum Kaufen oder Verkaufen.",
+preparingDesc:"Dieser Bereich wird vorbereitet. Bitte warte.",rights:"Alle Rechte vorbehalten."
+},
+ru:{
+home:"Главная",language:"Язык",intermediation:"Посредничество",union:"Союз посредников",axe:"Жалобы на посредников",rules:"Правила посредничества",store:"Магазин General",preparing:"В разработке...",
+menu:"☰ Меню",official:"ⓘ ZHNERAL | Официальный сайт",heroTitle:"InfoZHNERAL | Официальный сайт ZHNERAL",general:"ZHNERAL",
+heroDesc:"Информация о ZHNERAL, рынке, посредниках и контактах.",benefits:"Преимущества работы с командой ZHNERAL",benefitsDesc:"Команда стремится предоставлять профессиональные услуги и упрощать сделки.",benefitsLine:"Команда ZHNERAL = более безопасные сделки",
+about:"Об InfoZHNERAL",welcome:"Добро пожаловать на официальный сайт InfoZHNERAL.",aboutDesc:"Здесь вы найдёте информацию, рынок, список посредников и контакты.",
+channel:"Канал",shop:"Магазин",market:"Рынок",contact:"Контакты",marketTitle:"Рынок ZHNERAL",marketDesc:"Покупайте и продавайте с командой посредников ZHNERAL.",
+fastDelivery:"Быстрая доставка",bestBuyer:"Продажа по наивысшей цене",fairPrice:"Справедливые цены",trusted:"Надёжные посредники",
+intermediaries:"Список посредников",trustText:"😎 » Мы стремимся сделать сделки надёжнее. Присоединяйтесь и соблюдайте осторожность. ➦ @PV_ZHNERAL",
+professional:"• Посредники работают профессионально и по правилам.",services:"Они помогают координировать и упрощать сделки.",transparency:"Прозрачность, честность и ответственность — основы команды.",
+joinIntermediaries:"Открыть канал посредников",warning:"Проверьте условия перед сделкой. Для помощи обратитесь к владельцу: @PV_ZHNERAL",
+faq:"Частые вопросы",q1:"Как доверять?",a1:"Используйте официальные каналы ZHNERAL.",q2:"Как снизить риски?",a2:"Внимательно изучите правила перед сделкой.",q3:"Кто надёжные посредники?",a3:"Проверьте официальный канал посредников.",q4:"Что делать при проблеме?",a4:"Обратитесь через официальные каналы.",
+back:"← Назад",chooseLanguage:"Выберите язык.",saved:"Язык сохранён.",teamRoster:"Здесь указан список посредников и их официальные аккаунты.",joinChannel:"Открыть канал",warningShort:"Проверьте условия и свяжитесь с владельцем: @PV_ZHNERAL",
+trustShort:"Мы стремимся сделать сделки надёжнее.",joinUs:"Присоединяйтесь для более надёжной торговли.",unionWarning:"Проверьте условия перед сделкой. @PV_ZHNERAL",rubikaUnion:"Открыть союз в Rubika",
+complaint:"Для жалобы отправьте доказательства и сведения о сделке в @PV_ZHNERAL.",warningRules:"Изучите правила перед сделкой. При проблеме свяжитесь с владельцем: @PV_ZHNERAL",
+moreInfo:"Для дополнительной информации напишите:",storeWelcome:"Добро пожаловать на главный рынок ZHNERAL ❣",storeDesc:"Большинство товаров размещается в Rubika. Посетите рынок для покупки или продажи.",
+preparingDesc:"Раздел находится в разработке. Пожалуйста, подождите.",rights:"Все права защищены."
+},
+pt:{
+home:"Início",language:"Idioma",intermediation:"Intermediação",union:"União de intermediários",axe:"Denúncias",rules:"Regras de intermediação",store:"Loja General",preparing:"Em preparação...",
+menu:"☰ Menu",official:"ⓘ ZHNERAL | Site oficial",heroTitle:"InfoZHNERAL | Site oficial ZHNERAL",general:"ZHNERAL",
+heroDesc:"Informações sobre ZHNERAL, mercado, intermediários e contatos.",benefits:"Vantagens de negociar com a equipe ZHNERAL",benefitsDesc:"A equipe busca oferecer serviços profissionais e facilitar transações.",benefitsLine:"Equipe ZHNERAL = negociações mais seguras",
+about:"Sobre InfoZHNERAL",welcome:"Bem-vindo ao site oficial InfoZHNERAL.",aboutDesc:"Consulte informações, mercado, lista de intermediários e contatos.",
+channel:"Canal",shop:"Loja",market:"Mercado",contact:"Contato",marketTitle:"Mercado ZHNERAL",marketDesc:"Compre e venda com a equipe de intermediários ZHNERAL.",
+fastDelivery:"Entrega rápida",bestBuyer:"Venda ao maior lance",fairPrice:"Preços justos",trusted:"Intermediários confiáveis",
+intermediaries:"Lista de intermediários",trustText:"😎 » Buscamos apoiar transações mais seguras. Junte-se a nós e negocie com cuidado. ➦ @PV_ZHNERAL",
+professional:"• Os intermediários trabalham profissionalmente e seguem as regras.",services:"Ajudam a coordenar e facilitar transações.",transparency:"Transparência, integridade e responsabilidade orientam a equipe.",
+joinIntermediaries:"Entrar no canal de intermediários",warning:"Confira as condições antes de negociar. Para ajuda, fale com o responsável: @PV_ZHNERAL",
+faq:"Perguntas frequentes",q1:"Como confiar?",a1:"Consulte os canais oficiais ZHNERAL.",q2:"Como reduzir riscos?",a2:"Leia as regras antes de negociar.",q3:"Quem são os intermediários confiáveis?",a3:"Consulte o canal oficial.",q4:"O que fazer se houver um problema?",a4:"Entre em contato pelos canais oficiais.",
+back:"← Voltar",chooseLanguage:"Escolha seu idioma.",saved:"Idioma salvo.",teamRoster:"Esta seção contém a lista de intermediários e suas contas oficiais.",joinChannel:"Entrar no canal",warningShort:"Confira as condições e fale com o responsável: @PV_ZHNERAL",
+trustShort:"Buscamos apoiar transações mais seguras.",joinUs:"Junte-se a nós para uma experiência de negociação mais confiável.",unionWarning:"Confira as condições antes da negociação. @PV_ZHNERAL",rubikaUnion:"Abrir a união no Rubika",
+complaint:"Para denunciar um intermediário, envie provas e detalhes para @PV_ZHNERAL.",warningRules:"Confira as regras antes de negociar. Em caso de problema, fale com o responsável: @PV_ZHNERAL",
+moreInfo:"Para mais informações, envie mensagem para:",storeWelcome:"Bem-vindo ao mercado principal ZHNERAL ❣",storeDesc:"A maioria dos produtos é anunciada no Rubika. Visite o mercado para comprar ou vender.",
+preparingDesc:"Esta seção está sendo preparada. Aguarde, por favor.",rights:"Todos os direitos reservados."
+},
+it:{
+home:"Home",language:"Lingua",intermediation:"Intermediazione",union:"Unione intermediari",axe:"Segnalazioni",rules:"Regole di intermediazione",store:"Negozio General",preparing:"In preparazione...",
+menu:"☰ Menu",official:"ⓘ ZHNERAL | Sito ufficiale",heroTitle:"InfoZHNERAL | Sito ufficiale ZHNERAL",general:"ZHNERAL",
+heroDesc:"Informazioni su ZHNERAL, mercato, intermediari e contatti.",benefits:"Vantaggi delle transazioni con ZHNERAL",benefitsDesc:"Il team mira a offrire servizi professionali e facilitare le transazioni.",benefitsLine:"Team ZHNERAL = transazioni più sicure",
+about:"Informazioni su InfoZHNERAL",welcome:"Benvenuto nel sito ufficiale InfoZHNERAL.",aboutDesc:"Consulta informazioni, mercato, elenco intermediari e contatti.",
+channel:"Canale",shop:"Negozio",market:"Mercato",contact:"Contatto",marketTitle:"Mercato ZHNERAL",marketDesc:"Compra e vendi con il team di intermediari ZHNERAL.",
+fastDelivery:"Consegna rapida",bestBuyer:"Vendita al miglior offerente",fairPrice:"Prezzi equi",trusted:"Intermediari affidabili",
+intermediaries:"Elenco intermediari",trustText:"😎 » Puntiamo a transazioni più sicure. Unisciti a noi e fai attenzione. ➦ @PV_ZHNERAL",
+professional:"• Gli intermediari lavorano in modo professionale e secondo le regole.",services:"Aiutano a coordinare e facilitare le transazioni.",transparency:"Trasparenza, integrità e responsabilità guidano il team.",
+joinIntermediaries:"Apri il canale degli intermediari",warning:"Controlla le condizioni prima di una transazione. Per assistenza contatta il responsabile: @PV_ZHNERAL",
+faq:"Domande frequenti",q1:"Come posso fidarmi?",a1:"Consulta i canali ufficiali ZHNERAL.",q2:"Come ridurre i rischi?",a2:"Leggi attentamente le regole prima di trattare.",q3:"Chi sono gli intermediari affidabili?",a3:"Consulta il canale ufficiale.",q4:"Cosa fare se c'è un problema?",a4:"Contatta i canali ufficiali.",
+back:"← Indietro",chooseLanguage:"Scegli la lingua.",saved:"Lingua salvata.",teamRoster:"Qui trovi l'elenco degli intermediari e i loro account ufficiali.",joinChannel:"Apri il canale",warningShort:"Controlla le condizioni e contatta il responsabile: @PV_ZHNERAL",
+trustShort:"Puntiamo a transazioni più sicure.",joinUs:"Unisciti a noi per un'esperienza più affidabile.",unionWarning:"Controlla le condizioni prima della transazione. @PV_ZHNERAL",rubikaUnion:"Apri l'unione su Rubika",
+complaint:"Per segnalare un intermediario, invia prove e dettagli a @PV_ZHNERAL.",warningRules:"Controlla le regole prima di trattare. In caso di problemi, contatta il responsabile: @PV_ZHNERAL",
+moreInfo:"Per maggiori informazioni scrivi a:",storeWelcome:"Benvenuto nel mercato principale ZHNERAL ❣",storeDesc:"La maggior parte dei prodotti è pubblicata su Rubika. Visita il mercato per comprare o vendere.",
+preparingDesc:"Questa sezione è in preparazione. Attendi, per favore.",rights:"Tutti i diritti riservati."
+},
+tr:{
+home:"Ana Sayfa",language:"Dil",intermediation:"Aracılık",union:"Aracılar Birliği",axe:"Aracı Bildirimi",rules:"Aracılık Kuralları",store:"General Mağaza",preparing:"Hazırlanıyor...",
+menu:"☰ Menü",official:"ⓘ ZHNERAL | Resmî site",heroTitle:"InfoZHNERAL | Resmî ZHNERAL sitesi",general:"ZHNERAL",
+heroDesc:"ZHNERAL bilgileri, pazar, aracılar ve iletişim bağlantıları.",benefits:"ZHNERAL ekibiyle işlem yapmanın avantajları",benefitsDesc:"Ekip profesyonel hizmet sunmayı ve işlemleri kolaylaştırmayı amaçlar.",benefitsLine:"ZHNERAL ekibi = daha güvenli işlemler",
+about:"InfoZHNERAL hakkında",welcome:"InfoZHNERAL resmî sitesine hoş geldiniz.",aboutDesc:"ZHNERAL bilgilerini, pazarı, aracı listesini ve iletişim bilgilerini inceleyin.",
+channel:"Kanal",shop:"Mağaza",market:"Pazar",contact:"İletişim",marketTitle:"ZHNERAL Pazarı",marketDesc:"ZHNERAL aracılık ekibiyle alım satım yapın.",
+fastDelivery:"Hızlı teslimat",bestBuyer:"En yüksek teklife satış",fairPrice:"Adil fiyatlar",trusted:"Güvenilir aracılar",
+intermediaries:"Aracı listesi",trustText:"😎 » Daha güvenilir işlemler sağlamayı amaçlıyoruz. Katılın ve dikkatli işlem yapın. ➦ @PV_ZHNERAL",
+professional:"• Aracılar kurallara uygun ve profesyonel çalışır.",services:"İşlemlerin koordinasyonuna ve kolaylaştırılmasına yardımcı olurlar.",transparency:"Şeffaflık, dürüstlük ve sorumluluk temel ilkelerimizdir.",
+joinIntermediaries:"Aracı kanalına katıl",warning:"İşlemden önce koşulları kontrol edin. Yardım için sorumlu kişiye yazın: @PV_ZHNERAL",
+faq:"Sık sorulan sorular",q1:"Nasıl güvenebilirim?",a1:"ZHNERAL'in resmî kanallarını kullanın.",q2:"Riskleri nasıl azaltırım?",a2:"İşlemden önce kuralları dikkatle okuyun.",q3:"Güvenilir aracılar kimler?",a3:"Resmî aracı kanalını kontrol edin.",q4:"Sorun olursa ne yapmalıyım?",a4:"Resmî iletişim kanallarına başvurun.",
+back:"← Geri",chooseLanguage:"Tercih ettiğiniz dili seçin.",saved:"Dil kaydedildi.",teamRoster:"Aracı listesi ve resmî hesapları bu bölümde yer alır.",joinChannel:"Kanala katıl",warningShort:"Koşulları kontrol edin ve sorumlu kişiyle iletişime geçin: @PV_ZHNERAL",
+trustShort:"Daha güvenilir işlemler sağlamayı amaçlıyoruz.",joinUs:"Daha güvenilir bir alım satım deneyimi için bize katılın.",unionWarning:"İşlemden önce koşulları kontrol edin. @PV_ZHNERAL",rubikaUnion:"Birliği Rubika'da aç",
+complaint:"Şikâyet için kanıtları ve işlem bilgilerini @PV_ZHNERAL adresine gönderin.",warningRules:"İşlemden önce kuralları kontrol edin. Sorun olursa sorumlu kişiye yazın: @PV_ZHNERAL",
+moreInfo:"Daha fazla bilgi için mesaj gönderin:",storeWelcome:"ZHNERAL ana pazarına hoş geldiniz ❣",storeDesc:"Ürünlerin çoğu Rubika'da yayımlanır. Alım satım için pazarı ziyaret edin.",
+preparingDesc:"Bu bölüm hazırlanıyor. Lütfen bekleyin.",rights:"Tüm hakları saklıdır."
+},
+ja:{
+home:"ホーム",language:"言語",intermediation:"仲介サービス",union:"仲介者連盟",axe:"仲介者への報告",rules:"仲介ルール",store:"Generalショップ",preparing:"準備中...",
+menu:"☰ メニュー",official:"ⓘ ZHNERAL | 公式サイト",heroTitle:"InfoZHNERAL | ZHNERAL公式サイト",general:"ZHNERAL",
+heroDesc:"ZHNERALの情報、市場、仲介者、連絡先をご案内します。",benefits:"ZHNERALチームと取引するメリット",benefitsDesc:"専門的なサービスを提供し、取引を円滑にすることを目指しています。",benefitsLine:"ZHNERALチーム＝より安心な取引",
+about:"InfoZHNERALについて",welcome:"InfoZHNERAL公式サイトへようこそ。",aboutDesc:"ZHNERALの情報、市場、仲介者一覧、連絡先を確認できます。",
+channel:"チャンネル",shop:"ショップ",market:"市場",contact:"連絡先",marketTitle:"ZHNERAL市場",marketDesc:"ZHNERALの仲介チームを通じて売買できます。",
+fastDelivery:"迅速な引き渡し",bestBuyer:"最高額の入札者へ販売",fairPrice:"公正な価格",trusted:"信頼できる仲介者",
+intermediaries:"仲介者一覧",trustText:"😎 » より安全で信頼できる取引を目指しています。参加して慎重に取引してください。 ➦ @PV_ZHNERAL",
+professional:"• 仲介者は規則に従い、専門的に活動します。",services:"取引の調整と円滑化を支援します。",transparency:"透明性、誠実さ、責任を大切にしています。",
+joinIntermediaries:"仲介者チャンネルへ",warning:"取引前に条件を確認してください。問い合わせ先：@PV_ZHNERAL",
+faq:"よくある質問",q1:"どうすれば信頼できますか？",a1:"ZHNERALの公式チャンネルを確認してください。",q2:"リスクを減らすには？",a2:"取引前に規則をよく読んでください。",q3:"信頼できる仲介者は？",a3:"公式仲介者チャンネルを確認してください。",q4:"問題が起きたら？",a4:"公式窓口から連絡してください。",
+back:"← 戻る",chooseLanguage:"言語を選択してください。",saved:"言語を保存しました。",teamRoster:"仲介者一覧と公式アカウントを掲載しています。",joinChannel:"チャンネルへ",warningShort:"条件を確認し、担当者へ連絡してください：@PV_ZHNERAL",
+trustShort:"より安全で信頼できる取引を目指しています。",joinUs:"より安心な取引体験のためにご参加ください。",unionWarning:"取引前に条件を確認してください。@PV_ZHNERAL",rubikaUnion:"Rubikaで連盟を開く",
+complaint:"苦情がある場合、証拠と取引情報を@PV_ZHNERALへ送信してください。",warningRules:"取引前に規則を確認し、問題があれば担当者へ連絡してください：@PV_ZHNERAL",
+moreInfo:"詳細はメッセージでお問い合わせください：",storeWelcome:"ZHNERALのメイン市場へようこそ ❣",storeDesc:"多くの商品はRubikaに掲載されています。売買するには市場をご覧ください。",
+preparingDesc:"このセクションは準備中です。お待ちください。",rights:"無断転載を禁じます。"
+},
+ko:{
+home:"홈",language:"언어",intermediation:"중개",union:"중개자 연합",axe:"중개자 신고",rules:"중개 규칙",store:"General 상점",preparing:"준비 중...",
+menu:"☰ 메뉴",official:"ⓘ ZHNERAL | 공식 사이트",heroTitle:"InfoZHNERAL | ZHNERAL 공식 사이트",general:"ZHNERAL",
+heroDesc:"ZHNERAL 정보, 마켓, 중개자 및 연락처를 확인하세요.",benefits:"ZHNERAL 팀 거래의 장점",benefitsDesc:"전문적인 서비스를 제공하고 거래를 원활하게 하는 것이 목표입니다.",benefitsLine:"ZHNERAL 팀 = 더 안전한 거래",
+about:"InfoZHNERAL 소개",welcome:"InfoZHNERAL 공식 사이트에 오신 것을 환영합니다.",aboutDesc:"ZHNERAL 정보, 마켓, 중개자 목록 및 연락처를 확인할 수 있습니다.",
+channel:"채널",shop:"상점",market:"마켓",contact:"연락처",marketTitle:"ZHNERAL 마켓",marketDesc:"ZHNERAL 중개팀과 함께 거래하세요.",
+fastDelivery:"빠른 전달",bestBuyer:"최고가 입찰자에게 판매",fairPrice:"공정한 가격",trusted:"신뢰할 수 있는 중개자",
+intermediaries:"중개자 목록",trustText:"😎 » 더 안전하고 신뢰할 수 있는 거래를 지향합니다. 참여하고 신중하게 거래하세요. ➦ @PV_ZHNERAL",
+professional:"• 중개자는 규칙에 따라 전문적으로 활동합니다.",services:"거래 조정과 진행을 돕습니다.",transparency:"투명성, 정직성, 책임을 중요하게 생각합니다.",
+joinIntermediaries:"중개자 채널 입장",warning:"거래 전에 조건을 확인하세요. 문의: @PV_ZHNERAL",
+faq:"자주 묻는 질문",q1:"어떻게 신뢰하나요?",a1:"ZHNERAL 공식 채널을 확인하세요.",q2:"위험을 줄이려면?",a2:"거래 전에 규칙을 꼼꼼히 읽으세요.",q3:"신뢰할 수 있는 중개자는?",a3:"공식 중개자 채널을 확인하세요.",q4:"문제가 생기면?",a4:"공식 연락처로 문의하세요.",
+back:"← 뒤로",chooseLanguage:"원하는 언어를 선택하세요.",saved:"언어가 저장되었습니다.",teamRoster:"이곳에서 중개자 목록과 공식 계정을 확인할 수 있습니다.",joinChannel:"채널 입장",warningShort:"조건을 확인하고 담당자에게 문의하세요: @PV_ZHNERAL",
+trustShort:"더 안전하고 신뢰할 수 있는 거래를 지향합니다.",joinUs:"더 믿을 수 있는 거래 경험을 위해 참여하세요.",unionWarning:"거래 전에 조건을 확인하세요. @PV_ZHNERAL",rubikaUnion:"Rubika에서 연합 열기",
+complaint:"신고하려면 증거와 거래 정보를 @PV_ZHNERAL로 보내세요.",warningRules:"거래 전에 규칙을 확인하고 문제가 있으면 담당자에게 문의하세요: @PV_ZHNERAL",
+moreInfo:"자세한 내용은 메시지로 문의하세요:",storeWelcome:"ZHNERAL 메인 마켓에 오신 것을 환영합니다 ❣",storeDesc:"대부분의 상품은 Rubika에 게시됩니다. 구매 또는 판매하려면 마켓을 방문하세요.",
+preparingDesc:"이 섹션은 준비 중입니다. 잠시 기다려 주세요.",rights:"모든 권리 보유."
+},
+hi:{
+home:"मुखपृष्ठ",language:"भाषा",intermediation:"मध्यस्थता",union:"मध्यस्थ संघ",axe:"शिकायत",rules:"मध्यस्थता के नियम",store:"जनरल स्टोर",preparing:"तैयारी जारी है...",
+menu:"☰ मेनू",official:"ⓘ ZHNERAL | आधिकारिक वेबसाइट",heroTitle:"InfoZHNERAL | ZHNERAL की आधिकारिक वेबसाइट",general:"ZHNERAL",
+heroDesc:"ZHNERAL की जानकारी, बाज़ार, मध्यस्थ और संपर्क।",benefits:"ZHNERAL टीम के साथ लेन-देन के लाभ",benefitsDesc:"टीम पेशेवर सेवाएँ देने और लेन-देन आसान बनाने का प्रयास करती है।",benefitsLine:"ZHNERAL टीम = अधिक सुरक्षित लेन-देन",
+about:"InfoZHNERAL के बारे में",welcome:"InfoZHNERAL की आधिकारिक वेबसाइट पर आपका स्वागत है।",aboutDesc:"यहाँ जानकारी, बाज़ार, मध्यस्थों की सूची और संपर्क देखें।",
+channel:"चैनल",shop:"दुकान",market:"बाज़ार",contact:"संपर्क",marketTitle:"ZHNERAL बाज़ार",marketDesc:"ZHNERAL मध्यस्थ टीम के साथ खरीदें और बेचें।",
+fastDelivery:"तेज़ डिलीवरी",bestBuyer:"सबसे ऊँची बोली पर बिक्री",fairPrice:"उचित कीमत",trusted:"विश्वसनीय मध्यस्थ",
+intermediaries:"मध्यस्थों की सूची",trustText:"😎 » हम अधिक सुरक्षित लेन-देन को बढ़ावा देते हैं। जुड़ें और सावधानी से लेन-देन करें। ➦ @PV_ZHNERAL",
+professional:"• मध्यस्थ नियमों के अनुसार पेशेवर रूप से काम करते हैं।",services:"वे लेन-देन में समन्वय और सहायता करते हैं।",transparency:"पारदर्शिता, ईमानदारी और जवाबदेही हमारे मूल सिद्धांत हैं।",
+joinIntermediaries:"मध्यस्थ चैनल खोलें",warning:"लेन-देन से पहले शर्तें जाँचें। सहायता के लिए संपर्क करें: @PV_ZHNERAL",
+faq:"अक्सर पूछे जाने वाले प्रश्न",q1:"भरोसा कैसे करें?",a1:"ZHNERAL के आधिकारिक चैनल देखें।",q2:"जोखिम कैसे कम करें?",a2:"लेन-देन से पहले नियम ध्यान से पढ़ें।",q3:"विश्वसनीय मध्यस्थ कौन हैं?",a3:"आधिकारिक मध्यस्थ चैनल देखें।",q4:"समस्या होने पर क्या करें?",a4:"आधिकारिक संपर्क माध्यम से संपर्क करें।",
+back:"← वापस",chooseLanguage:"अपनी पसंदीदा भाषा चुनें।",saved:"भाषा सहेजी गई।",teamRoster:"यहाँ मध्यस्थों की सूची और उनके आधिकारिक खाते हैं।",joinChannel:"चैनल खोलें",warningShort:"शर्तें जाँचें और मालिक से संपर्क करें: @PV_ZHNERAL",
+trustShort:"हम अधिक सुरक्षित लेन-देन को बढ़ावा देते हैं।",joinUs:"विश्वसनीय लेन-देन अनुभव के लिए जुड़ें।",unionWarning:"लेन-देन से पहले शर्तें जाँचें। @PV_ZHNERAL",rubikaUnion:"Rubika पर संघ खोलें",
+complaint:"शिकायत के लिए प्रमाण और लेन-देन विवरण @PV_ZHNERAL को भेजें।",warningRules:"लेन-देन से पहले नियम जाँचें। समस्या होने पर मालिक से संपर्क करें: @PV_ZHNERAL",
+moreInfo:"अधिक जानकारी के लिए संदेश भेजें:",storeWelcome:"ZHNERAL के मुख्य बाज़ार में आपका स्वागत है ❣",storeDesc:"अधिकांश उत्पाद Rubika पर प्रकाशित होते हैं। खरीदने या बेचने के लिए बाज़ार देखें।",
+preparingDesc:"यह अनुभाग तैयार किया जा रहा है। कृपया प्रतीक्षा करें।",rights:"सर्वाधिकार सुरक्षित।"
+},
+bn:{
+home:"হোম",language:"ভাষা",intermediation:"মধ্যস্থতা",union:"মধ্যস্থতাকারী সংঘ",axe:"অভিযোগ",rules:"মধ্যস্থতার নিয়ম",store:"জেনারেল দোকান",preparing:"প্রস্তুত হচ্ছে...",
+menu:"☰ মেনু",official:"ⓘ ZHNERAL | অফিসিয়াল সাইট",heroTitle:"InfoZHNERAL | ZHNERAL-এর অফিসিয়াল সাইট",general:"ZHNERAL",
+heroDesc:"ZHNERAL-এর তথ্য, বাজার, মধ্যস্থতাকারী ও যোগাযোগের উপায়।",benefits:"ZHNERAL দলের সঙ্গে লেনদেনের সুবিধা",benefitsDesc:"দলটি পেশাদার পরিষেবা দিতে এবং লেনদেন সহজ করতে কাজ করে।",benefitsLine:"ZHNERAL দল = আরও নিরাপদ লেনদেন",
+about:"InfoZHNERAL সম্পর্কে",welcome:"InfoZHNERAL-এর অফিসিয়াল সাইটে স্বাগতম।",aboutDesc:"এখানে তথ্য, বাজার, মধ্যস্থতাকারীর তালিকা ও যোগাযোগ দেখুন।",
+channel:"চ্যানেল",shop:"দোকান",market:"বাজার",contact:"যোগাযোগ",marketTitle:"ZHNERAL বাজার",marketDesc:"ZHNERAL মধ্যস্থতাকারী দলের সঙ্গে কেনাবেচা করুন।",
+fastDelivery:"দ্রুত ডেলিভারি",bestBuyer:"সর্বোচ্চ দরদাতার কাছে বিক্রি",fairPrice:"ন্যায্য মূল্য",trusted:"বিশ্বস্ত মধ্যস্থতাকারী",
+intermediaries:"মধ্যস্থতাকারীর তালিকা",trustText:"😎 » আমরা আরও নিরাপদ লেনদেনে সহায়তা করতে চাই। যোগ দিন এবং সতর্কভাবে লেনদেন করুন। ➦ @PV_ZHNERAL",
+professional:"• মধ্যস্থতাকারীরা নিয়ম মেনে পেশাদারভাবে কাজ করেন।",services:"তারা লেনদেন সমন্বয় ও সহজ করতে সহায়তা করেন।",transparency:"স্বচ্ছতা, সততা ও দায়িত্বশীলতা আমাদের মূলনীতি।",
+joinIntermediaries:"মধ্যস্থতাকারী চ্যানেলে প্রবেশ",warning:"লেনদেনের আগে শর্ত যাচাই করুন। সহায়তার জন্য যোগাযোগ করুন: @PV_ZHNERAL",
+faq:"সাধারণ প্রশ্ন",q1:"কীভাবে বিশ্বাস করব?",a1:"ZHNERAL-এর অফিসিয়াল চ্যানেল দেখুন।",q2:"ঝুঁকি কীভাবে কমাব?",a2:"লেনদেনের আগে নিয়ম ভালোভাবে পড়ুন।",q3:"বিশ্বস্ত মধ্যস্থতাকারী কারা?",a3:"অফিসিয়াল চ্যানেল দেখুন।",q4:"সমস্যা হলে কী করব?",a4:"অফিসিয়াল যোগাযোগের মাধ্যমে যোগাযোগ করুন।",
+back:"← ফিরে যান",chooseLanguage:"আপনার পছন্দের ভাষা বেছে নিন।",saved:"ভাষা সংরক্ষিত হয়েছে।",teamRoster:"এখানে মধ্যস্থতাকারীদের তালিকা ও অফিসিয়াল অ্যাকাউন্ট রয়েছে।",joinChannel:"চ্যানেলে প্রবেশ",warningShort:"শর্ত যাচাই করে দায়িত্বপ্রাপ্ত ব্যক্তির সঙ্গে যোগাযোগ করুন: @PV_ZHNERAL",
+trustShort:"আমরা আরও নিরাপদ লেনদেনে সহায়তা করতে চাই।",joinUs:"আরও নির্ভরযোগ্য লেনদেনের জন্য যোগ দিন।",unionWarning:"লেনদেনের আগে শর্ত যাচাই করুন। @PV_ZHNERAL",rubikaUnion:"Rubika-তে সংঘ খুলুন",
+complaint:"অভিযোগের জন্য প্রমাণ ও লেনদেনের তথ্য @PV_ZHNERAL-এ পাঠান।",warningRules:"লেনদেনের আগে নিয়ম যাচাই করুন। সমস্যা হলে যোগাযোগ করুন: @PV_ZHNERAL",
+moreInfo:"আরও তথ্যের জন্য বার্তা দিন:",storeWelcome:"ZHNERAL-এর প্রধান বাজারে স্বাগতম ❣",storeDesc:"বেশিরভাগ পণ্য Rubika-তে প্রকাশিত হয়। কেনা বা বেচার জন্য বাজার দেখুন।",
+preparingDesc:"এই অংশটি প্রস্তুত হচ্ছে। অনুগ্রহ করে অপেক্ষা করুন।",rights:"সর্বস্বত্ব সংরক্ষিত।"
+},
+ur:{
+home:"صفحۂ اول",language:"زبان",intermediation:"ثالثی",union:"ثالثین کی یونین",axe:"شکایت",rules:"ثالثی کے قواعد",store:"جنرل اسٹور",preparing:"تیاری جاری ہے...",
+menu:"☰ مینو",official:"ⓘ ZHNERAL | سرکاری ویب سائٹ",heroTitle:"InfoZHNERAL | ژنرال کی سرکاری ویب سائٹ",general:"ژنرال",
+heroDesc:"ژنرال کی معلومات، مارکیٹ، ثالثین اور رابطے۔",benefits:"ژنرال ٹیم کے ساتھ لین دین کے فوائد",benefitsDesc:"ٹیم پیشہ ورانہ خدمات دینے اور لین دین آسان بنانے کی کوشش کرتی ہے۔",benefitsLine:"ژنرال ٹیم = زیادہ محفوظ لین دین",
+about:"InfoZHNERAL کے بارے میں",welcome:"InfoZHNERAL کی سرکاری ویب سائٹ پر خوش آمدید۔",aboutDesc:"یہاں معلومات، مارکیٹ، ثالثین کی فہرست اور رابطے دیکھیں۔",
+channel:"چینل",shop:"دکان",market:"مارکیٹ",contact:"رابطہ",marketTitle:"ژنرال مارکیٹ",marketDesc:"ژنرال کی ثالثی ٹیم کے ساتھ خرید و فروخت کریں۔",
+fastDelivery:"تیز ترسیل",bestBuyer:"سب سے زیادہ بولی دینے والے کو فروخت",fairPrice:"مناسب قیمتیں",trusted:"قابل اعتماد ثالث",
+intermediaries:"ثالثین کی فہرست",trustText:"😎 » ہم زیادہ محفوظ لین دین کی حمایت کرتے ہیں۔ شامل ہوں اور احتیاط سے لین دین کریں۔ ➦ @PV_ZHNERAL",
+professional:"• ثالثین قواعد کے مطابق پیشہ ورانہ کام کرتے ہیں۔",services:"وہ لین دین کی ترتیب اور سہولت میں مدد کرتے ہیں۔",transparency:"شفافیت، دیانت داری اور ذمہ داری ہماری بنیاد ہیں۔",
+joinIntermediaries:"ثالثین کے چینل میں جائیں",warning:"لین دین سے پہلے شرائط دیکھیں۔ مدد کے لیے رابطہ کریں: @PV_ZHNERAL",
+faq:"اکثر پوچھے گئے سوالات",q1:"اعتماد کیسے کریں؟",a1:"ژنرال کے سرکاری چینلز دیکھیں۔",q2:"خطرات کیسے کم کریں؟",a2:"لین دین سے پہلے قواعد غور سے پڑھیں۔",q3:"قابل اعتماد ثالث کون ہیں؟",a3:"سرکاری ثالثین چینل دیکھیں۔",q4:"مسئلہ ہو تو کیا کریں؟",a4:"سرکاری رابطے کے ذریعے رابطہ کریں۔",
+back:"← واپس",chooseLanguage:"اپنی پسند کی زبان منتخب کریں۔",saved:"زبان محفوظ ہوگئی۔",teamRoster:"یہاں ثالثین کی فہرست اور ان کے سرکاری اکاؤنٹس ہیں۔",joinChannel:"چینل میں جائیں",warningShort:"شرائط دیکھیں اور مالک سے رابطہ کریں: @PV_ZHNERAL",
+trustShort:"ہم زیادہ محفوظ لین دین کی حمایت کرتے ہیں۔",joinUs:"زیادہ قابل اعتماد تجربے کے لیے شامل ہوں۔",unionWarning:"لین دین سے پہلے شرائط دیکھیں۔ @PV_ZHNERAL",rubikaUnion:"Rubika پر یونین کھولیں",
+complaint:"شکایت کے لیے ثبوت اور لین دین کی تفصیلات @PV_ZHNERAL کو بھیجیں۔",warningRules:"لین دین سے پہلے قواعد دیکھیں۔ مسئلے کی صورت میں مالک سے رابطہ کریں: @PV_ZHNERAL",
+moreInfo:"مزید معلومات کے لیے پیغام بھیجیں:",storeWelcome:"ژنرال کی مرکزی مارکیٹ میں خوش آمدید ❣",storeDesc:"زیادہ تر مصنوعات Rubika پر شائع ہوتی ہیں۔ خرید و فروخت کے لیے مارکیٹ دیکھیں۔",
+preparingDesc:"یہ حصہ تیار کیا جا رہا ہے۔ براہ کرم انتظار کریں۔",rights:"جملہ حقوق محفوظ ہیں۔"
+},
+id:{
+home:"Beranda",language:"Bahasa",intermediation:"Perantara",union:"Serikat Perantara",axe:"Laporan Perantara",rules:"Aturan Perantara",store:"Toko General",preparing:"Sedang disiapkan...",
+menu:"☰ Menu",official:"ⓘ ZHNERAL | Situs resmi",heroTitle:"InfoZHNERAL | Situs resmi ZHNERAL",general:"ZHNERAL",
+heroDesc:"Informasi ZHNERAL, pasar, perantara, dan kontak.",benefits:"Manfaat bertransaksi dengan tim ZHNERAL",benefitsDesc:"Tim berupaya menyediakan layanan profesional dan memudahkan transaksi.",benefitsLine:"Tim ZHNERAL = transaksi lebih aman",
+about:"Tentang InfoZHNERAL",welcome:"Selamat datang di situs resmi InfoZHNERAL.",aboutDesc:"Temukan informasi, pasar, daftar perantara, dan kontak di sini.",
+channel:"Kanal",shop:"Toko",market:"Pasar",contact:"Kontak",marketTitle:"Pasar ZHNERAL",marketDesc:"Jual beli bersama tim perantara ZHNERAL.",
+fastDelivery:"Pengiriman cepat",bestBuyer:"Jual kepada penawar tertinggi",fairPrice:"Harga yang adil",trusted:"Perantara tepercaya",
+intermediaries:"Daftar perantara",trustText:"😎 » Kami berupaya mendukung transaksi yang lebih aman. Bergabunglah dan bertransaksilah dengan hati-hati. ➦ @PV_ZHNERAL",
+professional:"• Perantara bekerja secara profesional sesuai aturan.",services:"Membantu koordinasi dan memudahkan transaksi.",transparency:"Transparansi, integritas, dan tanggung jawab menjadi prinsip kami.",
+joinIntermediaries:"Masuk ke kanal perantara",warning:"Periksa ketentuan sebelum transaksi. Untuk bantuan, hubungi pemilik: @PV_ZHNERAL",
+faq:"Pertanyaan umum",q1:"Bagaimana cara percaya?",a1:"Gunakan kanal resmi ZHNERAL.",q2:"Bagaimana mengurangi risiko?",a2:"Baca aturan dengan saksama sebelum transaksi.",q3:"Siapa perantara tepercaya?",a3:"Periksa kanal resmi perantara.",q4:"Apa yang dilakukan jika ada masalah?",a4:"Hubungi melalui kanal resmi.",
+back:"← Kembali",chooseLanguage:"Pilih bahasa yang diinginkan.",saved:"Bahasa tersimpan.",teamRoster:"Bagian ini berisi daftar perantara dan akun resmi mereka.",joinChannel:"Masuk ke kanal",warningShort:"Periksa ketentuan dan hubungi pemilik: @PV_ZHNERAL",
+trustShort:"Kami berupaya mendukung transaksi yang lebih aman.",joinUs:"Bergabunglah untuk pengalaman jual beli yang lebih tepercaya.",unionWarning:"Periksa ketentuan sebelum transaksi. @PV_ZHNERAL",rubikaUnion:"Buka serikat di Rubika",
+complaint:"Untuk melaporkan perantara, kirim bukti dan detail transaksi ke @PV_ZHNERAL.",warningRules:"Periksa aturan sebelum transaksi. Jika ada masalah, hubungi pemilik: @PV_ZHNERAL",
+moreInfo:"Untuk informasi lebih lanjut, kirim pesan ke:",storeWelcome:"Selamat datang di pasar utama ZHNERAL ❣",storeDesc:"Sebagian besar produk dipublikasikan di Rubika. Kunjungi pasar untuk membeli atau menjual.",
+preparingDesc:"Bagian ini sedang disiapkan. Silakan tunggu.",rights:"Hak cipta dilindungi."
+},
+vi:{
+home:"Trang chủ",language:"Ngôn ngữ",intermediation:"Trung gian",union:"Liên minh trung gian",axe:"Báo cáo trung gian",rules:"Quy tắc trung gian",store:"Cửa hàng General",preparing:"Đang chuẩn bị...",
+menu:"☰ Menu",official:"ⓘ ZHNERAL | Trang web chính thức",heroTitle:"InfoZHNERAL | Trang chính thức ZHNERAL",general:"ZHNERAL",
+heroDesc:"Thông tin ZHNERAL, thị trường, trung gian và liên hệ.",benefits:"Lợi ích khi giao dịch với đội ZHNERAL",benefitsDesc:"Đội ngũ hướng đến dịch vụ chuyên nghiệp và hỗ trợ giao dịch thuận tiện.",benefitsLine:"Đội ZHNERAL = giao dịch an toàn hơn",
+about:"Về InfoZHNERAL",welcome:"Chào mừng đến trang web chính thức InfoZHNERAL.",aboutDesc:"Xem thông tin, thị trường, danh sách trung gian và liên hệ tại đây.",
+channel:"Kênh",shop:"Cửa hàng",market:"Thị trường",contact:"Liên hệ",marketTitle:"Thị trường ZHNERAL",marketDesc:"Mua bán cùng đội trung gian ZHNERAL.",
+fastDelivery:"Giao hàng nhanh",bestBuyer:"Bán cho người trả giá cao nhất",fairPrice:"Giá công bằng",trusted:"Trung gian đáng tin",
+intermediaries:"Danh sách trung gian",trustText:"😎 » Chúng tôi hướng đến giao dịch an toàn và đáng tin cậy hơn. Hãy tham gia và giao dịch cẩn thận. ➦ @PV_ZHNERAL",
+professional:"• Trung gian làm việc chuyên nghiệp theo quy định.",services:"Hỗ trợ điều phối và tạo thuận lợi cho giao dịch.",transparency:"Minh bạch, chính trực và trách nhiệm là nguyên tắc của chúng tôi.",
+joinIntermediaries:"Vào kênh trung gian",warning:"Kiểm tra điều kiện trước khi giao dịch. Cần hỗ trợ, hãy liên hệ chủ sở hữu: @PV_ZHNERAL",
+faq:"Câu hỏi thường gặp",q1:"Làm sao để tin tưởng?",a1:"Hãy xem các kênh chính thức của ZHNERAL.",q2:"Làm sao giảm rủi ro?",a2:"Đọc kỹ quy tắc trước khi giao dịch.",q3:"Ai là trung gian đáng tin?",a3:"Kiểm tra kênh trung gian chính thức.",q4:"Nếu có vấn đề thì sao?",a4:"Liên hệ qua kênh chính thức.",
+back:"← Quay lại",chooseLanguage:"Chọn ngôn ngữ bạn muốn.",saved:"Đã lưu ngôn ngữ.",teamRoster:"Phần này có danh sách trung gian và tài khoản chính thức.",joinChannel:"Vào kênh",warningShort:"Kiểm tra điều kiện và liên hệ chủ sở hữu: @PV_ZHNERAL",
+trustShort:"Chúng tôi hướng đến giao dịch an toàn hơn.",joinUs:"Tham gia để có trải nghiệm giao dịch đáng tin hơn.",unionWarning:"Kiểm tra điều kiện trước khi giao dịch. @PV_ZHNERAL",rubikaUnion:"Mở liên minh trên Rubika",
+complaint:"Để báo cáo, gửi bằng chứng và thông tin giao dịch tới @PV_ZHNERAL.",warningRules:"Kiểm tra quy tắc trước khi giao dịch. Nếu có vấn đề, liên hệ chủ sở hữu: @PV_ZHNERAL",
+moreInfo:"Để biết thêm thông tin, hãy nhắn tin:",storeWelcome:"Chào mừng đến thị trường chính ZHNERAL ❣",storeDesc:"Phần lớn sản phẩm được đăng trên Rubika. Hãy vào thị trường để mua hoặc bán.",
+preparingDesc:"Mục này đang được chuẩn bị. Vui lòng chờ.",rights:"Đã đăng ký bản quyền."
+},
+th:{
+home:"หน้าแรก",language:"ภาษา",intermediation:"ตัวกลาง",union:"สมาคมตัวกลาง",axe:"รายงานตัวกลาง",rules:"กฎการเป็นตัวกลาง",store:"ร้าน General",preparing:"กำลังเตรียม...",
+menu:"☰ เมนู",official:"ⓘ ZHNERAL | เว็บไซต์ทางการ",heroTitle:"InfoZHNERAL | เว็บไซต์ทางการของ ZHNERAL",general:"ZHNERAL",
+heroDesc:"ข้อมูล ZHNERAL ตลาด รายชื่อตัวกลาง และช่องทางติดต่อ",benefits:"ข้อดีของการทำธุรกรรมกับทีม ZHNERAL",benefitsDesc:"ทีมมุ่งให้บริการอย่างมืออาชีพและช่วยให้การทำธุรกรรมสะดวกขึ้น",benefitsLine:"ทีม ZHNERAL = ธุรกรรมที่ปลอดภัยยิ่งขึ้น",
+about:"เกี่ยวกับ InfoZHNERAL",welcome:"ยินดีต้อนรับสู่เว็บไซต์ทางการ InfoZHNERAL",aboutDesc:"ดูข้อมูล ตลาด รายชื่อตัวกลาง และช่องทางติดต่อได้ที่นี่",
+channel:"ช่อง",shop:"ร้านค้า",market:"ตลาด",contact:"ติดต่อ",marketTitle:"ตลาด ZHNERAL",marketDesc:"ซื้อขายผ่านทีมตัวกลาง ZHNERAL",
+fastDelivery:"ส่งมอบรวดเร็ว",bestBuyer:"ขายให้ผู้เสนอราคาสูงสุด",fairPrice:"ราคายุติธรรม",trusted:"ตัวกลางที่เชื่อถือได้",
+intermediaries:"รายชื่อตัวกลาง",trustText:"😎 » เรามุ่งสนับสนุนธุรกรรมที่ปลอดภัยและเชื่อถือได้มากขึ้น เข้าร่วมและทำธุรกรรมอย่างระมัดระวัง ➦ @PV_ZHNERAL",
+professional:"• ตัวกลางทำงานอย่างมืออาชีพตามกฎ",services:"ช่วยประสานงานและอำนวยความสะดวกในการทำธุรกรรม",transparency:"ความโปร่งใส ความซื่อสัตย์ และความรับผิดชอบเป็นหลักการของเรา",
+joinIntermediaries:"เข้าสู่ช่องตัวกลาง",warning:"ตรวจสอบเงื่อนไขก่อนทำธุรกรรม หากต้องการความช่วยเหลือ ติดต่อเจ้าของ: @PV_ZHNERAL",
+faq:"คำถามที่พบบ่อย",q1:"จะเชื่อถือได้อย่างไร?",a1:"ตรวจสอบช่องทางทางการของ ZHNERAL",q2:"ลดความเสี่ยงได้อย่างไร?",a2:"อ่านกฎให้ละเอียดก่อนทำธุรกรรม",q3:"ใครคือตัวกลางที่เชื่อถือได้?",a3:"ตรวจสอบช่องตัวกลางทางการ",q4:"หากเกิดปัญหาควรทำอย่างไร?",a4:"ติดต่อผ่านช่องทางทางการ",
+back:"← กลับ",chooseLanguage:"เลือกภาษาที่ต้องการ",saved:"บันทึกภาษาแล้ว",teamRoster:"ส่วนนี้แสดงรายชื่อตัวกลางและบัญชีทางการ",joinChannel:"เข้าสู่ช่อง",warningShort:"ตรวจสอบเงื่อนไขและติดต่อเจ้าของ: @PV_ZHNERAL",
+trustShort:"เรามุ่งสนับสนุนธุรกรรมที่ปลอดภัยยิ่งขึ้น",joinUs:"เข้าร่วมเพื่อประสบการณ์การซื้อขายที่น่าเชื่อถือ",unionWarning:"ตรวจสอบเงื่อนไขก่อนทำธุรกรรม @PV_ZHNERAL",rubikaUnion:"เปิดสมาคมใน Rubika",
+complaint:"หากต้องการร้องเรียน ส่งหลักฐานและรายละเอียดธุรกรรมไปที่ @PV_ZHNERAL",warningRules:"ตรวจสอบกฎก่อนทำธุรกรรม หากมีปัญหาให้ติดต่อเจ้าของ: @PV_ZHNERAL",
+moreInfo:"สอบถามข้อมูลเพิ่มเติมได้ที่:",storeWelcome:"ยินดีต้อนรับสู่ตลาดหลัก ZHNERAL ❣",storeDesc:"สินค้าส่วนใหญ่ลงประกาศใน Rubika ไปที่ตลาดเพื่อซื้อหรือขาย",
+preparingDesc:"ส่วนนี้กำลังจัดเตรียม โปรดรอสักครู่",rights:"สงวนลิขสิทธิ์"
+},
+nl:{
+home:"Home",language:"Taal",intermediation:"Bemiddeling",union:"Bemiddelaarsunie",axe:"Melding",rules:"Bemiddelingsregels",store:"General-winkel",preparing:"In voorbereiding...",
+menu:"☰ Menu",official:"ⓘ ZHNERAL | Officiële website",heroTitle:"InfoZHNERAL | Officiële ZHNERAL-website",general:"ZHNERAL",
+heroDesc:"Informatie over ZHNERAL, de markt, bemiddelaars en contactgegevens.",benefits:"Voordelen van handelen met het ZHNERAL-team",benefitsDesc:"Het team wil professionele diensten leveren en transacties vergemakkelijken.",benefitsLine:"ZHNERAL-team = veiliger handelen",
+about:"Over InfoZHNERAL",welcome:"Welkom op de officiële InfoZHNERAL-website.",aboutDesc:"Bekijk hier informatie, de markt, de bemiddelaarslijst en contactgegevens.",
+channel:"Kanaal",shop:"Winkel",market:"Markt",contact:"Contact",marketTitle:"ZHNERAL-markt",marketDesc:"Koop en verkoop met het bemiddelingsteam van ZHNERAL.",
+fastDelivery:"Snelle levering",bestBuyer:"Verkoop aan de hoogste bieder",fairPrice:"Eerlijke prijzen",trusted:"Betrouwbare bemiddelaars",
+intermediaries:"Bemiddelaarslijst",trustText:"😎 » We streven naar veiligere en betrouwbaardere transacties. Doe mee en handel zorgvuldig. ➦ @PV_ZHNERAL",
+professional:"• Bemiddelaars werken professioneel volgens de regels.",services:"Ze helpen transacties te coördineren en te vereenvoudigen.",transparency:"Transparantie, integriteit en verantwoordelijkheid staan centraal.",
+joinIntermediaries:"Naar het bemiddelaarskanaal",warning:"Controleer de voorwaarden vóór een transactie. Neem voor hulp contact op met de eigenaar: @PV_ZHNERAL",
+faq:"Veelgestelde vragen",q1:"Hoe kan ik vertrouwen hebben?",a1:"Gebruik de officiële kanalen van ZHNERAL.",q2:"Hoe beperk ik risico's?",a2:"Lees de regels zorgvuldig vóór een transactie.",q3:"Wie zijn betrouwbare bemiddelaars?",a3:"Bekijk het officiële bemiddelaarskanaal.",q4:"Wat als er een probleem is?",a4:"Neem contact op via de officiële kanalen.",
+back:"← Terug",chooseLanguage:"Kies je voorkeurstaal.",saved:"Taal opgeslagen.",teamRoster:"Hier vind je de lijst met bemiddelaars en hun officiële accounts.",joinChannel:"Naar het kanaal",warningShort:"Controleer de voorwaarden en neem contact op met de eigenaar: @PV_ZHNERAL",
+trustShort:"We streven naar veiligere transacties.",joinUs:"Doe mee voor een betrouwbaardere handelservaring.",unionWarning:"Controleer de voorwaarden vóór de transactie. @PV_ZHNERAL",rubikaUnion:"Open de unie op Rubika",
+complaint:"Stuur bewijs en transactiegegevens naar @PV_ZHNERAL om een bemiddelaar te melden.",warningRules:"Controleer de regels vóór de transactie. Neem bij problemen contact op met de eigenaar: @PV_ZHNERAL",
+moreInfo:"Stuur een bericht voor meer informatie:",storeWelcome:"Welkom op de hoofdmarkt van ZHNERAL ❣",storeDesc:"De meeste producten worden op Rubika geplaatst. Bezoek de markt om te kopen of verkopen.",
+preparingDesc:"Dit onderdeel wordt voorbereid. Even geduld.",rights:"Alle rechten voorbehouden."
+}
 };
-let selectedLanguage=localStorage.getItem('zhneralLanguage')||'fa';
 
-function markLanguage(lang){
-  document.querySelectorAll('.lang').forEach(button=>{
+const languageButtons=document.querySelectorAll('.lang');
+
+function applyLanguage(lang){
+  const dictionary=translations[lang]||translations.fa;
+  document.documentElement.lang=lang;
+  document.documentElement.dir=(lang==='fa'||lang==='ar'||lang==='ur')?'rtl':'ltr';
+
+  document.querySelectorAll('[data-t]').forEach(element=>{
+    const key=element.dataset.t;
+    if(dictionary[key]!==undefined){
+      element.textContent=dictionary[key];
+    }else if(translations.fa[key]!==undefined){
+      element.textContent=translations.fa[key];
+    }
+  });
+
+  languageButtons.forEach(button=>{
     button.classList.toggle('selected',button.dataset.lang===lang);
   });
-}
-function setStatus(message){
-  ['lang-status','lang-status-2'].forEach(id=>{
-    const el=document.getElementById(id);
-    if(el)el.textContent=message;
-  });
-}
-function changeLanguage(lang){
-  selectedLanguage=lang;
+
+  const status=document.getElementById('lang-status');
+  if(status){
+    status.textContent=dictionary.saved||'Language saved.';
+  }
   localStorage.setItem('zhneralLanguage',lang);
-  markLanguage(lang);
-  setStatus('زبان انتخاب‌شده: '+(languageNames[lang]||lang));
-
-  if(lang==='fa'){
-    document.cookie='googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
-    document.cookie='googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/ZHNERAL/';
-    location.reload();
-    return;
-  }
-  const trySelect=(attempt=0)=>{
-    const combo=document.querySelector('.goog-te-combo');
-    if(combo){
-      combo.value=lang;
-      combo.dispatchEvent(new Event('change'));
-    }else if(attempt<30){
-      setTimeout(()=>trySelect(attempt+1),350);
-    }else{
-      setStatus('ترجمه بارگذاری نشد؛ اینترنت را بررسی و صفحه را دوباره باز کنید.');
-    }
-  };
-  trySelect();
 }
-document.querySelectorAll('.lang').forEach(button=>{
-  button.addEventListener('click',()=>changeLanguage(button.dataset.lang));
+
+languageButtons.forEach(button=>{
+  button.addEventListener('click',()=>{
+    applyLanguage(button.dataset.lang);
+  });
 });
-markLanguage(selectedLanguage);
 
-function googleTranslateElementInit(){
-  new google.translate.TranslateElement({
-    pageLanguage:'fa',
-    includedLanguages:'en,fa,ar,zh-CN,es,fr,de,ru,pt,it,tr,ja,ko,hi,bn,ur,id,vi,th,nl',
-    autoDisplay:false
-  },'google_translate_element');
-
-  if(selectedLanguage!=='fa'){
-    setTimeout(()=>changeLanguage(selectedLanguage),1000);
-  }
-}
+applyLanguage(localStorage.getItem('zhneralLanguage')||'fa');
 </script>
-<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
   </html>
