@@ -1,0 +1,42 @@
+
+media:
+  input: images
+  output: /images
+
+content:
+  - name: products
+    label: محصولات
+    type: collection
+    path: content/products
+    filename: "{primary}.md"
+    fields:
+      - name: title
+        label: نام محصول
+        type: string
+        required: true
+      - name: price
+        label: قیمت
+        type: string
+      - name: image
+        label: عکس محصول
+        type: image
+      - name: description
+        label: توضیحات
+        type: text
+
+  - name: posts
+    label: پست‌ها
+    type: collection
+    path: content/posts
+    filename: "{primary}.md"
+    fields:
+      - name: title
+        label: عنوان پست
+        type: string
+        required: true
+      - name: image
+        label: عکس پست
+        type: image
+      - name: body
+        label: متن پست
+        type: text
