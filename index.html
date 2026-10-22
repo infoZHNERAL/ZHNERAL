@@ -15,406 +15,113 @@
       --muted: #b8b5ac;
       --border: #80622f;
     }
-
     * { box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
-
     body {
       margin: 0;
-      background:
-        radial-gradient(ellipse at top, #30230e 0, transparent 38%),
-        var(--bg);
+      background: radial-gradient(ellipse at top, #30230e 0, transparent 38%), var(--bg);
       color: var(--text);
       font-family: Tahoma, Arial, sans-serif;
       line-height: 1.8;
     }
-
     a { color: inherit; text-decoration: none; }
     button, input, select, textarea { font: inherit; }
     button { cursor: pointer; }
-
-    .container {
-      width: min(1200px, calc(100% - 32px));
-      margin: auto;
-    }
-
+    .container { width: min(1200px, calc(100% - 32px)); margin: auto; }
     header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: #050606ed;
-      backdrop-filter: blur(15px);
+      position: sticky; top: 0; z-index: 10;
+      background: #050606ed; backdrop-filter: blur(15px);
       border-bottom: 1px solid var(--border);
     }
-
-    nav {
-      min-height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-    }
-
-    .logo {
-      color: var(--gold);
-      font-size: 25px;
-      font-weight: 900;
-      text-shadow: 0 0 20px #f4c45f44;
-      white-space: nowrap;
-    }
-
-    .logo span {
-      display: block;
-      text-align: center;
-      font-size: 24px;
-      line-height: 1;
-    }
-
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 17px;
-      font-size: 12px;
-    }
-
-    .nav-links a:hover,
-    footer a:hover { color: var(--gold); }
-
+    nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+    .logo { color: var(--gold); font-size: 25px; font-weight: 900; text-shadow: 0 0 20px #f4c45f44; white-space: nowrap; }
+    .logo span { display: block; text-align: center; font-size: 24px; line-height: 1; }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 17px; font-size: 12px; }
+    .nav-links a:hover, footer a:hover { color: var(--gold); }
     .gold-button {
-      display: inline-block;
-      padding: 11px 20px;
-      border: 1px solid var(--gold);
-      border-radius: 10px;
-      background: linear-gradient(135deg, var(--gold-light), #c58b29);
-      color: #171006;
-      font-weight: bold;
-      transition: .2s;
+      display: inline-block; padding: 11px 20px; border: 1px solid var(--gold);
+      border-radius: 10px; background: linear-gradient(135deg, var(--gold-light), #c58b29);
+      color: #171006; font-weight: bold; transition: .2s;
     }
-
-    .gold-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 25px #f4c45f44;
-    }
-
-    .outline-button {
-      background: transparent;
-      color: var(--gold-light);
-    }
-
+    .gold-button:hover { transform: translateY(-2px); box-shadow: 0 0 25px #f4c45f44; }
+    .outline-button { background: transparent; color: var(--gold-light); }
     .hero {
       border-bottom: 1px solid var(--border);
-      background:
-        radial-gradient(ellipse at center bottom, #9d6b2238, transparent 55%),
-        linear-gradient(120deg, #080908, #1b170f, #050606);
+      background: radial-gradient(ellipse at center bottom, #9d6b2238, transparent 55%), linear-gradient(120deg, #080908, #1b170f, #050606);
     }
-
-    .hero-content {
-      min-height: 350px;
-      padding: 35px 0;
-      display: grid;
-      grid-template-columns: 1fr 1.5fr 1fr;
-      align-items: center;
-      gap: 24px;
-    }
-
-    .hero-art {
-      height: 270px;
-      display: grid;
-      place-items: center;
-      font-size: 130px;
-      background: radial-gradient(circle, #a87c3040, transparent 65%);
-      filter: drop-shadow(0 0 20px #f4c45f20);
-    }
-
+    .hero-content { min-height: 350px; padding: 35px 0; display: grid; grid-template-columns: 1fr 1.5fr 1fr; align-items: center; gap: 24px; }
+    .hero-art { height: 270px; display: grid; place-items: center; font-size: 130px; background: radial-gradient(circle, #a87c3040, transparent 65%); filter: drop-shadow(0 0 20px #f4c45f20); }
     .hero-main { text-align: center; }
-
-    .crown {
-      color: var(--gold);
-      font-size: 55px;
-      line-height: 1.2;
-      text-shadow: 0 0 25px #f4c45f77;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(38px, 5vw, 65px);
-      color: var(--gold-light);
-      letter-spacing: 2px;
-      text-shadow: 0 0 30px #f4c45f33;
-    }
-
-    .tagline {
-      color: var(--gold);
-      font-size: 10px;
-      letter-spacing: 4px;
-    }
-
+    .crown { color: var(--gold); font-size: 55px; line-height: 1.2; text-shadow: 0 0 25px #f4c45f77; }
+    h1 { margin: 0; font-size: clamp(38px, 5vw, 65px); color: var(--gold-light); letter-spacing: 2px; text-shadow: 0 0 30px #f4c45f33; }
+    .tagline { color: var(--gold); font-size: 10px; letter-spacing: 4px; }
     .hero-main h2 { font-size: 20px; }
-
-    .muted {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .hero-actions {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 20px;
-    }
-
-    .quick-panel {
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 15px;
-      background: #080a09dd;
-      box-shadow: 0 0 25px #f4c45f12;
-    }
-
-    .quick-panel h3 {
-      color: var(--gold-light);
-      margin-top: 0;
-    }
-
-    .quick-panel a {
-      display: block;
-      padding: 9px 0;
-      border-top: 1px solid #ffffff13;
-      font-size: 12px;
-    }
-
+    .muted { color: var(--muted); font-size: 13px; }
+    .hero-actions { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+    .quick-panel { border: 1px solid var(--border); border-radius: 18px; padding: 15px; background: #080a09dd; box-shadow: 0 0 25px #f4c45f12; }
+    .quick-panel h3 { color: var(--gold-light); margin-top: 0; }
+    .quick-panel a { display: block; padding: 9px 0; border-top: 1px solid #ffffff13; font-size: 12px; }
     .quick-panel a span { color: var(--gold); }
-
-    .shortcuts {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 10px;
-      padding: 22px 0;
-    }
-
-    .shortcut {
-      min-height: 105px;
-      display: grid;
-      place-content: center;
-      text-align: center;
-      padding: 12px 6px;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      background: linear-gradient(145deg, #19160f, #070808);
-      transition: .2s;
-    }
-
-    .shortcut:hover {
-      transform: translateY(-3px);
-      border-color: var(--gold-light);
-      box-shadow: 0 0 20px #f4c45f1e;
-    }
-
-    .shortcut .icon {
-      color: var(--gold);
-      font-size: 25px;
-    }
-
+    .shortcuts { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; padding: 22px 0; }
+    .shortcut { min-height: 105px; display: grid; place-content: center; text-align: center; padding: 12px 6px; border: 1px solid var(--border); border-radius: 10px; background: linear-gradient(145deg, #19160f, #070808); transition: .2s; }
+    .shortcut:hover { transform: translateY(-3px); border-color: var(--gold-light); box-shadow: 0 0 20px #f4c45f1e; }
+    .shortcut .icon { color: var(--gold); font-size: 25px; }
     .shortcut strong { font-size: 13px; }
     .shortcut small { color: var(--muted); font-size: 10px; }
-
     section { padding: 25px 0; }
-
-    .section-title {
-      text-align: center;
-      color: var(--gold-light);
-      font-size: 23px;
-      margin: 0 0 22px;
-    }
-
-    .features {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 12px;
-    }
-
-    .feature {
-      text-align: center;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 17px 9px;
-      background: linear-gradient(160deg, #15140f, #070808);
-    }
-
-    .feature .icon {
-      color: var(--gold);
-      font-size: 32px;
-    }
-
+    .section-title { text-align: center; color: var(--gold-light); font-size: 23px; margin: 0 0 22px; }
+    .features { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+    .feature { text-align: center; border: 1px solid var(--border); border-radius: 12px; padding: 17px 9px; background: linear-gradient(160deg, #15140f, #070808); }
+    .feature .icon { color: var(--gold); font-size: 32px; }
     .feature h3 { font-size: 13px; margin: 5px 0; }
     .feature p { color: var(--muted); font-size: 10px; margin: 0; }
-
-    .market {
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 20px;
-      background: linear-gradient(145deg, #10120f, #050606);
-      box-shadow: 0 0 28px #f4c45f0d;
-    }
-
-    .market-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
+    .market { border: 1px solid var(--border); border-radius: 16px; padding: 20px; background: linear-gradient(145deg, #10120f, #050606); box-shadow: 0 0 28px #f4c45f0d; }
+    .market-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
     .market-header h2 { margin: 0; color: var(--gold-light); }
-
-    .filters {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin: 18px 0;
-    }
-
-    input, select, textarea {
-      width: 100%;
-      background: #080a09;
-      color: white;
-      border: 1px solid #5d4a29;
-      border-radius: 9px;
-      padding: 11px;
-    }
-
-    .products {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-    }
-
-    .product {
-      display: flex;
-      flex-direction: column;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-      background: #090b0a;
-    }
-
-    .product-art {
-      min-height: 125px;
-      display: grid;
-      place-items: center;
-      font-size: 55px;
-      background: radial-gradient(circle, #92702e55, transparent 70%), #111713;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .product-body {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      padding: 12px;
-    }
-
+    .filters { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 18px 0; }
+    input, select, textarea { width: 100%; background: #080a09; color: white; border: 1px solid #5d4a29; border-radius: 9px; padding: 11px; }
+    .products { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .product { display: flex; flex-direction: column; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: #090b0a; }
+    .product-art { min-height: 125px; display: grid; place-items: center; font-size: 55px; background: radial-gradient(circle, #92702e55, transparent 70%), #111713; border-bottom: 1px solid var(--border); }
+    .product-body { flex: 1; display: flex; flex-direction: column; padding: 12px; }
     .product h3 { font-size: 13px; margin: 0 0 5px; }
     .product p { font-size: 11px; color: var(--muted); margin: 0 0 10px; }
-
-    .price {
-      margin-top: auto;
-      margin-bottom: 12px;
-      color: var(--gold-light);
-      font-weight: bold;
-      font-size: 13px;
-    }
-
-    .product .gold-button {
-      padding: 8px;
-      text-align: center;
-      font-size: 11px;
-    }
-
-    .social {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 18px;
-      margin: 25px auto;
-      padding: 22px;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      background: linear-gradient(120deg, #1a160e, #070908);
-    }
-
+    .price { margin-top: auto; margin-bottom: 12px; color: var(--gold-light); font-weight: bold; font-size: 13px; }
+    .product .gold-button { padding: 8px; text-align: center; font-size: 11px; }
+    .social { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 18px; margin: 25px auto; padding: 22px; border: 1px solid var(--border); border-radius: 14px; background: linear-gradient(120deg, #1a160e, #070908); }
     .social h2 { margin: 0; color: var(--gold-light); font-size: 18px; }
     .social p { margin: 5px 0; color: var(--muted); font-size: 12px; }
-
     .social-links { display: flex; gap: 8px; flex-wrap: wrap; }
-    .social-links a {
-      padding: 10px;
-      border: 1px solid var(--border);
-      border-radius: 9px;
-      text-align: center;
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 22px 0;
-    }
-
+    .social-links a { padding: 10px; border: 1px solid var(--border); border-radius: 9px; text-align: center; }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 22px 0; }
     .stat { text-align: center; border-left: 1px solid #5b4828; }
     .stat:last-child { border: 0; }
     .stat strong { display: block; color: var(--gold-light); font-size: 22px; }
     .stat span { color: var(--muted); font-size: 11px; }
-
-    footer {
-      margin-top: 25px;
-      padding: 30px 0 12px;
-      border-top: 1px solid var(--border);
-      background: #060807;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr 1fr 1fr;
-      gap: 24px;
-    }
-
+    footer { margin-top: 25px; padding: 30px 0 12px; border-top: 1px solid var(--border); background: #060807; }
+    .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 24px; }
     footer h3 { color: var(--gold); font-size: 14px; }
     footer p, footer a { display: block; color: var(--muted); font-size: 12px; }
     .copyright { border-top: 1px solid #ffffff19; margin-top: 22px; padding-top: 12px; color: #aaa; font-size: 10px; }
-
-    .modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 30;
-      background: #000c;
-      padding: 18px;
-      align-items: center;
-      justify-content: center;
-    }
-
+    .modal { display: none; position: fixed; inset: 0; z-index: 30; background: #000c; padding: 18px; align-items: center; justify-content: center; }
     .modal.open { display: flex; }
-
-    .modal-box {
-      width: min(500px, 100%);
-      max-height: 90vh;
-      overflow-y: auto;
-      padding: 22px;
-      background: #0c0e0d;
-      border: 1px solid var(--gold);
-      border-radius: 15px;
-    }
-
+    .modal-box { width: min(500px, 100%); max-height: 90vh; overflow-y: auto; padding: 22px; background: #0c0e0d; border: 1px solid var(--gold); border-radius: 15px; }
     .modal-box h2 { color: var(--gold-light); margin-top: 0; }
     .modal-box label { display: block; font-size: 12px; margin: 10px 0 5px; }
     .modal-box textarea { min-height: 80px; }
     .modal-actions { display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
     .notice { color: var(--muted); font-size: 11px; }
+
+    /* فقط کنترل صدای اضافه‌شده */
+    #zhneral-sound-control {
+      position: fixed; bottom: 20px; left: 18px; z-index: 99999;
+      padding: 11px 16px; border: 1px solid #f4c45f; border-radius: 30px;
+      background: linear-gradient(135deg, #17130a, #050606); color: #ffe8a5;
+      font: bold 13px Tahoma, Arial, sans-serif;
+      box-shadow: 0 0 18px #f4c45f30; cursor: pointer; direction: rtl;
+    }
+    #zhneral-sound-control:hover { box-shadow: 0 0 24px #f4c45f66; }
+    #zhneral-sound-control:focus-visible { outline: 2px solid #ffe8a5; outline-offset: 4px; }
 
     @media (max-width: 900px) {
       .nav-links { gap: 9px; font-size: 10px; }
@@ -424,7 +131,6 @@
       .products { grid-template-columns: repeat(2, 1fr); }
       .footer-grid { grid-template-columns: repeat(2, 1fr); }
     }
-
     @media (max-width: 600px) {
       .container { width: calc(100% - 22px); }
       .nav-links { display: none; }
@@ -453,10 +159,10 @@
     <div class="nav-links">
       <a href="#home">⌂ صفحه اصلی</a>
       <a href="#market">▣ بازار</a>
-      <a href="#broker">♧ واسطه‌گری</a>
-      <a href="#union">♙ اتحادیه</a>
-      <a href="#rules">♢ قوانین</a>
-      <a href="#market">▤ فروشگاه</a>
+      <a href="https://rubika.ir/madiator_ZHNERAL" target="_blank" rel="noopener">♧ واسطه‌گری</a>
+      <a href="https://rubika.ir/etehadi_vasetehgari" target="_blank" rel="noopener">♙ اتحادیه</a>
+      <a href="https://rubika.ir/Rules_Zhneral" target="_blank" rel="noopener">♢ قوانین</a>
+      <a href="https://rubika.ir/market_ZHNERAL" target="_blank" rel="noopener">▤ فروشگاه</a>
     </div>
     <select id="language" style="width:auto" aria-label="انتخاب زبان">
       <option value="fa">🇮🇷 فارسی</option>
@@ -486,20 +192,20 @@
       <aside class="quick-panel">
         <h3>دسترسی سریع</h3>
         <a href="#rules"><span>◷</span> پشتیبانی ۲۴ ساعته</a>
-        <a href="#rules"><span>♢</span> قوانین و مقررات</a>
-        <a href="#social"><span>⬡</span> ارتباط با روبیکا</a>
-        <a href="#broker"><span>➤</span> ارتباط با مدیریت</a>
+        <a href="https://rubika.ir/Rules_Zhneral" target="_blank" rel="noopener"><span>♢</span> قوانین و مقررات</a>
+        <a href="https://rubika.ir/market_ZHNERAL" target="_blank" rel="noopener"><span>⬡</span> ارتباط با روبیکا</a>
+        <a href="https://rubika.ir/madiator_ZHNERAL" target="_blank" rel="noopener"><span>➤</span> ارتباط با مدیریت</a>
       </aside>
     </div>
   </section>
 
   <div class="container shortcuts">
     <a class="shortcut" href="#market"><span class="icon">▣</span><strong>بازار</strong><small>خرید و فروش امن</small></a>
-    <a class="shortcut" href="#broker"><span class="icon">♧</span><strong>واسطه‌گری</strong><small>اتصال سریع و مطمئن</small></a>
-    <a class="shortcut" href="#union"><span class="icon">♙</span><strong>اتحادیه</strong><small>عضویت و همکاری</small></a>
-    <a class="shortcut" href="#reports"><span class="icon">▤</span><strong>گزارش واسطه‌ها</strong><small>بررسی و اعتماد</small></a>
-    <a class="shortcut" href="#rules"><span class="icon">♢</span><strong>قوانین</strong><small>قوانین و مقررات</small></a>
-    <a class="shortcut" href="#market"><span class="icon">♜</span><strong>فروشگاه</strong><small>محصولات و خدمات</small></a>
+    <a class="shortcut" href="https://rubika.ir/madiator_ZHNERAL" target="_blank" rel="noopener"><span class="icon">♧</span><strong>واسطه‌گری</strong><small>اتصال سریع و مطمئن</small></a>
+    <a class="shortcut" href="https://rubika.ir/etehadi_vasetehgari" target="_blank" rel="noopener"><span class="icon">♙</span><strong>اتحادیه</strong><small>عضویت و همکاری</small></a>
+    <a class="shortcut" href="https://rubika.ir/band_khlafkaran" target="_blank" rel="noopener"><span class="icon">▤</span><strong>گزارش واسطه‌ها</strong><small>بررسی و اعتماد</small></a>
+    <a class="shortcut" href="https://rubika.ir/Rules_Zhneral" target="_blank" rel="noopener"><span class="icon">♢</span><strong>قوانین</strong><small>قوانین و مقررات</small></a>
+    <a class="shortcut" href="https://rubika.ir/market_ZHNERAL" target="_blank" rel="noopener"><span class="icon">♜</span><strong>فروشگاه</strong><small>محصولات و خدمات</small></a>
   </div>
 
   <section class="container" id="union">
@@ -517,10 +223,7 @@
   <section class="container" id="market">
     <div class="market">
       <div class="market-header">
-        <div>
-          <h2>🛒 بازار آنلاین</h2>
-          <p class="muted">آگهی‌های نمونه را ببینید یا آگهی جدید ثبت کنید.</p>
-        </div>
+        <div><h2>🛒 بازار آنلاین</h2><p class="muted">آگهی‌های نمونه را ببینید یا آگهی جدید ثبت کنید.</p></div>
         <button class="gold-button" onclick="openModal()">＋ ثبت آگهی جدید</button>
       </div>
       <div class="filters">
@@ -534,22 +237,10 @@
         </select>
       </div>
       <div class="products" id="products">
-        <article class="product" data-category="game">
-          <div class="product-art">🎮</div>
-          <div class="product-body"><h3>حساب بازی سطح بالا</h3><p>آیتم‌های ویژه و امکانات جذاب</p><div class="price">۲٬۵۰۰٬۰۰۰ تومان</div><button class="gold-button" onclick="contactSeller('حساب بازی سطح بالا')">مشاهده جزئیات ←</button></div>
-        </article>
-        <article class="product" data-category="coin">
-          <div class="product-art">🪙</div>
-          <div class="product-body"><h3>بسته سکه ویژه</h3><p>تحویل سریع پس از هماهنگی</p><div class="price">۳۵۰٬۰۰۰ تومان</div><button class="gold-button" onclick="contactSeller('بسته سکه ویژه')">مشاهده جزئیات ←</button></div>
-        </article>
-        <article class="product" data-category="car">
-          <div class="product-art">🚘</div>
-          <div class="product-body"><h3>خودرو ویژه بازی</h3><p>قیمت مناسب و تحویل هماهنگ</p><div class="price">۱٬۲۰۰٬۰۰۰ تومان</div><button class="gold-button" onclick="contactSeller('خودرو ویژه بازی')">مشاهده جزئیات ←</button></div>
-        </article>
-        <article class="product" data-category="gem">
-          <div class="product-art">💎</div>
-          <div class="product-body"><h3>الماس و آیتم دیجیتال</h3><p>سطح بالا و قابل بررسی</p><div class="price">۸۰۰٬۰۰۰ تومان</div><button class="gold-button" onclick="contactSeller('الماس و آیتم دیجیتال')">مشاهده جزئیات ←</button></div>
-        </article>
+        <article class="product" data-category="game"><div class="product-art">🎮</div><div class="product-body"><h3>حساب بازی سطح بالا</h3><p>آیتم‌های ویژه و امکانات جذاب</p><div class="price">۲٬۵۰۰٬۰۰۰ تومان</div><button class="gold-button" onclick="contactSeller('حساب بازی سطح بالا')">مشاهده جزئیات ←</button></div></article>
+        <article class="product" data-category="coin"><div class="product-art">🪙</div><div class="product-body"><h3>بسته سکه ویژه</h3><p>تحویل سریع پس از هماهنگی</p><div class="price">۳۵۰٬۰۰۰ تومان</div><button class="gold-button" onclick="contactSeller('بسته سکه ویژه')">مشاهده جزئیات ←</button></div></article>
+        <article class="product" data-category="car"><div class="product-art">🚘</div><div class="product-body"><h3>خودرو ویژه بازی</h3><p>قیمت مناسب و تحویل هماهنگ</p><div class="price">۱٬۲۰۰٬۰۰۰ تومان</div><button class="gold-button" onclick="contactSeller('خودرو ویژه بازی')">مشاهده جزئیات ←</button></div></article>
+        <article class="product" data-category="gem"><div class="product-art">💎</div><div class="product-body"><h3>الماس و آیتم دیجیتال</h3><p>سطح بالا و قابل بررسی</p><div class="price">۸۰۰٬۰۰۰ تومان</div><button class="gold-button" onclick="contactSeller('الماس و آیتم دیجیتال')">مشاهده جزئیات ←</button></div></article>
       </div>
       <p id="empty" class="muted" style="display:none">آگهی‌ای پیدا نشد.</p>
       <p class="notice">آگهی‌ها نمونه نمایشی هستند. لینک فروشنده و پرداخت واقعی هنوز باید تنظیم شود.</p>
@@ -559,7 +250,7 @@
   <section class="container social" id="social">
     <div><h2>همیشه با ژنرال در ارتباط باش!</h2><p>برای دریافت اخبار و اطلاعیه‌ها، کانال‌های رسمی را دنبال کنید.</p></div>
     <div class="social-links">
-      <a href="#" onclick="placeholderLink(event)">⬡<br>روبیکا</a>
+      <a href="https://rubika.ir/market_ZHNERAL" target="_blank" rel="noopener">⬡<br>روبیکا</a>
       <a href="#" onclick="placeholderLink(event)">➤<br>تلگرام</a>
       <a href="#" onclick="placeholderLink(event)">◎<br>اینستاگرام</a>
       <a href="#" onclick="placeholderLink(event)">▶<br>یوتیوب</a>
@@ -586,8 +277,8 @@
 <footer id="reports">
   <div class="container footer-grid">
     <div><div class="logo"><span>♛</span> ZHNERAL</div><p>مرجع خرید و فروش، واسطه‌گری و خدمات آنلاین.</p><p>شناسه: @ZHNERAL</p></div>
-    <div><h3>دسترسی سریع</h3><a href="#home">صفحه اصلی</a><a href="#market">بازار</a><a href="#broker">واسطه‌گری</a><a href="#union">اتحادیه</a></div>
-    <div><h3>راهنمای سایت</h3><a href="#rules">قوانین و مقررات</a><a href="#rules">امنیت معامله</a><a href="#social">تماس با ما</a><a href="#social">پشتیبانی</a></div>
+    <div><h3>دسترسی سریع</h3><a href="#home">صفحه اصلی</a><a href="#market">بازار</a><a href="https://rubika.ir/madiator_ZHNERAL" target="_blank" rel="noopener">واسطه‌گری</a><a href="https://rubika.ir/etehadi_vasetehgari" target="_blank" rel="noopener">اتحادیه</a></div>
+    <div><h3>راهنمای سایت</h3><a href="https://rubika.ir/Rules_Zhneral" target="_blank" rel="noopener">قوانین و مقررات</a><a href="#rules">امنیت معامله</a><a href="#social">تماس با ما</a><a href="https://rubika.ir/madiator_ZHNERAL" target="_blank" rel="noopener">پشتیبانی</a></div>
     <div id="broker"><h3>انتخاب زبان</h3><p>ژنرال؛ انتخاب حرفه‌ای‌ها</p><p>لینک‌های رسمی را در کد تنظیم کنید.</p></div>
   </div>
   <div class="container copyright">© 2026 ZHNERAL. تمامی حقوق محفوظ است.</div>
@@ -614,27 +305,22 @@
   </div>
 </div>
 
+<!-- کنترل صدا -->
+<button id="zhneral-sound-control" type="button" aria-pressed="true">♛ 🔊 صدای ژنرال: روشن</button>
+
 <script>
   const $ = id => document.getElementById(id);
 
-  function openModal() {
-    $('adModal').classList.add('open');
-  }
-
-  function closeModal() {
-    $('adModal').classList.remove('open');
-  }
+  function openModal() { $('adModal').classList.add('open'); }
+  function closeModal() { $('adModal').classList.remove('open'); }
 
   $('adModal').addEventListener('click', event => {
     if (event.target === $('adModal')) closeModal();
   });
 
   function getAds() {
-    try {
-      return JSON.parse(localStorage.getItem('zhneral_ads') || '[]');
-    } catch {
-      return [];
-    }
+    try { return JSON.parse(localStorage.getItem('zhneral_ads') || '[]'); }
+    catch { return []; }
   }
 
   function saveAds(ads) {
@@ -647,16 +333,10 @@
     }
   }
 
-  const icons = {
-    game: '🎮',
-    coin: '🪙',
-    car: '🚘',
-    gem: '💎'
-  };
+  const icons = { game: '🎮', coin: '🪙', car: '🚘', gem: '💎' };
 
   $('adForm').addEventListener('submit', event => {
     event.preventDefault();
-
     const ads = getAds();
     ads.unshift({
       id: Date.now(),
@@ -665,7 +345,6 @@
       category: $('adCategory').value,
       description: $('adDescription').value.trim()
     });
-
     if (saveAds(ads)) {
       event.target.reset();
       closeModal();
@@ -675,7 +354,6 @@
 
   function renderAds() {
     document.querySelectorAll('[data-custom="true"]').forEach(el => el.remove());
-
     const products = $('products');
     const query = $('search').value.trim().toLowerCase();
     const category = $('category').value;
@@ -687,33 +365,27 @@
       card.style.display = matchesText && matchesCategory ? 'flex' : 'none';
     });
 
-    const customAds = getAds().filter(ad => {
-      return (!category || ad.category === category) &&
-        (ad.title + ' ' + ad.description).toLowerCase().includes(query);
-    });
+    const customAds = getAds().filter(ad =>
+      (!category || ad.category === category) &&
+      (ad.title + ' ' + ad.description).toLowerCase().includes(query)
+    );
 
     customAds.forEach(ad => {
       const card = document.createElement('article');
       card.className = 'product';
       card.dataset.custom = 'true';
-
       const art = document.createElement('div');
       art.className = 'product-art';
       art.textContent = icons[ad.category] || '✦';
-
       const body = document.createElement('div');
       body.className = 'product-body';
-
       const title = document.createElement('h3');
       title.textContent = ad.title;
-
       const description = document.createElement('p');
       description.textContent = ad.description || 'بدون توضیحات';
-
       const price = document.createElement('div');
       price.className = 'price';
       price.textContent = Number(ad.price).toLocaleString('fa-IR') + ' تومان';
-
       const remove = document.createElement('button');
       remove.className = 'gold-button';
       remove.textContent = 'حذف آگهی';
@@ -723,7 +395,6 @@
           renderAds();
         }
       };
-
       body.append(title, description, price, remove);
       card.append(art, body);
       products.appendChild(card);
@@ -734,9 +405,7 @@
     $('adCount').textContent = (4 + getAds().length).toLocaleString('fa-IR');
   }
 
-  function filterProducts() {
-    renderAds();
-  }
+  function filterProducts() { renderAds(); }
 
   function contactSeller(title) {
     alert('لینک فروشنده برای «' + title + '» هنوز تنظیم نشده است.');
@@ -755,6 +424,134 @@
   });
 
   renderAds();
+
+  // ZHNERAL GOLD SOUND SYSTEM
+  (() => {
+    const soundButton = $('zhneral-sound-control');
+    if (!soundButton) return;
+
+    let enabled = true;
+    let welcomed = false;
+    let audio = null;
+    let master = null;
+    let welcomeTimer = null;
+
+    try { enabled = localStorage.getItem('zhneral_sound') !== 'off'; }
+    catch (_) {}
+
+    function getAudio() {
+      const AudioAPI = window.AudioContext || window.webkitAudioContext;
+      if (!AudioAPI) return null;
+      if (!audio) {
+        audio = new AudioAPI();
+        master = audio.createGain();
+        master.gain.value = enabled ? 0.82 : 0;
+        master.connect(audio.destination);
+      }
+      if (audio.state === 'suspended') audio.resume().catch(() => {});
+      return audio;
+    }
+
+    function setEnabled(value) {
+      enabled = value;
+      try { localStorage.setItem('zhneral_sound', enabled ? 'on' : 'off'); }
+      catch (_) {}
+      if (master && audio) {
+        master.gain.cancelScheduledValues(audio.currentTime);
+        master.gain.setTargetAtTime(enabled ? 0.82 : 0, audio.currentTime, 0.025);
+      }
+      updateButton();
+    }
+
+    // لایه‌ی تُن با محوشدن نرم، برای افکت‌های تمیز و لوکس
+    function note(freq, startDelay, duration, volume, wave = 'sine', detune = 0) {
+      if (!enabled) return;
+      const ctx = getAudio();
+      if (!ctx || !master) return;
+      const start = ctx.currentTime + startDelay;
+      const osc = ctx.createOscillator();
+      const amp = ctx.createGain();
+      const filter = ctx.createBiquadFilter();
+      osc.type = wave;
+      osc.frequency.setValueAtTime(freq, start);
+      osc.detune.setValueAtTime(detune, start);
+      filter.type = 'lowpass';
+      filter.frequency.setValueAtTime(Math.min(5200, freq * 5), start);
+      amp.gain.setValueAtTime(0.0001, start);
+      amp.gain.exponentialRampToValueAtTime(Math.max(0.0002, volume), start + 0.035);
+      amp.gain.exponentialRampToValueAtTime(0.0001, start + duration);
+      osc.connect(filter);
+      filter.connect(amp);
+      amp.connect(master);
+      osc.start(start);
+      osc.stop(start + duration + 0.04);
+    }
+
+    // افکت ورود: آکورد سینمایی چندلایه با زنگ ظریف در انتها
+    function playWelcome() {
+      if (!enabled || welcomed) return;
+      welcomed = true;
+      // آکورد گرم و باشکوه
+      note(130.81, 0.00, 1.05, 0.045, 'triangle');
+      note(196.00, 0.00, 1.00, 0.030, 'sine');
+      note(261.63, 0.08, 0.95, 0.025, 'sine');
+      note(392.00, 0.28, 0.82, 0.024, 'triangle');
+      // نت‌های بالا مثل زنگ کریستالی
+      note(523.25, 0.48, 0.72, 0.025, 'sine', -4);
+      note(659.25, 0.68, 0.78, 0.020, 'sine', 3);
+      note(783.99, 0.90, 1.05, 0.023, 'sine');
+      note(1046.50, 1.12, 1.20, 0.015, 'sine');
+    }
+
+    // کلیک: صدای کوتاه، نرم و چندلایه؛ نه بوق تیز
+    function playClick() {
+      if (!enabled) return;
+      note(740, 0, 0.10, 0.022, 'triangle');
+      note(1110, 0.025, 0.12, 0.016, 'sine');
+      note(1480, 0.045, 0.075, 0.008, 'sine');
+    }
+
+    function updateButton() {
+      soundButton.textContent = enabled
+        ? '♛ 🔊 صدای ژنرال: روشن'
+        : '♛ 🔇 صدای ژنرال: خاموش';
+      soundButton.setAttribute('aria-pressed', String(enabled));
+      soundButton.setAttribute('aria-label',
+        enabled ? 'خاموش کردن صدای سایت' : 'روشن کردن صدای سایت');
+    }
+
+    soundButton.addEventListener('click', () => {
+      setEnabled(!enabled);
+      if (enabled) {
+        getAudio();
+        if (!welcomed) playWelcome();
+        else playClick();
+      }
+    });
+
+    // صدای مخصوص دکمه‌ها و لینک‌ها؛ عناصر فرم هنگام تایپ صدا ندارند
+    document.addEventListener('click', event => {
+      if (!enabled || event.target.closest('#zhneral-sound-control')) return;
+      const target = event.target.closest(
+        'button, a, input[type="button"], input[type="submit"], summary'
+      );
+      if (!target) return;
+      getAudio();
+      if (!welcomed) playWelcome();
+      else playClick();
+    });
+
+    function firstInteraction() {
+      if (!enabled || welcomed) return;
+      getAudio();
+      playWelcome();
+    }
+
+    // مرورگرها معمولاً صدای خودکار پیش از تعامل کاربر را مسدود می‌کنند.
+    document.addEventListener('pointerdown', firstInteraction, { once: true });
+    document.addEventListener('keydown', firstInteraction, { once: true });
+    updateButton();
+  })();
 </script>
 </body>
-                                         </html>
+</html>
