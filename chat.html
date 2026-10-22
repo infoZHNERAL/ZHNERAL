@@ -1,1 +1,645 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080808">
+<title>ZHNERAL | چت کاربران</title>
 
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;background:#080808;color:#fff;
+  font-family:Tahoma,Arial,sans-serif
+}
+header{
+  background:#111;padding:17px;text-align:center;
+  border-bottom:1px solid #b99135
+}
+.logo{color:#e7bd56;font-size:25px;font-weight:bold}
+header p{color:#aaa;font-size:12px}
+.container{max-width:850px;margin:20px auto;padding:12px}
+.card{
+  background:#121212;border:1px solid #292929;
+  border-radius:14px;padding:18px;margin-bottom:15px
+}
+h2{font-size:18px;color:#e7bd56;margin-top:0}
+input,button{
+  width:100%;padding:13px;margin:6px 0;
+  border-radius:9px;font-family:inherit;font-size:14px
+}
+input{
+  background:#080808;color:white;border:1px solid #444;
+  outline:none
+}
+input:focus{border-color:#d9ae48}
+button{
+  border:0;background:#d5aa43;color:#111;
+  font-weight:bold;cursor:pointer
+}
+button.secondary{background:#252525;color:#fff;border:1px solid #444}
+button:disabled{opacity:.5}
+.hidden{display:none!important}
+.muted{color:#aaa;font-size:12px;line-height:2}
+.status{padding:10px;border-radius:8px;background:#202020;margin:8px 0;font-size:13px}
+.userrow,.chatrow{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:10px;background:#1b1b1b;border-radius:10px;
+  padding:12px;margin-top:8px
+}
+.userrow button,.chatrow button{width:auto;margin:0}
+.userrow small,.chatrow small{display:block;color:#aaa;margin-top:5px}
+#messages{
+  height:350px;overflow-y:auto;background:#090909;
+  border:1px solid #292929;border-radius:10px;padding:10px;
+  margin:12px 0
+}
+.msg{
+  max-width:85%;padding:10px 12px;margin:8px 0;
+  border-radius:12px;background:#242424;
+  overflow-wrap:anywhere;white-space:pre-wrap
+}
+.msg.mine{margin-right:auto;background:#70561e}
+.msg small{display:block;color:#ddd;font-size:10px;margin-top:6px}
+#sendForm{display:flex;gap:7px}
+#sendForm input{flex:1;min-width:0}
+#sendForm button{width:85px}
+.topline{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.topline button{width:auto;padding:9px}
+a{color:#e7bd56}
+footer{text-align:center;color:#777;padding:20px;font-size:12px}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">ZHNERAL</div>
+  <p>چت خصوصی کاربران</p>
+  <a href="index.html">بازگشت به صفحهٔ اصلی</a>
+</header>
+
+<main class="container">
+
+  <div id="status" class="status">در حال اتصال به فایربیس...</div>
+
+  <section id="authCard" class="card hidden">
+    <h2>ورود یا ساخت حساب</h2>
+    <p class="muted">
+      برای استفاده از چت، با ایمیل و رمز عبور حساب بساز یا وارد حساب خودت شو.
+    </p>
+
+    <input id="email" type="email" placeholder="ایمیل" autocomplete="email">
+    <input id="password" type="password" placeholder="رمز عبور" autocomplete="current-password">
+
+    <button id="loginBtn">ورود به حساب</button>
+    <button id="registerBtn" class="secondary">ساخت حساب جدید</button>
+    <p class="muted">رمز عبور باید حداقل ۶ نویسه داشته باشد.</p>
+  </section>
+
+  <section id="profileCard" class="card hidden">
+    <h2>انتخاب نام کاربری</h2>
+    <p class="muted">
+      یک نام کاربری یکتا انتخاب کن. دیگران با این نام می‌توانند پیدایت کنند.
+      ایمیل تو در جست‌وجوی کاربران نمایش داده نمی‌شود.
+    </p>
+    <input id="username" maxlength="20" placeholder="مثلاً ZHNERAL_123">
+    <button id="saveUsernameBtn">ثبت نام کاربری</button>
+  </section>
+
+  <section id="appCard" class="hidden">
+
+    <div class="card">
+      <div class="topline">
+        <div>
+          <h2 style="margin-bottom:5px">حساب من</h2>
+          <div id="myUsername"></div>
+        </div>
+        <button id="logoutBtn" class="secondary">خروج</button>
+      </div>
+      <p class="muted">برای شروع گفت‌وگو، نام کاربری دقیق شخص را جست‌وجو کن.</p>
+    </div>
+
+    <div class="card">
+      <h2>🔎 جست‌وجوی کاربران</h2>
+      <input id="searchUsername" maxlength="20" placeholder="نام کاربری موردنظر">
+      <button id="searchBtn">جست‌وجو</button>
+      <div id="searchResults"></div>
+    </div>
+
+    <div class="card">
+      <h2>💬 گفت‌وگوهای من</h2>
+      <div id="chatList" class="muted">در حال بارگذاری گفت‌وگوها...</div>
+    </div>
+
+    <section id="conversationCard" class="card hidden">
+      <div class="topline">
+        <div>
+          <h2 id="conversationTitle">گفت‌وگو</h2>
+          <div id="conversationStatus" class="muted"></div>
+        </div>
+        <button id="closeConversationBtn" class="secondary">بستن</button>
+      </div>
+
+      <div id="messages"></div>
+
+      <form id="sendForm">
+        <input id="messageInput" maxlength="2000"
+          placeholder="پیامت را بنویس..." autocomplete="off">
+        <button id="sendBtn" type="submit">ارسال</button>
+      </form>
+      <p class="muted">پیام‌ها در فایربیس ذخیره می‌شوند.</p>
+    </section>
+
+  </section>
+</main>
+
+<footer>ZHNERAL © چت کاربران</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyAf_q29RAQTaWzA0XMRhhNX69yH9meSh6I",
+  authDomain: "zhneral-f0da6.firebaseapp.com",
+  projectId: "zhneral-f0da6",
+  storageBucket: "zhneral-f0da6.firebasestorage.app",
+  messagingSenderId: "817470560595",
+  appId: "1:817470560595:web:d2a0b26ff7d62ed86169a6",
+  measurementId: "G-85MKKWY30X"
+};
+
+const $ = id => document.getElementById(id);
+const statusBox = $("status");
+
+let auth, db, currentUser = null, myProfile = null;
+let currentChatId = null, unsubscribeMessages = null, unsubscribeChats = null;
+let openingChat = false;
+
+function setStatus(message, error = false) {
+  statusBox.textContent = message;
+  statusBox.style.color = error ? "#ff8585" : "#e7bd56";
+}
+
+function show(id, visible) {
+  $(id).classList.toggle("hidden", !visible);
+}
+
+function cleanUsername(value) {
+  return value.trim().replace(/^@/, "").toLowerCase();
+}
+
+function validUsername(value) {
+  return /^[a-zA-Z0-9_]{3,20}$/.test(value);
+}
+
+function explainError(error) {
+  const code = error && error.code ? error.code : "";
+  const messages = {
+    "auth/email-already-in-use": "این ایمیل قبلاً ثبت شده است.",
+    "auth/invalid-email": "فرمت ایمیل درست نیست.",
+    "auth/weak-password": "رمز عبور ضعیف است؛ حداقل ۶ نویسه وارد کن.",
+    "auth/invalid-credential": "ایمیل یا رمز عبور اشتباه است.",
+    "auth/user-not-found": "حسابی با این اطلاعات پیدا نشد.",
+    "auth/wrong-password": "رمز عبور اشتباه است.",
+    "auth/too-many-requests": "تعداد تلاش‌ها زیاد بوده؛ کمی بعد دوباره امتحان کن.",
+    "permission-denied": "دسترسی رد شد؛ قوانین فایربیس را باید بررسی کنیم.",
+    "unavailable": "اتصال به فایربیس برقرار نیست؛ اینترنت را بررسی کن."
+  };
+  return messages[code] || ("خطا: " + (error.message || "خطای ناشناخته"));
+}
+
+function showError(error) {
+  console.error(error);
+  setStatus(explainError(error), true);
+}
+
+async function register() {
+  const email = $("email").value.trim();
+  const password = $("password").value;
+
+  if (!email || password.length < 6) {
+    setStatus("ایمیل و رمز عبور معتبر وارد کن.", true);
+    return;
+  }
+
+  try {
+    setStatus("در حال ساخت حساب...");
+    await auth.createUserWithEmailAndPassword(email, password);
+    setStatus("حساب ساخته شد. حالا نام کاربری انتخاب کن.");
+  } catch (error) {
+    showError(error);
+  }
+}
+
+async function login() {
+  const email = $("email").value.trim();
+  const password = $("password").value;
+
+  if (!email || !password) {
+    setStatus("ایمیل و رمز عبور را وارد کن.", true);
+    return;
+  }
+
+  try {
+    setStatus("در حال ورود...");
+    await auth.signInWithEmailAndPassword(email, password);
+  } catch (error) {
+    showError(error);
+  }
+}
+
+async function saveUsername() {
+  if (!currentUser) return;
+
+  const original = $("username").value.trim();
+  const username = cleanUsername(original);
+
+  if (!validUsername(username)) {
+    setStatus("نام کاربری باید ۳ تا ۲۰ نویسه و فقط شامل حروف انگلیسی، عدد یا _ باشد.", true);
+    return;
+  }
+
+  const userRef = db.collection("users").doc(currentUser.uid);
+  const usernameRef = db.collection("usernames").doc(username);
+
+  try {
+    setStatus("در حال ثبت نام کاربری...");
+
+    await db.runTransaction(async transaction => {
+      const oldUserSnap = await transaction.get(userRef);
+      const newNameSnap = await transaction.get(usernameRef);
+
+      if (newNameSnap.exists && newNameSnap.data().uid !== currentUser.uid) {
+        throw new Error("این نام کاربری قبلاً گرفته شده است.");
+      }
+
+      const oldUsername = oldUserSnap.exists
+        ? oldUserSnap.data().usernameLower
+        : null;
+
+      if (oldUsername && oldUsername !== username) {
+        throw new Error("فعلاً تغییر نام کاربری پشتیبانی نمی‌شود.");
+      }
+
+      if (!newNameSnap.exists) {
+        transaction.set(usernameRef, { uid: currentUser.uid });
+      }
+
+      transaction.set(userRef, {
+        username: original.replace(/^@/, ""),
+        usernameLower: username,
+        createdAt: oldUserSnap.exists && oldUserSnap.data().createdAt
+          ? oldUserSnap.data().createdAt
+          : firebase.firestore.FieldValue.serverTimestamp(),
+        lastSeen: firebase.firestore.FieldValue.serverTimestamp()
+      }, { merge: true });
+    });
+
+    setStatus("نام کاربری با موفقیت ثبت شد.");
+  } catch (error) {
+    if (error.message && error.message.includes("قبلاً گرفته شده")) {
+      setStatus(error.message, true);
+    } else {
+      showError(error);
+    }
+  }
+}
+
+async function searchUsers() {
+  if (!currentUser) return;
+
+  const username = cleanUsername($("searchUsername").value);
+  const results = $("searchResults");
+  results.textContent = "";
+
+  if (!validUsername(username)) {
+    results.textContent = "نام کاربری معتبر وارد کن؛ حداقل ۳ نویسه.";
+    return;
+  }
+
+  try {
+    const nameSnap = await db.collection("usernames").doc(username).get();
+
+    if (!nameSnap.exists) {
+      results.textContent = "کاربری با این نام پیدا نشد.";
+      return;
+    }
+
+    const uid = nameSnap.data().uid;
+
+    if (!uid || uid === currentUser.uid) {
+      results.textContent = uid === currentUser.uid
+        ? "این نام کاربری متعلق به خودت است."
+        : "اطلاعات کاربر معتبر نیست.";
+      return;
+    }
+
+    const profileSnap = await db.collection("users").doc(uid).get();
+
+    if (!profileSnap.exists) {
+      results.textContent = "پروفایل این کاربر هنوز آماده نیست.";
+      return;
+    }
+
+    const profile = profileSnap.data();
+    const row = document.createElement("div");
+    row.className = "userrow";
+
+    const label = document.createElement("div");
+    const name = document.createElement("strong");
+    name.textContent = "@" + (profile.username || username);
+    const sub = document.createElement("small");
+    sub.textContent = "کاربر ZHNERAL";
+    label.append(name, sub);
+
+    const button = document.createElement("button");
+    button.textContent = "پیام دادن";
+    button.onclick = () => openChat(uid, profile.username || username);
+
+    row.append(label, button);
+    results.appendChild(row);
+  } catch (error) {
+    showError(error);
+  }
+}
+
+function makeChatId(uid1, uid2) {
+  return [uid1, uid2].sort().join("_");
+}
+
+async function openChat(otherUid, otherName) {
+  if (!currentUser || openingChat) return;
+  openingChat = true;
+
+  try {
+    const chatId = makeChatId(currentUser.uid, otherUid);
+    const chatRef = db.collection("chats").doc(chatId);
+    const snap = await chatRef.get();
+
+    if (!snap.exists) {
+      await chatRef.set({
+        members: [currentUser.uid, otherUid].sort(),
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        lastMessage: "",
+        lastMessageAt: firebase.firestore.FieldValue.serverTimestamp()
+      });
+    } else {
+      const members = snap.data().members || [];
+      if (!members.includes(currentUser.uid) || !members.includes(otherUid)) {
+        throw new Error("اعضای این گفت‌وگو معتبر نیستند.");
+      }
+    }
+
+    currentChatId = chatId;
+    $("conversationTitle").textContent = "گفت‌وگو با @" + otherName;
+    $("conversationStatus").textContent = "پیام‌ها فقط برای اعضای این گفت‌وگو هستند.";
+    show("conversationCard", true);
+    $("messages").textContent = "";
+    listenMessages(chatId);
+    await loadChats();
+    $("conversationCard").scrollIntoView({ behavior: "smooth", block: "start" });
+  } catch (error) {
+    showError(error);
+  } finally {
+    openingChat = false;
+  }
+}
+
+function listenMessages(chatId) {
+  if (unsubscribeMessages) unsubscribeMessages();
+
+  unsubscribeMessages = db.collection("chats").doc(chatId)
+    .collection("messages")
+    .orderBy("createdAt", "asc")
+    .limit(100)
+    .onSnapshot(snapshot => {
+      const box = $("messages");
+      box.textContent = "";
+
+      snapshot.forEach(doc => {
+        const data = doc.data();
+        const bubble = document.createElement("div");
+        bubble.className = "msg" +
+          (data.senderId === currentUser.uid ? " mine" : "");
+
+        const text = document.createElement("div");
+        text.textContent = data.text || "";
+
+        const meta = document.createElement("small");
+        let time = "";
+        if (data.createdAt && data.createdAt.toDate) {
+          time = data.createdAt.toDate().toLocaleString("fa-IR");
+        }
+        meta.textContent = (data.senderId === currentUser.uid ? "من" : "کاربر") +
+          (time ? " • " + time : "");
+
+        bubble.append(text, meta);
+        box.appendChild(bubble);
+      });
+
+      box.scrollTop = box.scrollHeight;
+    }, showError);
+}
+
+async function sendMessage(event) {
+  event.preventDefault();
+
+  const text = $("messageInput").value.trim();
+  if (!text || !currentChatId || !currentUser) return;
+
+  const sendButton = $("sendBtn");
+  sendButton.disabled = true;
+
+  try {
+    const chatRef = db.collection("chats").doc(currentChatId);
+    const chatSnap = await chatRef.get();
+
+    if (!chatSnap.exists ||
+        !(chatSnap.data().members || []).includes(currentUser.uid)) {
+      throw new Error("به این گفت‌وگو دسترسی نداری.");
+    }
+
+    const now = firebase.firestore.FieldValue.serverTimestamp();
+
+    await chatRef.collection("messages").add({
+      senderId: currentUser.uid,
+      text: text,
+      createdAt: now
+    });
+
+    await chatRef.update({
+      lastMessage: text.slice(0, 100),
+      lastMessageAt: now
+    });
+
+    $("messageInput").value = "";
+    await loadChats();
+  } catch (error) {
+    showError(error);
+  } finally {
+    sendButton.disabled = false;
+  }
+}
+
+async function loadChats() {
+  if (!currentUser) return;
+
+  const list = $("chatList");
+  list.textContent = "در حال بارگذاری...";
+
+  try {
+    const snap = await db.collection("chats")
+      .where("members", "array-contains", currentUser.uid)
+      .get();
+
+    list.textContent = "";
+
+    if (snap.empty) {
+      list.textContent = "هنوز گفت‌وگویی نداری. از بخش جست‌وجو شروع کن.";
+      return;
+    }
+
+    const chats = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+
+    chats.sort((a, b) => {
+      const ta = a.lastMessageAt && a.lastMessageAt.toMillis
+        ? a.lastMessageAt.toMillis() : 0;
+      const tb = b.lastMessageAt && b.lastMessageAt.toMillis
+        ? b.lastMessageAt.toMillis() : 0;
+      return tb - ta;
+    });
+
+    for (const chat of chats) {
+      const otherUid = (chat.members || []).find(uid => uid !== currentUser.uid);
+      if (!otherUid) continue;
+
+      const row = document.createElement("div");
+      row.className = "chatrow";
+
+      const info = document.createElement("div");
+      const name = document.createElement("strong");
+      name.textContent = "در حال دریافت نام کاربر...";
+      const preview = document.createElement("small");
+      preview.textContent = chat.lastMessage || "هنوز پیامی ارسال نشده است";
+      info.append(name, preview);
+
+      const button = document.createElement("button");
+      button.textContent = "باز کردن";
+      button.onclick = () => openChat(otherUid, name.textContent.replace(/^@/, ""));
+
+      row.append(info, button);
+      list.appendChild(row);
+
+      try {
+        const profile = await db.collection("users").doc(otherUid).get();
+        if (profile.exists) {
+          name.textContent = "@" + (profile.data().username || "کاربر");
+        } else {
+          name.textContent = "@کاربر";
+        }
+      } catch (_) {
+        name.textContent = "@کاربر";
+      }
+    }
+  } catch (error) {
+    showError(error);
+  }
+}
+
+function stopAppListeners() {
+  if (unsubscribeMessages) unsubscribeMessages();
+  if (unsubscribeChats) unsubscribeChats();
+  unsubscribeMessages = null;
+  unsubscribeChats = null;
+  currentChatId = null;
+}
+
+function updateUI(user, profile) {
+  currentUser = user;
+  myProfile = profile;
+
+  show("authCard", !user);
+  show("profileCard", !!user && !profile);
+  show("appCard", !!user && !!profile);
+
+  if (!user) {
+    stopAppListeners();
+    setStatus("برای استفاده از چت وارد حساب شو.");
+    return;
+  }
+
+  if (!profile) {
+    setStatus("یک نام کاربری برای خودت انتخاب کن.");
+    return;
+  }
+
+  $("myUsername").textContent = "@" + profile.username;
+  setStatus("وارد حساب شدی.");
+
+  loadChats();
+
+  if (unsubscribeChats) unsubscribeChats();
+  unsubscribeChats = db.collection("chats")
+    .where("members", "array-contains", user.uid)
+    .onSnapshot(() => loadChats(), showError);
+
+  db.collection("users").doc(user.uid).set({
+    lastSeen: firebase.firestore.FieldValue.serverTimestamp()
+  }, { merge: true }).catch(console.error);
+}
+
+$("registerBtn").addEventListener("click", register);
+$("loginBtn").addEventListener("click", login);
+$("saveUsernameBtn").addEventListener("click", saveUsername);
+$("searchBtn").addEventListener("click", searchUsers);
+$("searchUsername").addEventListener("keydown", event => {
+  if (event.key === "Enter") searchUsers();
+});
+$("sendForm").addEventListener("submit", sendMessage);
+
+$("logoutBtn").addEventListener("click", async () => {
+  try {
+    stopAppListeners();
+    show("conversationCard", false);
+    await auth.signOut();
+  } catch (error) {
+    showError(error);
+  }
+});
+
+$("closeConversationBtn").addEventListener("click", () => {
+  if (unsubscribeMessages) unsubscribeMessages();
+  unsubscribeMessages = null;
+  currentChatId = null;
+  show("conversationCard", false);
+});
+
+try {
+  firebase.initializeApp(firebaseConfig);
+  auth = firebase.auth();
+  db = firebase.firestore();
+
+  auth.onAuthStateChanged(async user => {
+    if (!user) {
+      updateUI(null, null);
+      return;
+    }
+
+    try {
+      const profileSnap = await db.collection("users").doc(user.uid).get();
+      updateUI(user, profileSnap.exists ? profileSnap.data() : null);
+    } catch (error) {
+      showError(error);
+      updateUI(user, null);
+    }
+  });
+} catch (error) {
+  showError(error);
+}
+</script>
+
+</body>
+  </html>
