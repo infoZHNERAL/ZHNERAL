@@ -21,13 +21,40 @@ input,button{width:100%;padding:12px 13px;margin-top:8px;border-radius:12px;font
 .composer{display:flex;align-items:center;gap:7px;padding:9px;border:1px solid #6a501e;border-radius:18px;margin:0 12px 12px;background:#090909}.composer input{flex:1;margin:0;border:0;background:transparent;padding:13px}.composer input:focus{box-shadow:none}.composer .emoji{width:38px;min-width:38px;margin:0;padding:8px;background:transparent;border:0;color:var(--gold2);font-size:21px}.composer .send{width:52px;height:52px;min-width:52px;margin:0;padding:0;border-radius:50%;font-size:22px}
 footer{text-align:center;color:#666;padding:15px;font-size:11px}
 @media(max-width:760px){header{width:100%;margin:0;border-radius:0;padding:10px 12px}.crown{font-size:28px}.logo{font-size:22px}.tagline{font-size:8px;letter-spacing:1px}.head-icon{display:none}.lang-select{min-width:85px;padding:9px;font-size:12px}main{padding:7px}.app-shell{display:flex;flex-direction:column;border-radius:16px;min-height:calc(100vh - 90px)}.sidebar{padding:9px}.sidebar .card{padding:10px;margin-bottom:8px}.side-heading{font-size:16px}.chat-panel{min-height:65vh}#conversation{min-height:65vh}#messages{min-height:250px;max-height:52vh;padding:12px 9px}.message{max-width:90%}.conversation-head{padding:10px}.avatar{width:39px;height:39px}.back-button{font-size:11px;min-width:0}.composer{margin:0 7px 7px;padding:6px;gap:3px}.composer .send{width:44px;height:44px;min-width:44px}.composer .emoji{width:30px;min-width:30px}}
+
+/* Mobile layout fix: keep the actual conversation as the first screen.
+   The account/search/chat list opens from the menu instead of pushing chat below the fold. */
+.mobile-menu-toggle{display:none;width:auto;margin:0;padding:9px 12px;background:#17130b;color:var(--gold2);border:1px solid #6a5122;border-radius:11px;font-size:20px}
+@media(max-width:760px){
+  header{position:sticky;top:0;z-index:30}
+  .mobile-menu-toggle{display:inline-flex;align-items:center;justify-content:center}
+  .head-actions{gap:7px}
+  .head-actions .head-icon{display:none}
+  main{padding:7px}
+  .app-shell{display:block;min-height:calc(100dvh - 100px);padding:5px;position:relative}
+  .chat-panel{display:flex;flex-direction:column;min-width:0;min-height:calc(100dvh - 125px);border:1px solid #5c471f;border-radius:16px;padding:8px;background:#080808}
+  .conversation-head{padding:10px}
+  #conversation{min-height:calc(100dvh - 190px);display:flex;flex-direction:column}
+  #messages{flex:1;height:auto;min-height:40vh;max-height:none;padding:12px 9px}
+  .composer{margin:0 2px 2px;padding:6px;gap:4px}
+  .composer input{min-width:0}
+  .composer .send{width:44px;height:44px;min-width:44px}
+  .composer .emoji{width:30px;min-width:30px}
+  .sidebar{display:none}
+  .sidebar.mobile-open{display:block;position:fixed;z-index:40;top:calc(env(safe-area-inset-top) + 88px);left:12px;right:12px;width:auto;max-height:calc(100dvh - 125px);overflow-y:auto;box-shadow:0 18px 70px #000e;border:1px solid #8b6b2e;background:#080808}
+  .sidebar.mobile-open .card{display:block}
+  .sidebar.mobile-open .card.hidden{display:none!important}
+  .sidebar.mobile-open .side-heading{position:sticky;top:0;background:#080808;z-index:2}
+  body.menu-open:after{content:"";position:fixed;inset:0;background:#0009;z-index:35}
+}
+
 </style>
 </head>
 
 <body>
 <header><div class="header-inner">
  <div class="brand"><div class="crown">♛</div><div><div class="logo">ZHNERAL</div><div class="tagline">MORE THAN JUST A SITE</div></div></div>
- <div class="head-actions"><span class="head-icon">⌕</span><span class="head-icon">♙</span><span class="head-icon">♧</span><select id="languageSelect" class="lang-select" aria-label="Language"><option value="fa">فارسی</option><option value="en">English</option></select></div>
+ <div class="head-actions"><button type="button" id="mobileMenuToggle" class="mobile-menu-toggle" aria-expanded="false">☰</button><span class="head-icon">⌕</span><span class="head-icon">♙</span><span class="head-icon">♧</span><select id="languageSelect" class="lang-select" aria-label="Language"><option value="fa">فارسی</option><option value="en">English</option></select></div>
 </div></header>
 <main>
 <section class="card" id="authSection">
@@ -763,6 +790,27 @@ $("searchInput").addEventListener("keydown", event => {
 $("password").addEventListener("keydown", event => {
   if (event.key === "Enter") login();
 });
+
+const mobileMenuToggle = document.getElementById("mobileMenuToggle");
+if (mobileMenuToggle) {
+  mobileMenuToggle.addEventListener("click", () => {
+    const sidebar = document.querySelector(".sidebar");
+    const open = sidebar.classList.toggle("mobile-open");
+    document.body.classList.toggle("menu-open", open);
+    mobileMenuToggle.setAttribute("aria-expanded", String(open));
+    mobileMenuToggle.textContent = open ? "✕" : "☰";
+  });
+  document.addEventListener("click", event => {
+    const sidebar = document.querySelector(".sidebar");
+    if (sidebar && sidebar.classList.contains("mobile-open")
+        && !sidebar.contains(event.target) && !mobileMenuToggle.contains(event.target)) {
+      sidebar.classList.remove("mobile-open");
+      document.body.classList.remove("menu-open");
+      mobileMenuToggle.setAttribute("aria-expanded", "false");
+      mobileMenuToggle.textContent = "☰";
+    }
+  });
+}
 
 auth.onAuthStateChanged(async user => {
   if (user) {
