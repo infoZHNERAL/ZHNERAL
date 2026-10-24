@@ -20,12 +20,12 @@ input,button{width:100%;padding:12px 13px;margin-top:8px;border-radius:12px;font
 #messages{flex:1;height:auto;min-height:300px;max-height:calc(100vh - 280px);overflow-y:auto;display:flex;flex-direction:column;gap:14px;padding:18px 20px;background-image:radial-gradient(#e6ba4e08 1px,transparent 1px);background-size:24px 24px}.message{max-width:min(78%,540px);padding:11px 14px;border-radius:17px;line-height:1.8;overflow-wrap:anywhere;white-space:pre-wrap;box-shadow:0 5px 15px #0004}.message.mine{align-self:flex-end;background:linear-gradient(135deg,#ffe08a,#c99a35);color:#201706;border:1px solid #ffdf83;border-bottom-right-radius:5px}.message.theirs{align-self:flex-start;background:linear-gradient(145deg,#242424,#151515);border:1px solid #3a3a3a;color:#f5f5f5;border-bottom-left-radius:5px}.message-meta{font-size:10px;color:#76633b;margin-top:4px}.message.theirs .message-meta{color:#999}
 .composer{display:flex;align-items:center;gap:7px;padding:9px;border:1px solid #6a501e;border-radius:18px;margin:0 12px 12px;background:#090909}.composer input{flex:1;margin:0;border:0;background:transparent;padding:13px}.composer input:focus{box-shadow:none}.composer .emoji{width:38px;min-width:38px;margin:0;padding:8px;background:transparent;border:0;color:var(--gold2);font-size:21px}.composer .send{width:52px;height:52px;min-width:52px;margin:0;padding:0;border-radius:50%;font-size:22px}
 footer{text-align:center;color:#666;padding:15px;font-size:11px}
-@media(max-width:760px){header{width:100%;margin:0;border-radius:0;padding:10px 12px}.crown{font-size:28px}.logo{font-size:22px}.tagline{font-size:8px;letter-spacing:1px}.head-icon{display:none}.lang-select{min-width:85px;padding:9px;font-size:12px}main{padding:7px}.app-shell{display:flex;flex-direction:column;border-radius:16px;min-height:calc(100vh - 90px)}.sidebar{padding:9px}.sidebar .card{padding:10px;margin-bottom:8px}.side-heading{font-size:16px}.chat-panel{min-height:65vh}#conversation{min-height:65vh}#messages{min-height:250px;max-height:52vh;padding:12px 9px}.message{max-width:90%}.conversation-head{padding:10px}.avatar{width:39px;height:39px}.back-button{font-size:11px;min-width:0}.composer{margin:0 7px 7px;padding:6px;gap:3px}.composer .send{width:44px;height:44px;min-width:44px}.composer .emoji{width:30px;min-width:30px}}
+@media(max-width:900px){header{width:100%;margin:0;border-radius:0;padding:10px 12px}.crown{font-size:28px}.logo{font-size:22px}.tagline{font-size:8px;letter-spacing:1px}.head-icon{display:none}.lang-select{min-width:85px;padding:9px;font-size:12px}main{padding:7px}.app-shell{display:flex;flex-direction:column;border-radius:16px;min-height:calc(100vh - 90px)}.sidebar{padding:9px}.sidebar .card{padding:10px;margin-bottom:8px}.side-heading{font-size:16px}.chat-panel{min-height:65vh}#conversation{min-height:65vh}#messages{min-height:250px;max-height:52vh;padding:12px 9px}.message{max-width:90%}.conversation-head{padding:10px}.avatar{width:39px;height:39px}.back-button{font-size:11px;min-width:0}.composer{margin:0 7px 7px;padding:6px;gap:3px}.composer .send{width:44px;height:44px;min-width:44px}.composer .emoji{width:30px;min-width:30px}}
 
 /* Mobile layout fix: keep the actual conversation as the first screen.
    The account/search/chat list opens from the menu instead of pushing chat below the fold. */
 .mobile-menu-toggle{display:none;width:auto;margin:0;padding:9px 12px;background:#17130b;color:var(--gold2);border:1px solid #6a5122;border-radius:11px;font-size:20px}
-@media(max-width:760px){
+@media(max-width:900px){
   header{position:sticky;top:0;z-index:30}
   .mobile-menu-toggle{display:inline-flex;align-items:center;justify-content:center}
   .head-actions{gap:7px}
@@ -46,6 +46,21 @@ footer{text-align:center;color:#666;padding:15px;font-size:11px}
   .sidebar.mobile-open .card.hidden{display:none!important}
   .sidebar.mobile-open .side-heading{position:sticky;top:0;background:#080808;z-index:2}
   body.menu-open:after{content:"";position:fixed;inset:0;background:#0009;z-index:35}
+}
+
+
+/* Final responsive override: Android tablets/phones often report 800-900 CSS px. */
+@media (max-width: 900px) {
+  .app-shell { display:block !important; }
+  .sidebar { display:none !important; }
+  .sidebar.mobile-open { display:block !important; }
+  .sidebar.mobile-open .card { display:block; }
+  .sidebar.mobile-open .card.hidden { display:none !important; }
+  .chat-panel { width:100%; min-height:calc(100dvh - 105px); }
+  #conversation { min-height:calc(100dvh - 165px); }
+  #messages { min-height:35vh; max-height:none; }
+  .mobile-menu-toggle { display:inline-flex !important; }
+  .head-icon { display:none !important; }
 }
 
 </style>
