@@ -4,170 +4,118 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#080808">
-<meta name="color-scheme" content="dark">
 <title>ZHNERAL | چت خصوصی</title>
 
 <style>
-*{box-sizing:border-box}
-:root{--bg:#070707;--panel:#101010;--panel2:#171717;--gold:#e7bd55;--gold2:#ffdf88;--text:#f7f4ed;--muted:#aaa49a;--red:#e34b4b;--border:#30291b;--shadow:0 18px 55px #0009}
-body{margin:0;min-height:100vh;background:radial-gradient(ellipse at top,#211a0b 0,#0a0a0a 42%,#050505 100%);color:var(--text);font-family:Tahoma,Arial,sans-serif}
-header{background:#090909eF;border-bottom:1px solid #5a4722;padding:15px 16px;position:sticky;top:0;z-index:5;backdrop-filter:blur(14px);box-shadow:0 8px 30px #0006}
-.header-inner{max-width:760px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.brand{display:flex;align-items:center;gap:12px;min-width:0}
-.logo-mark{width:43px;height:43px;display:grid;place-items:center;border:1px solid var(--gold);border-radius:14px;color:var(--gold2);font-weight:900;background:linear-gradient(145deg,#30240b,#0b0b0b);box-shadow:0 0 22px #d6a73b22}
-.logo{font-size:22px;font-weight:900;color:var(--gold2);letter-spacing:2px}
-.subtitle{color:var(--muted);font-size:11px;margin-top:4px}
-.lang-select{width:auto;min-width:108px;margin:0;padding:10px 12px;background:#17140d;color:var(--gold2);border:1px solid #655027;border-radius:12px;font-weight:bold}
-main{width:100%;max-width:720px;padding:18px 14px 30px;margin:auto}
-.card{background:linear-gradient(145deg,#141414,#0d0d0d);border:1px solid #30291d;border-radius:19px;padding:18px;margin-bottom:14px;box-shadow:var(--shadow)}
-h2{font-size:17px;margin:0 0 16px;color:var(--gold2);display:flex;align-items:center;gap:9px}
-h2:before{content:"";width:4px;height:19px;border-radius:8px;background:linear-gradient(var(--gold2),#9e7525)}
-h3{font-size:14px;margin:0 0 10px;color:#f0e7d1}
-input,button{width:100%;padding:13px 14px;margin-top:9px;border-radius:12px;font-family:inherit;font-size:14px}
-input{color:#fff;background:#080808;border:1px solid #39352c;outline:none;transition:.2s}
-input:focus{border-color:var(--gold);box-shadow:0 0 0 3px #e7bd5517}
-button{background:linear-gradient(135deg,#f6d879,#c99a35);color:#171107;border:1px solid #ffe7a0;font-weight:800;cursor:pointer;transition:transform .15s,filter .15s}
-button:active{transform:scale(.985)}
-button:hover{filter:brightness(1.07)}
-button:disabled{opacity:.5;cursor:not-allowed}
-.secondary{background:#1b1b1b;color:#e9d7a7;border:1px solid #403722}
-.danger{background:#321717;color:#ffb9b9;border:1px solid #633030}
-.hidden{display:none!important}
-.status{padding:11px 12px;background:#171717;border:1px solid #302c23;border-radius:11px;font-size:12px;line-height:1.9;color:#ddd;overflow-wrap:anywhere;margin-top:12px;white-space:pre-wrap}
-.status.error{color:#ffaaaa;border-color:#633030;background:#211010}
-.status.success{color:#b4f2bf;border-color:#245c32;background:#102014}
-.muted{color:var(--muted);font-size:12px;line-height:1.9;margin-top:10px}
-.row{display:flex;gap:8px;align-items:center}
-.row input{min-width:0;flex:1}
-.row button{width:auto;min-width:95px;white-space:nowrap}
-.userbox{padding:14px;background:#17150f;border:1px solid #302819;border-radius:13px;margin-bottom:13px;line-height:2.1;overflow-wrap:anywhere;font-size:13px}
-.list{display:flex;flex-direction:column;gap:9px}
-.list-item{background:linear-gradient(130deg,#191919,#101010);border:1px solid #302d26;border-radius:13px;padding:13px;cursor:pointer;overflow-wrap:anywhere;transition:border-color .2s,transform .2s}
-.list-item:hover{border-color:#8d6b2d;transform:translateY(-1px)}
-.list-name{color:var(--gold2);font-weight:bold}
-.list-preview{color:#aaa;font-size:12px;margin-top:5px;overflow-wrap:anywhere}
-#messages{height:min(48vh,440px);min-height:250px;overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding:14px 8px;margin:12px 0;background:radial-gradient(ellipse at center,#111 0,#090909 100%);border:1px solid #27231b;border-radius:15px;scrollbar-color:#6f5725 #111}
-.message{max-width:86%;padding:11px 13px;border-radius:15px;line-height:1.8;overflow-wrap:anywhere;white-space:pre-wrap;box-shadow:0 5px 15px #0004}
-.message.mine{align-self:flex-start;background:linear-gradient(145deg,#4a3917,#2b2110);border:1px solid #71572a;border-bottom-left-radius:4px}
-.message.theirs{align-self:flex-end;background:linear-gradient(145deg,#242424,#171717);border:1px solid #383838;border-bottom-right-radius:4px}
-.message-meta{font-size:10px;color:#d0bd8c;margin-top:5px}
-#conversation{scroll-margin-top:90px}
-footer{text-align:center;color:#777;padding:18px 12px 28px;font-size:11px}
-@media(min-width:600px){main{padding-top:24px}.card{padding:22px}header{padding:16px}}
-@media(max-width:420px){.logo{font-size:19px}.logo-mark{width:38px;height:38px}.subtitle{font-size:10px}.card{padding:14px;border-radius:16px}.lang-select{min-width:92px;padding:9px 8px;font-size:12px}.row button{min-width:82px;padding:12px 10px}.message{max-width:92%}}
+*{box-sizing:border-box}:root{--bg:#050505;--gold:#e7bd55;--gold2:#ffdf83;--muted:#999;--border:#392e19}
+body{margin:0;background:radial-gradient(ellipse at top,#211909,#080808 45%,#030303);color:#f5f3ed;font-family:Tahoma,Arial,sans-serif}
+header{margin:10px auto 0;width:calc(100% - 20px);max-width:1500px;padding:14px 22px;background:#080808;border:1px solid #6a501e;border-radius:20px}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{display:flex;align-items:center;gap:13px}.crown{font-size:39px;color:var(--gold2)}.logo{font-size:clamp(22px,3vw,36px);font-weight:900;color:var(--gold2);letter-spacing:3px}.tagline{font-size:10px;letter-spacing:3px;color:#999;margin-top:3px}.head-actions{display:flex;align-items:center;gap:10px}.head-icon{border:1px solid #30291c;border-radius:12px;padding:11px;color:var(--gold2);font-size:20px}.lang-select{width:auto;margin:0;padding:10px;background:#17130b;color:var(--gold2);border:1px solid #6a5122;border-radius:12px}
+main{max-width:1500px;margin:auto;padding:12px}.app-shell{display:grid;grid-template-columns:minmax(300px,390px) minmax(0,1fr);gap:8px;min-height:calc(100vh - 130px);border:1px solid #6a501e;border-radius:22px;padding:5px;background:#070707}.sidebar{min-width:0;border:1px solid #3c3019;border-radius:17px;padding:12px;background:#080808}.side-heading{display:flex;justify-content:space-between;color:var(--gold2);font-size:19px;font-weight:bold;padding:5px 4px 13px}
+.card{background:linear-gradient(145deg,#121212,#090909);border:1px solid #30291d;border-radius:17px;padding:15px;margin-bottom:12px}h2{font-size:16px;margin:0 0 13px;color:var(--gold2);display:flex;align-items:center;gap:8px}h2:before{content:"";width:4px;height:18px;border-radius:5px;background:var(--gold)}h3{font-size:14px;margin:0 0 10px}
+input,button{width:100%;padding:12px 13px;margin-top:8px;border-radius:12px;font:inherit;font-size:14px}input{color:white;background:#080808;border:1px solid #37332b;outline:none;min-width:0}input:focus{border-color:var(--gold)}button{background:linear-gradient(135deg,#ffe08a,#c99a35);color:#171107;border:1px solid #ffe7a0;font-weight:bold;cursor:pointer}button:disabled{opacity:.5}.secondary{background:#1b1b1b;color:#e9d7a7;border:1px solid #403722}.danger{background:#321717;color:#ffb9b9;border:1px solid #633030}.hidden{display:none!important}
+.status{padding:10px;background:#171717;border:1px solid #302c23;border-radius:10px;font-size:12px;line-height:1.8;color:#ddd;overflow-wrap:anywhere;margin-top:10px;white-space:pre-wrap}.status.error{color:#ffaaaa;border-color:#633030}.status.success{color:#b4f2bf;border-color:#245c32}.muted{color:var(--muted);font-size:12px;line-height:1.9;margin-top:8px}.row{display:flex;gap:8px;align-items:center}.row input{flex:1}.row button{width:auto;min-width:80px}.userbox{padding:11px;background:#15130f;border:1px solid #302819;border-radius:12px;margin-bottom:10px;line-height:2;overflow-wrap:anywhere;font-size:12px}.list{display:flex;flex-direction:column;gap:7px}.list-item{background:#111;border:1px solid #292929;border-radius:12px;padding:11px;cursor:pointer;overflow-wrap:anywhere}.list-item:hover{border-color:#8c6a2b}.list-name{color:var(--gold2);font-weight:bold}.list-preview{color:#999;font-size:12px;margin-top:5px}
+.chat-panel{min-width:0;min-height:70vh;display:flex;flex-direction:column;border:1px solid #5a451f;border-radius:17px;background:radial-gradient(ellipse at center,#111,#060606 80%);overflow:hidden}.chat-empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;color:#8f8264;min-height:300px}.watermark{font-size:100px;color:#4b3916;opacity:.4}.chat-empty strong{color:var(--gold2);font-size:18px}
+#conversation{min-height:70vh;display:flex;flex-direction:column;scroll-margin-top:90px;border:0;background:transparent;border-radius:0;padding:0;margin:0;box-shadow:none}.conversation-head{display:flex;align-items:center;gap:12px;padding:13px 17px;border-bottom:1px solid #352a17;background:#111}.avatar{width:48px;height:48px;flex-shrink:0;border-radius:50%;display:grid;place-items:center;border:1px solid var(--gold);background:linear-gradient(145deg,#3a2b0c,#101010);color:var(--gold2);font-weight:bold}.person-meta{min-width:0;flex:1}#chatTitle{margin:0;display:block}#chatTitle:before{display:none}.back-button{width:auto;margin:0;padding:8px 10px}
+#messages{flex:1;height:auto;min-height:300px;max-height:calc(100vh - 280px);overflow-y:auto;display:flex;flex-direction:column;gap:14px;padding:18px 20px;background-image:radial-gradient(#e6ba4e08 1px,transparent 1px);background-size:24px 24px}.message{max-width:min(78%,540px);padding:11px 14px;border-radius:17px;line-height:1.8;overflow-wrap:anywhere;white-space:pre-wrap;box-shadow:0 5px 15px #0004}.message.mine{align-self:flex-end;background:linear-gradient(135deg,#ffe08a,#c99a35);color:#201706;border:1px solid #ffdf83;border-bottom-right-radius:5px}.message.theirs{align-self:flex-start;background:linear-gradient(145deg,#242424,#151515);border:1px solid #3a3a3a;color:#f5f5f5;border-bottom-left-radius:5px}.message-meta{font-size:10px;color:#76633b;margin-top:4px}.message.theirs .message-meta{color:#999}
+.composer{display:flex;align-items:center;gap:7px;padding:9px;border:1px solid #6a501e;border-radius:18px;margin:0 12px 12px;background:#090909}.composer input{flex:1;margin:0;border:0;background:transparent;padding:13px}.composer input:focus{box-shadow:none}.composer .emoji{width:38px;min-width:38px;margin:0;padding:8px;background:transparent;border:0;color:var(--gold2);font-size:21px}.composer .send{width:52px;height:52px;min-width:52px;margin:0;padding:0;border-radius:50%;font-size:22px}
+footer{text-align:center;color:#666;padding:15px;font-size:11px}
+@media(max-width:760px){header{width:100%;margin:0;border-radius:0;padding:10px 12px}.crown{font-size:28px}.logo{font-size:22px}.tagline{font-size:8px;letter-spacing:1px}.head-icon{display:none}.lang-select{min-width:85px;padding:9px;font-size:12px}main{padding:7px}.app-shell{display:flex;flex-direction:column;border-radius:16px;min-height:calc(100vh - 90px)}.sidebar{padding:9px}.sidebar .card{padding:10px;margin-bottom:8px}.side-heading{font-size:16px}.chat-panel{min-height:65vh}#conversation{min-height:65vh}#messages{min-height:250px;max-height:52vh;padding:12px 9px}.message{max-width:90%}.conversation-head{padding:10px}.avatar{width:39px;height:39px}.back-button{font-size:11px;min-width:0}.composer{margin:0 7px 7px;padding:6px;gap:3px}.composer .send{width:44px;height:44px;min-width:44px}.composer .emoji{width:30px;min-width:30px}}
 </style>
 </head>
 
 <body>
-
-<header>
-  <div class="header-inner">
-    <div class="brand">
-      <div class="logo-mark">Z</div>
-      <div>
-        <div class="logo">ZHNERAL</div>
-        <div class="subtitle" data-i18n="subtitle">پیام‌رسان خصوصی ژنرال</div>
-      </div>
-    </div>
-    <select id="languageSelect" class="lang-select" aria-label="Language">
-      <option value="fa">فارسی</option>
-      <option value="en">English</option>
-    </select>
-  </div>
-</header>
-
+<header><div class="header-inner">
+ <div class="brand"><div class="crown">♛</div><div><div class="logo">ZHNERAL</div><div class="tagline">MORE THAN JUST A SITE</div></div></div>
+ <div class="head-actions"><span class="head-icon">⌕</span><span class="head-icon">♙</span><span class="head-icon">♧</span><select id="languageSelect" class="lang-select" aria-label="Language"><option value="fa">فارسی</option><option value="en">English</option></select></div>
+</div></header>
 <main>
-
-  <section class="card" id="authSection">
-    <h2 data-i18n="loginTitle">ورود به حساب</h2>
+<section class="card" id="authSection">
+    <h2>ورود به حساب</h2>
 
     <input
       id="email"
       type="email"
-      placeholder="ایمیل" data-i18n-placeholder="emailPlaceholder"
+      placeholder="ایمیل"
       autocomplete="email"
     >
 
     <input
       id="password"
       type="password"
-      placeholder="رمز عبور" data-i18n-placeholder="passwordPlaceholder"
+      placeholder="رمز عبور"
       autocomplete="current-password"
     >
 
-    <button id="loginBtn" onclick="login()" data-i18n="login">ورود</button>
+    <button id="loginBtn" onclick="login()">ورود</button>
 
     <button
       id="registerBtn"
       class="secondary"
       onclick="register()"
-     data-i18n="register">ساخت حساب جدید</button>
+    >ساخت حساب جدید</button>
 
     <div class="muted">
-      <span data-i18n="loginHint">برای ورود از ایمیل و رمز عبوری استفاده کن که با آن در ZHNERAL ثبت‌نام کرده‌ای.</span>
+      برای ورود از ایمیل و رمز عبوری استفاده کن که با آن در ZHNERAL ثبت‌نام کرده‌ای.
     </div>
 
     <div id="authStatus" class="status hidden"></div>
   </section>
-
-
-  <section class="card hidden" id="accountSection">
-    <h2 data-i18n="myAccount">حساب من</h2>
+<div class="app-shell hidden" id="appShell">
+ <aside class="sidebar"><div class="side-heading"><span data-i18n="chatListTitle">▣ چت</span><span>☰</span></div>
+ <section class="card hidden" id="accountSection">
+    <h2>حساب من</h2>
 
     <div class="userbox">
-      <div><span data-i18n="emailLabel">ایمیل:</span> <span id="myEmail">-</span></div>
-      <div><span data-i18n="uidLabel">شناسه:</span> <span id="myUid">-</span></div>
-      <div><span data-i18n="usernameLabel">نام کاربری:</span> <span id="myUsername">تنظیم نشده</span></div>
+      <div>ایمیل: <span id="myEmail">-</span></div>
+      <div>شناسه: <span id="myUid">-</span></div>
+      <div>نام کاربری: <span id="myUsername">تنظیم نشده</span></div>
     </div>
 
     <div id="profileSection">
-      <h3 data-i18n="chooseUsername">انتخاب نام کاربری</h3>
+      <h3>انتخاب نام کاربری</h3>
 
       <input
         id="usernameInput"
         type="text"
         maxlength="25"
-        placeholder="مثلاً zhneral123" data-i18n-placeholder="usernamePlaceholder"
+        placeholder="مثلاً zhneral123"
         autocomplete="off"
       >
 
-      <button onclick="saveName()" data-i18n="saveUsername">ذخیره نام کاربری</button>
+      <button onclick="saveName()">ذخیره نام کاربری</button>
 
       <div class="muted">
-        <span data-i18n="usernameHint">نام کاربری باید انگلیسی باشد و فقط از حروف، عدد و زیرخط تشکیل شود.</span>
+        نام کاربری باید انگلیسی باشد و فقط از حروف، عدد و زیرخط تشکیل شود.
       </div>
     </div>
 
-    <button class="danger" onclick="logout()" data-i18n="logout">خروج از حساب</button>
+    <button class="danger" onclick="logout()">خروج از حساب</button>
 
     <div id="accountStatus" class="status hidden"></div>
   </section>
-
-
-  <section class="card hidden" id="searchSection">
-    <h2 data-i18n="searchUsers">جستجوی کاربران</h2>
+ <section class="card hidden" id="searchSection">
+    <h2>جستجوی کاربران</h2>
 
     <div class="row">
       <input
         id="searchInput"
         type="text"
         maxlength="25"
-        placeholder="نام کاربری بدون @" data-i18n-placeholder="searchPlaceholder"
+        placeholder="نام کاربری بدون @"
         autocomplete="off"
       >
-      <button onclick="searchUser()" data-i18n="search">جستجو</button>
+      <button onclick="searchUser()">جستجو</button>
     </div>
 
     <div id="searchResults" class="list"></div>
 
     <div id="searchStatus" class="status hidden"></div>
   </section>
+ <section class="card hidden" id="chatsSection">
+    <h2>گفت‌وگوهای من</h2>
 
-
-  <section class="card hidden" id="chatsSection">
-    <h2 data-i18n="myChats">گفت‌وگوهای من</h2>
-
-    <button class="secondary" onclick="loadChats()" data-i18n="refreshChats">
+    <button class="secondary" onclick="loadChats()">
       تازه‌سازی فهرست
     </button>
 
@@ -175,36 +123,29 @@ footer{text-align:center;color:#777;padding:18px 12px 28px;font-size:11px}
 
     <div id="chatsStatus" class="status hidden"></div>
   </section>
-
-
+ </aside>
+ <section class="chat-panel">
+  <div class="chat-empty" id="chatEmpty"><div class="watermark">♛</div><strong>ZHNERAL CHAT</strong><div class="muted" data-i18n="chooseConversation">برای شروع، یک گفت‌وگو را انتخاب کن</div></div>
   <section class="card hidden" id="conversation">
-    <h2 id="chatTitle" data-i18n="conversationTitle">گفت‌وگو</h2>
-
-    <button class="secondary" onclick="backToChats()" data-i18n="backToChats">
-      بازگشت به فهرست
-    </button>
-
+    <div class="conversation-head"><div class="avatar">Z</div><div class="person-meta"><h2 id="chatTitle">گفت‌وگو</h2><div class="muted"><span class="online-dot"></span> <span data-i18n="privateChat">چت خصوصی</span></div></div><button class="secondary back-button" onclick="backToChats()" data-i18n="back">بازگشت به فهرست</button></div>
     <div id="messages"></div>
-
-    <div class="row">
+    <div class="composer"><button class="emoji" type="button" onclick="document.getElementById('messageInput').value += ' 😊';document.getElementById('messageInput').focus();" aria-label="Emoji">☺</button>
       <input
         id="messageInput"
         type="text"
         maxlength="2000"
-        placeholder="پیامت را بنویس..." data-i18n-placeholder="messagePlaceholder"
+        placeholder="پیامت را بنویس..."
         autocomplete="off"
       >
-      <button id="sendBtn" onclick="sendMessage()" data-i18n="send">ارسال</button>
+      <button id="sendBtn" class="send" onclick="sendMessage()" aria-label="Send">➤</button>
     </div>
 
     <div id="conversationStatus" class="status hidden"></div>
   </section>
-
+ </section>
+</div>
 </main>
-
-<footer><span data-i18n="footer">ZHNERAL · پیام‌رسان خصوصی</span></footer>
-
-
+<footer>ZHNERAL · <span data-i18n="privateMessenger">پیام‌رسان خصوصی</span></footer>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
@@ -221,100 +162,6 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
-
-
-const translations = {
-  fa: {
-    subtitle:"پیام‌رسان خصوصی ژنرال", loginTitle:"ورود به حساب", emailPlaceholder:"ایمیل",
-    passwordPlaceholder:"رمز عبور", login:"ورود", register:"ساخت حساب جدید",
-    loginHint:"برای ورود از ایمیل و رمز عبوری استفاده کن که با آن در ZHNERAL ثبت‌نام کرده‌ای.",
-    myAccount:"حساب من", emailLabel:"ایمیل:", uidLabel:"شناسه:", usernameLabel:"نام کاربری:",
-    chooseUsername:"انتخاب نام کاربری", usernamePlaceholder:"مثلاً zhneral123",
-    saveUsername:"ذخیره نام کاربری", usernameHint:"نام کاربری باید انگلیسی باشد و فقط از حروف، عدد و زیرخط تشکیل شود.",
-    logout:"خروج از حساب", searchUsers:"جستجوی کاربران", searchPlaceholder:"نام کاربری بدون @",
-    search:"جستجو", myChats:"گفت‌وگوهای من", refreshChats:"تازه‌سازی فهرست",
-    conversationTitle:"گفت‌وگو", backToChats:"بازگشت به فهرست", messagePlaceholder:"پیامت را بنویس...",
-    send:"ارسال", footer:"ZHNERAL · پیام‌رسان خصوصی", notSet:"تنظیم نشده",
-    loading:"در حال بارگذاری...", user:"کاربر", startChat:"برای شروع گفت‌وگو لمس کن",
-    sendMessage:"پیام دادن", found:"کاربر پیدا شد.", noChats:"هنوز گفت‌وگویی نداری.",
-    you:"شما", chatOpen:"گفت‌وگو باز شد.", searching:"در حال جستجو...",
-    saving:"در حال ذخیره نام کاربری...", saved:"نام کاربری ذخیره شد.",
-    invalidUsername:"نام کاربری معتبر وارد کن.", ownUsername:"این نام کاربری متعلق به خودت است.",
-    notFound:"این نام کاربری پیدا نشد.", invalidMembers:"اعضای گفت‌وگو معتبر نیستند. اطلاعات این گفت‌وگو را بررسی کن.",
-    emailPassword:"ایمیل و رمز عبور را وارد کن.", accountCreated:"حساب ساخته شد. حالا یک نام کاربری انتخاب کن.",
-    loginSuccess:"ورود موفق بود.", nameTaken:"این نام کاربری قبلاً انتخاب شده است.",
-    usernameRule:"نام کاربری باید ۳ تا ۲۵ حرف و فقط شامل حروف انگلیسی، عدد یا زیرخط باشد.",
-    profileLoadingError:"خطا در خواندن اطلاعات"
-  },
-  en: {
-    subtitle:"ZHNERAL private messenger", loginTitle:"Sign in", emailPlaceholder:"Email",
-    passwordPlaceholder:"Password", login:"Sign in", register:"Create account",
-    loginHint:"Sign in with the email and password you used to register on ZHNERAL.",
-    myAccount:"My account", emailLabel:"Email:", uidLabel:"User ID:", usernameLabel:"Username:",
-    chooseUsername:"Choose a username", usernamePlaceholder:"e.g. zhneral123",
-    saveUsername:"Save username", usernameHint:"Username must use English letters, numbers, or underscores only.",
-    logout:"Sign out", searchUsers:"Find users", searchPlaceholder:"Username without @",
-    search:"Search", myChats:"My conversations", refreshChats:"Refresh list",
-    conversationTitle:"Conversation", backToChats:"Back to conversations", messagePlaceholder:"Write a message...",
-    send:"Send", footer:"ZHNERAL · Private messenger", notSet:"Not set",
-    loading:"Loading...", user:"User", startChat:"Tap to start a conversation",
-    sendMessage:"Message", found:"User found.", noChats:"You don't have any conversations yet.",
-    you:"You", chatOpen:"Conversation opened.", searching:"Searching...",
-    saving:"Saving username...", saved:"Username saved.",
-    invalidUsername:"Enter a valid username.", ownUsername:"That's your own username.",
-    notFound:"Username not found.", invalidMembers:"Conversation members are invalid. Please check this conversation.",
-    emailPassword:"Enter your email and password.", accountCreated:"Account created. Now choose a username.",
-    loginSuccess:"Signed in successfully.", nameTaken:"That username is already taken.",
-    usernameRule:"Username must be 3–25 characters and contain only English letters, numbers, or underscores.",
-    profileLoadingError:"Error loading profile"
-  }
-};
-let currentLanguage = localStorage.getItem("zhneral-chat-language") || "fa";
-function tr(key) { return (translations[currentLanguage] && translations[currentLanguage][key]) || (translations.fa[key]) || key; }
-function translateKnown(text) {
-  const map = {
-    "ایمیل و رمز عبور را وارد کن.":"emailPassword",
-    "حساب ساخته شد. حالا یک نام کاربری انتخاب کن.":"accountCreated",
-    "ورود موفق بود.":"loginSuccess",
-    "در حال بارگذاری...":"loading",
-    "تنظیم نشده":"notSet",
-    "در حال جستجو...":"searching",
-    "کاربر پیدا شد.":"found",
-    "این نام کاربری پیدا نشد.":"notFound",
-    "این نام کاربری متعلق به خودت است.":"ownUsername",
-    "نام کاربری معتبر وارد کن.":"invalidUsername",
-    "در حال ذخیره نام کاربری...":"saving",
-    "نام کاربری ذخیره شد.":"saved",
-    "این نام کاربری قبلاً انتخاب شده است.":"nameTaken",
-    "هنوز گفت‌وگویی نداری.":"noChats",
-    "برای شروع گفت‌وگو لمس کن":"startChat",
-    "پیام دادن":"sendMessage",
-    "گفت‌وگو باز شد.":"chatOpen",
-    "کاربر":"user",
-    "شما":"you"
-  };
-  return map[text] ? tr(map[text]) : text;
-}
-function applyLanguage(lang) {
-  currentLanguage = translations[lang] ? lang : "fa";
-  localStorage.setItem("zhneral-chat-language", currentLanguage);
-  document.documentElement.lang = currentLanguage;
-  document.documentElement.dir = currentLanguage === "fa" ? "rtl" : "ltr";
-  document.querySelectorAll("[data-i18n]").forEach(el => {
-    const key = el.getAttribute("data-i18n");
-    if (el.id === "chatTitle" && activeChat) return;
-    el.textContent = tr(key);
-  });
-  document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
-    el.placeholder = tr(el.getAttribute("data-i18n-placeholder"));
-  });
-  const select = document.getElementById("languageSelect");
-  if (select) select.value = currentLanguage;
-  if (me && $("myUsername")) {
-    const username = myProfile && myProfile.username;
-    $("myUsername").textContent = username ? "@" + username : tr("notSet");
-  }
-}
 
 const auth = firebase.auth();
 const db = firebase.firestore();
@@ -333,7 +180,7 @@ function show(id, visible = true) {
 
 function setStatus(id, message, type = "") {
   const el = $(id);
-  el.textContent = translateKnown(message);
+  el.textContent = message;
   el.className = "status" + (type ? " " + type : "");
   show(id, true);
 }
@@ -375,6 +222,19 @@ function stopMessageListener() {
   }
 }
 
+const uiText={
+fa:{privateMessenger:"پیام‌رسان خصوصی",chatListTitle:"▣ چت",chooseConversation:"برای شروع، یک گفت‌وگو را انتخاب کن",loginTitle:"ورود به حساب",emailPlaceholder:"ایمیل",passwordPlaceholder:"رمز عبور",login:"ورود",myAccount:"حساب من",searchUsers:"جستجوی کاربران",myChats:"گفت‌وگوهای من",search:"جستجو",back:"بازگشت به فهرست",searchPlaceholder:"نام کاربری بدون @",messagePlaceholder:"پیامت را بنویس...",privateChat:"چت خصوصی"},
+en:{privateMessenger:"Private messenger",chatListTitle:"▣ Chats",chooseConversation:"Choose a conversation to get started",loginTitle:"Sign in",emailPlaceholder:"Email",passwordPlaceholder:"Password",login:"Sign in",myAccount:"My account",searchUsers:"Find users",myChats:"My conversations",search:"Search",back:"Back to conversations",searchPlaceholder:"Username without @",messagePlaceholder:"Write a message...",privateChat:"Private chat"}
+};
+let uiLanguage=localStorage.getItem("zhneral-ui-language")||"fa";
+function applyUiLanguage(lang){
+ uiLanguage=uiText[lang]?lang:"fa";localStorage.setItem("zhneral-ui-language",uiLanguage);
+ document.documentElement.lang=uiLanguage;document.documentElement.dir=uiLanguage==="fa"?"rtl":"ltr";
+ document.querySelectorAll("[data-i18n]").forEach(el=>{if(el.id==="chatTitle"&&activeChat)return;let k=el.getAttribute("data-i18n");if(uiText[uiLanguage][k])el.textContent=uiText[uiLanguage][k];});
+ document.querySelectorAll("[data-i18n-placeholder]").forEach(el=>{let k=el.getAttribute("data-i18n-placeholder");if(uiText[uiLanguage][k])el.placeholder=uiText[uiLanguage][k];});
+ document.getElementById("languageSelect").value=uiLanguage;
+}
+document.getElementById("languageSelect").addEventListener("change",e=>applyUiLanguage(e.target.value));applyUiLanguage(uiLanguage);
 async function register() {
   clearStatus("authStatus");
 
@@ -449,12 +309,13 @@ async function showAccount(user) {
   show("searchSection", false);
   show("chatsSection", false);
   show("conversation", false);
+  show("appShell", !!user);
 
   if (!user) return;
 
   $("myEmail").textContent = user.email || "-";
   $("myUid").textContent = user.uid;
-  $("myUsername").textContent = tr("loading");
+  $("myUsername").textContent = "در حال بارگذاری...";
 
   try {
     const snap = await db.collection("users").doc(user.uid).get();
@@ -466,7 +327,7 @@ async function showAccount(user) {
 
       $("myUsername").textContent = username
         ? "@" + username
-        : tr("notSet");
+        : "تنظیم نشده";
 
       $("usernameInput").value = username;
 
@@ -479,7 +340,7 @@ async function showAccount(user) {
         await loadChats();
       }
     } else {
-      $("myUsername").textContent = tr("notSet");
+      $("myUsername").textContent = "تنظیم نشده";
       show("profileSection", true);
       show("searchSection", false);
       show("chatsSection", false);
@@ -619,10 +480,10 @@ async function searchUser() {
 
     const desc = document.createElement("div");
     desc.className = "list-preview";
-    desc.textContent = tr("startChat");
+    desc.textContent = "برای شروع گفت‌وگو لمس کن";
 
     const btn = document.createElement("button");
-    btn.textContent = tr("sendMessage");
+    btn.textContent = "پیام دادن";
     btn.onclick = () => openChat(otherUid, name);
 
     item.append(title, desc, btn);
@@ -692,10 +553,11 @@ async function openChat(otherUid, otherName) {
 
     activeChat = id;
 
-    $("chatTitle").textContent = (currentLanguage === "fa" ? "گفت‌وگو با @" : "Chat with @") + otherName;
+    $("chatTitle").textContent = (uiLanguage === "fa" ? "گفت‌وگو با @" : "Chat with @") + otherName;
     $("messages").textContent = "";
 
     show("conversation", true);
+    show("chatEmpty", false);
 
     try {
       listenMessages(id);
@@ -715,7 +577,7 @@ async function openChat(otherUid, otherName) {
       block: "start"
     });
 
-    setStatus("conversationStatus", tr("chatOpen"), "success");
+    setStatus("conversationStatus", "گفت‌وگو باز شد.", "success");
   } catch (e) {
     report(e, "باز کردن گفت‌وگو", "searchStatus");
   } finally {
@@ -735,7 +597,7 @@ async function loadChats() {
       .get();
 
     if (snap.empty) {
-      $("chatList").textContent = tr("noChats");
+      $("chatList").textContent = "هنوز گفت‌وگویی نداری.";
       return;
     }
 
@@ -746,7 +608,7 @@ async function loadChats() {
 
       if (!otherUid) continue;
 
-      let name = tr("user");
+      let name = "کاربر";
 
       try {
         const userSnap = await db.collection("users")
@@ -812,14 +674,14 @@ function listenMessages(chatId) {
         let time = "";
 
         if (data.createdAt && data.createdAt.toDate) {
-          time = data.createdAt.toDate().toLocaleTimeString(currentLanguage === "fa" ? "fa-IR" : "en-US", {
+          time = data.createdAt.toDate().toLocaleTimeString("fa-IR", {
             hour: "2-digit",
             minute: "2-digit"
           });
         }
 
         meta.textContent =
-          (data.senderId === me.uid ? tr("you") : tr("user")) +
+          (data.senderId === me.uid ? "شما" : "کاربر") +
           (time ? " · " + time : "");
 
         bubble.append(body, meta);
@@ -883,6 +745,7 @@ function backToChats() {
   stopMessageListener();
   activeChat = null;
   show("conversation", false);
+  show("chatEmpty", true);
   show("chatsSection", true);
 }
 
@@ -901,9 +764,6 @@ $("password").addEventListener("keydown", event => {
   if (event.key === "Enter") login();
 });
 
-document.getElementById("languageSelect").addEventListener("change", e => applyLanguage(e.target.value));
-applyLanguage(currentLanguage);
-
 auth.onAuthStateChanged(async user => {
   if (user) {
     await showAccount(user);
@@ -918,6 +778,7 @@ auth.onAuthStateChanged(async user => {
     show("searchSection", false);
     show("chatsSection", false);
     show("conversation", false);
+    show("appShell", false);
   }
 });
 </script>
