@@ -1,557 +1,544 @@
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#050606">
-  <title>ZHNERAL | ژنرال</title>
-  <style>
-    :root {
-      --bg: #050606;
-      --panel: #0d0f0e;
-      --gold: #f4c45f;
-      --gold-light: #ffe8a5;
-      --text: #f8f4e9;
-      --muted: #b8b5ac;
-      --border: #80622f;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      background: radial-gradient(ellipse at top, #30230e 0, transparent 38%), var(--bg);
-      color: var(--text);
-      font-family: Tahoma, Arial, sans-serif;
-      line-height: 1.8;
-    }
-    a { color: inherit; text-decoration: none; }
-    button, input, select, textarea { font: inherit; }
-    button { cursor: pointer; }
-    .container { width: min(1200px, calc(100% - 32px)); margin: auto; }
-    header {
-      position: sticky; top: 0; z-index: 10;
-      background: #050606ed; backdrop-filter: blur(15px);
-      border-bottom: 1px solid var(--border);
-    }
-    nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 18px; }
-    .logo { color: var(--gold); font-size: 25px; font-weight: 900; text-shadow: 0 0 20px #f4c45f44; white-space: nowrap; }
-    .logo span { display: block; text-align: center; font-size: 24px; line-height: 1; }
-    .nav-links { display: flex; flex-wrap: wrap; gap: 17px; font-size: 12px; }
-    .nav-links a:hover, footer a:hover { color: var(--gold); }
-    .gold-button {
-      display: inline-block; padding: 11px 20px; border: 1px solid var(--gold);
-      border-radius: 10px; background: linear-gradient(135deg, var(--gold-light), #c58b29);
-      color: #171006; font-weight: bold; transition: .2s;
-    }
-    .gold-button:hover { transform: translateY(-2px); box-shadow: 0 0 25px #f4c45f44; }
-    .outline-button { background: transparent; color: var(--gold-light); }
-    .hero {
-      border-bottom: 1px solid var(--border);
-      background: radial-gradient(ellipse at center bottom, #9d6b2238, transparent 55%), linear-gradient(120deg, #080908, #1b170f, #050606);
-    }
-    .hero-content { min-height: 350px; padding: 35px 0; display: grid; grid-template-columns: 1fr 1.5fr 1fr; align-items: center; gap: 24px; }
-    .hero-art { height: 270px; display: grid; place-items: center; font-size: 130px; background: radial-gradient(circle, #a87c3040, transparent 65%); filter: drop-shadow(0 0 20px #f4c45f20); }
-    .hero-main { text-align: center; }
-    .crown { color: var(--gold); font-size: 55px; line-height: 1.2; text-shadow: 0 0 25px #f4c45f77; }
-    h1 { margin: 0; font-size: clamp(38px, 5vw, 65px); color: var(--gold-light); letter-spacing: 2px; text-shadow: 0 0 30px #f4c45f33; }
-    .tagline { color: var(--gold); font-size: 10px; letter-spacing: 4px; }
-    .hero-main h2 { font-size: 20px; }
-    .muted { color: var(--muted); font-size: 13px; }
-    .hero-actions { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
-    .quick-panel { border: 1px solid var(--border); border-radius: 18px; padding: 15px; background: #080a09dd; box-shadow: 0 0 25px #f4c45f12; }
-    .quick-panel h3 { color: var(--gold-light); margin-top: 0; }
-    .quick-panel a { display: block; padding: 9px 0; border-top: 1px solid #ffffff13; font-size: 12px; }
-    .quick-panel a span { color: var(--gold); }
-    .shortcuts { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; padding: 22px 0; }
-    .shortcut { min-height: 105px; display: grid; place-content: center; text-align: center; padding: 12px 6px; border: 1px solid var(--border); border-radius: 10px; background: linear-gradient(145deg, #19160f, #070808); transition: .2s; }
-    .shortcut:hover { transform: translateY(-3px); border-color: var(--gold-light); box-shadow: 0 0 20px #f4c45f1e; }
-    .shortcut .icon { color: var(--gold); font-size: 25px; }
-    .shortcut strong { font-size: 13px; }
-    .shortcut small { color: var(--muted); font-size: 10px; }
-    section { padding: 25px 0; }
-    .section-title { text-align: center; color: var(--gold-light); font-size: 23px; margin: 0 0 22px; }
-    .features { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
-    .feature { text-align: center; border: 1px solid var(--border); border-radius: 12px; padding: 17px 9px; background: linear-gradient(160deg, #15140f, #070808); }
-    .feature .icon { color: var(--gold); font-size: 32px; }
-    .feature h3 { font-size: 13px; margin: 5px 0; }
-    .feature p { color: var(--muted); font-size: 10px; margin: 0; }
-    .market { border: 1px solid var(--border); border-radius: 16px; padding: 20px; background: linear-gradient(145deg, #10120f, #050606); box-shadow: 0 0 28px #f4c45f0d; }
-    .market-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-    .market-header h2 { margin: 0; color: var(--gold-light); }
-    .filters { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 18px 0; }
-    input, select, textarea { width: 100%; background: #080a09; color: white; border: 1px solid #5d4a29; border-radius: 9px; padding: 11px; }
-    .products { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-    .product { display: flex; flex-direction: column; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: #090b0a; }
-    .product-art { min-height: 125px; display: grid; place-items: center; font-size: 55px; background: radial-gradient(circle, #92702e55, transparent 70%), #111713; border-bottom: 1px solid var(--border); }
-    .product-body { flex: 1; display: flex; flex-direction: column; padding: 12px; }
-    .product h3 { font-size: 13px; margin: 0 0 5px; }
-    .product p { font-size: 11px; color: var(--muted); margin: 0 0 10px; }
-    .price { margin-top: auto; margin-bottom: 12px; color: var(--gold-light); font-weight: bold; font-size: 13px; }
-    .product .gold-button { padding: 8px; text-align: center; font-size: 11px; }
-    .social { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 18px; margin: 25px auto; padding: 22px; border: 1px solid var(--border); border-radius: 14px; background: linear-gradient(120deg, #1a160e, #070908); }
-    .social h2 { margin: 0; color: var(--gold-light); font-size: 18px; }
-    .social p { margin: 5px 0; color: var(--muted); font-size: 12px; }
-    .social-links { display: flex; gap: 8px; flex-wrap: wrap; }
-    .social-links a { padding: 10px; border: 1px solid var(--border); border-radius: 9px; text-align: center; }
-    .stats { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 22px 0; }
-    .stat { text-align: center; border-left: 1px solid #5b4828; }
-    .stat:last-child { border: 0; }
-    .stat strong { display: block; color: var(--gold-light); font-size: 22px; }
-    .stat span { color: var(--muted); font-size: 11px; }
-    footer { margin-top: 25px; padding: 30px 0 12px; border-top: 1px solid var(--border); background: #060807; }
-    .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 24px; }
-    footer h3 { color: var(--gold); font-size: 14px; }
-    footer p, footer a { display: block; color: var(--muted); font-size: 12px; }
-    .copyright { border-top: 1px solid #ffffff19; margin-top: 22px; padding-top: 12px; color: #aaa; font-size: 10px; }
-    .modal { display: none; position: fixed; inset: 0; z-index: 30; background: #000c; padding: 18px; align-items: center; justify-content: center; }
-    .modal.open { display: flex; }
-    .modal-box { width: min(500px, 100%); max-height: 90vh; overflow-y: auto; padding: 22px; background: #0c0e0d; border: 1px solid var(--gold); border-radius: 15px; }
-    .modal-box h2 { color: var(--gold-light); margin-top: 0; }
-    .modal-box label { display: block; font-size: 12px; margin: 10px 0 5px; }
-    .modal-box textarea { min-height: 80px; }
-    .modal-actions { display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
-    .notice { color: var(--muted); font-size: 11px; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050505">
+<meta name="description" content="ZHNERAL — پلتفرم حرفه‌ای ژنرال">
+<title>ZHNERAL | ژنرال</title>
 
-    /* فقط کنترل صدای اضافه‌شده */
-    #zhneral-sound-control {
-      position: fixed; bottom: 20px; left: 18px; z-index: 99999;
-      padding: 11px 16px; border: 1px solid #f4c45f; border-radius: 30px;
-      background: linear-gradient(135deg, #17130a, #050606); color: #ffe8a5;
-      font: bold 13px Tahoma, Arial, sans-serif;
-      box-shadow: 0 0 18px #f4c45f30; cursor: pointer; direction: rtl;
-    }
-    #zhneral-sound-control:hover { box-shadow: 0 0 24px #f4c45f66; }
-    #zhneral-sound-control:focus-visible { outline: 2px solid #ffe8a5; outline-offset: 4px; }
-
-    @media (max-width: 900px) {
-      .nav-links { gap: 9px; font-size: 10px; }
-      .hero-content { grid-template-columns: 1fr 1.5fr; }
-      .hero-art { display: none; }
-      .shortcuts, .features { grid-template-columns: repeat(3, 1fr); }
-      .products { grid-template-columns: repeat(2, 1fr); }
-      .footer-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 600px) {
-      .container { width: calc(100% - 22px); }
-      .nav-links { display: none; }
-      .hero-content { grid-template-columns: 1fr; }
-      .hero-main h1 { font-size: 44px; }
-      .quick-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 0 12px; }
-      .quick-panel h3 { grid-column: 1 / -1; }
-      .shortcuts, .features { grid-template-columns: repeat(2, 1fr); }
-      .products { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
-      .product-art { min-height: 90px; font-size: 42px; }
-      .product-body { padding: 9px; }
-      .filters { grid-template-columns: 1fr; }
-      .market { padding: 12px; }
-      .stats { grid-template-columns: repeat(2, 1fr); gap: 15px; }
-      .stat:nth-child(2) { border: 0; }
-      .footer-grid { grid-template-columns: 1fr 1fr; gap: 15px; }
-      .footer-grid > div:first-child { grid-column: 1 / -1; }
-    }
-  </style>
+<style>
+:root{
+  --bg:#050505;
+  --panel:#10100e;
+  --panel2:#17150f;
+  --gold:#f4c45f;
+  --gold2:#ffe8a5;
+  --text:#f8f4e9;
+  --muted:#aaa69b;
+  --border:#49391e;
+  --danger:#ff6262;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Tahoma,Arial,sans-serif;
+  line-height:1.9;
+}
+a{color:inherit;text-decoration:none}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+button:focus-visible,a:focus-visible,input:focus-visible{
+  outline:2px solid var(--gold);
+  outline-offset:3px;
+}
+.container{width:min(1180px,92%);margin:auto}
+header{
+  position:sticky;top:0;z-index:20;
+  background:rgba(5,5,5,.94);
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(15px);
+}
+.nav{
+  min-height:76px;display:flex;align-items:center;
+  justify-content:space-between;gap:15px;
+}
+.logo{
+  font-weight:900;font-size:25px;letter-spacing:2px;
+  color:var(--gold);
+}
+.logo small{display:block;font-size:11px;letter-spacing:0}
+.navlinks{display:flex;align-items:center;gap:19px}
+.navlinks a{font-size:13px;color:#e8e2d5}
+.navlinks a:hover{color:var(--gold)}
+.actions{display:flex;align-items:center;gap:8px}
+.btn{
+  border:1px solid var(--border);border-radius:12px;
+  padding:9px 15px;color:var(--gold2);
+  background:#17130b;transition:.2s;
+}
+.btn:hover{border-color:var(--gold);transform:translateY(-1px)}
+.btn.gold{
+  background:linear-gradient(135deg,#ffe7a0,#dba53d);
+  color:#171006;border:0;font-weight:bold;
+}
+.menu-toggle{display:none}
+.hero{padding:65px 0 35px}
+.hero-box{
+  position:relative;overflow:hidden;
+  border:1px solid var(--border);border-radius:27px;
+  padding:clamp(25px,6vw,65px);
+  background:
+    radial-gradient(ellipse at 90% 0%,#5b421b55,transparent 45%),
+    linear-gradient(145deg,#17140e,#080808 65%);
+}
+.eyebrow{color:var(--gold);font-size:13px}
+h1{font-size:clamp(32px,6vw,62px);line-height:1.5;margin:10px 0}
+.gold-text{color:var(--gold)}
+.hero p{color:var(--muted);max-width:650px}
+.hero-buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:25px}
+.stat{background:#0b0b09;border:1px solid #302719;border-radius:15px;padding:13px}
+.stat strong{display:block;color:var(--gold);font-size:21px}
+.stat span{font-size:12px;color:var(--muted)}
+section{padding:35px 0}
+.section-head{
+  display:flex;justify-content:space-between;
+  align-items:end;gap:15px;margin-bottom:20px
+}
+.section-head h2{margin:0;font-size:25px}
+.section-head p{margin:4px 0 0;color:var(--muted);font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.card{
+  border:1px solid var(--border);border-radius:18px;
+  background:linear-gradient(145deg,var(--panel2),var(--panel));
+  padding:19px;min-width:0;transition:.2s;
+}
+.card:hover{border-color:#a9823e;transform:translateY(-3px)}
+.card-icon{
+  width:46px;height:46px;border-radius:14px;
+  display:grid;place-items:center;background:#302414;
+  color:var(--gold);font-size:23px;margin-bottom:12px
+}
+.card h3{margin:0 0 6px;font-size:17px}
+.card p{margin:0;color:var(--muted);font-size:13px}
+.card .link{display:inline-block;color:var(--gold);margin-top:12px;font-size:13px}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:17px}
+.field{
+  width:100%;min-width:0;background:#080808;
+  color:var(--text);border:1px solid var(--border);
+  border-radius:11px;padding:12px;
+}
+.search{flex:1;min-width:180px}
+.product{display:flex;flex-direction:column;gap:10px}
+.product-top{display:flex;justify-content:space-between;gap:8px}
+.tag{font-size:11px;color:var(--gold);border:1px solid var(--border);padding:2px 8px;border-radius:20px}
+.price{font-size:18px;color:var(--gold);font-weight:bold}
+.empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:30px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-grid .wide{grid-column:1/-1}
+footer{border-top:1px solid var(--border);margin-top:30px;padding:28px 0;color:var(--muted);font-size:12px}
+.footer-row{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.notice{color:var(--muted);font-size:12px;margin-top:12px}
+.sound{
+  position:fixed;bottom:18px;left:18px;z-index:30;
+  border:1px solid var(--border);border-radius:50px;
+  background:#151108;color:var(--gold);padding:10px 14px
+}
+[hidden]{display:none!important}
+@media(max-width:850px){
+  .menu-toggle{display:inline-block}
+  .nav{flex-wrap:wrap;padding:12px 0}
+  .navlinks{
+    display:none;order:3;width:100%;flex-direction:column;
+    align-items:stretch;gap:0;padding:8px 0
+  }
+  .navlinks.open{display:flex}
+  .navlinks a{padding:10px;border-bottom:1px solid #242018}
+  .actions{margin-right:auto}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:520px){
+  .container{width:92%}
+  .logo{font-size:20px}
+  .actions .login-text{display:none}
+  .hero{padding-top:25px}
+  .hero-box{border-radius:19px}
+  .stats{gap:7px}
+  .stat{padding:9px}
+  .stat strong{font-size:17px}
+  .grid{grid-template-columns:1fr}
+  .section-head{align-items:start;flex-direction:column}
+  .form-grid{grid-template-columns:1fr}
+  .form-grid .wide{grid-column:auto}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;transition:none!important}
+}
+</style>
 </head>
-<body>
 
+<body>
 <header>
-  <nav class="container">
-    <a class="logo" href="#home"><span>♛</span> ZHNERAL</a>
-    <div class="nav-links">
-      <a href="#home">⌂ صفحه اصلی</a>
-      <a href="#market">▣ بازار</a>
-      <a href="https://rubika.ir/madiator_ZHNERAL" target="_blank" rel="noopener">♧ واسطه‌گری</a>
-      <a href="https://rubika.ir/etehadi_vasetehgari" target="_blank" rel="noopener">♙ اتحادیه</a>
-      <a href="https://rubika.ir/Rules_Zhneral" target="_blank" rel="noopener">♢ قوانین</a>
-      <a href="https://rubika.ir/market_ZHNERAL" target="_blank" rel="noopener">▤ فروشگاه</a>
+  <div class="container nav">
+    <a class="logo" href="#home">ZHNERAL<small>ژنرال • قدرت در سادگی</small></a>
+
+    <button class="btn menu-toggle" id="menuToggle" aria-expanded="false"
+      aria-controls="primaryNav">☰ منو</button>
+
+    <nav class="navlinks" id="primaryNav">
+      <a href="#home">خانه</a>
+      <a href="#services">خدمات</a>
+      <a href="#market">بازار</a>
+      <a href="#account">حساب کاربری</a>
+      <a href="#contact">ارتباط</a>
+    </nav>
+
+    <div class="actions">
+      <select id="language" class="field" style="width:auto;padding:7px" aria-label="زبان">
+        <option value="fa">فارسی</option>
+        <option value="en">English</option>
+      </select>
+      <a class="btn gold login-text" href="#account" data-i18n="login">ورود / ثبت‌نام</a>
     </div>
-    <select id="language" style="width:auto" aria-label="انتخاب زبان">
-      <option value="fa">🇮🇷 فارسی</option>
-      <option value="en">English</option>
-      <option value="tr">Türkçe</option>
-      <option value="ar">العربية</option>
-    </select>
-  </nav>
+  </div>
 </header>
 
-<main id="home">
-  <section class="hero">
-    <div class="container hero-content">
-      <div class="hero-art" aria-hidden="true">♟</div>
-      <div class="hero-main">
-        <div class="crown">♛</div>
-        <h1>ZHNERAL</h1>
-        <div class="tagline">MORE THAN A MARKET</div>
-        <h2>قدرت انتخاب با ژنرال</h2>
-        <p class="muted">بازار مطمئن · واسطه‌گری حرفه‌ای · اتحادیه قدرتمند</p>
-        <div class="hero-actions">
-          <a class="gold-button" href="#market">ورود به بازار　➜</a>
-          <button class="gold-button outline-button" onclick="openModal()">ثبت آگهی / ورود</button>
-          <a class="gold-button" href="https://infozhneral.github.io/ZHNERAL/chat.html">💬 چت خصوصی ژنرال</a>
+<main>
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-box">
+        <span class="eyebrow" data-i18n="eyebrow">نسل جدید تجربه دیجیتال</span>
+        <h1><span data-i18n="hero1">به دنیای</span><br>
+          <span class="gold-text">ZHNERAL</span>
+          <span data-i18n="hero2">خوش آمدی</span>
+        </h1>
+        <p data-i18n="intro">یک فضای مدرن برای ارتباط، معرفی محصولات و دسترسی سریع به خدمات ژنرال؛ با طراحی مشکی و طلایی.</p>
+        <div class="hero-buttons">
+          <a href="#services" class="btn gold" data-i18n="explore">شروع کن</a>
+          <a href="#market" class="btn" data-i18n="viewMarket">مشاهده بازار</a>
+        </div>
+        <div class="stats">
+          <div class="stat"><strong>ZH</strong><span data-i18n="brand">هویت ژنرال</span></div>
+          <div class="stat"><strong>24/7</strong><span data-i18n="access">دسترسی به سایت</span></div>
+          <div class="stat"><strong>★</strong><span data-i18n="quality">تجربه حرفه‌ای</span></div>
         </div>
       </div>
-      <aside class="quick-panel">
-        <h3>دسترسی سریع</h3>
-        <a href="#rules"><span>◷</span> پشتیبانی ۲۴ ساعته</a>
-        <a href="https://rubika.ir/Rules_Zhneral" target="_blank" rel="noopener"><span>♢</span> قوانین و مقررات</a>
-        <a href="https://rubika.ir/market_ZHNERAL" target="_blank" rel="noopener"><span>⬡</span> ارتباط با روبیکا</a>
-        <a href="https://rubika.ir/madiator_ZHNERAL" target="_blank" rel="noopener"><span>➤</span> ارتباط با مدیریت</a>
-      </aside>
     </div>
   </section>
 
-  <div class="container shortcuts">
-    <a class="shortcut" href="#market"><span class="icon">▣</span><strong>بازار</strong><small>خرید و فروش امن</small></a>
-    <a class="shortcut" href="https://rubika.ir/madiator_ZHNERAL" target="_blank" rel="noopener"><span class="icon">♧</span><strong>واسطه‌گری</strong><small>اتصال سریع و مطمئن</small></a>
-    <a class="shortcut" href="https://rubika.ir/etehadi_vasetehgari" target="_blank" rel="noopener"><span class="icon">♙</span><strong>اتحادیه</strong><small>عضویت و همکاری</small></a>
-    <a class="shortcut" href="https://rubika.ir/band_khlafkaran" target="_blank" rel="noopener"><span class="icon">▤</span><strong>گزارش واسطه‌ها</strong><small>بررسی و اعتماد</small></a>
-    <a class="shortcut" href="https://rubika.ir/Rules_Zhneral" target="_blank" rel="noopener"><span class="icon">♢</span><strong>قوانین</strong><small>قوانین و مقررات</small></a>
-    <a class="shortcut" href="https://rubika.ir/market_ZHNERAL" target="_blank" rel="noopener"><span class="icon">♜</span><strong>فروشگاه</strong><small>محصولات و خدمات</small></a>
-  </div>
-
-  <section class="container" id="union">
-    <h2 class="section-title">ویژگی‌های ژنرال</h2>
-    <div class="features">
-      <article class="feature"><div class="icon">⚙</div><h3>تنظیمات پیشرفته</h3><p>تجربه کاربری ساده و قابل تنظیم</p></article>
-      <article class="feature"><div class="icon">◷</div><h3>پشتیبانی ۲۴ ساعته</h3><p>همیشه در کنار شما</p></article>
-      <article class="feature"><div class="icon">♢</div><h3>امنیت بالا</h3><p>معاملات آگاهانه و مطمئن</p></article>
-      <article class="feature"><div class="icon">◎</div><h3>چندزبانه</h3><p>ساختار آماده توسعه زبان‌ها</p></article>
-      <article class="feature"><div class="icon">▣</div><h3>طراحی واکنش‌گرا</h3><p>مناسب موبایل و دسکتاپ</p></article>
-      <article class="feature"><div class="icon">ϟ</div><h3>سرعت بالا</h3><p>سبک و بدون نیاز به نصب</p></article>
-    </div>
-  </section>
-
-  <section class="container" id="market">
-    <div class="market">
-      <div class="market-header">
-        <div><h2>🛒 بازار آنلاین</h2><p class="muted">آگهی‌های نمونه را ببینید یا آگهی جدید ثبت کنید.</p></div>
-        <button class="gold-button" onclick="openModal()">＋ ثبت آگهی جدید</button>
+  <section id="services">
+    <div class="container">
+      <div class="section-head">
+        <div><h2 data-i18n="servicesTitle">خدمات ژنرال</h2>
+        <p data-i18n="servicesSub">دسترسی سریع به بخش‌های اصلی</p></div>
       </div>
-      <div class="filters">
-        <input id="search" placeholder="جستجو در آگهی‌ها..." oninput="filterProducts()">
-        <select id="category" onchange="filterProducts()">
-          <option value="">همه دسته‌بندی‌ها</option>
-          <option value="game">بازی</option>
-          <option value="coin">پول و سکه</option>
-          <option value="car">خودرو</option>
-          <option value="gem">الماس و آیتم</option>
+      <div class="grid">
+        <a class="card" href="#market">
+          <div class="card-icon">◈</div><h3 data-i18n="marketTitle">بازار محصولات</h3>
+          <p data-i18n="marketDesc">مشاهده و جست‌وجوی آگهی‌ها</p><span class="link" data-i18n="enter">ورود به بخش ←</span>
+        </a>
+        <a class="card" href="#account">
+          <div class="card-icon">♙</div><h3 data-i18n="profileTitle">حساب شخصی</h3>
+          <p data-i18n="profileDesc">بخش نمایشی پروفایل کاربری</p><span class="link" data-i18n="enter">ورود به بخش ←</span>
+        </a>
+        <a class="card" href="chat.html">
+          <div class="card-icon">✉</div><h3 data-i18n="chatTitle">چت ژنرال</h3>
+          <p data-i18n="chatDesc">رفتن به صفحه چت سایت</p><span class="link" data-i18n="enter">ورود به بخش ←</span>
+        </a>
+        <a class="card" href="#publish">
+          <div class="card-icon">＋</div><h3 data-i18n="publishTitle">ثبت آگهی</h3>
+          <p data-i18n="publishDesc">افزودن آگهی آزمایشی به این مرورگر</p><span class="link" data-i18n="enter">ورود به بخش ←</span>
+        </a>
+        <a class="card" href="#contact">
+          <div class="card-icon">◎</div><h3 data-i18n="socialTitle">شبکه‌های اجتماعی</h3>
+          <p data-i18n="socialDesc">راه‌های ارتباطی ژنرال</p><span class="link" data-i18n="enter">ورود به بخش ←</span>
+        </a>
+        <a class="card" href="#rules">
+          <div class="card-icon">◇</div><h3 data-i18n="rulesTitle">قوانین سایت</h3>
+          <p data-i18n="rulesDesc">راهنمای استفاده از خدمات</p><span class="link" data-i18n="enter">ورود به بخش ←</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="market">
+    <div class="container">
+      <div class="section-head">
+        <div><h2 data-i18n="marketTitle">بازار محصولات</h2>
+        <p data-i18n="marketSub">جست‌وجو در آگهی‌های منتشرشده در همین مرورگر</p></div>
+        <a class="btn" href="#publish" data-i18n="newAd">＋ آگهی جدید</a>
+      </div>
+      <div class="toolbar">
+        <input id="searchAds" class="field search" placeholder="جست‌وجوی محصولات..." data-i18n-placeholder="searchPlaceholder">
+        <select id="categoryFilter" class="field" style="width:auto">
+          <option value="all" data-i18n="allCategories">همه دسته‌ها</option>
+          <option value="digital" data-i18n="digital">دیجیتال</option>
+          <option value="game" data-i18n="game">بازی</option>
+          <option value="other" data-i18n="other">سایر</option>
         </select>
       </div>
-      <div class="products" id="products">
-        <article class="product" data-category="game"><div class="product-art">🎮</div><div class="product-body"><h3>حساب بازی سطح بالا</h3><p>آیتم‌های ویژه و امکانات جذاب</p><div class="price">۲٬۵۰۰٬۰۰۰ تومان</div><button class="gold-button" onclick="contactSeller('حساب بازی سطح بالا')">مشاهده جزئیات ←</button></div></article>
-        <article class="product" data-category="coin"><div class="product-art">🪙</div><div class="product-body"><h3>بسته سکه ویژه</h3><p>تحویل سریع پس از هماهنگی</p><div class="price">۳۵۰٬۰۰۰ تومان</div><button class="gold-button" onclick="contactSeller('بسته سکه ویژه')">مشاهده جزئیات ←</button></div></article>
-        <article class="product" data-category="car"><div class="product-art">🚘</div><div class="product-body"><h3>خودرو ویژه بازی</h3><p>قیمت مناسب و تحویل هماهنگ</p><div class="price">۱٬۲۰۰٬۰۰۰ تومان</div><button class="gold-button" onclick="contactSeller('خودرو ویژه بازی')">مشاهده جزئیات ←</button></div></article>
-        <article class="product" data-category="gem"><div class="product-art">💎</div><div class="product-body"><h3>الماس و آیتم دیجیتال</h3><p>سطح بالا و قابل بررسی</p><div class="price">۸۰۰٬۰۰۰ تومان</div><button class="gold-button" onclick="contactSeller('الماس و آیتم دیجیتال')">مشاهده جزئیات ←</button></div></article>
+      <div id="adsGrid" class="grid"></div>
+      <p class="notice" data-i18n="localNotice">توجه: این نسخه آزمایشی است؛ آگهی‌ها فقط در همین مرورگر ذخیره می‌شوند و هنوز برای همه کاربران آنلاین نیستند.</p>
+    </div>
+  </section>
+
+  <section id="publish">
+    <div class="container">
+      <div class="section-head">
+        <div><h2 data-i18n="publishTitle">ثبت آگهی جدید</h2>
+        <p data-i18n="publishSub">فرم ساده برای آزمایش امکانات سایت</p></div>
       </div>
-      <p id="empty" class="muted" style="display:none">آگهی‌ای پیدا نشد.</p>
-      <p class="notice">آگهی‌ها نمونه نمایشی هستند. لینک فروشنده و پرداخت واقعی هنوز باید تنظیم شود.</p>
+      <form id="adForm" class="card">
+        <div class="form-grid">
+          <input class="field" id="adTitle" maxlength="70" required placeholder="عنوان آگهی" data-i18n-placeholder="adTitlePlaceholder">
+          <input class="field" id="adPrice" type="number" min="0" required placeholder="قیمت به تومان" data-i18n-placeholder="pricePlaceholder">
+          <select class="field" id="adCategory">
+            <option value="digital" data-i18n="digital">دیجیتال</option>
+            <option value="game" data-i18n="game">بازی</option>
+            <option value="other" data-i18n="other">سایر</option>
+          </select>
+          <input class="field" id="adSeller" maxlength="40" placeholder="نام فروشنده (اختیاری)" data-i18n-placeholder="sellerPlaceholder">
+          <textarea class="field wide" id="adDescription" rows="3" maxlength="300" placeholder="توضیحات آگهی" data-i18n-placeholder="descriptionPlaceholder"></textarea>
+          <button class="btn gold wide" type="submit" data-i18n="submitAd">ثبت آگهی</button>
+        </div>
+      </form>
     </div>
   </section>
 
-  <section class="container social" id="social">
-    <div><h2>همیشه با ژنرال در ارتباط باش!</h2><p>برای دریافت اخبار و اطلاعیه‌ها، کانال‌های رسمی را دنبال کنید.</p></div>
-    <div class="social-links">
-      <a href="https://rubika.ir/market_ZHNERAL" target="_blank" rel="noopener">⬡<br>روبیکا</a>
-      <a href="#" onclick="placeholderLink(event)">➤<br>تلگرام</a>
-      <a href="#" onclick="placeholderLink(event)">◎<br>اینستاگرام</a>
-      <a href="#" onclick="placeholderLink(event)">▶<br>یوتیوب</a>
+  <section id="account">
+    <div class="container">
+      <div class="section-head">
+        <div><h2 data-i18n="profileTitle">حساب شخصی</h2>
+        <p data-i18n="accountSub">شروع ساخت پروفایل کاربری</p></div>
+      </div>
+      <div class="card">
+        <div class="card-icon">♙</div>
+        <h3 data-i18n="accountDemoTitle">پروفایل کاربری ژنرال</h3>
+        <p data-i18n="accountDemoText">این بخش فعلاً نمایشی است. برای ورود امن، ثبت‌نام واقعی، ذخیره پروفایل و همگام‌سازی میان گوشی‌ها باید احراز هویت و پایگاه داده متصل شود.</p>
+        <p class="notice" data-i18n="accountSecurity">اطلاعات حساس مثل رمز عبور را در این فرم آزمایشی وارد نکن.</p>
+      </div>
     </div>
   </section>
 
-  <div class="container stats">
-    <div class="stat"><strong>۱۰٬۰۰۰+</strong><span>کاربر فعال</span></div>
-    <div class="stat"><strong>۹۸٪</strong><span>رضایت کاربران</span></div>
-    <div class="stat"><strong>۵۰۰+</strong><span>واسطه معتبر</span></div>
-    <div class="stat"><strong id="adCount">۴</strong><span>آگهی نمونه</span></div>
-  </div>
+  <section id="contact">
+    <div class="container">
+      <div class="section-head">
+        <div><h2 data-i18n="socialTitle">ارتباط با ژنرال</h2>
+        <p data-i18n="socialSub">شبکه‌های اجتماعی و راه‌های ارتباطی</p></div>
+      </div>
+      <div class="grid">
+        <div class="card"><div class="card-icon">➤</div><h3>Rubika</h3>
+          <p data-i18n="rubikaText">برای افزودن لینک رسمی روبیکا، آدرس موردنظر خودت را وارد کن.</p>
+          <a class="link" href="https://rubika.ir/" target="_blank" rel="noopener noreferrer" data-i18n="openLink">باز کردن روبیکا ←</a>
+        </div>
+        <div class="card"><div class="card-icon">✦</div><h3>ZHNERAL</h3>
+          <p data-i18n="brandText">صفحه رسمی برند ژنرال</p><a class="link" href="#home" data-i18n="backTop">بازگشت به بالا ↑</a>
+        </div>
+        <div class="card"><div class="card-icon">?</div><h3 data-i18n="supportTitle">پشتیبانی</h3>
+          <p data-i18n="supportText">لینک واقعی پشتیبانی را پس از مشخص کردن آیدی اضافه کن.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <section class="container" id="rules">
-    <h2 class="section-title">راهنمای استفاده و قوانین</h2>
-    <div class="features" style="grid-template-columns:repeat(auto-fit,minmax(190px,1fr))">
-      <article class="feature"><div class="icon">✓</div><h3>قبل از پرداخت بررسی کنید</h3><p>اعتبار فروشنده و جزئیات آگهی را بررسی کنید.</p></article>
-      <article class="feature"><div class="icon">♢</div><h3>اطلاعات حساس ندهید</h3><p>رمز عبور و کد ورود خود را به کسی ندهید.</p></article>
-      <article class="feature"><div class="icon">⚑</div><h3>گزارش تخلف</h3><p>برای گزارش تخلف با مدیریت رسمی تماس بگیرید.</p></article>
+  <section id="rules">
+    <div class="container">
+      <div class="card">
+        <h2 data-i18n="rulesTitle">قوانین استفاده</h2>
+        <p data-i18n="rule1">• اطلاعات آگهی باید درست و محترمانه باشد.</p>
+        <p data-i18n="rule2">• از انتشار اطلاعات شخصی دیگران خودداری کن.</p>
+        <p data-i18n="rule3">• برای خریدوفروش، پیش از پرداخت از اعتبار طرف مقابل مطمئن شو.</p>
+      </div>
     </div>
   </section>
 </main>
 
-<footer id="reports">
-  <div class="container footer-grid">
-    <div><div class="logo"><span>♛</span> ZHNERAL</div><p>مرجع خرید و فروش، واسطه‌گری و خدمات آنلاین.</p><p>شناسه: @ZHNERAL</p></div>
-    <div><h3>دسترسی سریع</h3><a href="#home">صفحه اصلی</a><a href="#market">بازار</a><a href="https://rubika.ir/madiator_ZHNERAL" target="_blank" rel="noopener">واسطه‌گری</a><a href="https://rubika.ir/etehadi_vasetehgari" target="_blank" rel="noopener">اتحادیه</a></div>
-    <div><h3>راهنمای سایت</h3><a href="https://rubika.ir/Rules_Zhneral" target="_blank" rel="noopener">قوانین و مقررات</a><a href="#rules">امنیت معامله</a><a href="#social">تماس با ما</a><a href="https://rubika.ir/madiator_ZHNERAL" target="_blank" rel="noopener">پشتیبانی</a></div>
-    <div id="broker"><h3>انتخاب زبان</h3><p>ژنرال؛ انتخاب حرفه‌ای‌ها</p><p>لینک‌های رسمی را در کد تنظیم کنید.</p></div>
+<footer>
+  <div class="container footer-row">
+    <div><strong class="gold-text">ZHNERAL</strong> — <span data-i18n="footerText">ژنرال؛ ساده، مدرن و حرفه‌ای</span></div>
+    <div>© <span id="year"></span> ZHNERAL</div>
   </div>
-  <div class="container copyright">© 2026 ZHNERAL. تمامی حقوق محفوظ است.</div>
 </footer>
 
-<div class="modal" id="adModal" role="dialog" aria-modal="true">
-  <div class="modal-box">
-    <h2>ثبت آگهی جدید</h2>
-    <form id="adForm">
-      <label for="adTitle">عنوان آگهی</label>
-      <input id="adTitle" required maxlength="70" placeholder="مثلاً حساب بازی ویژه">
-      <label for="adPrice">قیمت (تومان)</label>
-      <input id="adPrice" type="number" min="0" required placeholder="مثلاً 250000">
-      <label for="adCategory">دسته‌بندی</label>
-      <select id="adCategory"><option value="game">بازی</option><option value="coin">پول و سکه</option><option value="car">خودرو</option><option value="gem">الماس و آیتم</option></select>
-      <label for="adDescription">توضیحات</label>
-      <textarea id="adDescription" maxlength="300" placeholder="توضیحات آگهی"></textarea>
-      <div class="modal-actions">
-        <button class="gold-button" type="submit">ذخیره آگهی</button>
-        <button class="gold-button outline-button" type="button" onclick="closeModal()">انصراف</button>
-      </div>
-      <p class="notice">آگهی فقط در همین مرورگر ذخیره می‌شود؛ برای نمایش عمومی به سرور نیاز است.</p>
-    </form>
-  </div>
-</div>
-
-<!-- کنترل صدا -->
-<button id="zhneral-sound-control" type="button" aria-pressed="true">♛ 🔊 صدای ژنرال: روشن</button>
+<button id="soundToggle" class="sound" type="button" aria-pressed="false">🔇 <span data-i18n="soundOff">صدا خاموش</span></button>
 
 <script>
-  const $ = id => document.getElementById(id);
+const translations = {
+fa:{
+login:"ورود / ثبت‌نام",eyebrow:"نسل جدید تجربه دیجیتال",
+hero1:"به دنیای",hero2:"خوش آمدی",
+intro:"یک فضای مدرن برای ارتباط، معرفی محصولات و دسترسی سریع به خدمات ژنرال؛ با طراحی مشکی و طلایی.",
+explore:"شروع کن",viewMarket:"مشاهده بازار",brand:"هویت ژنرال",access:"دسترسی به سایت",quality:"تجربه حرفه‌ای",
+servicesTitle:"خدمات ژنرال",servicesSub:"دسترسی سریع به بخش‌های اصلی",
+marketTitle:"بازار محصولات",marketDesc:"مشاهده و جست‌وجوی آگهی‌ها",
+profileTitle:"حساب شخصی",profileDesc:"بخش نمایشی پروفایل کاربری",
+chatTitle:"چت ژنرال",chatDesc:"رفتن به صفحه چت سایت",
+publishTitle:"ثبت آگهی",publishDesc:"افزودن آگهی آزمایشی به این مرورگر",
+socialTitle:"شبکه‌های اجتماعی",socialDesc:"راه‌های ارتباطی ژنرال",
+rulesTitle:"قوانین سایت",rulesDesc:"راهنمای استفاده از خدمات",enter:"ورود به بخش ←",
+marketSub:"جست‌وجو در آگهی‌های منتشرشده در همین مرورگر",
+newAd:"＋ آگهی جدید",searchPlaceholder:"جست‌وجوی محصولات...",allCategories:"همه دسته‌ها",
+digital:"دیجیتال",game:"بازی",other:"سایر",
+localNotice:"توجه: این نسخه آزمایشی است؛ آگهی‌ها فقط در همین مرورگر ذخیره می‌شوند و هنوز برای همه کاربران آنلاین نیستند.",
+publishSub:"فرم ساده برای آزمایش امکانات سایت",adTitlePlaceholder:"عنوان آگهی",pricePlaceholder:"قیمت به تومان",
+sellerPlaceholder:"نام فروشنده (اختیاری)",descriptionPlaceholder:"توضیحات آگهی",submitAd:"ثبت آگهی",
+accountSub:"شروع ساخت پروفایل کاربری",accountDemoTitle:"پروفایل کاربری ژنرال",
+accountDemoText:"این بخش فعلاً نمایشی است. برای ورود امن، ثبت‌نام واقعی، ذخیره پروفایل و همگام‌سازی میان گوشی‌ها باید احراز هویت و پایگاه داده متصل شود.",
+accountSecurity:"اطلاعات حساس مثل رمز عبور را در این فرم آزمایشی وارد نکن.",
+socialSub:"شبکه‌های اجتماعی و راه‌های ارتباطی",rubikaText:"برای افزودن لینک رسمی روبیکا، آدرس موردنظر خودت را وارد کن.",
+openLink:"باز کردن روبیکا ←",brandText:"صفحه رسمی برند ژنرال",backTop:"بازگشت به بالا ↑",
+supportTitle:"پشتیبانی",supportText:"لینک واقعی پشتیبانی را پس از مشخص کردن آیدی اضافه کن.",
+socialTitle:"ارتباط با ژنرال",rule1:"• اطلاعات آگهی باید درست و محترمانه باشد.",
+rule2:"• از انتشار اطلاعات شخصی دیگران خودداری کن.",
+rule3:"• برای خریدوفروش، پیش از پرداخت از اعتبار طرف مقابل مطمئن شو.",
+footerText:"ژنرال؛ ساده، مدرن و حرفه‌ای",soundOff:"صدا خاموش",soundOn:"صدا روشن",
+empty:"آگهی‌ای پیدا نشد.",price:"قیمت",seller:"فروشنده",details:"توضیحات ثبت نشده",
+adSuccess:"آگهی در همین مرورگر ثبت شد.",invalidPrice:"قیمت معتبر وارد کن."
+},
+en:{
+login:"Login / Sign up",eyebrow:"A new generation of digital experience",
+hero1:"Welcome to the",hero2:"world",
+intro:"A modern space for connecting, showcasing products and accessing ZHNERAL services, in black and gold.",
+explore:"Get started",viewMarket:"Explore market",brand:"ZHNERAL identity",access:"Website access",quality:"Premium experience",
+servicesTitle:"ZHNERAL Services",servicesSub:"Quick access to main sections",
+marketTitle:"Marketplace",marketDesc:"Browse and search listings",
+profileTitle:"Personal account",profileDesc:"Preview of the user profile section",
+chatTitle:"ZHNERAL Chat",chatDesc:"Open the website chat page",
+publishTitle:"Create listing",publishDesc:"Add a demo listing to this browser",
+socialTitle:"Social links",socialDesc:"Ways to connect with ZHNERAL",
+rulesTitle:"Site rules",rulesDesc:"Guidelines for using the services",enter:"Open section →",
+marketSub:"Search listings saved in this browser",
+newAd:"+ New listing",searchPlaceholder:"Search products...",allCategories:"All categories",
+digital:"Digital",game:"Gaming",other:"Other",
+localNotice:"Note: This is a demo. Listings are stored only in this browser and are not shared online.",
+publishSub:"A simple form to test the website",adTitlePlaceholder:"Listing title",pricePlaceholder:"Price in toman",
+sellerPlaceholder:"Seller name (optional)",descriptionPlaceholder:"Listing description",submitAd:"Publish listing",
+accountSub:"Start building your user profile",accountDemoTitle:"ZHNERAL user profile",
+accountDemoText:"This section is a preview. Secure login, real registration, profile storage and cross-device syncing require connected authentication and a database.",
+accountSecurity:"Do not enter sensitive information such as passwords in this demo.",
+socialSub:"Social networks and contact options",rubikaText:"Add your official Rubika address when available.",
+openLink:"Open Rubika →",brandText:"Official ZHNERAL brand page",backTop:"Back to top ↑",
+supportTitle:"Support",supportText:"Add the real support link once the account ID is confirmed.",
+socialTitle:"Contact ZHNERAL",rule1:"• Listing information must be accurate and respectful.",
+rule2:"• Do not publish other people's private information.",
+rule3:"• Verify the other party before making a payment.",
+footerText:"ZHNERAL — simple, modern and professional",soundOff:"Sound off",soundOn:"Sound on",
+empty:"No listings found.",price:"Price",seller:"Seller",details:"No description provided",
+adSuccess:"Listing saved in this browser.",invalidPrice:"Enter a valid price."
+}
+};
 
-  function openModal() { $('adModal').classList.add('open'); }
-  function closeModal() { $('adModal').classList.remove('open'); }
+const seedAds = [
+{id:"sample1",title:"نمونه محصول دیجیتال",price:250000,category:"digital",seller:"ZHNERAL",description:"این آگهی نمونه است؛ برای نمایش ساختار بازار."},
+{id:"sample2",title:"آیتم بازی",price:180000,category:"game",seller:"ZHNERAL",description:"نمونه نمایشی دسته بازی."},
+{id:"sample3",title:"محصول ویژه",price:420000,category:"other",seller:"ZHNERAL",description:"نمونه‌ای برای آزمایش جست‌وجو و فیلتر."}
+];
 
-  $('adModal').addEventListener('click', event => {
-    if (event.target === $('adModal')) closeModal();
-  });
+let language = "fa";
+let soundEnabled = false;
+let audioContext = null;
 
-  function getAds() {
-    try { return JSON.parse(localStorage.getItem('zhneral_ads') || '[]'); }
-    catch { return []; }
-  }
+function t(key){
+ return (translations[language] && translations[language][key]) || translations.fa[key] || key;
+}
+function loadAds(){
+ try{
+  const saved = localStorage.getItem("zhneral_demo_ads_v1");
+  return saved ? JSON.parse(saved) : seedAds;
+ }catch(e){return seedAds;}
+}
+function saveAds(ads){
+ try{localStorage.setItem("zhneral_demo_ads_v1",JSON.stringify(ads));}
+ catch(e){alert("ذخیره‌سازی در این مرورگر در دسترس نیست.");}
+}
+function escapeHTML(value){
+ return String(value).replace(/[&<>"']/g, ch => ({
+  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+ })[ch]);
+}
+function categoryName(cat){
+ return t(cat==="digital"?"digital":cat==="game"?"game":"other");
+}
+function renderAds(){
+ const grid = document.getElementById("adsGrid");
+ const query = document.getElementById("searchAds").value.trim().toLowerCase();
+ const cat = document.getElementById("categoryFilter").value;
+ const ads = loadAds().filter(ad =>
+  (cat==="all" || ad.category===cat) &&
+  (String(ad.title||"").toLowerCase().includes(query) ||
+   String(ad.description||"").toLowerCase().includes(query))
+ );
+ if(!ads.length){
+  grid.innerHTML='<div class="empty">'+escapeHTML(t("empty"))+'</div>';return;
+ }
+ grid.innerHTML=ads.map(ad=>`
+  <article class="card product">
+   <div class="product-top"><span class="tag">${escapeHTML(categoryName(ad.category))}</span></div>
+   <h3>${escapeHTML(ad.title)}</h3>
+   <div class="price">${escapeHTML(Number(ad.price).toLocaleString(language==="fa"?"fa-IR":"en-US"))} ${language==="fa"?"تومان":"Toman"}</div>
+   <p>${escapeHTML(ad.description||t("details"))}</p>
+   <p>${escapeHTML(t("seller"))}: ${escapeHTML(ad.seller||"ZHNERAL")}</p>
+  </article>`).join("");
+}
+document.getElementById("adForm").addEventListener("submit",event=>{
+ event.preventDefault();
+ const title=document.getElementById("adTitle").value.trim();
+ const price=Number(document.getElementById("adPrice").value);
+ if(!title || !Number.isFinite(price) || price<0){alert(t("invalidPrice"));return;}
+ const ads=loadAds();
+ ads.unshift({
+  id:"ad_"+Date.now(),title,price,
+  category:document.getElementById("adCategory").value,
+  seller:document.getElementById("adSeller").value.trim()||"ZHNERAL",
+  description:document.getElementById("adDescription").value.trim()
+ });
+ saveAds(ads);renderAds();event.target.reset();alert(t("adSuccess"));
+});
+document.getElementById("searchAds").addEventListener("input",renderAds);
+document.getElementById("categoryFilter").addEventListener("change",renderAds);
 
-  function saveAds(ads) {
-    try {
-      localStorage.setItem('zhneral_ads', JSON.stringify(ads));
-      return true;
-    } catch {
-      alert('ذخیره‌سازی در این مرورگر در دسترس نیست.');
-      return false;
-    }
-  }
+function setLanguage(next){
+ language=next;
+ document.documentElement.lang=next;
+ document.documentElement.dir=next==="fa"?"rtl":"ltr";
+ document.querySelectorAll("[data-i18n]").forEach(el=>{
+  const key=el.dataset.i18n;
+  if(translations[next][key])el.textContent=translations[next][key];
+ });
+ document.querySelectorAll("[data-i18n-placeholder]").forEach(el=>{
+  const key=el.dataset.i18nPlaceholder;
+  if(translations[next][key])el.placeholder=translations[next][key];
+ });
+ document.getElementById("soundToggle").innerHTML=
+  (soundEnabled?"🔊 ":"🔇 ")+escapeHTML(t(soundEnabled?"soundOn":"soundOff"));
+ renderAds();
+}
+document.getElementById("language").addEventListener("change",e=>setLanguage(e.target.value));
 
-  const icons = { game: '🎮', coin: '🪙', car: '🚘', gem: '💎' };
+const menuToggle=document.getElementById("menuToggle");
+const primaryNav=document.getElementById("primaryNav");
+menuToggle.addEventListener("click",()=>{
+ const open=primaryNav.classList.toggle("open");
+ menuToggle.setAttribute("aria-expanded",String(open));
+});
+primaryNav.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{
+ primaryNav.classList.remove("open");
+ menuToggle.setAttribute("aria-expanded","false");
+}));
 
-  $('adForm').addEventListener('submit', event => {
-    event.preventDefault();
-    const ads = getAds();
-    ads.unshift({
-      id: Date.now(),
-      title: $('adTitle').value.trim(),
-      price: Number($('adPrice').value),
-      category: $('adCategory').value,
-      description: $('adDescription').value.trim()
-    });
-    if (saveAds(ads)) {
-      event.target.reset();
-      closeModal();
-      renderAds();
-    }
-  });
-
-  function renderAds() {
-    document.querySelectorAll('[data-custom="true"]').forEach(el => el.remove());
-    const products = $('products');
-    const query = $('search').value.trim().toLowerCase();
-    const category = $('category').value;
-    const sampleCards = [...products.querySelectorAll('.product:not([data-custom="true"])')];
-
-    sampleCards.forEach(card => {
-      const matchesText = card.innerText.toLowerCase().includes(query);
-      const matchesCategory = !category || card.dataset.category === category;
-      card.style.display = matchesText && matchesCategory ? 'flex' : 'none';
-    });
-
-    const customAds = getAds().filter(ad =>
-      (!category || ad.category === category) &&
-      (ad.title + ' ' + ad.description).toLowerCase().includes(query)
-    );
-
-    customAds.forEach(ad => {
-      const card = document.createElement('article');
-      card.className = 'product';
-      card.dataset.custom = 'true';
-      const art = document.createElement('div');
-      art.className = 'product-art';
-      art.textContent = icons[ad.category] || '✦';
-      const body = document.createElement('div');
-      body.className = 'product-body';
-      const title = document.createElement('h3');
-      title.textContent = ad.title;
-      const description = document.createElement('p');
-      description.textContent = ad.description || 'بدون توضیحات';
-      const price = document.createElement('div');
-      price.className = 'price';
-      price.textContent = Number(ad.price).toLocaleString('fa-IR') + ' تومان';
-      const remove = document.createElement('button');
-      remove.className = 'gold-button';
-      remove.textContent = 'حذف آگهی';
-      remove.onclick = () => {
-        if (confirm('آگهی از این مرورگر حذف شود؟')) {
-          saveAds(getAds().filter(item => item.id !== ad.id));
-          renderAds();
-        }
-      };
-      body.append(title, description, price, remove);
-      card.append(art, body);
-      products.appendChild(card);
-    });
-
-    const visibleSamples = sampleCards.filter(card => card.style.display !== 'none').length;
-    $('empty').style.display = visibleSamples + customAds.length ? 'none' : 'block';
-    $('adCount').textContent = (4 + getAds().length).toLocaleString('fa-IR');
-  }
-
-  function filterProducts() { renderAds(); }
-
-  function contactSeller(title) {
-    alert('لینک فروشنده برای «' + title + '» هنوز تنظیم نشده است.');
-  }
-
-  function placeholderLink(event) {
-    event.preventDefault();
-    alert('لینک رسمی این شبکه اجتماعی هنوز تنظیم نشده است.');
-  }
-
-  $('language').addEventListener('change', event => {
-    if (event.target.value !== 'fa') {
-      alert('ترجمه کامل این زبان هنوز اضافه نشده است.');
-      event.target.value = 'fa';
-    }
-  });
-
-  renderAds();
-
-  // ZHNERAL GOLD SOUND SYSTEM
-  (() => {
-    const soundButton = $('zhneral-sound-control');
-    if (!soundButton) return;
-
-    let enabled = true;
-    let welcomed = false;
-    let audio = null;
-    let master = null;
-    let welcomeTimer = null;
-
-    try { enabled = localStorage.getItem('zhneral_sound') !== 'off'; }
-    catch (_) {}
-
-    function getAudio() {
-      const AudioAPI = window.AudioContext || window.webkitAudioContext;
-      if (!AudioAPI) return null;
-      if (!audio) {
-        audio = new AudioAPI();
-        master = audio.createGain();
-        master.gain.value = enabled ? 0.82 : 0;
-        master.connect(audio.destination);
-      }
-      if (audio.state === 'suspended') audio.resume().catch(() => {});
-      return audio;
-    }
-
-    function setEnabled(value) {
-      enabled = value;
-      try { localStorage.setItem('zhneral_sound', enabled ? 'on' : 'off'); }
-      catch (_) {}
-      if (master && audio) {
-        master.gain.cancelScheduledValues(audio.currentTime);
-        master.gain.setTargetAtTime(enabled ? 0.82 : 0, audio.currentTime, 0.025);
-      }
-      updateButton();
-    }
-
-    // لایه‌ی تُن با محوشدن نرم، برای افکت‌های تمیز و لوکس
-    function note(freq, startDelay, duration, volume, wave = 'sine', detune = 0) {
-      if (!enabled) return;
-      const ctx = getAudio();
-      if (!ctx || !master) return;
-      const start = ctx.currentTime + startDelay;
-      const osc = ctx.createOscillator();
-      const amp = ctx.createGain();
-      const filter = ctx.createBiquadFilter();
-      osc.type = wave;
-      osc.frequency.setValueAtTime(freq, start);
-      osc.detune.setValueAtTime(detune, start);
-      filter.type = 'lowpass';
-      filter.frequency.setValueAtTime(Math.min(5200, freq * 5), start);
-      amp.gain.setValueAtTime(0.0001, start);
-      amp.gain.exponentialRampToValueAtTime(Math.max(0.0002, volume), start + 0.035);
-      amp.gain.exponentialRampToValueAtTime(0.0001, start + duration);
-      osc.connect(filter);
-      filter.connect(amp);
-      amp.connect(master);
-      osc.start(start);
-      osc.stop(start + duration + 0.04);
-    }
-
-    // افکت ورود: آکورد سینمایی چندلایه با زنگ ظریف در انتها
-    function playWelcome() {
-      if (!enabled || welcomed) return;
-      welcomed = true;
-      // آکورد گرم و باشکوه
-      note(130.81, 0.00, 1.05, 0.045, 'triangle');
-      note(196.00, 0.00, 1.00, 0.030, 'sine');
-      note(261.63, 0.08, 0.95, 0.025, 'sine');
-      note(392.00, 0.28, 0.82, 0.024, 'triangle');
-      // نت‌های بالا مثل زنگ کریستالی
-      note(523.25, 0.48, 0.72, 0.025, 'sine', -4);
-      note(659.25, 0.68, 0.78, 0.020, 'sine', 3);
-      note(783.99, 0.90, 1.05, 0.023, 'sine');
-      note(1046.50, 1.12, 1.20, 0.015, 'sine');
-    }
-
-    // کلیک: صدای کوتاه، نرم و چندلایه؛ نه بوق تیز
-    function playClick() {
-      if (!enabled) return;
-      note(740, 0, 0.10, 0.022, 'triangle');
-      note(1110, 0.025, 0.12, 0.016, 'sine');
-      note(1480, 0.045, 0.075, 0.008, 'sine');
-    }
-
-    function updateButton() {
-      soundButton.textContent = enabled
-        ? '♛ 🔊 صدای ژنرال: روشن'
-        : '♛ 🔇 صدای ژنرال: خاموش';
-      soundButton.setAttribute('aria-pressed', String(enabled));
-      soundButton.setAttribute('aria-label',
-        enabled ? 'خاموش کردن صدای سایت' : 'روشن کردن صدای سایت');
-    }
-
-    soundButton.addEventListener('click', () => {
-      setEnabled(!enabled);
-      if (enabled) {
-        getAudio();
-        if (!welcomed) playWelcome();
-        else playClick();
-      }
-    });
-
-    // صدای مخصوص دکمه‌ها و لینک‌ها؛ عناصر فرم هنگام تایپ صدا ندارند
-    document.addEventListener('click', event => {
-      if (!enabled || event.target.closest('#zhneral-sound-control')) return;
-      const target = event.target.closest(
-        'button, a, input[type="button"], input[type="submit"], summary'
-      );
-      if (!target) return;
-      getAudio();
-      if (!welcomed) playWelcome();
-      else playClick();
-    });
-
-    function firstInteraction() {
-      if (!enabled || welcomed) return;
-      getAudio();
-      playWelcome();
-    }
-
-    // مرورگرها معمولاً صدای خودکار پیش از تعامل کاربر را مسدود می‌کنند.
-    document.addEventListener('pointerdown', firstInteraction, { once: true });
-    document.addEventListener('keydown', firstInteraction, { once: true });
-    updateButton();
-  })();
+function playClick(){
+ if(!soundEnabled)return;
+ try{
+  audioContext=audioContext||new (window.AudioContext||window.webkitAudioContext)();
+  const oscillator=audioContext.createOscillator();
+  const gain=audioContext.createGain();
+  oscillator.type="sine";
+  oscillator.frequency.setValueAtTime(720,audioContext.currentTime);
+  oscillator.frequency.exponentialRampToValueAtTime(420,audioContext.currentTime+0.07);
+  gain.gain.setValueAtTime(0.045,audioContext.currentTime);
+  gain.gain.exponentialRampToValueAtTime(0.001,audioContext.currentTime+0.08);
+  oscillator.connect(gain);gain.connect(audioContext.destination);
+  oscillator.start();oscillator.stop(audioContext.currentTime+0.08);
+ }catch(e){}
+}
+document.getElementById("soundToggle").addEventListener("click",()=>{
+ soundEnabled=!soundEnabled;
+ document.getElementById("soundToggle").setAttribute("aria-pressed",String(soundEnabled));
+ document.getElementById("soundToggle").innerHTML=
+  (soundEnabled?"🔊 ":"🔇 ")+escapeHTML(t(soundEnabled?"soundOn":"soundOff"));
+ if(soundEnabled)playClick();
+});
+document.addEventListener("click",event=>{
+ if(event.target.closest("a,button") && !event.target.closest("#soundToggle"))playClick();
+});
+document.getElementById("year").textContent=new Date().getFullYear();
+renderAds();
+setLanguage("fa");
 </script>
 </body>
 </html>
