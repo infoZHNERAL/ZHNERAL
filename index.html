@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -183,7 +182,8 @@ footer{border-top:1px solid var(--border);margin-top:30px;padding:28px 0;color:v
         <option value="fa">فارسی</option>
         <option value="en">English</option>
       </select>
-      <a class="btn gold login-text" href="#account" data-i18n="login">ورود / ثبت‌نام</a>
+
+      <a class="btn gold login-text" href="chat.html" data-i18n="login">ورود / ثبت‌نام</a>
     </div>
   </div>
 </header>
@@ -262,7 +262,7 @@ footer{border-top:1px solid var(--border);margin-top:30px;padding:28px 0;color:v
           <option value="other" data-i18n="other">سایر</option>
         </select>
       </div>
-      <div id="adsGrid" class="grid"></div>
+      <div class="grid" id="adsGrid"></div>
       <p class="notice" data-i18n="localNotice">توجه: این نسخه آزمایشی است؛ آگهی‌ها فقط در همین مرورگر ذخیره می‌شوند و هنوز برای همه کاربران آنلاین نیستند.</p>
     </div>
   </section>
@@ -270,22 +270,20 @@ footer{border-top:1px solid var(--border);margin-top:30px;padding:28px 0;color:v
   <section id="publish">
     <div class="container">
       <div class="section-head">
-        <div><h2 data-i18n="publishTitle">ثبت آگهی جدید</h2>
+        <div><h2 data-i18n="publishTitle">ثبت آگهی</h2>
         <p data-i18n="publishSub">فرم ساده برای آزمایش امکانات سایت</p></div>
       </div>
-      <form id="adForm" class="card">
-        <div class="form-grid">
-          <input class="field" id="adTitle" maxlength="70" required placeholder="عنوان آگهی" data-i18n-placeholder="adTitlePlaceholder">
-          <input class="field" id="adPrice" type="number" min="0" required placeholder="قیمت به تومان" data-i18n-placeholder="pricePlaceholder">
-          <select class="field" id="adCategory">
-            <option value="digital" data-i18n="digital">دیجیتال</option>
-            <option value="game" data-i18n="game">بازی</option>
-            <option value="other" data-i18n="other">سایر</option>
-          </select>
-          <input class="field" id="adSeller" maxlength="40" placeholder="نام فروشنده (اختیاری)" data-i18n-placeholder="sellerPlaceholder">
-          <textarea class="field wide" id="adDescription" rows="3" maxlength="300" placeholder="توضیحات آگهی" data-i18n-placeholder="descriptionPlaceholder"></textarea>
-          <button class="btn gold wide" type="submit" data-i18n="submitAd">ثبت آگهی</button>
-        </div>
+      <form id="adForm" class="card form-grid">
+        <input id="adTitle" class="field" required maxlength="100" placeholder="عنوان آگهی" data-i18n-placeholder="adTitlePlaceholder">
+        <input id="adPrice" class="field" type="number" min="0" required placeholder="قیمت به تومان" data-i18n-placeholder="pricePlaceholder">
+        <select id="adCategory" class="field">
+          <option value="digital" data-i18n="digital">دیجیتال</option>
+          <option value="game" data-i18n="game">بازی</option>
+          <option value="other" data-i18n="other">سایر</option>
+        </select>
+        <input id="adSeller" class="field" maxlength="60" placeholder="نام فروشنده (اختیاری)" data-i18n-placeholder="sellerPlaceholder">
+        <textarea id="adDescription" class="field wide" rows="4" maxlength="1000" placeholder="توضیحات آگهی" data-i18n-placeholder="descriptionPlaceholder"></textarea>
+        <button class="btn gold wide" type="submit" data-i18n="submitAd">ثبت آگهی</button>
       </form>
     </div>
   </section>
@@ -293,11 +291,10 @@ footer{border-top:1px solid var(--border);margin-top:30px;padding:28px 0;color:v
   <section id="account">
     <div class="container">
       <div class="section-head">
-        <div><h2 data-i18n="profileTitle">حساب شخصی</h2>
-        <p data-i18n="accountSub">شروع ساخت پروفایل کاربری</p></div>
+        <div><h2 data-i18n="accountSub">شروع ساخت پروفایل کاربری</h2>
+        <p data-i18n="accountDemoTitle">پروفایل کاربری ژنرال</p></div>
       </div>
       <div class="card">
-        <div class="card-icon">♙</div>
         <h3 data-i18n="accountDemoTitle">پروفایل کاربری ژنرال</h3>
         <p data-i18n="accountDemoText">این بخش فعلاً نمایشی است. برای ورود امن، ثبت‌نام واقعی، ذخیره پروفایل و همگام‌سازی میان گوشی‌ها باید احراز هویت و پایگاه داده متصل شود.</p>
         <p class="notice" data-i18n="accountSecurity">اطلاعات حساس مثل رمز عبور را در این فرم آزمایشی وارد نکن.</p>
@@ -312,14 +309,20 @@ footer{border-top:1px solid var(--border);margin-top:30px;padding:28px 0;color:v
         <p data-i18n="socialSub">شبکه‌های اجتماعی و راه‌های ارتباطی</p></div>
       </div>
       <div class="grid">
-        <div class="card"><div class="card-icon">➤</div><h3>Rubika</h3>
+        <div class="card">
+          <div class="card-icon">➤</div>
+          <h3>Rubika</h3>
           <p data-i18n="rubikaText">برای افزودن لینک رسمی روبیکا، آدرس موردنظر خودت را وارد کن.</p>
           <a class="link" href="https://rubika.ir/" target="_blank" rel="noopener noreferrer" data-i18n="openLink">باز کردن روبیکا ←</a>
         </div>
-        <div class="card"><div class="card-icon">✦</div><h3>ZHNERAL</h3>
-          <p data-i18n="brandText">صفحه رسمی برند ژنرال</p><a class="link" href="#home" data-i18n="backTop">بازگشت به بالا ↑</a>
+        <div class="card">
+          <div class="card-icon">✦</div>
+          <h3>ZHNERAL</h3>
+          <p data-i18n="brandText">صفحه رسمی برند ژنرال</p>
         </div>
-        <div class="card"><div class="card-icon">?</div><h3 data-i18n="supportTitle">پشتیبانی</h3>
+        <div class="card">
+          <div class="card-icon">?</div>
+          <h3 data-i18n="supportTitle">پشتیبانی</h3>
           <p data-i18n="supportText">لینک واقعی پشتیبانی را پس از مشخص کردن آیدی اضافه کن.</p>
         </div>
       </div>
@@ -328,8 +331,11 @@ footer{border-top:1px solid var(--border);margin-top:30px;padding:28px 0;color:v
 
   <section id="rules">
     <div class="container">
+      <div class="section-head">
+        <div><h2 data-i18n="rulesTitle">قوانین سایت</h2>
+        <p data-i18n="rulesDesc">راهنمای استفاده از خدمات</p></div>
+      </div>
       <div class="card">
-        <h2 data-i18n="rulesTitle">قوانین استفاده</h2>
         <p data-i18n="rule1">• اطلاعات آگهی باید درست و محترمانه باشد.</p>
         <p data-i18n="rule2">• از انتشار اطلاعات شخصی دیگران خودداری کن.</p>
         <p data-i18n="rule3">• برای خریدوفروش، پیش از پرداخت از اعتبار طرف مقابل مطمئن شو.</p>
@@ -340,12 +346,15 @@ footer{border-top:1px solid var(--border);margin-top:30px;padding:28px 0;color:v
 
 <footer>
   <div class="container footer-row">
-    <div><strong class="gold-text">ZHNERAL</strong> — <span data-i18n="footerText">ژنرال؛ ساده، مدرن و حرفه‌ای</span></div>
-    <div>© <span id="year"></span> ZHNERAL</div>
+    <span data-i18n="footerText">ژنرال؛ ساده، مدرن و حرفه‌ای</span>
+    <span>© <span id="year"></span> ZHNERAL</span>
+    <a href="#home" data-i18n="backTop">بازگشت به بالا ↑</a>
   </div>
 </footer>
 
-<button id="soundToggle" class="sound" type="button" aria-pressed="false">🔇 <span data-i18n="soundOff">صدا خاموش</span></button>
+<button class="sound" id="soundToggle" type="button" aria-pressed="false">
+  🔇 <span data-i18n="soundOff">صدا خاموش</span>
+</button>
 
 <script>
 const translations = {
@@ -353,7 +362,8 @@ fa:{
 login:"ورود / ثبت‌نام",eyebrow:"نسل جدید تجربه دیجیتال",
 hero1:"به دنیای",hero2:"خوش آمدی",
 intro:"یک فضای مدرن برای ارتباط، معرفی محصولات و دسترسی سریع به خدمات ژنرال؛ با طراحی مشکی و طلایی.",
-explore:"شروع کن",viewMarket:"مشاهده بازار",brand:"هویت ژنرال",access:"دسترسی به سایت",quality:"تجربه حرفه‌ای",
+explore:"شروع کن",viewMarket:"مشاهده بازار",brand:"هویت ژنرال",
+access:"دسترسی به سایت",quality:"تجربه حرفه‌ای",
 servicesTitle:"خدمات ژنرال",servicesSub:"دسترسی سریع به بخش‌های اصلی",
 marketTitle:"بازار محصولات",marketDesc:"مشاهده و جست‌وجوی آگهی‌ها",
 profileTitle:"حساب شخصی",profileDesc:"بخش نمایشی پروفایل کاربری",
@@ -384,7 +394,8 @@ en:{
 login:"Login / Sign up",eyebrow:"A new generation of digital experience",
 hero1:"Welcome to the",hero2:"world",
 intro:"A modern space for connecting, showcasing products and accessing ZHNERAL services, in black and gold.",
-explore:"Get started",viewMarket:"Explore market",brand:"ZHNERAL identity",access:"Website access",quality:"Premium experience",
+explore:"Get started",viewMarket:"Explore market",brand:"ZHNERAL identity",
+access:"Website access",quality:"Premium experience",
 servicesTitle:"ZHNERAL Services",servicesSub:"Quick access to main sections",
 marketTitle:"Marketplace",marketDesc:"Browse and search listings",
 profileTitle:"Personal account",profileDesc:"Preview of the user profile section",
@@ -426,24 +437,29 @@ let audioContext = null;
 function t(key){
  return (translations[language] && translations[language][key]) || translations.fa[key] || key;
 }
+
 function loadAds(){
  try{
   const saved = localStorage.getItem("zhneral_demo_ads_v1");
   return saved ? JSON.parse(saved) : seedAds;
  }catch(e){return seedAds;}
 }
+
 function saveAds(ads){
  try{localStorage.setItem("zhneral_demo_ads_v1",JSON.stringify(ads));}
  catch(e){alert("ذخیره‌سازی در این مرورگر در دسترس نیست.");}
 }
+
 function escapeHTML(value){
  return String(value).replace(/[&<>"']/g, ch => ({
   "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
  })[ch]);
 }
+
 function categoryName(cat){
  return t(cat==="digital"?"digital":cat==="game"?"game":"other");
 }
+
 function renderAds(){
  const grid = document.getElementById("adsGrid");
  const query = document.getElementById("searchAds").value.trim().toLowerCase();
@@ -465,6 +481,7 @@ function renderAds(){
    <p>${escapeHTML(t("seller"))}: ${escapeHTML(ad.seller||"ZHNERAL")}</p>
   </article>`).join("");
 }
+
 document.getElementById("adForm").addEventListener("submit",event=>{
  event.preventDefault();
  const title=document.getElementById("adTitle").value.trim();
@@ -479,6 +496,7 @@ document.getElementById("adForm").addEventListener("submit",event=>{
  });
  saveAds(ads);renderAds();event.target.reset();alert(t("adSuccess"));
 });
+
 document.getElementById("searchAds").addEventListener("input",renderAds);
 document.getElementById("categoryFilter").addEventListener("change",renderAds);
 
@@ -498,14 +516,17 @@ function setLanguage(next){
   (soundEnabled?"🔊 ":"🔇 ")+escapeHTML(t(soundEnabled?"soundOn":"soundOff"));
  renderAds();
 }
+
 document.getElementById("language").addEventListener("change",e=>setLanguage(e.target.value));
 
 const menuToggle=document.getElementById("menuToggle");
 const primaryNav=document.getElementById("primaryNav");
+
 menuToggle.addEventListener("click",()=>{
  const open=primaryNav.classList.toggle("open");
  menuToggle.setAttribute("aria-expanded",String(open));
 });
+
 primaryNav.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{
  primaryNav.classList.remove("open");
  menuToggle.setAttribute("aria-expanded","false");
@@ -526,6 +547,7 @@ function playClick(){
   oscillator.start();oscillator.stop(audioContext.currentTime+0.08);
  }catch(e){}
 }
+
 document.getElementById("soundToggle").addEventListener("click",()=>{
  soundEnabled=!soundEnabled;
  document.getElementById("soundToggle").setAttribute("aria-pressed",String(soundEnabled));
@@ -533,12 +555,14 @@ document.getElementById("soundToggle").addEventListener("click",()=>{
   (soundEnabled?"🔊 ":"🔇 ")+escapeHTML(t(soundEnabled?"soundOn":"soundOff"));
  if(soundEnabled)playClick();
 });
+
 document.addEventListener("click",event=>{
  if(event.target.closest("a,button") && !event.target.closest("#soundToggle"))playClick();
 });
+
 document.getElementById("year").textContent=new Date().getFullYear();
 renderAds();
 setLanguage("fa");
 </script>
 </body>
-</html>
+  </html>
