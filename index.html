@@ -330,10 +330,99 @@ footer{
   #goldParticles{display:none}
 }
 
+
+/* ===== ZHNERAL INTRO LOADER ===== */
+#zhneral-loader{
+  position:fixed;inset:0;z-index:2147483000;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:18px 14px;background:#030303;overflow:hidden;
+  opacity:1;visibility:visible;
+  transition:opacity .85s ease,visibility .85s ease;
+}
+#zhneral-loader.zhneral-loader-hidden{opacity:0;visibility:hidden;pointer-events:none}
+#zhneral-loader::before{
+  content:"";position:absolute;inset:-30%;
+  background:radial-gradient(ellipse at center,rgba(190,125,22,.18),transparent 53%);
+  animation:zhneralAura 5s ease-in-out infinite alternate;
+}
+.zhneral-loader-art{
+  position:relative;z-index:1;width:min(100%,1050px);max-height:62vh;
+  overflow:hidden;display:flex;align-items:flex-start;justify-content:center;
+  animation:zhneralEnter 1.1s cubic-bezier(.2,.8,.2,1) both;
+}
+.zhneral-loader-art img{
+  display:block;width:100%;height:auto;object-fit:contain;
+  filter:drop-shadow(0 0 22px rgba(255,183,45,.22));
+  animation:zhneralFloat 4s ease-in-out infinite;
+}
+.zhneral-loader-progress{position:relative;z-index:2;width:min(86%,620px);margin-top:8px;text-align:center}
+#zhneral-loader-percent{
+  color:#ffcf69;font:900 clamp(27px,6vw,39px)/1.2 Arial,sans-serif;
+  text-shadow:0 0 18px rgba(255,184,45,.65);margin-bottom:12px;direction:ltr
+}
+.zhneral-loader-track{
+  height:13px;padding:2px;border:1px solid #d99c35;border-radius:30px;
+  background:#17110a;box-shadow:0 0 18px rgba(255,174,30,.23),inset 0 0 8px #000;
+  overflow:hidden
+}
+#zhneral-loader-fill{
+  width:0%;height:100%;border-radius:30px;
+  background:linear-gradient(90deg,#9a5700,#ffe6a0,#ffb51e,#fff0bd);
+  box-shadow:0 0 13px #ffb52c;transition:width .25s ease
+}
+.zhneral-loader-caption{
+  color:#f4c45f;font-size:15px;margin-top:14px;
+  text-shadow:0 0 12px rgba(255,188,55,.35)
+}
+.zhneral-loader-brand{
+  color:#b99551;font:11px/1.5 Arial,sans-serif;letter-spacing:2px;
+  margin-top:17px;direction:ltr
+}
+.zhneral-loader-spark{
+  position:absolute;z-index:1;width:4px;height:4px;border-radius:50%;
+  background:#ffe2a0;box-shadow:0 0 12px 3px #eaa52e;
+  animation:zhneralSpark 3.5s linear infinite;pointer-events:none
+}
+.zhneral-loader-spark:nth-of-type(1){left:12%;top:22%;animation-delay:-1s}
+.zhneral-loader-spark:nth-of-type(2){left:82%;top:30%;animation-delay:-2.2s}
+.zhneral-loader-spark:nth-of-type(3){left:22%;top:72%;animation-delay:-.5s}
+.zhneral-loader-spark:nth-of-type(4){left:90%;top:75%;animation-delay:-2.8s}
+@keyframes zhneralAura{from{transform:scale(.92);opacity:.55}to{transform:scale(1.12);opacity:1}}
+@keyframes zhneralEnter{from{opacity:0;transform:translateY(16px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes zhneralFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes zhneralSpark{0%{transform:translateY(18px) scale(.5);opacity:0}25%{opacity:1}100%{transform:translateY(-55px) scale(1.4);opacity:0}}
+@media(max-width:600px){
+  #zhneral-loader{padding:12px 8px}
+  .zhneral-loader-art{width:100%;max-height:54vh}
+  .zhneral-loader-progress{width:88%;margin-top:5px}
+  .zhneral-loader-caption{font-size:13px}
+  .zhneral-loader-brand{font-size:9px;letter-spacing:1.3px}
+}
+@media(prefers-reduced-motion:reduce){
+  #zhneral-loader::before,.zhneral-loader-art,.zhneral-loader-art img,.zhneral-loader-spark{animation:none!important}
+}
+
 </style>
 </head>
 
 <body>
+
+<div id="zhneral-loader" role="status" aria-label="در حال بارگذاری سایت">
+  <span class="zhneral-loader-spark"></span>
+  <span class="zhneral-loader-spark"></span>
+  <span class="zhneral-loader-spark"></span>
+  <span class="zhneral-loader-spark"></span>
+  <div class="zhneral-loader-art">
+    <img src="loading.png" alt="ZHNERAL" fetchpriority="high">
+  </div>
+  <div class="zhneral-loader-progress">
+    <div id="zhneral-loader-percent">0%</div>
+    <div class="zhneral-loader-track"><div id="zhneral-loader-fill"></div></div>
+    <div class="zhneral-loader-caption">در حال آماده‌سازی ژنرال ...</div>
+    <div class="zhneral-loader-brand">ZHNERAL • FAST • SECURE • PROFESSIONAL</div>
+  </div>
+</div>
+
 <canvas id="goldParticles" aria-hidden="true"></canvas>
 <div class="ambient-glow" aria-hidden="true"></div>
 <header>
@@ -796,5 +885,52 @@ setLanguage("fa");
 })();
 
 </script>
+
+<!-- ZHNERAL loader progress -->
+<script>
+(function(){
+  const screen = document.getElementById("zhneral-loader");
+  const number = document.getElementById("zhneral-loader-percent");
+  const bar = document.getElementById("zhneral-loader-fill");
+  if(!screen || !number || !bar) return;
+
+  let value = 0;
+  let finished = false;
+
+  function showProgress(next){
+    value = Math.max(value, Math.min(100, Math.floor(next)));
+    number.textContent = value + "%";
+    bar.style.width = value + "%";
+  }
+
+  // Progress is an estimate while the browser loads page resources.
+  const progressTimer = setInterval(function(){
+    if(finished) return;
+    if(value < 88) showProgress(value + 1 + Math.random() * 3);
+    else if(value < 95) showProgress(value + 0.35);
+  }, 180);
+
+  function finishLoading(){
+    if(finished) return;
+    finished = true;
+    clearInterval(progressTimer);
+    showProgress(100);
+    setTimeout(function(){
+      screen.classList.add("zhneral-loader-hidden");
+      setTimeout(function(){ screen.remove(); }, 950);
+    }, 350);
+  }
+
+  if(document.readyState === "complete"){
+    finishLoading();
+  } else {
+    window.addEventListener("load", finishLoading, {once:true});
+  }
+
+  // Safety fallback: never leave the visitor stuck on the intro screen.
+  setTimeout(finishLoading, 12000);
+})();
+</script>
+
 </body>
 </html>
