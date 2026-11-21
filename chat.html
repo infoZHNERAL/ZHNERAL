@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#080808">
+<title>ZHNERAL | چت خصوصی</title>
+
+<style>
+*{box-sizing:border-box}:root{--bg:#050505;--gold:#e7bd55;--gold2:#ffdf83;--muted:#999;--border:#392e19}
+body{margin:0;background:radial-gradient(ellipse at top,#211909,#080808 45%,#030303);color:#f5f3ed;font-family:Tahoma,Arial,sans-serif}
+header{margin:10px auto 0;width:calc(100% - 20px);max-width:1500px;padding:14px 22px;background:#080808;border:1px solid #6a501e;border-radius:20px}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{display:flex;align-items:center;gap:13px}.crown{font-size:39px;color:var(--gold2)}.logo{font-size:clamp(22px,3vw,36px);font-weight:900;color:var(--gold2);letter-spacing:3px}.tagline{font-size:10px;letter-spacing:3px;color:#999;margin-top:3px}.head-actions{display:flex;align-items:center;gap:10px}.head-icon{border:1px solid #30291c;border-radius:12px;padding:11px;color:var(--gold2);font-size:20px}.lang-select{width:auto;margin:0;padding:10px;background:#17130b;color:var(--gold2);border:1px solid #6a5122;border-radius:12px}
+main{max-width:1500px;margin:auto;padding:12px}.app-shell{display:grid;grid-template-columns:minmax(300px,390px) minmax(0,1fr);gap:8px;min-height:calc(100vh - 130px);border:1px solid #6a501e;border-radius:22px;padding:5px;background:#070707}.sidebar{min-width:0;border:1px solid #3c3019;border-radius:17px;padding:12px;background:#080808}.side-heading{display:flex;justify-content:space-between;color:var(--gold2);font-size:19px;font-weight:bold;padding:5px 4px 13px}
+.card{background:linear-gradient(145deg,#121212,#090909);border:1px solid #30291d;border-radius:17px;padding:15px;margin-bottom:12px}h2{font-size:16px;margin:0 0 13px;color:var(--gold2);display:flex;align-items:center;gap:8px}h2:before{content:"";width:4px;height:18px;border-radius:5px;background:var(--gold)}h3{font-size:14px;margin:0 0 10px}
+input,button{width:100%;padding:12px 13px;margin-top:8px;border-radius:12px;font:inherit;font-size:14px}input{color:white;background:#080808;border:1px solid #37332b;outline:none;min-width:0}input:focus{border-color:var(--gold)}button{background:linear-gradient(135deg,#ffe08a,#c99a35);color:#171107;border:1px solid #ffe7a0;font-weight:bold;cursor:pointer}button:disabled{opacity:.5}.secondary{background:#1b1b1b;color:#e9d7a7;border:1px solid #403722}.danger{background:#321717;color:#ffb9b9;border:1px solid #633030}.hidden{display:none!important}
+.status{padding:10px;background:#171717;border:1px solid #302c23;border-radius:10px;font-size:12px;line-height:1.8;color:#ddd;overflow-wrap:anywhere;margin-top:10px;white-space:pre-wrap}.status.error{color:#ffaaaa;border-color:#633030}.status.success{color:#b4f2bf;border-color:#245c32}.muted{color:var(--muted);font-size:12px;line-height:1.9;margin-top:8px}.row{display:flex;gap:8px;align-items:center}.row input{flex:1}.row button{width:auto;min-width:80px}.userbox{padding:11px;background:#15130f;border:1px solid #302819;border-radius:12px;margin-bottom:10px;line-height:2;overflow-wrap:anywhere;font-size:12px}.list{display:flex;flex-direction:column;gap:7px}.list-item{background:#111;border:1px solid #292929;border-radius:12px;padding:11px;cursor:pointer;overflow-wrap:anywhere}.list-item:hover{border-color:#8c6a2b}.list-name{color:var(--gold2);font-weight:bold}.list-preview{color:#999;font-size:12px;margin-top:5px}
+.chat-panel{min-width:0;min-height:70vh;display:flex;flex-direction:column;border:1px solid #5a451f;border-radius:17px;background:radial-gradient(ellipse at center,#111,#060606 80%);overflow:hidden}.chat-empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;color:#8f8264;min-height:300px}.watermark{font-size:100px;color:#4b3916;opacity:.4}.chat-empty strong{color:var(--gold2);font-size:18px}
+#conversation{min-height:70vh;display:flex;flex-direction:column;scroll-margin-top:90px;border:0;background:transparent;border-radius:0;padding:0;margin:0;box-shadow:none}.conversation-head{display:flex;align-items:center;gap:12px;padding:13px 17px;border-bottom:1px solid #352a17;background:#111}.avatar{width:48px;height:48px;flex-shrink:0;border-radius:50%;display:grid;place-items:center;border:1px solid var(--gold);background:linear-gradient(145deg,#3a2b0c,#101010);color:var(--gold2);font-weight:bold}.person-meta{min-width:0;flex:1}#chatTitle{margin:0;display:block}#chatTitle:before{display:none}.back-button{width:auto;margin:0;padding:8px 10px}
+#messages{flex:1;height:auto;min-height:300px;max-height:calc(100vh - 280px);overflow-y:auto;display:flex;flex-direction:column;gap:14px;padding:18px 20px;background-image:radial-gradient(#e6ba4e08 1px,transparent 1px);background-size:24px 24px}.message{max-width:min(78%,540px);padding:11px 14px;border-radius:17px;line-height:1.8;overflow-wrap:anywhere;white-space:pre-wrap;box-shadow:0 5px 15px #0004}.message.mine{align-self:flex-end;background:linear-gradient(135deg,#ffe08a,#c99a35);color:#201706;border:1px solid #ffdf83;border-bottom-right-radius:5px}.message.theirs{align-self:flex-start;background:linear-gradient(145deg,#242424,#151515);border:1px solid #3a3a3a;color:#f5f5f5;border-bottom-left-radius:5px}.message-meta{font-size:10px;color:#76633b;margin-top:4px}.message.theirs .message-meta{color:#999}
+.composer{display:flex;align-items:center;gap:7px;padding:9px;border:1px solid #6a501e;border-radius:18px;margin:0 12px 12px;background:#090909}.composer input{flex:1;margin:0;border:0;background:transparent;padding:13px}.composer input:focus{box-shadow:none}.composer .emoji{width:38px;min-width:38px;margin:0;padding:8px;background:transparent;border:0;color:var(--gold2);font-size:21px}.composer .send{width:52px;height:52px;min-width:52px;margin:0;padding:0;border-radius:50%;font-size:22px}
+footer{text-align:center;color:#666;padding:15px;font-size:11px}
+@media(max-width:900px){header{width:100%;margin:0;border-radius:0;padding:10px 12px}.crown{font-size:28px}.logo{font-size:22px}.tagline{font-size:8px;letter-spacing:1px}.head-icon{display:none}.lang-select{min-width:85px;padding:9px;font-size:12px}main{padding:7px}.app-shell{display:flex;flex-direction:column;border-radius:16px;min-height:calc(100vh - 90px)}.sidebar{padding:9px}.sidebar .card{padding:10px;margin-bottom:8px}.side-heading{font-size:16px}.chat-panel{min-height:65vh}#conversation{min-height:65vh}#messages{min-height:250px;max-height:52vh;padding:12px 9px}.message{max-width:90%}.conversation-head{padding:10px}.avatar{width:39px;height:39px}.back-button{font-size:11px;min-width:0}.composer{margin:0 7px 7px;padding:6px;gap:3px}.composer .send{width:44px;height:44px;min-width:44px}.composer .emoji{width:30px;min-width:30px}}
+
+/* Mobile layout fix: keep the actual conversation as the first screen.
+   The account/search/chat list opens from the menu instead of pushing chat below the fold. */
+.mobile-menu-toggle{display:none;width:auto;margin:0;padding:9px 12px;background:#17130b;color:var(--gold2);border:1px solid #6a5122;border-radius:11px;font-size:20px}
+@media(max-width:900px){
+  header{position:sticky;top:0;z-index:30}
+  .mobile-menu-toggle{display:inline-flex;align-items:center;justify-content:center}
+  .head-actions{gap:7px}
+  .head-actions .head-icon{display:none}
+  main{padding:7px}
+  .app-shell{display:block;min-height:calc(100dvh - 100px);padding:5px;position:relative}
+  .chat-panel{display:flex;flex-direction:column;min-width:0;min-height:calc(100dvh - 125px);border:1px solid #5c471f;border-radius:16px;padding:8px;background:#080808}
+  .conversation-head{padding:10px}
+  #conversation{min-height:calc(100dvh - 190px);display:flex;flex-direction:column}
+  #messages{flex:1;height:auto;min-height:40vh;max-height:none;padding:12px 9px}
+  .composer{margin:0 2px 2px;padding:6px;gap:4px}
+  .composer input{min-width:0}
+  .composer .send{width:44px;height:44px;min-width:44px}
+  .composer .emoji{width:30px;min-width:30px}
+  .sidebar{display:none}
+  .sidebar.mobile-open{display:block;position:fixed;z-index:40;top:calc(env(safe-area-inset-top) + 88px);left:12px;right:12px;width:auto;max-height:calc(100dvh - 125px);overflow-y:auto;box-shadow:0 18px 70px #000e;border:1px solid #8b6b2e;background:#080808}
+  .sidebar.mobile-open .card{display:block}
+  .sidebar.mobile-open .card.hidden{display:none!important}
+  .sidebar.mobile-open .side-heading{position:sticky;top:0;background:#080808;z-index:2}
+  body.menu-open:after{content:"";position:fixed;inset:0;background:#0009;z-index:35}
+}
+
+
+/* Final responsive override: Android tablets/phones often report 800-900 CSS px. */
+@media (max-width: 900px) {
+  .app-shell { display:block !important; }
+  .sidebar { display:none !important; }
+  .sidebar.mobile-open { display:block !important; }
+  .sidebar.mobile-open .card { display:block; }
+  .sidebar.mobile-open .card.hidden { display:none !important; }
+  .chat-panel { width:100%; min-height:calc(100dvh - 105px); }
+  #conversation { min-height:calc(100dvh - 165px); }
+  #messages { min-height:35vh; max-height:none; }
+  .mobile-menu-toggle { display:inline-flex !important; }
+  .head-icon { display:none !important; }
+}
+
+
+/* ZHNERAL LUXURY REDESIGN — visual layer only; existing Firebase logic/IDs preserved */
+:root{--bg:#050505;--gold:#d9ad45;--gold2:#ffe5a0;--muted:#a59b86;--border:#4a391b;--panel:#0d0c0a;--panel2:#14120d;--glow:rgba(220,176,70,.14)}
+html{background:#050505;scroll-behavior:smooth}body{min-height:100dvh;background:radial-gradient(ellipse at 50% -15%,#3a2b0d 0%,#11100c 26%,#070707 58%,#030303 100%);color:#f7f2e5;letter-spacing:.05px}body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.18;background-image:linear-gradient(120deg,transparent 0 49.8%,#d9ad4508 50%,transparent 50.2%);background-size:42px 42px}
+header{position:sticky;top:8px;z-index:50;width:calc(100% - 28px);margin:12px auto 0;padding:13px 20px;background:linear-gradient(120deg,rgba(18,16,11,.97),rgba(5,5,5,.97));border:1px solid #8b6a2c;border-radius:20px;box-shadow:0 14px 42px #0009,inset 0 1px #ffe5a01c;backdrop-filter:blur(18px)}.header-inner{min-height:48px}.brand{gap:12px}.crown{display:grid;place-items:center;width:48px;height:48px;border:1px solid #735622;border-radius:15px;background:linear-gradient(145deg,#35270d,#0b0a07);text-shadow:0 0 20px #e2b94b55}.logo{font-size:clamp(22px,3vw,32px);letter-spacing:3.5px;background:linear-gradient(100deg,#fff0b7,#d8aa3c 55%,#fff0b7);-webkit-background-clip:text;background-clip:text;color:transparent}.tagline{font-size:9px;letter-spacing:2.5px;color:#a99b7c}.head-actions{gap:8px}.head-icon{background:#100f0b;border-color:#44351b}.lang-select{background:#12100b;border-color:#8b6a2c;color:#ffe5a0;box-shadow:0 0 0 3px #d9ad4509}
+main{max-width:1540px;padding:18px 14px}.app-shell{gap:12px;min-height:calc(100dvh - 140px);padding:10px;background:linear-gradient(145deg,#100e09,#050505 55%);border:1px solid #695022;border-radius:25px;box-shadow:0 24px 70px #0009,inset 0 1px #fff1}.sidebar{background:linear-gradient(180deg,#0e0d0a,#070707);border:1px solid #40321b;border-radius:20px;padding:13px}.side-heading{padding:8px 6px 15px;color:#ffe5a0;font-size:18px}.card{background:linear-gradient(145deg,rgba(24,21,14,.97),rgba(9,9,8,.98));border:1px solid #44351d;border-radius:18px;padding:16px;box-shadow:0 10px 26px #0004,inset 0 1px #ffffff08}.card h2{font-size:15px;color:#ffe5a0}.card h2:before{width:3px;height:17px;box-shadow:0 0 12px #e5b64b55}h3{color:#e6d6ad}input{background:#080807;border:1px solid #3c3424;border-radius:13px;transition:border-color .2s,box-shadow .2s}input:focus{border-color:#d9ad45;box-shadow:0 0 0 3px #d9ad451a}button{border-radius:13px;transition:transform .16s,filter .16s,box-shadow .16s}button:not(:disabled):active{transform:scale(.98)}button:not(.secondary):not(.danger){background:linear-gradient(120deg,#ffe9a5,#d9ad45 52%,#b88627);border-color:#ffe6a0;box-shadow:0 5px 18px #d9ad4519}.secondary{background:linear-gradient(145deg,#1b1913,#10100e);border-color:#554321;color:#f1d99a}.danger{background:linear-gradient(145deg,#351717,#1d0b0b);border-color:#673434}.status{background:#12110d;border-color:#3d321d}.userbox{background:linear-gradient(135deg,#17140d,#0b0b09);border-color:#44361e}.list{gap:8px}.list-item{background:linear-gradient(120deg,#17150f,#0d0d0b);border:1px solid #30291c;border-radius:14px;padding:12px;transition:border-color .2s,transform .2s,background .2s}.list-item:hover{border-color:#b48a35;background:#1b170e;transform:translateY(-1px)}.list-name{color:#ffe5a0}.list-preview{color:#9d9686}.muted{color:#a69b83}.chat-panel{position:relative;border:1px solid #725726;border-radius:21px;background:radial-gradient(ellipse at 50% 0%,#1a160d,#090909 58%,#060606);box-shadow:inset 0 1px #ffffff09;overflow:hidden}.chat-panel:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.35;background:radial-gradient(circle at 1px 1px,#d9ad4515 1px,transparent 1.4px);background-size:22px 22px}.chat-empty,.conversation{position:relative;z-index:1}.chat-empty{min-height:390px;color:#a39678}.watermark{width:128px;height:128px;display:grid;place-items:center;margin-bottom:18px;border-radius:38px;border:1px solid #6a5025;background:linear-gradient(145deg,#241b0b,#080807);font-size:74px;color:#d5a943;opacity:.9;box-shadow:0 0 65px #d9ad4510,inset 0 1px #fff1}.chat-empty strong{font-size:20px;letter-spacing:3px;color:#ffe5a0}.conversation-head{position:sticky;top:0;z-index:3;background:linear-gradient(110deg,#18150d,#0a0a09);border-bottom:1px solid #55421f;padding:15px 18px;box-shadow:0 8px 25px #0004}.avatar{width:49px;height:49px;border:1px solid #c49a3d;background:radial-gradient(circle at 30% 20%,#59431a,#151109 70%);color:#ffe5a0;box-shadow:0 0 0 4px #d9ad450b,0 0 25px #d9ad4510}.conversation-head #chatTitle{color:#ffe5a0;font-size:16px}.online-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#55d68b;box-shadow:0 0 0 3px #55d68b1b,0 0 12px #55d68b66;vertical-align:middle}.back-button{white-space:nowrap}.message{border-radius:18px;padding:12px 15px;line-height:1.85;box-shadow:0 8px 22px #0005}.message.mine{background:linear-gradient(135deg,#ffe7a0,#d7a83c);border:1px solid #ffe8a4;color:#201706;border-bottom-right-radius:5px;box-shadow:0 7px 22px #d9ad4511}.message.theirs{background:linear-gradient(145deg,#24221b,#11110f);border:1px solid #423720;color:#f5f0e5;border-bottom-left-radius:5px}.message-meta{color:#705a2b}.message.theirs .message-meta{color:#9d9686}#messages{position:relative;scrollbar-width:thin;scrollbar-color:#6c5225 transparent}#messages::-webkit-scrollbar{width:5px}#messages::-webkit-scrollbar-thumb{background:#6c5225;border-radius:10px}.composer{position:sticky;bottom:0;z-index:4;background:rgba(10,10,8,.96);border:1px solid #725726;border-radius:18px;box-shadow:0 10px 32px #0008,inset 0 1px #ffffff09;backdrop-filter:blur(14px)}.composer input{font-size:14px}.composer .emoji{border-radius:12px}.composer .send{box-shadow:0 5px 18px #d9ad4530}.mobile-menu-toggle{background:linear-gradient(145deg,#211a0d,#0d0c09);border-color:#765a25;color:#ffe5a0}
+footer{color:#82765d;padding:18px;font-size:11px;letter-spacing:.5px}
+@media(max-width:900px){header{top:0;width:100%;margin:0;border-radius:0 0 17px 17px;padding:9px 11px;border-top:0;border-left:0;border-right:0}.crown{width:39px;height:39px;font-size:27px;border-radius:12px}.logo{font-size:21px;letter-spacing:2px}.tagline{font-size:7px;letter-spacing:1.3px}.head-actions{gap:6px}.lang-select{min-width:78px;padding:8px 7px;border-radius:10px}main{padding:9px 7px}.app-shell{padding:6px;gap:8px;border-radius:18px;min-height:calc(100dvh - 82px)}.sidebar{border-radius:15px;padding:9px}.sidebar .card{padding:11px}.chat-panel{border-radius:17px;min-height:calc(100dvh - 115px)}#conversation{min-height:calc(100dvh - 125px);min-height:calc(100dvh - 125px)}.conversation-head{padding:10px;gap:9px}.avatar{width:39px;height:39px;border-radius:13px}.conversation-head #chatTitle{font-size:14px}.conversation-head .muted{font-size:10px;margin-top:3px}.back-button{padding:8px;font-size:10px;border-radius:10px}.chat-empty{min-height:calc(100dvh - 160px);padding:22px}.watermark{width:100px;height:100px;font-size:58px;border-radius:29px}#messages{min-height:40vh;padding:14px 9px;gap:11px}.message{max-width:91%;padding:10px 12px;font-size:13px}.composer{margin:0 6px 7px;padding:5px;gap:4px;border-radius:15px}.composer input{padding:11px 7px;font-size:13px}.composer .emoji{width:32px;min-width:32px;padding:5px;font-size:19px}.composer .send{width:43px;height:43px;min-width:43px;border-radius:13px}.status{font-size:11px}.card{border-radius:15px}footer{padding:12px 5px}}
+@media(max-width:380px){.tagline{display:none}.logo{font-size:19px}.lang-select{min-width:70px;font-size:11px}.back-button{max-width:74px;white-space:normal;line-height:1.4}.head-actions{gap:4px}.composer .emoji{display:none}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+
+
+/* ZHNERAL RED / BLACK / WHITE profile upgrade */
+:root{--gold:#ef3340;--gold2:#fff;--border:#492027;--muted:#a9a9ad;--panel:#101014}
+body{background:radial-gradient(ellipse at 50% -20%,#351016 0%,#111114 32%,#050507 75%);color:#f7f7f8}
+header,.app-shell,.sidebar,.chat-panel,.card{border-color:#432027}
+.logo,.crown,.side-heading,h2,.list-name,.chat-empty strong,.conversation-head #chatTitle{color:#fff}
+.crown{filter:drop-shadow(0 0 9px #ed263955)}
+button:not(.secondary):not(.danger){background:linear-gradient(120deg,#ff5964,#c8102e 65%,#8f0c20);color:white;border-color:#ff6570;box-shadow:0 5px 20px #e21d3525}
+.secondary,.mobile-menu-toggle,.profile-menu-btn{background:#17171c;color:#fff;border:1px solid #4b252c}
+.danger{background:#351116;color:#ffc6ca;border-color:#74303a}
+input,select{background:#09090c;color:#fff;border-color:#38383f}
+input:focus,select:focus{border-color:#f04452;box-shadow:0 0 0 3px #f044521b}
+.status{background:#141418;border-color:#3e3034}
+.userbox,.list-item{background:linear-gradient(120deg,#19191e,#0d0d11);border-color:#35353d}
+.list-item:hover{border-color:#e43a49;background:#201216}
+.chat-panel{background:radial-gradient(ellipse at 50% 0%,#211116,#09090c 65%,#060608)}
+.chat-empty strong{color:#fff}
+.watermark{color:#ed3345}
+.conversation-head{background:#141418;border-color:#3b252a}
+.avatar{border-color:#e83a49;background:linear-gradient(145deg,#591923,#111116);color:#fff}
+.message.mine{background:linear-gradient(135deg,#ff6871,#c91631);color:white;border-color:#ff7078}
+.message.theirs{background:linear-gradient(145deg,#26262c,#151519);border-color:#414149}
+.composer{border-color:#612630;background:#0c0c10}
+.composer .emoji{color:#fff}
+.mobile-menu-toggle{background:#17171c;border-color:#71303a;color:#fff}
+.profile-menu-btn{width:38px;height:36px;margin:0;padding:0;border-radius:10px;font-size:19px;cursor:pointer}
+.profile-overlay{position:fixed;inset:0;z-index:1000;background:#000c;display:flex;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(9px)}
+.profile-modal{width:min(100%,520px);max-height:min(92dvh,850px);overflow:auto;padding:22px;border:1px solid #7a2935;border-radius:22px;background:linear-gradient(145deg,#1a1115,#09090d 65%);box-shadow:0 25px 90px #000d}
+.profile-modal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.profile-modal-head h2{margin:5px 0 0;font-size:21px}.profile-modal-head h2:before{display:none}
+.profile-kicker{font-size:10px;letter-spacing:3px;color:#ef5964}
+.profile-close{width:38px;height:38px;margin:0;padding:0;border-radius:50%;background:#24242a;color:#fff;border:1px solid #555}
+.profile-preview{display:flex;align-items:center;gap:14px;padding:15px;margin-bottom:18px;border:1px solid #46252c;border-radius:16px;background:#111116}
+.profile-photo-preview,.profile-photo-fallback{width:70px;height:70px;border-radius:50%;object-fit:cover;border:2px solid #ed394b;box-shadow:0 0 22px #ed394b22}
+.profile-photo-fallback{display:grid;place-items:center;background:#281117;color:white;font-size:30px;font-weight:bold}
+.profile-preview strong,.profile-preview span{display:block}.profile-preview strong{font-size:16px;color:#fff}.profile-preview span{margin-top:6px;font-size:12px;color:#ef5964;direction:ltr;text-align:right}
+.profile-label{display:block;margin:14px 0 5px;color:#eee;font-size:13px;font-weight:bold}
+.profile-modal input,.profile-modal select{width:100%;margin:0;padding:12px;border-radius:11px}
+.profile-hint{font-size:11px;line-height:1.9;color:#aaa;margin:7px 0 14px}
+.profile-logout{margin-top:10px}
+@media(max-width:900px){.profile-modal{padding:17px;border-radius:18px}.profile-preview{padding:12px}.profile-photo-preview,.profile-photo-fallback{width:62px;height:62px}}
+\n</style>
+</head>
+
+<body>
+<header><div class="header-inner">
+ <div class="brand"><div class="crown">♛</div><div><div class="logo">ZHNERAL</div><div class="tagline">MORE THAN JUST A SITE</div></div></div>
+ <div class="head-actions"><button type="button" id="mobileMenuToggle" class="mobile-menu-toggle" aria-expanded="false">☰</button><span class="head-icon">⌕</span><span class="head-icon">♙</span><span class="head-icon">♧</span><select id="languageSelect" class="lang-select" aria-label="Language"><option value="fa">فارسی</option><option value="en">English</option></select></div>
+</div></header>
+<main>
+<section class="card" id="authSection">
+    <h2>ورود به حساب</h2>
+
+    <input
+      id="email"
+      type="email"
+      placeholder="ایمیل"
+      autocomplete="email"
+    >
+
+    <input
+      id="password"
+      type="password"
+      placeholder="رمز عبور"
+      autocomplete="current-password"
+    >
+
+    <button id="loginBtn" onclick="login()">ورود</button>
+
+    <button
+      id="registerBtn"
+      class="secondary"
+      onclick="register()"
+    >ساخت حساب جدید</button>
+
+    <div class="muted">
+      برای ورود از ایمیل و رمز عبوری استفاده کن که با آن در ZHNERAL ثبت‌نام کرده‌ای.
+    </div>
+
+    <div id="authStatus" class="status hidden"></div>
+  </section>
+<div class="app-shell hidden" id="appShell">
+ <aside class="sidebar"><div class="side-heading"><span data-i18n="chatListTitle">▣ Chats</span><button type="button" class="profile-menu-btn" onclick="openProfile()" aria-label="پروفایل">☰</button></div>
+ <section class="card hidden" id="accountSection">
+    <h2>حساب من</h2>
+
+    <div class="userbox">
+      <div>ایمیل: <span id="myEmail">-</span></div>
+      <div>شناسه: <span id="myUid">-</span></div>
+      <div>نام کاربری: <span id="myUsername">تنظیم نشده</span></div>
+    </div>
+
+    <div id="profileSection" class="muted">برای ویرایش عکس، نام و شناسه، دکمه سه‌خط کنار Chats را بزن.</div>
+  </section>
+ <section class="card hidden" id="searchSection">
+    <h2>جستجوی کاربران</h2>
+
+    <div class="row">
+      <input
+        id="searchInput"
+        type="text"
+        maxlength="25"
+        placeholder="نام کاربری بدون @"
+        autocomplete="off"
+      >
+      <button onclick="searchUser()">جستجو</button>
+    </div>
+
+    <div id="searchResults" class="list"></div>
+
+    <div id="searchStatus" class="status hidden"></div>
+  </section>
+ <section class="card hidden" id="chatsSection">
+    <h2>گفت‌وگوهای من</h2>
+
+    <button class="secondary" onclick="loadChats()">
+      تازه‌سازی فهرست
+    </button>
+
+    <div id="chatList" class="list" style="margin-top:12px"></div>
+
+    <div id="chatsStatus" class="status hidden"></div>
+  </section>
+ </aside>
+ <section class="profile-overlay hidden" id="profileOverlay" aria-modal="true" role="dialog">
+   <div class="profile-modal">
+     <div class="profile-modal-head">
+       <div><span class="profile-kicker">ZHNERAL ACCOUNT</span><h2>پروفایل شخصی</h2></div>
+       <button type="button" class="profile-close" onclick="closeProfile()" aria-label="بستن">×</button>
+     </div>
+     <div class="profile-preview">
+       <img id="profilePhotoPreview" alt="تصویر پروفایل" class="profile-photo-preview hidden">
+       <div id="profilePhotoFallback" class="profile-photo-fallback">Z</div>
+       <div><strong id="profilePreviewName">نام نمایشی شما</strong><span id="profilePreviewId">@username</span></div>
+     </div>
+     <label class="profile-label" for="profilePhotoInput">تصویر پروفایل</label>
+     <input id="profilePhotoInput" type="file" accept="image/*">
+     <label class="profile-label" for="displayNameInput">نام نمایشی</label>
+     <input id="displayNameInput" type="text" maxlength="30" placeholder="نامی که دیگران ببینند">
+     <label class="profile-label" for="profileFontSelect">فونت نام</label>
+     <select id="profileFontSelect">
+       <option value="Tahoma">کلاسیک</option>
+       <option value="Arial">مدرن</option>
+       <option value="Georgia">رسمی</option>
+       <option value="Trebuchet MS">اسپرت</option>
+       <option value="monospace">تکنولوژیک</option>
+     </select>
+     <label class="profile-label" for="usernameInput">شناسه کاربری (ID)</label>
+     <input id="usernameInput" type="text" maxlength="25" placeholder="مثلاً zhneral123" autocomplete="off">
+     <div class="profile-hint">شناسه باید انگلیسی و شامل ۳ تا ۲۵ حرف، عدد یا زیرخط باشد. اگر شناسه‌ای قبلاً گرفته شده باشد، قابل انتخاب نیست.</div>
+     <button type="button" id="saveProfileBtn" onclick="saveProfileSettings()">ذخیره تغییرات پروفایل</button>
+     <div id="accountStatus" class="status hidden"></div>
+     <button type="button" class="danger profile-logout" onclick="logout()">خروج از حساب</button>
+   </div>
+ </section>
+ <section class="chat-panel">
+  <div class="chat-empty" id="chatEmpty"><div class="watermark">♛</div><strong>ZHNERAL CHAT</strong><div class="muted" data-i18n="chooseConversation">برای شروع، یک گفت‌وگو را انتخاب کن</div></div>
+  <section class="card hidden" id="conversation">
+    <div class="conversation-head"><div class="avatar">Z</div><div class="person-meta"><h2 id="chatTitle">گفت‌وگو</h2><div class="muted"><span class="online-dot"></span> <span data-i18n="privateChat">چت خصوصی</span></div></div><button class="secondary back-button" onclick="backToChats()" data-i18n="back">بازگشت به فهرست</button></div>
+    <div id="messages"></div>
+    <div class="composer"><button class="emoji" type="button" onclick="document.getElementById('messageInput').value += ' 😊';document.getElementById('messageInput').focus();" aria-label="Emoji">☺</button>
+      <input
+        id="messageInput"
+        type="text"
+        maxlength="2000"
+        placeholder="پیامت را بنویس..."
+        autocomplete="off"
+      >
+      <button id="sendBtn" class="send" onclick="sendMessage()" aria-label="Send">➤</button>
+    </div>
+
+    <div id="conversationStatus" class="status hidden"></div>
+  </section>
+ </section>
+</div>
+</main>
+<footer>ZHNERAL · <span data-i18n="privateMessenger">پیام‌رسان خصوصی</span></footer>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyAf_q29RAQTaWzA0XMRhhNX69yH9meSh6I",
+  authDomain: "zhneral-f0da6.firebaseapp.com",
+  projectId: "zhneral-f0da6",
+  storageBucket: "zhneral-f0da6.firebasestorage.app",
+  messagingSenderId: "817470560595",
+  appId: "1:817470560595:web:d2a0b26ff7d62ed86169a6",
+  measurementId: "G-85MKKWY30X"
+};
+
+firebase.initializeApp(firebaseConfig);
+
+const auth = firebase.auth();
+const db = firebase.firestore();
+
+let me = null;
+let myProfile = null;
+let activeChat = null;
+let messageListener = null;
+let busy = false;
+
+const $ = id => document.getElementById(id);
+
+function show(id, visible = true) {
+  $(id).classList.toggle("hidden", !visible);
+}
+
+function setStatus(id, message, type = "") {
+  const el = $(id);
+  el.textContent = message;
+  el.className = "status" + (type ? " " + type : "");
+  show(id, true);
+}
+
+function clearStatus(id) {
+  $(id).textContent = "";
+  show(id, false);
+}
+
+function report(error, location, statusId) {
+  console.error("ZHNERAL:", location, error);
+
+  const code = error && error.code ? error.code : "unknown";
+  const message = error && error.message ? error.message : String(error);
+
+  setStatus(
+    statusId,
+    "مرحله: " + location + "\nخطا: " + code + "\n" + message,
+    "error"
+  );
+}
+
+function normalizeUsername(value) {
+  return value.trim().replace(/^@/, "").toLowerCase();
+}
+
+function validUsername(value) {
+  return /^[a-zA-Z0-9_]{3,25}$/.test(value);
+}
+
+function chatIdFor(a, b) {
+  return [a, b].sort().join("_");
+}
+
+function stopMessageListener() {
+  if (messageListener) {
+    messageListener();
+    messageListener = null;
+  }
+}
+
+const uiText={
+fa:{privateMessenger:"پیام‌رسان خصوصی",chatListTitle:"▣ چت",chooseConversation:"برای شروع، یک گفت‌وگو را انتخاب کن",loginTitle:"ورود به حساب",emailPlaceholder:"ایمیل",passwordPlaceholder:"رمز عبور",login:"ورود",myAccount:"حساب من",searchUsers:"جستجوی کاربران",myChats:"گفت‌وگوهای من",search:"جستجو",back:"بازگشت به فهرست",searchPlaceholder:"نام کاربری بدون @",messagePlaceholder:"پیامت را بنویس...",privateChat:"چت خصوصی"},
+en:{privateMessenger:"Private messenger",chatListTitle:"▣ Chats",chooseConversation:"Choose a conversation to get started",loginTitle:"Sign in",emailPlaceholder:"Email",passwordPlaceholder:"Password",login:"Sign in",myAccount:"My account",searchUsers:"Find users",myChats:"My conversations",search:"Search",back:"Back to conversations",searchPlaceholder:"Username without @",messagePlaceholder:"Write a message...",privateChat:"Private chat"}
+};
+let uiLanguage=localStorage.getItem("zhneral-ui-language")||"fa";
+function applyUiLanguage(lang){
+ uiLanguage=uiText[lang]?lang:"fa";localStorage.setItem("zhneral-ui-language",uiLanguage);
+ document.documentElement.lang=uiLanguage;document.documentElement.dir=uiLanguage==="fa"?"rtl":"ltr";
+ document.querySelectorAll("[data-i18n]").forEach(el=>{if(el.id==="chatTitle"&&activeChat)return;let k=el.getAttribute("data-i18n");if(uiText[uiLanguage][k])el.textContent=uiText[uiLanguage][k];});
+ document.querySelectorAll("[data-i18n-placeholder]").forEach(el=>{let k=el.getAttribute("data-i18n-placeholder");if(uiText[uiLanguage][k])el.placeholder=uiText[uiLanguage][k];});
+ document.getElementById("languageSelect").value=uiLanguage;
+}
+document.getElementById("languageSelect").addEventListener("change",e=>applyUiLanguage(e.target.value));applyUiLanguage(uiLanguage);
+async function register() {
+  clearStatus("authStatus");
+
+  const email = $("email").value.trim();
+  const password = $("password").value;
+
+  if (!email || !password) {
+    setStatus("authStatus", "ایمیل و رمز عبور را وارد کن.", "error");
+    return;
+  }
+
+  try {
+    $("registerBtn").disabled = true;
+
+    await auth.createUserWithEmailAndPassword(email, password);
+
+    setStatus(
+      "authStatus",
+      "حساب ساخته شد. حالا یک نام کاربری انتخاب کن.",
+      "success"
+    );
+  } catch (e) {
+    report(e, "ثبت‌نام", "authStatus");
+  } finally {
+    $("registerBtn").disabled = false;
+  }
+}
+
+async function login() {
+  clearStatus("authStatus");
+
+  const email = $("email").value.trim();
+  const password = $("password").value;
+
+  if (!email || !password) {
+    setStatus("authStatus", "ایمیل و رمز عبور را وارد کن.", "error");
+    return;
+  }
+
+  try {
+    $("loginBtn").disabled = true;
+
+    await auth.signInWithEmailAndPassword(email, password);
+
+    setStatus("authStatus", "ورود موفق بود.", "success");
+  } catch (e) {
+    report(e, "ورود به حساب", "authStatus");
+  } finally {
+    $("loginBtn").disabled = false;
+  }
+}
+
+async function logout() {
+  stopMessageListener();
+  activeChat = null;
+
+  try {
+    await auth.signOut();
+  } catch (e) {
+    report(e, "خروج از حساب", "accountStatus");
+  }
+}
+
+async function showAccount(user) {
+  me = user;
+  myProfile = null;
+  activeChat = null;
+  stopMessageListener();
+
+  show("authSection", !user);
+  show("accountSection", !!user);
+  show("searchSection", false);
+  show("chatsSection", false);
+  show("conversation", false);
+  show("appShell", !!user);
+
+  if (!user) return;
+
+  $("myEmail").textContent = user.email || "-";
+  $("myUid").textContent = user.uid;
+  $("myUsername").textContent = "در حال بارگذاری...";
+
+  try {
+    const snap = await db.collection("users").doc(user.uid).get();
+
+    if (snap.exists) {
+      myProfile = snap.data();
+
+      const username = myProfile.username || "";
+
+      $("myUsername").textContent = username
+        ? "@" + username
+        : "تنظیم نشده";
+
+      $("usernameInput").value = username;
+      $("displayNameInput").value = myProfile.displayName || "";
+      $("profileFontSelect").value = myProfile.nameFont || "Tahoma";
+      $("profilePreviewName").textContent = myProfile.displayName || username || "ZHNERAL USER";
+      $("profilePreviewId").textContent = "@" + (username || "username");
+      if(myProfile.photoData){$("profilePhotoPreview").src=myProfile.photoData;show("profilePhotoPreview",true);show("profilePhotoFallback",false);}
+
+      show("profileSection", !username);
+
+      show("searchSection", !!username);
+      show("chatsSection", !!username);
+
+      if (username) {
+        await loadChats();
+      }
+    } else {
+      $("myUsername").textContent = "تنظیم نشده";
+      show("profileSection", true);
+      show("searchSection", false);
+      show("chatsSection", false);
+    }
+  } catch (e) {
+    report(e, "خواندن اطلاعات حساب", "accountStatus");
+    $("myUsername").textContent = "خطا در خواندن اطلاعات";
+    show("profileSection", true);
+  }
+}
+
+async function saveName() {
+  if (!me) return;
+
+  clearStatus("accountStatus");
+
+  const username = $("usernameInput").value.trim();
+  const key = normalizeUsername(username);
+
+  if (!validUsername(username)) {
+    setStatus(
+      "accountStatus",
+      "نام کاربری باید ۳ تا ۲۵ حرف و فقط شامل حروف انگلیسی، عدد یا زیرخط باشد.",
+      "error"
+    );
+    return;
+  }
+
+  try {
+    setStatus("accountStatus", "در حال ذخیره نام کاربری...");
+
+    const userRef = db.collection("users").doc(me.uid);
+    const nameRef = db.collection("usernames").doc(key);
+
+    await db.runTransaction(async transaction => {
+      const userSnap = await transaction.get(userRef);
+      const nameSnap = await transaction.get(nameRef);
+
+      if (nameSnap.exists && nameSnap.data().uid !== me.uid) {
+        throw new Error("این نام کاربری قبلاً انتخاب شده است.");
+      }
+
+      const oldName = userSnap.exists
+        ? normalizeUsername(userSnap.data().username || "")
+        : "";
+
+      if (oldName && oldName !== key) {
+        const oldRef = db.collection("usernames").doc(oldName);
+        const oldSnap = await transaction.get(oldRef);
+
+        if (oldSnap.exists && oldSnap.data().uid === me.uid) {
+          transaction.delete(oldRef);
+        }
+      }
+
+      transaction.set(nameRef, { uid: me.uid });
+
+      transaction.set(userRef, {
+        uid: me.uid,
+        email: me.email || "",
+        username: key,
+        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+      }, { merge: true });
+    });
+
+    setStatus("accountStatus", "نام کاربری ذخیره شد.", "success");
+
+    await showAccount(me);
+  } catch (e) {
+    report(e, "ذخیره نام کاربری", "accountStatus");
+  }
+}
+
+
+function openProfile(){
+  if(!me){setStatus("authStatus","ابتدا وارد حساب شو.","error");return;}
+  const p=myProfile||{};
+  $("displayNameInput").value=p.displayName||"";
+  $("profileFontSelect").value=p.nameFont||"Tahoma";
+  $("usernameInput").value=p.username||"";
+  $("profilePreviewName").textContent=p.displayName||p.username||"ZHNERAL USER";
+  $("profilePreviewId").textContent="@"+(p.username||"username");
+  if(p.photoData){$("profilePhotoPreview").src=p.photoData;show("profilePhotoPreview",true);show("profilePhotoFallback",false);}
+  else{show("profilePhotoPreview",false);show("profilePhotoFallback",true);}
+  show("profileOverlay",true);
+  document.body.style.overflow="hidden";
+}
+function closeProfile(){show("profileOverlay",false);document.body.style.overflow="";}
+$("profilePhotoInput").addEventListener("change",async e=>{
+  const file=e.target.files&&e.target.files[0];if(!file)return;
+  if(!file.type.startsWith("image/")){setStatus("accountStatus","لطفاً یک تصویر انتخاب کن.","error");return;}
+  try{
+    const data=await new Promise((resolve,reject)=>{
+      const reader=new FileReader();reader.onload=()=>resolve(reader.result);reader.onerror=reject;reader.readAsDataURL(file);
+    });
+    const img=await new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=reject;im.src=data;});
+    const canvas=document.createElement("canvas");const max=320;const scale=Math.min(1,max/Math.max(img.width,img.height));
+    canvas.width=Math.round(img.width*scale);canvas.height=Math.round(img.height*scale);
+    canvas.getContext("2d").drawImage(img,0,0,canvas.width,canvas.height);
+    const compressed=canvas.toDataURL("image/jpeg",.78);
+    $("profilePhotoPreview").src=compressed;show("profilePhotoPreview",true);show("profilePhotoFallback",false);
+    $("profilePhotoPreview").dataset.pendingPhoto=compressed;
+  }catch(err){setStatus("accountStatus","خواندن تصویر انجام نشد.","error");}
+});
+$("displayNameInput").addEventListener("input",()=>{$("profilePreviewName").textContent=$("displayNameInput").value.trim()||"ZHNERAL USER";});
+$("usernameInput").addEventListener("input",()=>{$("profilePreviewId").textContent="@"+(normalizeUsername($("usernameInput").value)||"username");});
+async function saveProfileSettings(){
+  if(!me)return;
+  const displayName=$("displayNameInput").value.trim().slice(0,30);
+  const nameFont=$("profileFontSelect").value;
+  const username=$("usernameInput").value.trim();
+  const key=normalizeUsername(username);
+  if(!validUsername(key)){setStatus("accountStatus","شناسه باید ۳ تا ۲۵ حرف انگلیسی، عدد یا زیرخط باشد.","error");return;}
+  try{
+    $("saveProfileBtn").disabled=true;
+    const photoData=$("profilePhotoPreview").dataset.pendingPhoto||(myProfile&&myProfile.photoData)||"";
+    // Save the username through the existing transaction so the usernames index stays unique.
+    await saveName();
+    await db.collection("users").doc(me.uid).set({
+      displayName:displayName||key,nameFont:nameFont,photoData:photoData,
+      updatedAt:firebase.firestore.FieldValue.serverTimestamp()
+    },{merge:true});
+    const fresh=await db.collection("users").doc(me.uid).get();myProfile=fresh.data()||{};
+    $("profilePreviewName").style.fontFamily=nameFont;
+    delete $("profilePhotoPreview").dataset.pendingPhoto;
+    setStatus("accountStatus","پروفایل با موفقیت ذخیره شد.","success");
+    $("myUsername").textContent="@"+key;
+  }catch(e){report(e,"ذخیره پروفایل","accountStatus");}
+  finally{$("saveProfileBtn").disabled=false;}
+}
+\nasync function searchUser() {
+  if (!me) return;
+
+  clearStatus("searchStatus");
+  $("searchResults").textContent = "";
+
+  const key = normalizeUsername($("searchInput").value);
+
+  if (!validUsername(key)) {
+    setStatus(
+      "searchStatus",
+      "نام کاربری معتبر وارد کن.",
+      "error"
+    );
+    return;
+  }
+
+  try {
+    setStatus("searchStatus", "در حال جستجو...");
+
+    const nameSnap = await db.collection("usernames").doc(key).get();
+
+    if (!nameSnap.exists) {
+      setStatus("searchStatus", "این نام کاربری پیدا نشد.", "error");
+      return;
+    }
+
+    const otherUid = nameSnap.data().uid;
+
+    if (!otherUid) {
+      setStatus(
+        "searchStatus",
+        "این نام کاربری اطلاعات حساب ندارد. صاحب حساب باید نام کاربری خود را دوباره ذخیره کند.",
+        "error"
+      );
+      return;
+    }
+
+    if (otherUid === me.uid) {
+      setStatus("searchStatus", "این نام کاربری متعلق به خودت است.");
+      return;
+    }
+
+    const userSnap = await db.collection("users").doc(otherUid).get();
+
+    if (!userSnap.exists) {
+      setStatus(
+        "searchStatus",
+        "حساب پیدا شد، اما اطلاعات پروفایل آن کامل نیست.",
+        "error"
+      );
+      return;
+    }
+
+    const profile = userSnap.data();
+    const name = profile.username || key;
+
+    const item = document.createElement("div");
+    item.className = "list-item";
+
+    const title = document.createElement("div");
+    title.className = "list-name";
+    title.textContent = "@" + name;
+
+    const desc = document.createElement("div");
+    desc.className = "list-preview";
+    desc.textContent = "برای شروع گفت‌وگو لمس کن";
+
+    const btn = document.createElement("button");
+    btn.textContent = "پیام دادن";
+    btn.onclick = () => openChat(otherUid, name);
+
+    item.append(title, desc, btn);
+    $("searchResults").appendChild(item);
+
+    setStatus("searchStatus", "کاربر پیدا شد.", "success");
+  } catch (e) {
+    report(e, "جستجوی کاربر", "searchStatus");
+  }
+}
+
+async function openChat(otherUid, otherName) {
+  if (!me || busy) return;
+
+  if (!otherUid || otherUid === me.uid) {
+    setStatus(
+      "searchStatus",
+      "شناسه کاربر برای ساخت گفت‌وگو معتبر نیست.",
+      "error"
+    );
+    return;
+  }
+
+  busy = true;
+  clearStatus("searchStatus");
+
+  try {
+    const id = chatIdFor(me.uid, otherUid);
+    const ref = db.collection("chats").doc(id);
+
+    let snap;
+
+    try {
+      snap = await ref.get();
+    } catch (e) {
+      report(e, "خواندن گفت‌وگو از فایربیس", "searchStatus");
+      return;
+    }
+
+    if (!snap.exists) {
+      try {
+        await ref.set({
+          members: [me.uid, otherUid].sort(),
+          createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+          lastMessage: "",
+          lastMessageAt: firebase.firestore.FieldValue.serverTimestamp()
+        });
+      } catch (e) {
+        report(e, "ساخت گفت‌وگوی جدید", "searchStatus");
+        return;
+      }
+    } else {
+      const members = snap.data().members || [];
+
+      if (
+        !members.includes(me.uid) ||
+        !members.includes(otherUid)
+      ) {
+        setStatus(
+          "searchStatus",
+          "اعضای گفت‌وگو معتبر نیستند. اطلاعات این گفت‌وگو را بررسی کن.",
+          "error"
+        );
+        return;
+      }
+    }
+
+    activeChat = id;
+
+    $("chatTitle").textContent = (uiLanguage === "fa" ? "گفت‌وگو با @" : "Chat with @") + otherName;
+    $("messages").textContent = "";
+
+    show("conversation", true);
+    show("chatEmpty", false);
+
+    try {
+      listenMessages(id);
+    } catch (e) {
+      report(e, "دریافت پیام‌ها", "conversationStatus");
+      return;
+    }
+
+    try {
+      await loadChats();
+    } catch (e) {
+      console.error("بارگذاری فهرست چت‌ها:", e);
+    }
+
+    $("conversation").scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+
+    setStatus("conversationStatus", "گفت‌وگو باز شد.", "success");
+  } catch (e) {
+    report(e, "باز کردن گفت‌وگو", "searchStatus");
+  } finally {
+    busy = false;
+  }
+}
+
+async function loadChats() {
+  if (!me) return;
+
+  clearStatus("chatsStatus");
+  $("chatList").textContent = "";
+
+  try {
+    const snap = await db.collection("chats")
+      .where("members", "array-contains", me.uid)
+      .get();
+
+    if (snap.empty) {
+      $("chatList").textContent = "هنوز گفت‌وگویی نداری.";
+      return;
+    }
+
+    for (const doc of snap.docs) {
+      const data = doc.data();
+      const members = data.members || [];
+      const otherUid = members.find(uid => uid !== me.uid);
+
+      if (!otherUid) continue;
+
+      let name = "کاربر";
+
+      try {
+        const userSnap = await db.collection("users")
+          .doc(otherUid)
+          .get();
+
+        if (userSnap.exists) {
+          name = userSnap.data().username || name;
+        }
+      } catch (e) {
+        console.error("خواندن نام کاربر:", e);
+      }
+
+      const item = document.createElement("div");
+      item.className = "list-item";
+
+      const title = document.createElement("div");
+      title.className = "list-name";
+      title.textContent = "@" + name;
+
+      const preview = document.createElement("div");
+      preview.className = "list-preview";
+      preview.textContent = data.lastMessage || "شروع گفت‌وگو";
+
+      item.append(title, preview);
+
+      item.onclick = () => openChat(otherUid, name);
+
+      $("chatList").appendChild(item);
+    }
+  } catch (e) {
+    report(e, "بارگذاری فهرست گفت‌وگوها", "chatsStatus");
+  }
+}
+
+function listenMessages(chatId) {
+  stopMessageListener();
+
+  $("messages").textContent = "";
+
+  const query = db.collection("chats")
+    .doc(chatId)
+    .collection("messages")
+    .orderBy("createdAt", "asc");
+
+  messageListener = query.onSnapshot(
+    snapshot => {
+      $("messages").textContent = "";
+
+      snapshot.forEach(doc => {
+        const data = doc.data();
+
+        const bubble = document.createElement("div");
+        bubble.className = "message " +
+          (data.senderId === me.uid ? "mine" : "theirs");
+
+        const body = document.createElement("div");
+        body.textContent = data.text || "";
+
+        const meta = document.createElement("div");
+        meta.className = "message-meta";
+
+        let time = "";
+
+        if (data.createdAt && data.createdAt.toDate) {
+          time = data.createdAt.toDate().toLocaleTimeString("fa-IR", {
+            hour: "2-digit",
+            minute: "2-digit"
+          });
+        }
+
+        meta.textContent =
+          (data.senderId === me.uid ? "شما" : "کاربر") +
+          (time ? " · " + time : "");
+
+        bubble.append(body, meta);
+        $("messages").appendChild(bubble);
+      });
+
+      $("messages").scrollTop = $("messages").scrollHeight;
+    },
+    error => {
+      report(error, "دریافت پیام‌های گفت‌وگو", "conversationStatus");
+    }
+  );
+}
+
+async function sendMessage() {
+  if (!me || !activeChat || busy) return;
+
+  const text = $("messageInput").value.trim();
+
+  if (!text) return;
+
+  busy = true;
+  $("sendBtn").disabled = true;
+
+  try {
+    const chatRef = db.collection("chats").doc(activeChat);
+    const chatSnap = await chatRef.get();
+
+    if (!chatSnap.exists) {
+      throw new Error("گفت‌وگو دیگر وجود ندارد.");
+    }
+
+    const members = chatSnap.data().members || [];
+
+    if (!members.includes(me.uid)) {
+      throw new Error("اجازه ارسال پیام در این گفت‌وگو را نداری.");
+    }
+
+    await chatRef.collection("messages").add({
+      senderId: me.uid,
+      text: text,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
+
+    await chatRef.update({
+      lastMessage: text.slice(0, 100),
+      lastMessageAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
+
+    $("messageInput").value = "";
+    clearStatus("conversationStatus");
+  } catch (e) {
+    report(e, "ارسال پیام", "conversationStatus");
+  } finally {
+    busy = false;
+    $("sendBtn").disabled = false;
+  }
+}
+
+function backToChats() {
+  stopMessageListener();
+  activeChat = null;
+  show("conversation", false);
+  show("chatEmpty", true);
+  show("chatsSection", true);
+}
+
+$("messageInput").addEventListener("keydown", event => {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    sendMessage();
+  }
+});
+
+$("searchInput").addEventListener("keydown", event => {
+  if (event.key === "Enter") searchUser();
+});
+
+$("password").addEventListener("keydown", event => {
+  if (event.key === "Enter") login();
+});
+
+const mobileMenuToggle = document.getElementById("mobileMenuToggle");
+if (mobileMenuToggle) {
+  mobileMenuToggle.addEventListener("click", () => {
+    const sidebar = document.querySelector(".sidebar");
+    const open = sidebar.classList.toggle("mobile-open");
+    document.body.classList.toggle("menu-open", open);
+    mobileMenuToggle.setAttribute("aria-expanded", String(open));
+    mobileMenuToggle.textContent = open ? "✕" : "☰";
+  });
+  document.addEventListener("click", event => {
+    const sidebar = document.querySelector(".sidebar");
+    if (sidebar && sidebar.classList.contains("mobile-open")
+        && !sidebar.contains(event.target) && !mobileMenuToggle.contains(event.target)) {
+      sidebar.classList.remove("mobile-open");
+      document.body.classList.remove("menu-open");
+      mobileMenuToggle.setAttribute("aria-expanded", "false");
+      mobileMenuToggle.textContent = "☰";
+    }
+  });
+}
+
+auth.onAuthStateChanged(async user => {
+  if (user) {
+    await showAccount(user);
+  } else {
+    me = null;
+    myProfile = null;
+    activeChat = null;
+    stopMessageListener();
+
+    show("authSection", true);
+    show("accountSection", false);
+    show("searchSection", false);
+    show("chatsSection", false);
+    show("conversation", false);
+    show("appShell", false);
+  }
+});
+</script>
+
+</body>
+</html>
